@@ -185,9 +185,9 @@ def test_rate_limit_does_not_persist_ip_after_reset(client):
     assert response.status_code == status.HTTP_429_TOO_MANY_REQUESTS
 
     # Simular expiración de la ventana
-    from app.services.rate_limit import rate_limiter
+    from app.services.rate_limit import _fallback_rate_limiter
 
-    rate_limiter.reset()
+    _fallback_rate_limiter.reset()
 
     response = client.post("/api/reportes", json=payload)
     assert response.status_code == status.HTTP_201_CREATED

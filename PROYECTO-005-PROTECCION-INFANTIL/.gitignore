@@ -1,0 +1,28 @@
+# Entorno
+.env
+.venv/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.so
+
+# Node
+node_modules/
+
+# Build / dist
+frontend/dist/
+dist/
+build/
+
+# Cachés y datos locales
+.pytest_cache/
+.ruff_cache/
+*.db
+.DS_Store
+
+# Logs
+*.log

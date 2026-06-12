@@ -41,7 +41,15 @@ export default function ReportForm() {
 
       if (!res.ok) {
         const data = await res.json().catch(() => ({}));
-        throw new Error(data.detail || `Error ${res.status}`);
+        let message = data.detail || `Error ${res.status}`;
+        if (res.status === 422 && Array.isArray(data.detail)) {
+          const field = data.detail[0]?.loc?.slice(-1)[0] || "campo";
+          message = `Campo inválido: ${field}`;
+        }
+        if (res.status === 429) {
+          message = "Límite alcanzado. Intenta más tarde.";
+        }
+        throw new Error(message);
       }
 
       const data = await res.json();
@@ -94,10 +102,11 @@ export default function ReportForm() {
       )}
 
       <div>
-        <label className="block text-sm font-medium text-gray-700 mb-1">
+        <label htmlFor="reported_identifier" className="block text-sm font-medium text-gray-700 mb-1">
           Identificador reportado
         </label>
         <input
+          id="reported_identifier"
           name="reported_identifier"
           value={form.reported_identifier}
           onChange={handleChange}
@@ -110,10 +119,11 @@ export default function ReportForm() {
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-gray-700 mb-1">
+        <label htmlFor="description" className="block text-sm font-medium text-gray-700 mb-1">
           Descripción
         </label>
         <textarea
+          id="description"
           name="description"
           value={form.description}
           onChange={handleChange}
@@ -127,10 +137,11 @@ export default function ReportForm() {
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-gray-700 mb-1">
+        <label htmlFor="evidence_type" className="block text-sm font-medium text-gray-700 mb-1">
           Tipo de evidencia (opcional)
         </label>
         <select
+          id="evidence_type"
           name="evidence_type"
           value={form.evidence_type}
           onChange={handleChange}
@@ -144,10 +155,11 @@ export default function ReportForm() {
 
       {form.evidence_type && (
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">
+          <label htmlFor="evidence_content" className="block text-sm font-medium text-gray-700 mb-1">
             Contenido de evidencia
           </label>
           <textarea
+            id="evidence_content"
             name="evidence_content"
             value={form.evidence_content}
             onChange={handleChange}

@@ -5,6 +5,8 @@ os.environ["DATABASE_URL"] = "sqlite:///:memory:"
 os.environ["REPORT_ENCRYPTION_KEY"] = (
     "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef"
 )
+os.environ["ENVIRONMENT"] = "testing"
+os.environ["REDIS_URL"] = ""
 
 import pytest
 from fastapi.testclient import TestClient
@@ -14,7 +16,7 @@ from sqlalchemy.pool import StaticPool
 
 from app.database import Base, get_db
 from app.main import app
-from app.services.rate_limit import rate_limiter
+from app.services.rate_limit import _fallback_rate_limiter
 
 
 @pytest.fixture(scope="function")
@@ -36,7 +38,7 @@ def db_session():
 
 @pytest.fixture(scope="function")
 def client(db_session):
-    rate_limiter.reset()
+    _fallback_rate_limiter.reset()
 
     def override_get_db():
         try:
