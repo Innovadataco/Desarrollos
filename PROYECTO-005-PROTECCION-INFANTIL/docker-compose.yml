@@ -1,0 +1,29 @@
+```yaml
+version: '3.8'
+
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: innovadataco
+      POSTGRES_PASSWORD: innovadataco_dev
+      POSTGRES_DB: proteccion_infantil
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  backend:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=postgresql://innovadataco:innovadataco_dev@db:5432/proteccion_infantil
+    depends_on:
+      - db
+    volumes:
+      - ./src:/app/src
+
+volumes:
+  postgres_data:
+```
