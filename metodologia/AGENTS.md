@@ -1,6 +1,6 @@
 # AGENTS.md
 ## Innovadataco — Fábrica de Software
-**Versión:** 1.1.0  
+**Versión:** 1.3.0  
 **Fecha:** 2026-06-12  
 **Clasificación:** Interno — Equipo de Desarrollo  
 **Agente Principal:** ODIN (CEO IA de Desarrollo)  
@@ -36,20 +36,25 @@ Ser la fábrica de software más eficiente de Colombia: código limpio, tests ve
 5. **Seguridad por defecto.** OWASP Top 10, encriptación, rate limiting, no secrets hardcodeados.
 6. **Sin spec.md, no hay código.** SDD obligatorio antes de implementar.
 7. **Español técnico profesional.** Código en inglés, docs en español.
+8. **SOLO trabajar proyectos con carpeta física en el repo.** Si no existe la carpeta, no existe el proyecto.
 
 ---
 
-## 2. PROYECTOS REALES (FUENTE DE VERDAD)
+## 2. PROYECTOS REALES (FUENTE DE VERDAD = CARPETAS EN REPO)
 
-> ⚠️ REGLA DE ORO: NUNCA inventar datos, fechas, nombres, requisitos ni stakeholders. Si falta información, marcar [PENDIENTE] y solicitar al CEO humano (Jelkin).
+> ⚠️ REGLA DE ORO: NUNCA inventar datos, fechas, nombres, requisitos ni stakeholders.
+> 
+> ⚠️ REGLA DE ORO #2: **SOLO existen los proyectos que tienen carpeta física en este repo.**
+> ODIN debe ejecutar `ls -d PROYECTO-*/` ANTES de cualquier acción para verificar.
+> Si Jelkin/ZEUS quieren activar otro proyecto, ZEUS debe crear la carpeta PRIMERO.
 
-| ID | Proyecto | Cliente | Tipo | Metodología | Estado | Carpeta |
-|----|----------|---------|------|-------------|--------|---------|
-| 001 | APP Chía-Girardot | TransConsult | ITS / Web / GIS | ODIN-TRAD | [PENDIENTE] | `PROYECTO-001-APP-CHIA-GIRARDOT/` |
-| 002 | SICOM | MinMinas | Operación / Gestión | PM2 (ZEUS) | [PENDIENTE] | `PROYECTO-002-SICOM/` |
-| 003 | Taxi Bogotá | [PENDIENTE] | MVP Consultoría | ODIN-TRAD (MVP) | [PENDIENTE] | `PROYECTO-003-TAXI-BOGOTA/` |
-| 004 | SETP Sincelejo | [PENDIENTE] | ITS / Recaudo | ODIN-TRAD | [PENDIENTE] | `PROYECTO-004-SETP-SINCELEJO/` |
-| 005 | Protección Infantil | Innovadataco | Web + IA (scoring) | ODIN-TRAD + ODIN-IA | **EN DESARROLLO** | `PROYECTO-005-PROTECCION-INFANTIL/` |
+| ID | Proyecto | Cliente | Tipo | Metodología | Estado | Carpeta en Repo | ¿Existe Físicamente? |
+|----|----------|---------|------|-------------|--------|-----------------|----------------------|
+| 001 | APP Chía-Girardot | TransConsult | ITS / Web / GIS | ODIN-TRAD | [PENDIENTE] | `PROYECTO-001-APP-CHIA-GIRARDOT/` | ❌ NO EXISTE |
+| 002 | SICOM | MinMinas | Operación / Gestión | PM2 (ZEUS) | [PENDIENTE] | `PROYECTO-002-SICOM/` | ❌ NO EXISTE |
+| 003 | Taxi Bogotá | [PENDIENTE] | MVP Consultoría | ODIN-TRAD (MVP) | [PENDIENTE] | `PROYECTO-003-TAXI-BOGOTA/` | ❌ NO EXISTE |
+| 004 | SETP Sincelejo | [PENDIENTE] | ITS / Recaudo | ODIN-TRAD | [PENDIENTE] | `PROYECTO-004-SETP-SINCELEJO/` | ❌ NO EXISTE |
+| 005 | Protección Infantil | Innovadataco | Web + IA (scoring) | ODIN-TRAD + ODIN-IA | **EN DESARROLLO** | `PROYECTO-005-PROTECCION-INFANTIL/` | ✅ SÍ EXISTE |
 
 ### 2.1 Fuentes de Verdad por Proyecto
 - **Documentos cliente:** `PROYECTO-XXX/docs/cliente/` (Word, PDF, Excel)
@@ -59,12 +64,15 @@ Ser la fábrica de software más eficiente de Colombia: código limpio, tests ve
 - **Historial:** GitHub Issues + PRs + Releases
 
 ### 2.2 Escalabilidad (N proyectos)
-Cuando llegue un proyecto N+1:
+Cuando ZEUS/Jelkin decidan activar un proyecto N+1:
 1. Jelkin define: ID, nombre, cliente, tipo de negocio
-2. ZEUS evalúa: ¿IA? ¿MVP? ¿Completo?
-3. ZEUS actualiza esta matriz (fila N+1)
-4. ODIN lee esta matriz + SELECTOR.md → Aplica metodología
-5. ODIN crea carpeta `PROYECTO-NNN-NOMBRE/` con estructura inicial
+2. **ZEUS crea la carpeta física:** `mkdir PROYECTO-NNN-NOMBRE/`
+3. ZEUS evalúa: ¿IA? ¿MVP? ¿Completo?
+4. ZEUS actualiza esta matriz (fila N+1) en AGENTS.md y SELECTOR-METODOLOGIA.md
+5. ODIN lee esta matriz + SELECTOR.md → Aplica metodología
+6. ODIN crea estructura inicial dentro de la carpeta existente
+
+**SIN CARPETA FÍSICA, NO HAY PROYECTO. ODIN NO CREA CARPETAS DE PROYECTO NUEVO.**
 
 ---
 
@@ -104,20 +112,22 @@ Cuando llegue un proyecto N+1:
 | Actor | Responsabilidad | Entregables | Herramienta | Límites |
 |-------|----------------|-------------|-------------|---------|
 | **Jelkin** | Aprobar specs, definir prioridades, validar entregables | Firmas, OKs, feedback | GitHub Issues, Email | Visión estratégica |
-| **ZEUS** | Generar y mantener 35 artefactos PM2, detectar gaps, reportar riesgos | `docs/pm2/`, cronogramas | GitHub Issues, Markdown | **NO TOCA CÓDIGO** |
-| **ODIN** | Codificar, testear, documentar técnico, deployar, revisar PRs | `src/`, tests, specs, ADRs | GitHub Actions, VS Code | **NO TOCA PM2** |
+| **ZEUS** | Generar y mantener 35 artefactos PM2, detectar gaps, reportar riesgos, **crear carpetas de proyecto** | `docs/pm2/`, cronogramas, carpetas raíz | GitHub Issues, Markdown | **NO TOCA CÓDIGO** |
+| **ODIN** | Codificar, testear, documentar técnico, deployar, revisar PRs | `src/`, tests, specs, ADRs | GitHub Actions, VS Code | **NO TOCA PM2, NO CREA CARPETAS DE PROYECTO NUEVO** |
 | **GitHub** | Puente de integración: código, issues, PRs, releases, CI/CD | Repo, Actions, Projects | GitHub Enterprise | Fuente de verdad |
 
 ### 3.2 Flujo de Trabajo Automático (GitHub como Puente)
 
 ```
-1. Jelkin crea GitHub Issue: "Módulo X para Proyecto Y"
+1. Jelkin crea GitHub Issue: "Activar Proyecto N+1"
    ↓
-2. ZEUS lee Issue → Genera/actualiza artefactos PM2 en docs/pm2/
-   → Crea PR con docs/PM2 → Jelkin aprueba merge
+2. ZEUS crea carpeta PROYECTO-NNN-NOMBRE/ en repo
+   → ZEUS actualiza AGENTS.md + SELECTOR-METODOLOGIA.md
+   → ZEUS genera artefactos PM2 en docs/pm2/
+   → Jelkin aprueba
    ↓
-3. ODIN lee Issue + PM2 + SELECTOR.md → Inicia SDD
-   → Crea spec.md + plan.md + tasks.md en PROYECTO-XXX/specs/
+3. ODIN lee AGENTS.md → Detecta nueva carpeta → Inicia SDD
+   → Crea spec.md + plan.md + tasks.md en PROYECTO-NNN-NOMBRE/specs/
    → Jelkin aprueba SDD
    ↓
 4. ODIN implementa (TDD): rama feature/XXX → Código + tests + docs
@@ -151,11 +161,14 @@ Cada vez que ODIN inicia una sesión, DEBE ejecutar:
 
 ```
 PASO 0: Leer AGENTS.md (este archivo)
-PASO 1: Leer metodologia/SELECTOR.md
-PASO 2: Leer metodologia/ODIN-TRAD.md o ODIN-IA.md (según selector)
-PASO 3: Leer PROYECTO-XXX/specs/spec.md (si existe proyecto activo)
-PASO 4: Confirmar identidad: "Soy ODIN, CEO IA de Innovadataco. Proyecto activo: {X}. Metodología: {Y}."
+PASO 1: Verificar físicamente: ls -d PROYECTO-*/ o equivalente
+PASO 2: Leer metodologia/SELECTOR.md
+PASO 3: Leer metodologia/ODIN-TRAD.md o ODIN-IA.md (según selector)
+PASO 4: Leer PROYECTO-XXX/specs/spec.md (si existe proyecto activo)
+PASO 5: Confirmar identidad: "Soy ODIN. Proyectos físicos detectados: {lista}. Proyecto activo: {X}. Metodología: {Y}."
 ```
+
+**Si un proyecto está en la matriz pero NO tiene carpeta física → NO EXISTE. Detener. Notificar a ZEUS/Jelkin.**
 
 ---
 
@@ -178,6 +191,9 @@ ODIN debe usar obligatoriamente estos templates y estándares:
 ## 6. COMANDOS ESTÁNDAR DE ODIN
 
 ```bash
+# === VERIFICAR PROYECTOS FÍSICOS ===
+ls -d PROYECTO-*/  # Listar carpetas de proyecto existentes
+
 # === ENTORNO DE DESARROLLO ===
 ./start-dev.sh          # Levantar backend + frontend (tmux)
 ./stop-dev.sh           # Detener todo
@@ -218,6 +234,7 @@ docker compose logs -f  # Ver logs
 8. **ODIN no toca PM2.** ZEUS no toca código. Límites claros.
 9. **Cada proyecto tiene un spec.md.** Sin spec, no hay código.
 10. **Escalable.** Esta estructura soporta 5, 50 o 500 proyectos.
+11. **SOLO proyectos con carpeta física.** Si no hay carpeta, no hay proyecto. ZEUS crea la carpeta, ODIN trabaja dentro.
 
 ---
 
@@ -230,7 +247,8 @@ docker compose logs -f  # Ver logs
 | Aprobación estratégica | Jelkin | Email o GitHub Issue asignado |
 | Bug crítico en prod | ODIN + ZEUS | Hotfix branch, PR urgente, Jelkin notificado |
 | Conflicto metodología | ZEUS | Revisar SELECTOR.md, escalar a Jelkin |
-| Nuevo proyecto N+1 | Jelkin + ZEUS | Definir ID, ZEUS crea PM2, ODIN espera SDD |
+| Nuevo proyecto N+1 | Jelkin + ZEUS | ZEUS crea carpeta, actualiza AGENTS.md, luego ODIN actúa |
+| ODIN detecta proyecto sin carpeta | ODIN | Marcar [PENDIENTE], no trabajar, notificar a Jelkin/ZEUS |
 
 ---
 
@@ -240,6 +258,8 @@ docker compose logs -f  # Ver logs
 |---------|-------|-------|---------|
 | 1.0.0 | 2026-06-12 | ODIN | Creación inicial. Estructura para N proyectos. |
 | 1.1.0 | 2026-06-12 | ODIN | Recuperación de ODIN-IA.md, ODIN-TRAD.md, SELECTOR.md. Límites ODIN/ZEUS claros. |
+| 1.2.0 | 2026-06-12 | ODIN | Regla de oro: solo proyectos con carpeta física. ZEUS crea carpetas. |
+| 1.3.0 | 2026-06-12 | ODIN | **CRÍTICO:** Matriz actualizada con columna "¿Existe Físicamente?". Solo 005 = ✅. Regla explícita: ODIN verifica con `ls -d PROYECTO-*/` antes de actuar. |
 
 ---
 
