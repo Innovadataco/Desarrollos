@@ -8,8 +8,8 @@ https://github.com/Innovadataco/Desarrollos
 ```
 metodologia/
 ├── AGENTS.md                    ← Documento maestro de ODIN (LEER PRIMERO)
-├── ODIN-TRAD.md                 ← Desarrollo tradicional (apps, webs, APIs)
 ├── ODIN-IA.md                   ← Desarrollo con IA (ML, scoring, NLP)
+├── ODIN-TRAD.md                 ← Desarrollo tradicional (apps, webs, APIs)
 ├── SDD-INNOVADATACO.md          ← Software Development Definition (fase ZERO)
 ├── SELECTOR.md                  ← Selector simple de metodología
 ├── SELECTOR-METODOLOGIA.md      ← Árbol de decisión + matriz de proyectos

@@ -9,7 +9,7 @@
 ## 1. PRE-DEPLOY (Obligatorio)
 
 ### 1.1 Secrets y Configuración
-- [ ] Ningún secret hardcodeado en código (buscar con `git grep -i "password\|secret\|key\|token"`)
+- [ ] Ningún secret hardcodeado en código
 - [ ] Variables de entorno en `.env.example` (sin valores reales)
 - [ ] `.env` en `.gitignore`
 - [ ] Secrets rotados si hubo leak

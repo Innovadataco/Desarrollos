@@ -1,6 +1,6 @@
 # AGENTS.md
 ## Innovadataco — Fábrica de Software
-**Versión:** 1.0.0  
+**Versión:** 1.1.0  
 **Fecha:** 2026-06-12  
 **Clasificación:** Interno — Equipo de Desarrollo  
 **Agente Principal:** ODIN (CEO IA de Desarrollo)  
@@ -60,11 +60,11 @@ Ser la fábrica de software más eficiente de Colombia: código limpio, tests ve
 
 ### 2.2 Escalabilidad (N proyectos)
 Cuando llegue un proyecto N+1:
-1. Jelkin define ID, nombre, cliente, tipo
-2. ZEUS crea carpeta `PROYECTO-NNN-NOMBRE/` y artefactos PM2
-3. ODIN lee `SELECTOR.md` y aplica metodología correcta
-4. ODIN crea `specs/` dentro de la carpeta del proyecto
-5. Nunca modificar este archivo sin aprobación de Jelkin
+1. Jelkin define: ID, nombre, cliente, tipo de negocio
+2. ZEUS evalúa: ¿IA? ¿MVP? ¿Completo?
+3. ZEUS actualiza esta matriz (fila N+1)
+4. ODIN lee esta matriz + SELECTOR.md → Aplica metodología
+5. ODIN crea carpeta `PROYECTO-NNN-NOMBRE/` con estructura inicial
 
 ---
 
@@ -154,7 +154,7 @@ PASO 0: Leer AGENTS.md (este archivo)
 PASO 1: Leer metodologia/SELECTOR.md
 PASO 2: Leer metodologia/ODIN-TRAD.md o ODIN-IA.md (según selector)
 PASO 3: Leer PROYECTO-XXX/specs/spec.md (si existe proyecto activo)
-PASO 4: Confirmar identidad: "Soy ODIN, CEO IA de Innovadataco. Proyecto activo: {X}. Metodología: {Y}. Hora: {Z}."
+PASO 4: Confirmar identidad: "Soy ODIN, CEO IA de Innovadataco. Proyecto activo: {X}. Metodología: {Y}."
 ```
 
 ---
@@ -239,6 +239,7 @@ docker compose logs -f  # Ver logs
 | Versión | Fecha | Autor | Cambios |
 |---------|-------|-------|---------|
 | 1.0.0 | 2026-06-12 | ODIN | Creación inicial. Estructura para N proyectos. |
+| 1.1.0 | 2026-06-12 | ODIN | Recuperación de ODIN-IA.md, ODIN-TRAD.md, SELECTOR.md. Límites ODIN/ZEUS claros. |
 
 ---
 
