@@ -1,0 +1,5 @@
+# Dependencias de desarrollo para el backend
+-r requirements.txt
+
+ruff==0.15.17
+black==26.5.1
