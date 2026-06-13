@@ -44,11 +44,19 @@ cd src/backend
 pytest --cov=app --cov-report=term-missing
 ```
 
-Frontend:
+Frontend unitarios:
 
 ```bash
 cd src/frontend
 npm test
+```
+
+Frontend E2E (navegador real):
+
+```bash
+cd src/frontend
+npx playwright install chromium
+npm run e2e
 ```
 
 ## Decisiones de Arquitectura

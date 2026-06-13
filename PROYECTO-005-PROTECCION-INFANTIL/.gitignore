@@ -23,6 +23,11 @@ build/
 .ruff_cache/
 *.db
 .DS_Store
+.coverage
+
+# Playwright
+test-results/
+playwright-report/
 
 # Logs
 *.log

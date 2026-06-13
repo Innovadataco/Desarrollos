@@ -62,6 +62,7 @@ Una tarea está "Done" cuando:
 |----|-------|-------------|------------------------|------------|--------------|----------|
 | TASK-040 | Tests backend | pytest con cobertura | ≥ 80% cobertura, todos pasan | 4h | TASK-022, TASK-010 | ODIN |
 | TASK-041 | Tests frontend | vitest para ReportForm | 5 tests pasan | 2h | TASK-031 | ODIN |
+| TASK-042 | Tests E2E | Playwright: envío de reporte en navegador | 2 tests pasan | 3h | TASK-041 | ODIN |
 
 ### FASE 6: DOCUMENTACIÓN SDD
 
