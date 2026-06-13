@@ -147,7 +147,7 @@ export default function SearchView({ onReport }) {
               onClick={() => onReport && onReport(identifier)}
               className="w-full rounded-lg bg-[#E74C3C] py-3 text-white font-semibold transition-transform duration-200 hover:scale-[1.02] active:scale-95"
             >
-              Reportar ahora
+              📣 Reportar este {result.identifier_type === "email" ? "correo" : "identificador"}
             </button>
             <button
               onClick={handleShare}

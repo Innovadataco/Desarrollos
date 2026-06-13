@@ -4,13 +4,13 @@ import ReportForm from "./ReportForm";
 
 const API_URL = "http://localhost:8000";
 
-async function fillAndSubmit(form) {
+async function fillAndSubmit() {
   // Step 1: select type
   fireEvent.click(screen.getByText(/Celular/i));
   fireEvent.click(screen.getByRole("button", { name: /Siguiente/i }));
   // Step 2: fill identifier and description
-  fireEvent.change(screen.getByLabelText(/Número o identificador reportado/i), {
-    target: { value: "@sospechoso" },
+  fireEvent.change(screen.getByLabelText(/Número de celular/i), {
+    target: { value: "+573001234567" },
   });
   fireEvent.change(screen.getByLabelText(/¿Qué te pareció sospechoso?/i), {
     target: { value: "Descripción del incidente suficiente" },
@@ -100,5 +100,19 @@ describe("ReportForm", () => {
     await waitFor(() => {
       expect(screen.getByText(/Verifica los campos/i)).toBeInTheDocument();
     });
+  });
+
+  it("muestra error si el formato de teléfono es inválido", async () => {
+    render(<ReportForm />);
+    fireEvent.click(screen.getByText(/Celular/i));
+    fireEvent.click(screen.getByRole("button", { name: /Siguiente/i }));
+    fireEvent.change(screen.getByLabelText(/Número de celular/i), {
+      target: { value: "no-es-numero" },
+    });
+    fireEvent.change(screen.getByLabelText(/¿Qué te pareció sospechoso?/i), {
+      target: { value: "Descripción del incidente suficiente" },
+    });
+    fireEvent.click(screen.getByRole("button", { name: /Siguiente/i }));
+    expect(screen.getByText(/Revisa el formato/i)).toBeInTheDocument();
   });
 });

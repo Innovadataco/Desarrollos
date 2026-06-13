@@ -2,21 +2,92 @@ import { useEffect, useState } from "react";
 import { API_URL } from "../api";
 
 const TYPES = [
-  { id: "phone", label: "📱 Celular", category: "contacto_inapropiado" },
-  { id: "social", label: "💬 Red social", category: "contacto_inapropiado" },
-  { id: "email", label: "📧 Email", category: "contacto_inapropiado" },
-  { id: "url", label: "🌐 Sitio web", category: "solicitud_material" },
-  { id: "content", label: "📸 Contenido inapropiado", category: "solicitud_material" },
-  { id: "other", label: "📝 Otro", category: "otro" },
+  {
+    id: "phone",
+    label: "📱 Celular",
+    category: "contacto_inapropiado",
+    placeholder: "+57 300 123 4567",
+    inputMode: "tel",
+    identifierLabel: "Número de celular",
+    help: "Incluye el código de país.",
+    validate: (v) => /^\+?\d[\d\s\-()]{6,20}$/.test(v.trim()),
+  },
+  {
+    id: "social",
+    label: "💬 Red social",
+    category: "contacto_inapropiado",
+    placeholder: "@usuario",
+    inputMode: "text",
+    identifierLabel: "Usuario / @usuario",
+    help: "Ej: @usuario_malo o el enlace al perfil.",
+    validate: (v) => v.trim().length >= 2,
+  },
+  {
+    id: "email",
+    label: "📧 Email",
+    category: "contacto_inapropiado",
+    placeholder: "correo@ejemplo.com",
+    inputMode: "email",
+    identifierLabel: "Correo electrónico",
+    help: "Dirección de correo usada para contactar.",
+    validate: (v) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()),
+  },
+  {
+    id: "url",
+    label: "🌐 Sitio web",
+    category: "solicitud_material",
+    placeholder: "https://sitio-sospechoso.com/perfil",
+    inputMode: "url",
+    identifierLabel: "URL del sitio o perfil",
+    help: "Pega el enlace completo.",
+    validate: (v) => /^https?:\/\/.+/i.test(v.trim()),
+  },
+  {
+    id: "content",
+    label: "📸 Contenido inapropiado",
+    category: "solicitud_material",
+    placeholder: "Describe o adjunta el contenido",
+    inputMode: "text",
+    identifierLabel: "Descripción breve del contenido",
+    help: "Puedes dejar esto y contar más abajo.",
+    validate: () => true,
+  },
+  {
+    id: "other",
+    label: "📝 Otro",
+    category: "otro",
+    placeholder: "Escribe el identificador",
+    inputMode: "text",
+    identifierLabel: "Identificador",
+    help: "Cualquier otro dato que identifique el contacto.",
+    validate: (v) => v.trim().length >= 1,
+  },
 ];
+
+const ALLOWED_TYPES = [
+  "image/png",
+  "image/jpeg",
+  "image/jpg",
+  "image/gif",
+  "image/webp",
+  "application/pdf",
+  "text/plain",
+  "audio/mpeg",
+  "audio/wav",
+  "audio/webm",
+  "video/mp4",
+  "video/webm",
+];
+
+const MAX_SIZE_MB = 10;
 
 export default function ReportForm({ prefillIdentifier = "" }) {
   const [step, setStep] = useState(1);
   const [type, setType] = useState("");
   const [identifier, setIdentifier] = useState(prefillIdentifier);
   const [description, setDescription] = useState("");
-  const [evidence, setEvidence] = useState("");
-  const [evidenceType, setEvidenceType] = useState("text");
+  const [evidenceFile, setEvidenceFile] = useState(null);
+  const [filePreview, setFilePreview] = useState(null);
   const [confirmed, setConfirmed] = useState(false);
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState(null);
@@ -28,23 +99,49 @@ export default function ReportForm({ prefillIdentifier = "" }) {
 
   const selected = TYPES.find((t) => t.id === type);
 
+  const isIdentifierValid = selected ? selected.validate(identifier) : identifier.trim().length >= 1;
   const canNext =
     (step === 1 && type) ||
-    (step === 2 && identifier.trim().length >= 1 && description.trim().length >= 10);
+    (step === 2 && isIdentifierValid && description.trim().length >= 10);
+
+  const handleFileChange = (e) => {
+    const file = e.target.files[0];
+    setError(null);
+    if (!file) {
+      setEvidenceFile(null);
+      setFilePreview(null);
+      return;
+    }
+    if (!ALLOWED_TYPES.includes(file.type)) {
+      setError("Formato no permitido. Usa PNG, JPG, PDF, MP4, MP3 o TXT.");
+      e.target.value = "";
+      return;
+    }
+    if (file.size > MAX_SIZE_MB * 1024 * 1024) {
+      setError(`El archivo excede ${MAX_SIZE_MB} MB.`);
+      e.target.value = "";
+      return;
+    }
+    setEvidenceFile(file);
+    if (file.type.startsWith("image/")) {
+      setFilePreview(URL.createObjectURL(file));
+    } else {
+      setFilePreview(null);
+    }
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!confirmed) return;
     setLoading(true);
     setError(null);
+
     const payload = {
       reported_identifier: identifier,
       description,
       category: selected?.category || "otro",
-      evidence: evidence
-        ? { type: evidenceType, content: evidence }
-        : undefined,
     };
+
     try {
       const res = await fetch(`${API_URL}/api/v1/reportes`, {
         method: "POST",
@@ -53,20 +150,42 @@ export default function ReportForm({ prefillIdentifier = "" }) {
       });
       const data = await res.json();
       if (!res.ok) {
-        if (res.status === 429) {
-          setError(data.detail || "Has alcanzado el límite. Intenta más tarde.");
-        } else if (res.status === 422) {
-          setError("Verifica los campos e intenta de nuevo.");
-        } else {
-          setError(data.detail || "No se pudo enviar el reporte.");
-        }
-      } else {
-        setResult(data);
+        handleError(res.status, data);
+        setLoading(false);
+        return;
       }
+
+      // Subir archivo si existe
+      if (evidenceFile) {
+        const formData = new FormData();
+        formData.append("file", evidenceFile);
+        const uploadRes = await fetch(
+          `${API_URL}/api/v1/reportes/${data.report_hash}/evidence`,
+          { method: "POST", body: formData }
+        );
+        if (!uploadRes.ok) {
+          const uploadData = await uploadRes.json();
+          setError(
+            `Reporte guardado, pero no se pudo adjuntar el archivo: ${uploadData.detail || ""}`
+          );
+        }
+      }
+
+      setResult(data);
     } catch {
       setError("Error de conexión. Verifica tu red e intenta de nuevo.");
     } finally {
       setLoading(false);
+    }
+  };
+
+  const handleError = (status, data) => {
+    if (status === 429) {
+      setError(data.detail || "Has alcanzado el límite. Intenta más tarde.");
+    } else if (status === 422) {
+      setError("Verifica los campos e intenta de nuevo.");
+    } else {
+      setError(data.detail || "No se pudo enviar el reporte.");
     }
   };
 
@@ -75,7 +194,8 @@ export default function ReportForm({ prefillIdentifier = "" }) {
     setType("");
     setIdentifier("");
     setDescription("");
-    setEvidence("");
+    setEvidenceFile(null);
+    setFilePreview(null);
     setConfirmed(false);
     setResult(null);
     setError(null);
@@ -83,17 +203,18 @@ export default function ReportForm({ prefillIdentifier = "" }) {
 
   if (result) {
     return (
-      <div className="text-center space-y-5 rounded-xl border border-green-200 bg-green-50 p-6">
+      <div className="text-center space-y-5 rounded-xl border border-green-200 bg-green-50 p-6 animate-fade-in">
         <div className="text-5xl">🛡️</div>
-        <h2 className="text-xl font-bold text-green-800">
-          Protección activada
-        </h2>
+        <h2 className="text-xl font-bold text-green-800">Protección activada</h2>
         <p className="text-green-800">
           Hiciste lo correcto. Tu reporte fue recibido de forma anónima.
         </p>
         <div className="rounded-lg bg-white p-4 text-left">
           <p className="text-sm text-gray-600">Guarda este código:</p>
-          <p data-testid="report-hash" className="break-all font-mono text-sm font-semibold text-gray-900">
+          <p
+            data-testid="report-hash"
+            className="break-all font-mono text-sm font-semibold text-gray-900"
+          >
             {result.report_hash}
           </p>
         </div>
@@ -139,7 +260,10 @@ export default function ReportForm({ prefillIdentifier = "" }) {
               <button
                 key={t.id}
                 type="button"
-                onClick={() => setType(t.id)}
+                onClick={() => {
+                  setType(t.id);
+                  setIdentifier("");
+                }}
                 className={`rounded-lg border px-3 py-4 text-sm font-medium text-center transition ${
                   type === t.id
                     ? "border-[#1A3A5C] bg-[#1A3A5C] text-white"
@@ -153,22 +277,27 @@ export default function ReportForm({ prefillIdentifier = "" }) {
         </div>
       )}
 
-      {step === 2 && (
+      {step === 2 && selected && (
         <div className="space-y-4">
           <p className="font-semibold text-gray-800">Paso 2: Identificador y descripción</p>
           <div>
             <label htmlFor="identifier" className="block text-sm font-medium text-gray-700">
-              Número o identificador reportado
+              {selected.identifierLabel}
             </label>
             <input
               id="identifier"
-              type="text"
+              type={selected.id === "email" ? "email" : "text"}
+              inputMode={selected.inputMode}
               value={identifier}
               onChange={(e) => setIdentifier(e.target.value)}
-              placeholder="+57 300 123 4567"
+              placeholder={selected.placeholder}
               className="mt-1 w-full rounded-lg border border-gray-300 px-4 py-3 text-base focus:outline-none focus:ring-2 focus:ring-[#4A90D9]"
               required
             />
+            <p className="text-xs text-gray-500 mt-1">{selected.help}</p>
+            {identifier && !isIdentifierValid && (
+              <p className="text-xs text-red-600 mt-1">Revisa el formato.</p>
+            )}
           </div>
           <div>
             <label htmlFor="description" className="block text-sm font-medium text-gray-700">
@@ -178,7 +307,7 @@ export default function ReportForm({ prefillIdentifier = "" }) {
               id="description"
               value={description}
               onChange={(e) => setDescription(e.target.value)}
-              placeholder="Describe lo que pasó..."
+              placeholder="Describe lo que pasó con el mayor detalle posible..."
               rows={4}
               minLength={10}
               className="mt-1 w-full rounded-lg border border-gray-300 px-4 py-3 text-base focus:outline-none focus:ring-2 focus:ring-[#4A90D9]"
@@ -193,28 +322,33 @@ export default function ReportForm({ prefillIdentifier = "" }) {
           <p className="font-semibold text-gray-800">Paso 3: Evidencia y confirmación</p>
           <div>
             <label htmlFor="evidence" className="block text-sm font-medium text-gray-700">
-              Evidencia (opcional)
+              Adjuntar evidencia (opcional)
             </label>
-            <select
-              id="evidence-type"
-              value={evidenceType}
-              onChange={(e) => setEvidenceType(e.target.value)}
-              className="mt-1 mb-2 w-full rounded-lg border border-gray-300 px-3 py-2 text-base"
-            >
-              <option value="text">Texto / captura</option>
-              <option value="image">Imagen</option>
-              <option value="video">Video</option>
-              <option value="audio">Audio</option>
-              <option value="screenshot">Captura de pantalla</option>
-            </select>
-            <textarea
+            <input
               id="evidence"
-              value={evidence}
-              onChange={(e) => setEvidence(e.target.value)}
-              placeholder="Pega aquí el contenido de la evidencia..."
-              rows={3}
-              className="w-full rounded-lg border border-gray-300 px-4 py-3 text-base focus:outline-none focus:ring-2 focus:ring-[#4A90D9]"
+              type="file"
+              accept=".png,.jpg,.jpeg,.gif,.webp,.pdf,.txt,.mp3,.wav,.mp4,.webm"
+              onChange={handleFileChange}
+              className="mt-1 block w-full text-sm text-gray-700 file:mr-4 file:rounded-lg file:border-0 file:bg-[#1A3A5C] file:px-4 file:py-2 file:text-white file:font-semibold hover:file:bg-[#4A90D9]"
             />
+            <p className="text-xs text-gray-500 mt-1">
+              Formatos: PNG, JPG, PDF, MP4, MP3, TXT. Máx. {MAX_SIZE_MB} MB.
+            </p>
+            {evidenceFile && (
+              <div className="mt-3 rounded-lg border border-gray-200 bg-gray-50 p-3">
+                <p className="text-sm font-medium text-gray-800">{evidenceFile.name}</p>
+                <p className="text-xs text-gray-500">
+                  {(evidenceFile.size / 1024 / 1024).toFixed(2)} MB
+                </p>
+                {filePreview && (
+                  <img
+                    src={filePreview}
+                    alt="Vista previa"
+                    className="mt-2 max-h-40 rounded border border-gray-300"
+                  />
+                )}
+              </div>
+            )}
           </div>
           <label className="flex items-start gap-3">
             <input

@@ -31,3 +31,6 @@ playwright-report/
 
 # Logs
 *.log
+
+# Archivos de evidencia subidos
+uploads/

@@ -55,10 +55,8 @@ class TestExport:
         assert data["reported_identifier"] == "export@test.org"
         assert "description" in data
 
-    def test_export_pdf_with_encrypted_content(
-        self, client, supervisor_headers, db_session
-    ):
-        client.post(
+    def test_export_pdf_with_encrypted_content(self, client, supervisor_headers):
+        report_resp = client.post(
             "/api/v1/reportes",
             json={
                 "reported_identifier": "pdf-encrypt@test.org",
@@ -68,17 +66,9 @@ class TestExport:
             },
             headers={"X-Client-Country": "CO", "X-Client-City": "Bogota"},
         )
-        # Obtener hash del reporte recién creado
-        from app.models import Report
-
-        report_obj = (
-            db_session.query(Report)
-            .filter(Report.report_hash.like("%"))
-            .order_by(Report.reported_at.desc())
-            .first()
-        )
+        report_hash = report_resp.json()["report_hash"]
         response = client.get(
-            f"/api/v1/admin/reports/{report_obj.report_hash}/export?format=pdf&include_encrypted=true",
+            f"/api/v1/admin/reports/{report_hash}/export?format=pdf&include_encrypted=true",
             headers=supervisor_headers,
         )
         assert response.status_code == status.HTTP_200_OK
