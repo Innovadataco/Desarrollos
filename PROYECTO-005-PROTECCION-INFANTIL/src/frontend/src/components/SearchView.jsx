@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { API_URL } from "../api";
 
 const LEVEL_STYLES = {
@@ -32,12 +33,13 @@ const LEVEL_STYLES = {
   },
 };
 
-export default function SearchView({ onReport }) {
+export default function SearchView() {
   const [identifier, setIdentifier] = useState("");
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState(null);
   const [error, setError] = useState(null);
   const [copied, setCopied] = useState(false);
+  const navigate = useNavigate();
 
   const handleSearch = async (e) => {
     e.preventDefault();
@@ -144,7 +146,7 @@ export default function SearchView({ onReport }) {
           )}
           <div className="flex flex-col gap-2">
             <button
-              onClick={() => onReport && onReport(identifier)}
+              onClick={() => navigate(`/report?identifier=${encodeURIComponent(identifier)}`)}
               className="w-full rounded-lg bg-[#E74C3C] py-3 text-white font-semibold transition-transform duration-200 hover:scale-[1.02] active:scale-95"
             >
               📣 Reportar este {result.identifier_type === "email" ? "correo" : "identificador"}

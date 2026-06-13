@@ -1,17 +1,22 @@
-export default function BottomNav({ active, onChange }) {
+import { Link, useLocation } from "react-router-dom";
+
+export default function BottomNav() {
+  const location = useLocation();
+  const active = location.pathname === "/" ? "search" : location.pathname.slice(1) || "search";
+
   const tabs = [
-    { id: "search", label: "Buscar", icon: "🔍" },
-    { id: "report", label: "Reportar", icon: "📝" },
-    { id: "resources", label: "Recursos", icon: "📚" },
+    { id: "search", label: "Buscar", icon: "🔍", to: "/" },
+    { id: "report", label: "Reportar", icon: "📝", to: "/report" },
+    { id: "resources", label: "Recursos", icon: "📚", to: "/resources" },
   ];
 
   return (
     <nav className="fixed bottom-0 left-0 right-0 border-t bg-white pb-safe">
       <div className="mx-auto flex max-w-md">
         {tabs.map((tab) => (
-          <button
+          <Link
             key={tab.id}
-            onClick={() => onChange(tab.id)}
+            to={tab.to}
             className={`flex flex-1 flex-col items-center py-3 text-xs font-medium transition ${
               active === tab.id
                 ? "text-[#1A3A5C]"
@@ -23,7 +28,7 @@ export default function BottomNav({ active, onChange }) {
               {tab.icon}
             </span>
             <span>{tab.label}</span>
-          </button>
+          </Link>
         ))}
       </div>
     </nav>

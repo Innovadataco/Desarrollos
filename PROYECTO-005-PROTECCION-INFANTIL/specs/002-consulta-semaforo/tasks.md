@@ -17,7 +17,7 @@
 - [ ] `TF-002.6` Implementar botón "Reportar este identificador" → pre-llena Módulo 001
 - [ ] `TF-002.7` Implementar botón "Compartir resultado" (URL sin identificador)
 - [ ] `TF-002.8` Implementar "Alertarme si cambia" (email, Premium)
-- [ ] `TF-002.9` PWA: página principal como consulta (cambio de routing)
+- [x] `TF-002.9` PWA: página principal como consulta (cambio de routing)
 - [ ] `TF-002.10` Tests E2E con Playwright (flujo consulta + reporte)
 
 ---
