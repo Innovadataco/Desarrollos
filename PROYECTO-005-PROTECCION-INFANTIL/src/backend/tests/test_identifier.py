@@ -59,3 +59,21 @@ def test_hash_consistency():
     h2 = hash_identifier("test@example.com")
     assert h1 == h2
     assert len(h1) == 64
+
+
+def test_hash_sha256_and_uniqueness():
+    import hashlib
+
+    value = "+573001234567"
+    expected = hashlib.sha256("+573001234567".encode("utf-8")).hexdigest()
+    assert hash_identifier(value) == expected
+
+    h1 = hash_identifier("usuario1")
+    h2 = hash_identifier("usuario2")
+    assert h1 != h2
+
+
+def test_hash_is_case_insensitive_for_social():
+    h1 = hash_identifier("@UsuarioMalo")
+    h2 = hash_identifier("@usuariomalo")
+    assert h1 == h2
