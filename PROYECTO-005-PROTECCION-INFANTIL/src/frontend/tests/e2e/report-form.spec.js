@@ -2,7 +2,7 @@ import { test, expect } from "@playwright/test";
 
 test("el wizard de reporte avanza por los 4 pasos", async ({ page }) => {
   await page.goto("/");
-  await page.getByRole("button", { name: /^Reportar$/i }).click();
+  await page.getByRole("link", { name: /^Reportar$/i }).click();
 
   await expect(page.getByText(/Reportar anónimo/i)).toBeVisible();
   await expect(page.getByText(/Paso 1/i)).toBeVisible();
@@ -33,7 +33,7 @@ test("el wizard de reporte avanza por los 4 pasos", async ({ page }) => {
 
 test("se puede reportar un email y adjuntar una imagen", async ({ page }) => {
   await page.goto("/");
-  await page.getByRole("button", { name: /^Reportar$/i }).click();
+  await page.getByRole("link", { name: /^Reportar$/i }).click();
 
   await page.getByRole("button", { name: /Email/i }).click();
   await page.getByRole("button", { name: /Siguiente/i }).click();
@@ -45,7 +45,7 @@ test("se puede reportar un email y adjuntar una imagen", async ({ page }) => {
   await page.getByRole("button", { name: /Siguiente/i }).click();
 
   await expect(page.getByText(/Paso 3/i)).toBeVisible();
-  await page.getByLabel(/Adjuntar evidencia/i).setInputFiles({
+  await page.locator('input[type="file"]').setInputFiles({
     name: "captura.png",
     mimeType: "image/png",
     buffer: Buffer.from("fake-image-content"),
