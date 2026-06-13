@@ -3,11 +3,11 @@ from sqlalchemy.orm import Session
 
 from app.database import get_db
 from app.models import AuditLog, Report
-from app.schemas import ConsultaRequest, ConsultaResponse
-from app.services.encryption import hash_identifier
+from app.schemas import ConsultaRequest, SemaforoResponse
+from app.services.identifier import hash_identifier, normalize_identifier
 from app.services.rate_limit import check_rate_limit
 
-router = APIRouter(prefix="/api/v1/consultas", tags=["consultas"])
+router = APIRouter(prefix="/api/v1", tags=["consultas"])
 
 
 def _get_client_ip(request: Request) -> str:
@@ -33,7 +33,100 @@ def _log_audit(
     db.add(log)
 
 
-@router.post("", response_model=ConsultaResponse)
+def _calculate_semaphore(
+    report_count: int,
+    score_max: float | None,
+    cities_count: int,
+    countries_count: int,
+) -> tuple[str, bool]:
+    is_network = cities_count >= 3 or countries_count >= 2
+    if is_network:
+        return "negro", is_network
+    if report_count >= 3 or (score_max is not None and score_max >= 0.8):
+        return "rojo", is_network
+    if report_count >= 1 or (score_max is not None and score_max >= 0.5):
+        return "amarillo", is_network
+    return "verde", is_network
+
+
+def _build_result(identifier_hash: str, reports: list[Report]) -> SemaforoResponse:
+    if not reports:
+        return SemaforoResponse(
+            identifier_hash=identifier_hash,
+            semaforo="verde",
+            report_count=0,
+            score_average=None,
+            score_max=None,
+            first_reported_at=None,
+            last_reported_at=None,
+            categories=None,
+            cities_count=0,
+            countries_count=0,
+            is_network=False,
+            message="Sin reportes registrados. El semáforo está verde.",
+            report_button=True,
+        )
+
+    scores = [r.score for r in reports if r.score is not None]
+    score_avg = sum(scores) / len(scores) if scores else None
+    score_max = max(scores) if scores else None
+
+    cities = {r.city for r in reports if r.city}
+    countries = {r.country for r in reports if r.country}
+    categories = list({r.category for r in reports if r.category})
+
+    semaforo, is_network = _calculate_semaphore(
+        len(reports), score_max, len(cities), len(countries)
+    )
+
+    first_reported = reports[-1].reported_at.date().isoformat()
+    last_reported = reports[0].reported_at.date().isoformat()
+
+    if semaforo == "negro":
+        message = (
+            f"Este identificador tiene {len(reports)} reportes desde "
+            f"{len(cities)} ciudades y {len(countries)} países. Posible red organizada."
+        )
+    elif semaforo == "rojo":
+        message = (
+            f"Este identificador tiene {len(reports)} reportes de contacto inapropiado "
+            "con menores. Se recomienda reportar o consultar autoridades."
+        )
+    elif semaforo == "amarillo":
+        message = (
+            f"Este identificador tiene {len(reports)} reporte(s) previo(s). "
+            "Mantén la precaución."
+        )
+    else:
+        message = "Sin reportes registrados. El semáforo está verde."
+
+    return SemaforoResponse(
+        identifier_hash=identifier_hash,
+        semaforo=semaforo,
+        report_count=len(reports),
+        score_average=round(score_avg, 3) if score_avg is not None else None,
+        score_max=round(score_max, 3) if score_max is not None else None,
+        first_reported_at=first_reported,
+        last_reported_at=last_reported,
+        categories=categories,
+        cities_count=len(cities),
+        countries_count=len(countries),
+        is_network=is_network,
+        message=message,
+        report_button=True,
+    )
+
+
+def _query_reports(db: Session, identifier_hash: str) -> list[Report]:
+    return (
+        db.query(Report)
+        .filter(Report.identifier_hash == identifier_hash)
+        .order_by(Report.reported_at.desc())
+        .all()
+    )
+
+
+@router.post("/consultas", response_model=SemaforoResponse)
 def consulta_semaforo(
     request: Request,
     payload: ConsultaRequest,
@@ -49,81 +142,26 @@ def consulta_semaforo(
         db.commit()
         raise
 
-    identifier_hash = hash_identifier(payload.identifier.strip().lower())
-    reports = (
-        db.query(Report)
-        .filter(Report.identifier_hash == identifier_hash)
-        .order_by(Report.reported_at.desc())
-        .all()
-    )
-
-    if not reports:
-        _log_audit(db, "consulta", actor_hash, None, "Sin reportes")
-        db.commit()
-        return ConsultaResponse(
-            identifier_hash=identifier_hash,
-            status="not_found",
-            level="low",
-            score=0.0,
-            report_count=0,
-            last_reported_at=None,
-            message="No encontramos reportes asociados. Mantén la calma y sigue las recomendaciones de seguridad.",
-            resources=["https://www.missingkids.org/ES"],
-        )
-
-    latest = reports[0]
-    level = latest.level or "low"
-    score = latest.score or 0.0
-    is_network = latest.is_network or False
-    severe_report_count = sum(1 for r in reports if r.level in ("severe", "critical"))
-
-    messages = {
-        "low": (
-            "El nivel de riesgo actual es bajo. No dejes de aplicar medidas básicas de seguridad digital."
-        ),
-        "medium": (
-            "Hay señales de acoso o contacto inapropiado. Revisa la configuración de privacidad "
-            "y conversa con una persona de confianza."
-        ),
-        "high": (
-            "El nivel de riesgo es alto. Considera reportar a la plataforma, conservar evidencia y "
-            "buscar apoyo de una autoridad o línea de ayuda."
-        ),
-        "critical": (
-            "Riesgo crítico. Si hay grooming, sextorsión o explotación, contacta de inmediato a "
-            "la policía o línea nacional de protección infantil."
-        ),
-        "severe": (
-            "Riesgo severo: se detectan indicios graves. Si hay explotación sexual, desaparición o "
-            "abuso, llama a emergencias y a tu línea de protección infantil."
-        ),
-    }
-
-    response = ConsultaResponse(
-        identifier_hash=identifier_hash,
-        status="found",
-        level=level,
-        score=round(score, 3),
-        report_count=len(reports),
-        last_reported_at=latest.reported_at.isoformat() if latest.reported_at else None,
-        message=messages.get(level, messages["low"]),
-        is_network=is_network,
-        severe_report_count=severe_report_count,
-        resources=[
-            "https://www.missingkids.org/ES",
-            "https://www.cybertipline.org/",
-        ],
-    )
-
-    # If network, also count unique countries/cities.
-    if is_network:
-        cities = {r.city for r in reports if r.city}
-        countries = {r.country for r in reports if r.country}
-        response.network_geo_countries = len(countries)
-        response.network_geo_cities = len(cities)
+    identifier_type, _ = normalize_identifier(payload.identifier)
+    identifier_hash = hash_identifier(payload.identifier)
+    reports = _query_reports(db, identifier_hash)
+    result = _build_result(identifier_hash, reports)
 
     _log_audit(
-        db, "consulta", actor_hash, latest.report_hash, f"Nivel {level}, score {score}"
+        db,
+        "consulta",
+        actor_hash,
+        reports[0].report_hash if reports else None,
+        f"Tipo {identifier_type}, semaforo {result.semaforo}, reportes {result.report_count}",
     )
     db.commit()
-    return response
+    return result
+
+
+@router.get("/validate/{identifier}", response_model=SemaforoResponse)
+def validate_identifier(
+    request: Request,
+    identifier: str,
+    db: Session = Depends(get_db),
+):
+    return consulta_semaforo(request, ConsultaRequest(identifier=identifier), db)

@@ -35,12 +35,33 @@ def _profile_to_dict(profile: Profile | None) -> dict | None:
         "identifier_hash": profile.identifier_hash,
         "identifier_type": profile.identifier_type,
         "report_count": profile.report_count,
-        "first_seen": profile.first_seen.isoformat() if profile.first_seen else None,
-        "last_seen": profile.last_seen.isoformat() if profile.last_seen else None,
-        "risk_level": profile.risk_level,
-        "score": profile.score,
+        "first_reported": (
+            profile.first_reported.isoformat() if profile.first_reported else None
+        ),
+        "last_reported": (
+            profile.last_reported.isoformat() if profile.last_reported else None
+        ),
+        "risk_level": (
+            "severe"
+            if profile.score_average and profile.score_average >= 0.85
+            else (
+                "critical"
+                if profile.score_average and profile.score_average >= 0.7
+                else (
+                    "high"
+                    if profile.score_average and profile.score_average >= 0.5
+                    else (
+                        "medium"
+                        if profile.score_average and profile.score_average >= 0.3
+                        else "low"
+                    )
+                )
+            )
+        ),
+        "score": profile.score_average,
+        "score_max": profile.score_max,
         "is_network": profile.is_network,
-        "network_countries": profile.network_countries,
+        "network_countries": profile.network_countries or [],
         "related_profiles": profile.related_profiles or [],
     }
 

@@ -8,7 +8,7 @@ from fastapi.responses import JSONResponse
 
 from app.config import settings
 from app.database import engine, init_db
-from app.routers import admin, alertas, consultas, gateway, reportes, resources
+from app.routers import admin, alertas, analyze, consultas, gateway, reportes, resources
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -73,6 +73,7 @@ app.include_router(reportes.router)
 app.include_router(consultas.router)
 app.include_router(alertas.router)
 app.include_router(resources.router)
+app.include_router(analyze.router)
 app.include_router(gateway.router)
 app.include_router(admin.router)
 

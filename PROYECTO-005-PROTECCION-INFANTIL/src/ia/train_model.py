@@ -101,8 +101,21 @@ def build_dataset(n: int = 1800) -> pd.DataFrame:
     return df
 
 
+def _level_from_score(score: float) -> str:
+    if score >= 0.85:
+        return "severe"
+    if score >= 0.7:
+        return "critical"
+    if score >= 0.5:
+        return "high"
+    if score >= 0.3:
+        return "medium"
+    return "low"
+
+
 def main():
     df = build_dataset(1800)
+    DATA_DIR.mkdir(parents=True, exist_ok=True)
     df.to_csv(DATA_DIR / "synthetic_train_v1.csv", index=False)
 
     X = df["description"]
@@ -110,11 +123,29 @@ def main():
     y_binary = df["is_high_risk"]
     y_category = df["category"]
 
-    X_train, X_test, ys_train, ys_test, yb_train, yb_test, yc_train, yc_test = (
-        train_test_split(X, y_score, y_binary, y_category, test_size=0.15, random_state=42)
+    (
+        X_train,
+        X_test,
+        ys_train,
+        ys_test,
+        yb_train,
+        yb_test,
+        yc_train,
+        yc_test,
+    ) = train_test_split(
+        X, y_score, y_binary, y_category, test_size=0.15, random_state=42
     )
-    X_train, X_val, ys_train, ys_val, yb_train, yb_val, yc_train, yc_val = (
-        train_test_split(X_train, ys_train, yb_train, yc_train, test_size=0.15, random_state=42)
+    (
+        X_train,
+        X_val,
+        ys_train,
+        ys_val,
+        yb_train,
+        yb_val,
+        yc_train,
+        yc_val,
+    ) = train_test_split(
+        X_train, ys_train, yb_train, yc_train, test_size=0.15, random_state=42
     )
 
     vectorizer = TfidfVectorizer(
@@ -138,9 +169,17 @@ def main():
         class_weight="balanced",
         random_state=42,
     )
+    rf_category = RandomForestClassifier(
+        n_estimators=150,
+        max_depth=12,
+        min_samples_leaf=5,
+        class_weight="balanced",
+        random_state=42,
+    )
 
     lr.fit(X_train_vec, yb_train)
     rf.fit(X_train_vec, yb_train)
+    rf_category.fit(X_train_vec, yc_train)
 
     # Score = probabilidad promedio del ensemble
     preds_lr = lr.predict_proba(X_test_vec)[:, 1]
@@ -150,11 +189,21 @@ def main():
     auc = roc_auc_score(yb_test, preds_ens)
     f1 = f1_score(yb_test, (preds_ens >= 0.5).astype(int))
 
+    # Calibrate severe threshold using validation set
+    X_val_vec = vectorizer.transform(X_val)
+    val_lr = lr.predict_proba(X_val_vec)[:, 1]
+    val_rf = rf.predict_proba(X_val_vec)[:, 1]
+    val_ens = (val_lr + val_rf) / 2.0
+    val_levels = [_level_from_score(s) for s in val_ens]
+    severe_rate = sum(1 for l in val_levels if l == "severe") / len(val_levels)
+
     print(f"AUC-ROC: {auc:.4f}")
     print(f"F1: {f1:.4f}")
+    print(f"Severe rate en validación: {severe_rate:.4f}")
 
     joblib.dump(lr, MODEL_DIR / "model_lr.joblib")
     joblib.dump(rf, MODEL_DIR / "model_rf.joblib")
+    joblib.dump(rf_category, MODEL_DIR / "model_category.joblib")
     joblib.dump(vectorizer, MODEL_DIR / "vectorizer.joblib")
 
     metadata = {
@@ -166,6 +215,7 @@ def main():
         "f1": float(f1),
         "threshold_high": 0.5,
         "threshold_severe": 0.85,
+        "categories": sorted(df["category"].unique().tolist()),
     }
     with open(MODEL_DIR / "metadata.json", "w") as f:
         json.dump(metadata, f, indent=2)

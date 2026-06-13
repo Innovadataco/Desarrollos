@@ -144,10 +144,39 @@ class Profile(Base):
     last_reported = Column(DateTime(timezone=True), nullable=True)
     network_countries = Column(JSON, nullable=True)
     related_profiles = Column(JSON, nullable=True)
+    timeline = Column(JSON, nullable=True)
     updated_at = Column(
         DateTime(timezone=True),
         default=lambda: datetime.now(timezone.utc),
         onupdate=lambda: datetime.now(timezone.utc),
+        nullable=False,
+    )
+
+
+class ProfileUpdate(Base):
+    __tablename__ = "profile_updates"
+
+    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    profile_id = Column(
+        UUID(as_uuid=True),
+        ForeignKey("profiles.id", ondelete="CASCADE"),
+        nullable=False,
+    )
+    report_id = Column(
+        UUID(as_uuid=True), ForeignKey("reports.id", ondelete="CASCADE"), nullable=True
+    )
+    old_score_avg = Column(Float, nullable=True)
+    new_score_avg = Column(Float, nullable=True)
+    old_cities_count = Column(Integer, nullable=True)
+    new_cities_count = Column(Integer, nullable=True)
+    old_countries_count = Column(Integer, nullable=True)
+    new_countries_count = Column(Integer, nullable=True)
+    old_is_network = Column(Boolean, nullable=True)
+    new_is_network = Column(Boolean, nullable=True)
+    triggered_network = Column(Boolean, nullable=False, default=False)
+    created_at = Column(
+        DateTime(timezone=True),
+        default=lambda: datetime.now(timezone.utc),
         nullable=False,
     )
 

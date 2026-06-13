@@ -61,6 +61,38 @@ class ConsultaResponse(BaseModel):
     network_geo_cities: int | None = None
 
 
+class SemaforoResponse(BaseModel):
+    identifier_hash: str
+    semaforo: Literal["verde", "amarillo", "rojo", "negro"]
+    report_count: int
+    score_average: float | None
+    score_max: float | None
+    first_reported_at: str | None
+    last_reported_at: str | None
+    categories: list[str] | None
+    cities_count: int
+    countries_count: int
+    is_network: bool
+    message: str
+    report_button: bool = True
+
+
+class AnalysisResponse(BaseModel):
+    model_config = {"from_attributes": True}
+
+    id: UUID
+    report_id: UUID
+    score: float
+    level: str
+    category: str
+    category_confidence: float
+    model_version: str
+    grooming_indicators: list[str] | None = None
+    explanation: str | None = None
+    processed_at: datetime | None = None
+    created_at: datetime | None = None
+
+
 class AlertCreate(BaseModel):
     report_hash: str
     level: Literal["low", "medium", "high", "critical", "severe"]
@@ -133,6 +165,55 @@ class ReportStatusUpdate(BaseModel):
         "escalated",
         "closed",
     ]
+    notes: str | None = None
+
+
+class AdminReportListItem(BaseModel):
+    model_config = {"from_attributes": True}
+
+    id: UUID
+    report_hash: str
+    reported_at: datetime | None
+    score: float | None
+    level: str | None
+    category: str
+    status: str
+    city: str | None
+    country: str | None
+    evidence_type: str | None
+    has_evidence: bool = False
+
+
+class AdminReportDetail(BaseModel):
+    model_config = {"from_attributes": True}
+
+    id: UUID
+    report_hash: str
+    reported_at: datetime | None
+    updated_at: datetime | None
+    score: float | None
+    level: str | None
+    category: str
+    status: str
+    city: str | None
+    country: str | None
+    evidence_type: str | None
+    identifier_type: str
+    identifier_hash: str
+    has_evidence: bool = False
+
+
+class DecryptRequest(BaseModel):
+    reason: str = Field(..., min_length=20)
+
+
+class DecryptResponse(BaseModel):
+    decrypted_at: str
+    reported_identifier: str
+    description: str
+    evidence_content: str | None
+    evidence_type: str | None
+    audit_log_id: str | None
 
 
 class LoginRequest(BaseModel):
@@ -159,3 +240,23 @@ class GatewayConfirmRequest(BaseModel):
     report_hash: str
     status: Literal["received", "in_review", "investigating", "closed"]
     notes: str | None = None
+
+
+class ProfileResponse(BaseModel):
+    identifier_hash: str
+    identifier_type: str
+    report_count: int
+    score_average: float | None
+    score_max: float | None
+    score_min: float | None
+    cities: list[str]
+    countries: list[str]
+    cities_count: int
+    countries_count: int
+    is_network: bool
+    evidence_types: list[str]
+    categories: list[str]
+    first_reported: str | None
+    last_reported: str | None
+    timeline: list[dict] | None
+    alert: str | None

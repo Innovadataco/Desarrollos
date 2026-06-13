@@ -8,7 +8,10 @@ from app.config import settings
 from app.database import get_db
 from app.models import AuditLog, Evidence, Identifier, Report
 from app.schemas import ReportCreate, ReportResponse
-from app.services.encryption import encrypt_field, generate_report_hash, hash_identifier
+from app.services.analysis_service import analyze_report
+from app.services.encryption import encrypt_field, generate_report_hash
+from app.services.identifier import detect_identifier_type, hash_identifier
+from app.services.profile_service import update_profile_from_report
 from app.services.rate_limit import check_rate_limit
 
 router = APIRouter(prefix="/api/v1/reportes", tags=["reportes"])
@@ -66,7 +69,7 @@ def create_report(
     reported_at = datetime.now(timezone.utc)
     identifier_stripped = payload.reported_identifier.strip().lower()
     identifier_hash = hash_identifier(identifier_stripped)
-    identifier_type = _detect_identifier_type(payload.reported_identifier)
+    identifier_type = detect_identifier_type(payload.reported_identifier)
 
     # Encrypt personally identifiable data.
     reported_identifier_cipher = encrypt_field(
@@ -146,6 +149,11 @@ def create_report(
                 "Reporte recibido",
             )
             db.commit()
+            try:
+                analyze_report(report, db, actor="system")
+                update_profile_from_report(report, db)
+            except Exception:
+                db.rollback()
             return ReportResponse(
                 report_hash=report.report_hash,
                 reported_at=report.reported_at.isoformat(),
@@ -158,16 +166,3 @@ def create_report(
                     status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
                     detail="No se pudo generar un identificador único",
                 )
-
-
-def _detect_identifier_type(value: str) -> str:
-    cleaned = value.strip()
-    if cleaned.isdigit() and len(cleaned) >= 7:
-        return "phone"
-    if "@" in cleaned:
-        return "email"
-    if cleaned.startswith("http://") or cleaned.startswith("https://"):
-        return "url"
-    if cleaned.startswith("@"):
-        return "username"
-    return "text"
