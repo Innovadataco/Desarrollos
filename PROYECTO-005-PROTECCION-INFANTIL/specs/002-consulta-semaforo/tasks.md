@@ -11,7 +11,7 @@
 
 - [x] `TF-002.1` Crear página principal como buscador (no como reporte)
 - [x] `TF-002.2` Implementar input universal con placeholder dinámico
-- [ ] `TF-002.3` Detectar tipo de identificador (teléfono, email, @, URL)
+- [x] `TF-002.3` Detectar tipo de identificador (teléfono, email, @, URL)
 - [ ] `TF-002.4` Diseñar cards de semáforo (4 colores, animación suave)
 - [ ] `TF-002.5` Implementar detalle de resultado (conteos, categorías, timeline)
 - [ ] `TF-002.6` Implementar botón "Reportar este identificador" → pre-llena Módulo 001

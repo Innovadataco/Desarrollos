@@ -121,6 +121,15 @@ export default function SearchView() {
               required
               aria-describedby="search-help"
             />
+            {identifier.trim() && (
+              <span className="absolute right-3 top-1/2 -translate-y-1/2 rounded-full bg-[#1A3A5C]/10 px-2 py-0.5 text-xs font-medium text-[#1A3A5C]">
+                {detectType(identifier) === "phone" && "📱 Teléfono"}
+                {detectType(identifier) === "email" && "📧 Email"}
+                {detectType(identifier) === "social" && "💬 Red social"}
+                {detectType(identifier) === "url" && "🌐 URL"}
+                {detectType(identifier) === "text" && "📝 Texto"}
+              </span>
+            )}
           </div>
           <button
             type="submit"
