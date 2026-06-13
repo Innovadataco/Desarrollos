@@ -113,7 +113,7 @@ def test_consulta_uses_cache(client):
         json={
             "reported_identifier": "cached@example.com",
             "description": "Mensaje inapropiado",
-            "category": "grooming",
+            "category": "CAT-03",
         },
     )
 

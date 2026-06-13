@@ -81,11 +81,21 @@ const ALLOWED_TYPES = [
 
 const MAX_SIZE_MB = 10;
 
+const CATEGORY_OPTIONS = [
+  { code: "CAT-01", label: "Contacto inapropiado" },
+  { code: "CAT-02", label: "Solicitud de material sexual" },
+  { code: "CAT-03", label: "Grooming / Engaño" },
+  { code: "CAT-04", label: "Cita en persona" },
+  { code: "CAT-05", label: "Extorsión" },
+  { code: "CAT-06", label: "Desconocido / Otro" },
+];
+
 export default function ReportForm({ prefillIdentifier = "" }) {
   const [step, setStep] = useState(1);
   const [type, setType] = useState("");
   const [identifier, setIdentifier] = useState(prefillIdentifier);
   const [description, setDescription] = useState("");
+  const [category, setCategory] = useState("");
   const [evidenceFile, setEvidenceFile] = useState(null);
   const [filePreview, setFilePreview] = useState(null);
   const [confirmed, setConfirmed] = useState(false);
@@ -100,6 +110,20 @@ export default function ReportForm({ prefillIdentifier = "" }) {
   }, [prefillIdentifier]);
 
   const selected = TYPES.find((t) => t.id === type);
+
+  useEffect(() => {
+    if (selected?.category) {
+      const code =
+        {
+          contacto_inapropiado: "CAT-01",
+          solicitud_material: "CAT-02",
+          grooming: "CAT-03",
+          cita_persona: "CAT-04",
+          extorsion: "CAT-05",
+        }[selected.category] || "CAT-06";
+      setCategory(code);
+    }
+  }, [selected]);
 
   const isIdentifierValid = selected ? selected.validate(identifier) : identifier.trim().length >= 1;
   const canNext =
@@ -142,7 +166,7 @@ export default function ReportForm({ prefillIdentifier = "" }) {
     const payload = {
       reported_identifier: identifier,
       description,
-      category: selected?.category || "otro",
+      category: category || "CAT-06",
       honeypot,
     };
 
@@ -198,6 +222,7 @@ export default function ReportForm({ prefillIdentifier = "" }) {
     setType("");
     setIdentifier("");
     setDescription("");
+    setCategory("");
     setEvidenceFile(null);
     setFilePreview(null);
     setConfirmed(false);
@@ -343,6 +368,27 @@ export default function ReportForm({ prefillIdentifier = "" }) {
               required
             />
           </div>
+          <div>
+            <label htmlFor="category" className="block text-sm font-medium text-gray-700">
+              Categoría del incidente
+            </label>
+            <select
+              id="category"
+              value={category}
+              onChange={(e) => setCategory(e.target.value)}
+              className="mt-1 w-full rounded-lg border border-gray-300 px-4 py-3 text-base focus:outline-none focus:ring-2 focus:ring-[#4A90D9] bg-white"
+              required
+            >
+              {CATEGORY_OPTIONS.map((opt) => (
+                <option key={opt.code} value={opt.code}>
+                  {opt.code} — {opt.label}
+                </option>
+              ))}
+            </select>
+            <p className="text-xs text-gray-500 mt-1">
+              Selecciona la opción que mejor describa lo ocurrido.
+            </p>
+          </div>
         </div>
       )}
 
@@ -388,6 +434,10 @@ export default function ReportForm({ prefillIdentifier = "" }) {
           <div className="rounded-lg border border-gray-200 bg-gray-50 p-4 space-y-3 text-sm text-gray-800">
             <div>
               <span className="font-semibold">Tipo:</span> {selected?.label || type}
+            </div>
+            <div>
+              <span className="font-semibold">Categoría:</span>{" "}
+              {CATEGORY_OPTIONS.find((c) => c.code === category)?.label || category}
             </div>
             <div>
               <span className="font-semibold">Identificador:</span>{" "}

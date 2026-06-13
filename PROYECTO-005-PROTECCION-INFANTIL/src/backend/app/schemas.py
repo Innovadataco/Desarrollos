@@ -14,14 +14,13 @@ class ReportCreate(BaseModel):
     reported_identifier: str = Field(..., min_length=1, max_length=255)
     description: str = Field(..., min_length=10, max_length=5000)
     category: Literal[
-        "contacto_inapropiado",
-        "solicitud_material",
-        "grooming",
-        "cita_persona",
-        "extorsion",
-        "desconocido",
-        "otro",
-    ] = "desconocido"
+        "CAT-01",
+        "CAT-02",
+        "CAT-03",
+        "CAT-04",
+        "CAT-05",
+        "CAT-06",
+    ] = "CAT-06"
     evidence: EvidenceCreate | None = None
     evidence_media_url: str | None = Field(default=None, max_length=500)
     consent_location: bool = False

@@ -9,7 +9,7 @@ def report(client):
         json={
             "reported_identifier": "export@test.org",
             "description": "Mensajes inapropiados reiterados",
-            "category": "grooming",
+            "category": "CAT-03",
             "consent_location": True,
         },
         headers={"X-Client-Country": "CO", "X-Client-City": "Bogota"},
@@ -61,7 +61,7 @@ class TestExport:
             json={
                 "reported_identifier": "pdf-encrypt@test.org",
                 "description": "Mensajes inapropiados",
-                "category": "grooming",
+                "category": "CAT-03",
                 "evidence": {"type": "text", "content": "captura de pantalla"},
             },
             headers={"X-Client-Country": "CO", "X-Client-City": "Bogota"},

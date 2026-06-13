@@ -13,7 +13,7 @@ def report(client):
         json={
             "reported_identifier": "evidence@test.org",
             "description": "Incidente con archivo adjunto",
-            "category": "grooming",
+            "category": "CAT-03",
         },
     )
     assert response.status_code == status.HTTP_201_CREATED

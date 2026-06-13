@@ -14,6 +14,7 @@ from app.services.encryption import encrypt_field, generate_report_hash
 from app.services.identifier import detect_identifier_type, hash_identifier
 from app.services.profile_service import update_profile_from_report
 from app.services.rate_limit import check_rate_limit
+from app.utils.category import category_code_to_slug
 from app.utils.time import truncate_to_hours
 
 router = APIRouter(prefix="/api/v1/reportes", tags=["reportes"])
@@ -120,7 +121,7 @@ def create_report(
         identifier_type=identifier_type,
         reported_identifier=reported_identifier_cipher,
         description=description_cipher,
-        category=payload.category or "otro",
+        category=category_code_to_slug(payload.category),
         evidence_type=evidence_type,
         evidence_content=evidence_content_cipher,
         evidence_media_url=payload.evidence_media_url,

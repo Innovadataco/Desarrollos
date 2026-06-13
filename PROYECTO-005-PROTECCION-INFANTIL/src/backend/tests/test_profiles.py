@@ -5,7 +5,7 @@ class TestProfiles:
             json={
                 "reported_identifier": "profiled@example.com",
                 "description": "Contenido sospechoso",
-                "category": "grooming",
+                "category": "CAT-03",
                 "consent_location": True,
             },
             headers={"X-Client-Country": "CO", "X-Client-City": "Bogota"},
@@ -27,7 +27,7 @@ class TestProfiles:
             json={
                 "reported_identifier": "profile-get@example.com",
                 "description": "Contenido sospechoso",
-                "category": "grooming",
+                "category": "CAT-03",
                 "consent_location": True,
             },
             headers={"X-Client-Country": "CO", "X-Client-City": "Bogota"},
@@ -57,7 +57,7 @@ class TestProfiles:
             json={
                 "reported_identifier": "profile-get@example.com",
                 "description": "Contenido sospechoso",
-                "category": "grooming",
+                "category": "CAT-03",
                 "consent_location": True,
             },
             headers={"X-Client-Country": "CO", "X-Client-City": "Bogota"},
@@ -81,7 +81,7 @@ class TestProfiles:
             json={
                 "reported_identifier": "profile-get@example.com",
                 "description": "Contenido sospechoso",
-                "category": "grooming",
+                "category": "CAT-03",
                 "consent_location": True,
             },
             headers={"X-Client-Country": "CO", "X-Client-City": "Bogota"},
@@ -107,7 +107,7 @@ class TestProfiles:
                 json={
                     "reported_identifier": ident,
                     "description": "Contenido grave de grooming para red",
-                    "category": "grooming",
+                    "category": "CAT-03",
                     "consent_location": True,
                 },
                 headers={"X-Client-Country": country, "X-Client-City": city},

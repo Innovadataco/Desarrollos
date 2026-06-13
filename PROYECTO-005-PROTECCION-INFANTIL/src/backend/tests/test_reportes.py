@@ -64,6 +64,29 @@ def test_create_report_with_image_evidence(client, db_session):
     assert report.evidence_type == "image"
 
 
+def test_create_report_rejects_invalid_category_code(client):
+    payload = {
+        "reported_identifier": "+573001234567",
+        "description": "Reporte con categoría inválida",
+        "category": "CAT-99",
+    }
+    response = client.post(REPORT_ENDPOINT, json=payload)
+    assert response.status_code == status.HTTP_422_UNPROCESSABLE_CONTENT
+
+
+def test_create_report_maps_category_code_to_slug(client, db_session):
+    payload = {
+        "reported_identifier": "+573001234567",
+        "description": "Reporte con categoría específica",
+        "category": "CAT-03",
+    }
+    response = client.post(REPORT_ENDPOINT, json=payload)
+    assert response.status_code == status.HTTP_201_CREATED
+
+    report = db_session.query(Report).first()
+    assert report.category == "grooming"
+
+
 def test_create_report_with_evidence_media_url(client, db_session):
     payload = {
         "reported_identifier": "+573001234567",

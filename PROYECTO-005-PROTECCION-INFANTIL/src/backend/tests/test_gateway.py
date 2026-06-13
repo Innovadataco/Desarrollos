@@ -53,7 +53,7 @@ class TestGatewayReport:
             json={
                 "reported_identifier": "testuser@example.com",
                 "description": "Contenido sospechoso",
-                "category": "grooming",
+                "category": "CAT-03",
             },
             headers={"X-Client-Country": "CO", "X-Client-City": "Bogota"},
         )
@@ -76,7 +76,7 @@ class TestGatewayReport:
             json={
                 "reported_identifier": "+573001234567",
                 "description": "Contenido sospechoso",
-                "category": "grooming",
+                "category": "CAT-03",
                 "consent_location": True,
             },
             headers={"X-Client-Country": "CO", "X-Client-City": "Bogota"},
@@ -102,7 +102,7 @@ class TestGatewayDigest:
             json={
                 "reported_identifier": "digest@test.org",
                 "description": "Contenido sospechoso grave",
-                "category": "grooming",
+                "category": "CAT-03",
             },
         )
         response = client.post(
@@ -123,7 +123,7 @@ class TestGatewayNCMECExport:
             json={
                 "reported_identifier": "ncmec@test.org",
                 "description": "Contenido grave",
-                "category": "grooming",
+                "category": "CAT-03",
             },
         )
         report_hash = report_resp.json()["report_hash"]
@@ -156,7 +156,7 @@ class TestGatewayConfirm:
             json={
                 "reported_identifier": "confirm@test.org",
                 "description": "Otro contenido",
-                "category": "otro",
+                "category": "CAT-06",
             },
         )
         report_hash = report_resp.json()["report_hash"]
