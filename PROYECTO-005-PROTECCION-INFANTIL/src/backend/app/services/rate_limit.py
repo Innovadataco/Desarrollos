@@ -119,19 +119,31 @@ def _make_key(scope: str, hashed_identifier: str) -> str:
     return f"{scope}:{hashed_identifier}"
 
 
+def _window_seconds(scope: str) -> int:
+    if scope == "login":
+        return 900
+    return 3600
+
+
 def check_rate_limit(
     request: Request, scope: str = "report", identifier: str | None = None
 ):
     key = identifier or get_client_ip(request)
     hashed_key = _hash_identifier(key)
     limit = DEFAULT_LIMITS.get(scope, 5)
+    retry_after = _window_seconds(scope)
+    detail = {
+        "error": "Has alcanzado el límite de solicitudes. Intenta más tarde.",
+        "retry_after": retry_after,
+    }
 
     if _using_memory_storage():
         limiter = _fallback_limiters.get(scope, _fallback_limiters["report"])
         if not limiter.is_allowed(hashed_key):
             raise HTTPException(
                 status_code=429,
-                detail="Has alcanzado el límite de solicitudes. Intenta más tarde.",
+                detail=detail,
+                headers={"Retry-After": str(retry_after)},
             )
         return
 
@@ -139,7 +151,8 @@ def check_rate_limit(
     if not _limiter.hit(item, _make_key(scope, hashed_key)):
         raise HTTPException(
             status_code=429,
-            detail="Has alcanzado el límite de solicitudes. Intenta más tarde.",
+            detail=detail,
+            headers={"Retry-After": str(retry_after)},
         )
 
 

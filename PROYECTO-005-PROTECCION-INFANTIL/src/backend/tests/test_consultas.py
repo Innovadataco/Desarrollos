@@ -116,6 +116,22 @@ def test_validate_red_after_three_reports(client):
     assert data["report_count"] == 3
 
 
+def test_validate_rate_limit_10_per_hour(client):
+    identifier = "+573009999999"
+    # 10 consultas permitidas
+    for _ in range(10):
+        response = client.get(f"{VALIDATE_ENDPOINT}/{identifier}")
+        assert response.status_code == status.HTTP_200_OK
+
+    # 11ra consulta debe bloquearse
+    response = client.get(f"{VALIDATE_ENDPOINT}/{identifier}")
+    assert response.status_code == status.HTTP_429_TOO_MANY_REQUESTS
+    data = response.json()["detail"]
+    assert "error" in data
+    assert data["retry_after"] == 3600
+    assert response.headers.get("retry-after") == "3600"
+
+
 def test_validate_network_by_cities(client):
     identifier = "+573003333333"
     cities = ["Bogota", "Medellin", "Cali"]

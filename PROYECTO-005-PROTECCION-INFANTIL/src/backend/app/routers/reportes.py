@@ -26,12 +26,13 @@ def _check_rate_limit(request: Request, db: Session):
     try:
         check_rate_limit(request, scope="report", identifier=client_ip)
     except HTTPException as exc:
+        detail = exc.detail.get("error") if isinstance(exc.detail, dict) else exc.detail
         _log_audit(
             db,
             "rate_limit",
             _hash_ip(client_ip),
             None,
-            f"HTTP {exc.status_code}: {exc.detail}",
+            f"HTTP {exc.status_code}: {detail}",
         )
         raise
 

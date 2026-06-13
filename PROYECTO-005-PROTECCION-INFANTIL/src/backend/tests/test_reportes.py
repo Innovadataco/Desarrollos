@@ -228,7 +228,9 @@ def test_rate_limit_blocks_after_five_requests(client):
 
     response = client.post(REPORT_ENDPOINT, json=payload)
     assert response.status_code == status.HTTP_429_TOO_MANY_REQUESTS
-    assert "límite" in response.json()["detail"].lower()
+    detail = response.json()["detail"]
+    error_text = detail["error"] if isinstance(detail, dict) else detail
+    assert "límite" in error_text.lower()
 
 
 def test_rate_limit_does_not_persist_ip_after_reset(client):

@@ -135,10 +135,11 @@ def consulta_semaforo(
 ):
     actor_hash = hash_identifier(_get_client_ip(request))
     try:
-        check_rate_limit(request, scope="consulta", identifier=_get_client_ip(request))
+        check_rate_limit(request, scope="validate", identifier=_get_client_ip(request))
     except HTTPException as exc:
+        detail = exc.detail.get("error") if isinstance(exc.detail, dict) else exc.detail
         _log_audit(
-            db, "rate_limit", actor_hash, None, f"HTTP {exc.status_code}: {exc.detail}"
+            db, "rate_limit", actor_hash, None, f"HTTP {exc.status_code}: {detail}"
         )
         db.commit()
         raise
