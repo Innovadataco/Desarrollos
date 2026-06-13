@@ -9,7 +9,7 @@
 
 ## 1. FRONTEND — PWA
 
-- [ ] `TF-002.1` Crear página principal como buscador (no como reporte)
+- [x] `TF-002.1` Crear página principal como buscador (no como reporte)
 - [ ] `TF-002.2` Implementar input universal con placeholder dinámico
 - [ ] `TF-002.3` Detectar tipo de identificador (teléfono, email, @, URL)
 - [ ] `TF-002.4` Diseñar cards de semáforo (4 colores, animación suave)

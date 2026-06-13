@@ -84,21 +84,27 @@ export default function SearchView() {
         </p>
       </div>
 
-      <form onSubmit={handleSearch} className="space-y-4">
+      <form onSubmit={handleSearch} className="space-y-4" role="search" aria-label="Buscar contacto">
         <label htmlFor="search-identifier" className="sr-only">
           Número o identificador
         </label>
         <div className="flex gap-2">
-          <input
-            id="search-identifier"
-            type="text"
-            inputMode="search"
-            value={identifier}
-            onChange={(e) => setIdentifier(e.target.value)}
-            placeholder="+57 300 123 4567, @usuario, email o URL"
-            className="flex-1 rounded-lg border border-gray-300 px-4 py-3 text-base focus:outline-none focus:ring-2 focus:ring-[#4A90D9]"
-            required
-          />
+          <div className="relative flex-1">
+            <span className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" aria-hidden="true">
+              🔍
+            </span>
+            <input
+              id="search-identifier"
+              type="text"
+              inputMode="search"
+              value={identifier}
+              onChange={(e) => setIdentifier(e.target.value)}
+              placeholder="+57 300 123 4567, @usuario, email o URL"
+              className="w-full rounded-lg border border-gray-300 pl-10 pr-4 py-3 text-base focus:outline-none focus:ring-2 focus:ring-[#4A90D9]"
+              required
+              aria-describedby="search-help"
+            />
+          </div>
           <button
             type="submit"
             disabled={loading || !identifier.trim()}
@@ -160,6 +166,10 @@ export default function SearchView() {
           </div>
         </div>
       )}
+
+      <p id="search-help" className="text-xs text-gray-500">
+        Busca números de teléfono, usuarios de redes sociales, emails o URLs.
+      </p>
 
       <div className="rounded-lg border border-gray-200 bg-gray-50 p-4 text-sm text-gray-600">
         🔒 No guardamos tu búsqueda ni tu identidad.
