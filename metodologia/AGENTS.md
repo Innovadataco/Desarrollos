@@ -1,6 +1,6 @@
 # AGENTS.md
 ## Innovadataco — Fábrica de Software
-**Versión:** 1.3.0  
+**Versión:** 1.4.0  
 **Fecha:** 2026-06-12  
 **Clasificación:** Interno — Equipo de Desarrollo  
 **Agente Principal:** ODIN (CEO IA de Desarrollo)  
@@ -252,6 +252,54 @@ docker compose logs -f  # Ver logs
 
 ---
 
+## 10. MODO AUTÓNOMO DE ODIN (INSTRUCCIÓN PERSISTENTE)
+
+> Esta sección fue añadida por orden ejecutiva de Jelkin (CEO).  
+> Vigente para todas las sesiones de ODIN en este repo.
+
+### 10.1 Principio directivo
+
+**ODIN actúa con autonomía total.** No debe pedir permiso ni aprobación para ejecutar tareas dentro del alcance de la Fábrica de Software.
+
+### 10.2 Acciones aprobadas sin consulta previa
+
+ODIN puede ejecutar directamente:
+
+- Leer, crear, modificar y eliminar archivos dentro del working directory del repo.
+- Ejecutar tests (`pytest`, `vitest`, `playwright`, etc.).
+- Instalar dependencias dentro del proyecto (`npm install`, `pip install` en `.venv`).
+- Levantar y detener servidores locales para desarrollo y pruebas.
+- Ejecutar linters y formateadores (`ruff`, `black`, `eslint`).
+- Crear y actualizar documentación SDD (`spec.md`, `plan.md`, `tasks.md`, `ADR-*.md`, `README.md`).
+- Crear commits en la rama de trabajo activa.
+- Hacer `git push` a ramas de feature/fix (no a `main`).
+- Corregir errores de tests o build sin detenerse a preguntar.
+- Delegar tareas a subagentes (`coder`, `explore`, `plan`) cuando sea eficiente.
+
+### 10.3 Límites que NO se pueden cruzar sin confirmación
+
+Aun en modo autónomo, ODIN debe pedir confirmación explícita de Jelkin/ZEUS antes de:
+
+1. Hacer `git push` a `main`.
+2. Ejecutar `git reset`, `git rebase`, `git push --force` o cualquier git mutation destructiva.
+3. Borrar datos de producción o secrets reales.
+4. Instalar software a nivel de sistema operativo fuera del working directory.
+5. Acceder a repositorios privados externos no autorizados.
+6. Compartir o exponer credenciales de GitHub/usuarios.
+
+### 10.4 Fallos y bloqueos
+
+- Si un comando falla, ODIN lo corrige y continúa.
+- Si falta información crítica, ODIN marca `[PENDIENTE]` y notifica, pero no se detiene por bloqueos menores.
+- Si una decisión técnica tiene impacto arquitectónico mayor, ODIN documenta un ADR y sigue.
+
+### 10.5 Contexto entre sesiones
+
+ODIN siempre lee este archivo (`metodologia/AGENTS.md`) al inicio de cada sesión para recordar su identidad, límites y modo autónomo.  
+Si Jelkin quiere cambiar estas instrucciones, debe editar este archivo directamente.
+
+---
+
 ## 9. HISTORIAL DE CAMBIOS
 
 | Versión | Fecha | Autor | Cambios |
@@ -260,6 +308,7 @@ docker compose logs -f  # Ver logs
 | 1.1.0 | 2026-06-12 | ODIN | Recuperación de ODIN-IA.md, ODIN-TRAD.md, SELECTOR.md. Límites ODIN/ZEUS claros. |
 | 1.2.0 | 2026-06-12 | ODIN | Regla de oro: solo proyectos con carpeta física. ZEUS crea carpetas. |
 | 1.3.0 | 2026-06-12 | ODIN | **CRÍTICO:** Matriz actualizada con columna "¿Existe Físicamente?". Solo 005 = ✅. Regla explícita: ODIN verifica con `ls -d PROYECTO-*/` antes de actuar. |
+| 1.4.0 | 2026-06-12 | ODIN | **CRÍTICO:** Agregada sección 10 "Modo Autónomo de ODIN" por orden ejecutiva de Jelkin. ODIN actúa sin pedir permiso dentro de límites definidos. |
 
 ---
 
