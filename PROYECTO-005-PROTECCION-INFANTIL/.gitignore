@@ -34,3 +34,7 @@ playwright-report/
 
 # Archivos de evidencia subidos
 uploads/
+
+# Certificados TLS de staging (generados localmente)
+nginx/certs/*.pem
+nginx/certs/*.key
