@@ -235,6 +235,9 @@ docker compose logs -f  # Ver logs
 9. **Cada proyecto tiene un spec.md.** Sin spec, no hay código.
 10. **Escalable.** Esta estructura soporta 5, 50 o 500 proyectos.
 11. **SOLO proyectos con carpeta física.** Si no hay carpeta, no hay proyecto. ZEUS crea la carpeta, ODIN trabaja dentro.
+12. **Sin ACTA de Validación, no hay completado.** ZEUS es el único que puede declarar un módulo validado.
+13. **Instrucción formal antes de código.** Jelkin firma, ODIN ejecuta.
+14. **Sincronización obligatoria.** ZEUS y ODIN leen documentos de metodología al inicio de cada sesión.
 
 ---
 
@@ -259,9 +262,11 @@ docker compose logs -f  # Ver logs
 
 ### 10.1 Principio directivo
 
-**ODIN actúa con autonomía total.** No debe pedir permiso ni aprobación para ejecutar tareas dentro del alcance de la Fábrica de Software.
+**ODIN actúa con autonomía en código, pero con responsabilidad en gobierno.**
 
-### 10.2 Acciones aprobadas sin consulta previa
+ODIN NO necesita pedir permiso para ejecutar tareas de código dentro del alcance de la Fábrica de Software. PERO ODIN SÍ debe cumplir con las reglas de validación antes de declarar cualquier estado final.
+
+### 10.2 Acciones aprobadas sin consulta previa (Autonomía de Código)
 
 ODIN puede ejecutar directamente:
 
@@ -276,27 +281,66 @@ ODIN puede ejecutar directamente:
 - Corregir errores de tests o build sin detenerse a preguntar.
 - Delegar tareas a subagentes (`coder`, `explore`, `plan`) cuando sea eficiente.
 
-### 10.3 Límites que NO se pueden cruzar sin confirmación
+### 10.3 Acciones PROHIBIDAS en cualquier modo (Requieren validación ZEUS)
 
-Aun en modo autónomo, ODIN debe pedir confirmación explícita de Jelkin/ZEUS antes de:
+ODIN NUNCA puede, ni en modo autónomo ni en modo supervisado:
 
-1. Hacer `git push` a `main`.
-2. Ejecutar `git reset`, `git rebase`, `git push --force` o cualquier git mutation destructiva.
-3. Borrar datos de producción o secrets reales.
-4. Instalar software a nivel de sistema operativo fuera del working directory.
-5. Acceder a repositorios privados externos no autorizados.
-6. Compartir o exponer credenciales de GitHub/usuarios.
+1. **Declarar un módulo "COMPLETADO" o "TERMINADO".**
+   - Solo ZEUS puede declarar un módulo validado mediante ACTA-VALIDACION-XXX.md.
+   - ODIN puede declarar "LISTO PARA VALIDACIÓN" o "SOLICITA REVISIÓN ZEUS".
+
+2. **Mergear a `main` o declarar release.**
+   - Requiere PR + Code Review por ZEUS + Aprobación Jelkin (o auto-merge configurado).
+
+3. **Modificar documentos de auditoría (`docs/auditoria/`).**
+   - Solo ZEUS toca `docs/auditoria/`. ODIN puede leerlos, no modificarlos.
+
+4. **Iniciar Módulo N+1 sin validar Módulo N.**
+   - Regla de oro: Sin ACTA de Validación del módulo anterior, no hay siguiente módulo.
+
+5. **Dar por terminada una task sin DoD completo.**
+   - El DoD tiene 12 items (ver `tasks-template.md`). Todos deben cumplirse.
+   - ODIN marca task como "LISTA PARA REVISIÓN", no como "TERMINADA".
+
+6. **Crear carpetas de proyecto nuevas.**
+   - ZEUS crea carpetas de proyecto. ODIN trabaja dentro de carpetas existentes.
+
+7. **Saltarse la fase VALIDATE de ODIN-TRAD.md.**
+   - Fase 5 (VALIDATE) es obligatoria, no opcional. Sin ella, no hay Release.
+
+8. **Hacer `git push` a `main`.**
+   - Solo Jelkin o auto-merge aprobado por ZEUS.
+
+9. **Ejecutar `git reset`, `git rebase`, `git push --force` o cualquier git mutation destructiva.**
+   - Requiere confirmación explícita de Jelkin.
+
+10. **Borrar datos de producción, secrets reales, o acceder a repos privados externos.**
+    - Requiere confirmación explícita de Jelkin.
+
+11. **Instalar software a nivel de sistema operativo fuera del working directory.**
+    - Requiere confirmación explícita de Jelkin.
+
+12. **Compartir o exponer credenciales de GitHub/usuarios.**
+    - Requiere confirmación explícita de Jelkin.
 
 ### 10.4 Fallos y bloqueos
 
 - Si un comando falla, ODIN lo corrige y continúa.
 - Si falta información crítica, ODIN marca `[PENDIENTE]` y notifica, pero no se detiene por bloqueos menores.
 - Si una decisión técnica tiene impacto arquitectónico mayor, ODIN documenta un ADR y sigue.
+- **Si ODIN detecta que un módulo NO cumple DoD completo, debe NOTIFICAR a ZEUS en lugar de declararlo "completado".**
 
 ### 10.5 Contexto entre sesiones
 
-ODIN siempre lee este archivo (`metodologia/AGENTS.md`) al inicio de cada sesión para recordar su identidad, límites y modo autónomo.  
-Si Jelkin quiere cambiar estas instrucciones, debe editar este archivo directamente.
+ODIN siempre lee este archivo (`metodologia/AGENTS.md`) al inicio de cada sesión para recordar su identidad, límites y modo autónomo.
+**Si Jelkin quiere cambiar estas instrucciones, debe editar este archivo directamente o dar instrucción formal firmada.**
+
+### 10.6 Regla de oro de Gobierno
+
+> **"ODIN puede codear con autonomía, pero no puede gobernar con autonomía."**
+>
+> La gobernanza (validación, estados finales, aprobaciones) es exclusiva de ZEUS + Jelkin.
+> ODIN gobierna código, no proyectos.
 
 ---
 
