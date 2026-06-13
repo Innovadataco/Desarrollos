@@ -14,9 +14,17 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.pool import StaticPool
 
+import app.database as database_module
 from app.database import Base, get_db
 from app.main import app
 from app.services.rate_limit import _fallback_rate_limiter
+
+
+@pytest.fixture(scope="session", autouse=True)
+def close_global_engine():
+    """Cierra el engine global de la aplicación al terminar la sesión de tests."""
+    yield
+    database_module.engine.dispose()
 
 
 @pytest.fixture(scope="function")
@@ -34,6 +42,7 @@ def db_session():
     finally:
         session.close()
         Base.metadata.drop_all(bind=engine)
+        engine.dispose()
 
 
 @pytest.fixture(scope="function")
