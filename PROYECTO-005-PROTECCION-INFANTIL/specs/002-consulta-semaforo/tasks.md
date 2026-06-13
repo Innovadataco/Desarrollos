@@ -31,7 +31,7 @@
 - [x] `TB-002.5` Implementar algoritmo de semáforo (verde/amarillo/rojo/negro)
 - [x] `TB-002.6` Implementar rate limiting 10/hr para consulta
 - [x] `TB-002.7` Implementar respuesta que NO expone datos del reportante
-- [ ] `TB-002.8` Tests unitarios (pytest, cobertura ≥ 80%)
+- [x] `TB-002.8` Tests unitarios (pytest, cobertura ≥ 80%)
 - [ ] `TB-002.9` Tests de integración (TestClient, fixtures con datos)
 
 ---

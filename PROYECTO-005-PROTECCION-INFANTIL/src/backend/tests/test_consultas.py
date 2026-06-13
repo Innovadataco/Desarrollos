@@ -8,6 +8,17 @@ CONSULTA_ENDPOINT = "/api/v1/consultas"
 VALIDATE_ENDPOINT = "/api/v1/validate"
 
 
+def test_get_client_ip_fallback_no_client():
+    from unittest.mock import MagicMock
+
+    from app.routers.consultas import _get_client_ip
+
+    request = MagicMock()
+    request.headers = {}
+    request.client = None
+    assert _get_client_ip(request) == "unknown"
+
+
 def test_consulta_not_found(client):
     response = client.post(CONSULTA_ENDPOINT, json={"identifier": "+57300000000"})
     assert response.status_code == status.HTTP_200_OK

@@ -11,6 +11,12 @@ def test_normalize_phone():
     assert "+573001234567" in normalized
 
 
+def test_normalize_phone_without_plus():
+    t, normalized = normalize_identifier("57 300 123 4567")
+    assert t == "phone"
+    assert normalized == "573001234567"
+
+
 def test_normalize_email():
     t, normalized = normalize_identifier("Test@Example.COM")
     assert t == "email"
