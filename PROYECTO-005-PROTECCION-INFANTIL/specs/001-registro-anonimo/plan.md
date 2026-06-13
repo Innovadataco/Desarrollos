@@ -128,7 +128,7 @@
 | Unitario backend | pytest | ≥ 80% | ODIN |
 | Integración backend | TestClient (FastAPI) | 100% endpoints | ODIN |
 | Unitario frontend | vitest + Testing Library | Componentes críticos | ODIN |
-| E2E | Playwright | Flujo de envío de reporte | ODIN |
+| E2E | Playwright (Chromium + WebKit/Safari) | Flujo de envío de reporte | ODIN |
 | Seguridad | OWASP ZAP | Antes de prod | ZEUS |
 
 ---

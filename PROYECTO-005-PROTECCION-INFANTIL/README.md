@@ -55,8 +55,14 @@ Frontend E2E (navegador real):
 
 ```bash
 cd src/frontend
-npx playwright install chromium
+npx playwright install chromium webkit
 npm run e2e
+```
+
+Para ver la ejecución en Safari/WebKit:
+
+```bash
+npm run e2e -- --project=webkit --headed
 ```
 
 ## Decisiones de Arquitectura
