@@ -162,7 +162,7 @@ def consulta_semaforo(
     reports = _query_reports(db, identifier_hash)
     result = _build_result(identifier_hash, reports)
 
-    set_cache(identifier_hash, result.model_dump(mode="json"), ttl_seconds=300)
+    set_cache(identifier_hash, result.model_dump(mode="json"), ttl_seconds=3600)
 
     _log_audit(
         db,
