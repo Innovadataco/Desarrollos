@@ -77,6 +77,7 @@ IDC_PROYECTOS/ (Repo de Gestión — ZEUS trabaja aquí)
 | Deploy a staging | Modificar `AGENTS.md` ni reglas de gobierno |
 | Solicitar revisión de ZEUS mediante PR | Eliminar documentos de auditoría |
 | Corregir gaps encontrados por ZEUS | Trabajar en Módulo N+1 sin validar Módulo N |
+| Leer de IDC_PROYECTOS (para referencia) | **Escribir, modificar, crear o eliminar en IDC_PROYECTOS** (solo ZEUS) |
 
 ### 2.2 ZEUS — Agente de Calidad / CEO PMO
 

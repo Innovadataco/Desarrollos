@@ -238,6 +238,7 @@ docker compose logs -f  # Ver logs
 12. **Sin ACTA de Validación, no hay completado.** ZEUS es el único que puede declarar un módulo validado.
 13. **Instrucción formal antes de código.** Jelkin firma, ODIN ejecuta.
 14. **Sincronización obligatoria.** ZEUS y ODIN leen documentos de metodología al inicio de cada sesión.
+15. **ODIN NO TOCA IDC_PROYECTOS.** Nunca eliminar, crear, ni modificar archivos en el repo de gestión. Solo ZEUS toca IDC_PROYECTOS.
 
 ---
 
