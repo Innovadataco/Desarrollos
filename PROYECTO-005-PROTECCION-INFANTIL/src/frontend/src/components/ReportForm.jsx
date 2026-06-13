@@ -106,8 +106,24 @@ export default function ReportForm({ prefillIdentifier = "" }) {
   const [error, setError] = useState(null);
   const [isDragging, setIsDragging] = useState(false);
 
+  function detectType(value) {
+    const v = value.trim();
+    if (/^\+?\d[\d\s\-()]{6,20}$/.test(v)) return "phone";
+    if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) return "email";
+    if (v.startsWith("@")) return "social";
+    if (/^https?:\/\//i.test(v)) return "url";
+    return "other";
+  }
+
   useEffect(() => {
     setIdentifier(prefillIdentifier);
+    if (prefillIdentifier.trim()) {
+      const inferred = detectType(prefillIdentifier);
+      if (TYPES.some((t) => t.id === inferred)) {
+        setType(inferred);
+        setStep(2);
+      }
+    }
   }, [prefillIdentifier]);
 
   const selected = TYPES.find((t) => t.id === type);
