@@ -123,6 +123,7 @@ def create_report(
         category=payload.category or "otro",
         evidence_type=evidence_type,
         evidence_content=evidence_content_cipher,
+        evidence_media_url=payload.evidence_media_url,
         city=city,
         country=country,
         consent_location=bool(payload.consent_location),
@@ -182,7 +183,12 @@ def create_report(
                 db.rollback()
             return ReportResponse(
                 report_hash=report.report_hash,
-                reported_at=report.reported_at.isoformat(),
+                reported_at=report.reported_at_bucket.isoformat()
+                if report.reported_at_bucket
+                else report.reported_at.isoformat(),
+                reported_at_bucket=report.reported_at_bucket.isoformat()
+                if report.reported_at_bucket
+                else None,
                 message="Reporte recibido de forma segura. Guarda este código.",
             )
         except IntegrityError:

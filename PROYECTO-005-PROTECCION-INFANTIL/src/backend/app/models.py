@@ -36,6 +36,7 @@ class Report(Base):
     category = Column(String(20), nullable=False, default="desconocido")
     evidence_type = Column(String(20), nullable=True)
     evidence_content = Column(LargeBinary, nullable=True)
+    evidence_media_url = Column(String(500), nullable=True)
     identifier_hash = Column(String(64), nullable=False, index=True)
     identifier_type = Column(String(20), nullable=False, default="text")
     city = Column(String(100), nullable=True)

@@ -64,6 +64,38 @@ def test_create_report_with_image_evidence(client, db_session):
     assert report.evidence_type == "image"
 
 
+def test_create_report_with_evidence_media_url(client, db_session):
+    payload = {
+        "reported_identifier": "+573001234567",
+        "description": "Enlace a evidencia externa",
+        "evidence_media_url": "https://cdn.semaforo.com/enc/abc123",
+    }
+    response = client.post(REPORT_ENDPOINT, json=payload)
+    assert response.status_code == status.HTTP_201_CREATED
+    data = response.json()
+    assert data["reported_at_bucket"] is not None
+
+    report = db_session.query(Report).first()
+    assert report.evidence_media_url == payload["evidence_media_url"]
+
+
+def test_create_report_truncates_reported_at_to_6h_bucket(client, db_session):
+    payload = {
+        "reported_identifier": "+573001234567",
+        "description": "Verificación de bucket temporal",
+    }
+    response = client.post(REPORT_ENDPOINT, json=payload)
+    assert response.status_code == status.HTTP_201_CREATED
+    data = response.json()
+
+    report = db_session.query(Report).first()
+    assert report.reported_at_bucket is not None
+    assert data["reported_at"] == report.reported_at_bucket.isoformat()
+    assert report.reported_at_bucket.minute == 0
+    assert report.reported_at_bucket.second == 0
+    assert report.reported_at_bucket.microsecond == 0
+
+
 def test_create_report_missing_identifier(client):
     payload = {"description": "Solo descripción"}
     response = client.post(REPORT_ENDPOINT, json=payload)

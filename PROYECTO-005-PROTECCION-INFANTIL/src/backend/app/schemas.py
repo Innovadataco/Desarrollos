@@ -23,6 +23,7 @@ class ReportCreate(BaseModel):
         "otro",
     ] = "desconocido"
     evidence: EvidenceCreate | None = None
+    evidence_media_url: str | None = Field(default=None, max_length=500)
     consent_location: bool = False
     honeypot: str | None = Field(default=None, max_length=255)
 
@@ -35,6 +36,7 @@ class ReportCreate(BaseModel):
 class ReportResponse(BaseModel):
     report_hash: str
     reported_at: str
+    reported_at_bucket: str | None = None
     message: str
 
 
