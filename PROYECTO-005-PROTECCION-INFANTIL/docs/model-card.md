@@ -48,3 +48,20 @@ Modelo de clasificación de riesgo para reportes de contacto inapropiado con men
 
 ## Uso
 El modelo se ejecuta automáticamente al recibir un reporte. También puede ejecutarse manualmente desde el panel admin.
+
+
+## Auditoría y gobernanza
+
+### Fairness
+- Se evalúan variantes del mismo incidente con diferente estilo, registro y ortografía.
+- Si la diferencia máxima de score (`score_spread`) supera 0.25 se levanta bandera de sesgo.
+- Los análisis están disponibles en `GET /api/v1/analyze/fairness`.
+
+### Red teaming
+- Conjunto de prompts adversariales probados periódicamente.
+- Objetivo: detectar evasión y falsos negativos.
+- Endpoint: `GET /api/v1/analyze/redteam` (requiere supervisor).
+
+### Actualización
+- Reentrenamiento recomendado trimestral con datos reales anonimizados validados por especialistas.
+- Cualquier cambio de modelo debe reflejarse en este model card y en `/api/v1/analyze/model-card`.

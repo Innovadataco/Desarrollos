@@ -260,3 +260,36 @@ class ProfileResponse(BaseModel):
     last_reported: str | None
     timeline: list[dict] | None
     alert: str | None
+
+
+class AuditLogItem(BaseModel):
+    id: str
+    action: str
+    actor_hash: str | None
+    report_hash: str | None
+    details: str | None
+    created_at: str | None
+
+
+class AuditLogListResponse(BaseModel):
+    total: int
+    page: int
+    limit: int
+    logs: list[AuditLogItem]
+
+
+class NCMECExportRequest(BaseModel):
+    report_hash: str
+
+
+class NCMECExportResponse(BaseModel):
+    format: str = "ncmec-like"
+    report_hash: str
+    incident_type: str
+    reporting_person: dict
+    subject: dict
+    incident_summary: str
+    identifiers: list[dict]
+    risk_score: float | None
+    risk_level: str | None
+    generated_at: str

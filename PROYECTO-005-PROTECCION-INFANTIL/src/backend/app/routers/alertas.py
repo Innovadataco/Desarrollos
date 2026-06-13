@@ -1,3 +1,4 @@
+import uuid
 from datetime import datetime, timezone
 
 from fastapi import APIRouter, Depends, HTTPException, Request
@@ -57,7 +58,7 @@ def update_alert(
     current_user: User = Depends(require_role("supervisor")),
 ):
     check_rate_limit(request, scope="admin", identifier=current_user.username)
-    alert = db.query(Alert).filter(Alert.id == alert_id).first()
+    alert = db.query(Alert).filter(Alert.id == uuid.UUID(alert_id)).first()
     if not alert:
         raise HTTPException(status_code=404, detail="Alerta no encontrada")
     for field, value in payload.model_dump(exclude_unset=True).items():

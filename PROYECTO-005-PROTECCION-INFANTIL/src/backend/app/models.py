@@ -8,6 +8,7 @@ from sqlalchemy import (
     DateTime,
     Float,
     ForeignKey,
+    Index,
     Integer,
     JSON,
     LargeBinary,
@@ -23,6 +24,10 @@ from app.database import Base
 
 class Report(Base):
     __tablename__ = "reports"
+    __table_args__ = (
+        Index("ix_reports_identifier_reported_at", "identifier_hash", "reported_at"),
+        Index("ix_reports_level_status", "level", "status"),
+    )
 
     id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
     report_hash = Column(String(64), unique=True, nullable=False, index=True)
@@ -190,6 +195,8 @@ class User(Base):
     role = Column(String(20), nullable=False, default="viewer")
     email = Column(String(255), nullable=True)
     is_active = Column(Boolean, nullable=False, default=True)
+    totp_secret = Column(String(255), nullable=True)
+    totp_enabled = Column(Boolean, nullable=False, default=False)
     last_login_at = Column(DateTime(timezone=True), nullable=True)
     created_at = Column(
         DateTime(timezone=True),
@@ -206,6 +213,10 @@ class User(Base):
 
 class AuditLog(Base):
     __tablename__ = "audit_logs"
+    __table_args__ = (
+        Index("ix_audit_logs_action_created", "action", "created_at"),
+        Index("ix_audit_logs_report_hash", "report_hash"),
+    )
 
     id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
     action = Column(String(50), nullable=False)

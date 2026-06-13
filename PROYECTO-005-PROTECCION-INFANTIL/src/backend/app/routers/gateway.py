@@ -9,8 +9,10 @@ from app.schemas import (
     GatewayConfirmRequest,
     GatewayDigestRequest,
     GatewayReportRequest,
+    NCMECExportRequest,
 )
 from app.services.auth import verify_password
+from app.services.email_service import send_digest_to_institution
 from app.services.rate_limit import check_rate_limit
 
 router = APIRouter(prefix="/api/v1/gateway", tags=["gateway"])
@@ -175,3 +177,50 @@ def gateway_confirm(
         "status": payload.status,
         "confirmed_at": datetime.now(timezone.utc).isoformat(),
     }
+
+
+@router.post("/ncmec-export")
+def ncmec_export(
+    request: Request,
+    payload: NCMECExportRequest,
+    db: Session = Depends(get_db),
+):
+    institution = get_institution(request, db)
+    check_rate_limit(request, scope="gateway", identifier=institution.code)
+
+    report = db.query(Report).filter(Report.report_hash == payload.report_hash).first()
+    if not report:
+        raise HTTPException(status_code=404, detail="Reporte no encontrado")
+
+    return {
+        "format": "ncmec-like",
+        "report_hash": report.report_hash,
+        "incident_type": report.category,
+        "reporting_person": {"anonymous": True, "ip_address": None, "user_agent": None},
+        "subject": {
+            "identifier_hash": report.identifier_hash,
+            "identifier_type": report.identifier_type,
+            "profile_url": None,
+        },
+        "incident_summary": f"Reporte recibido el {report.reported_at.isoformat() if report.reported_at else 'N/A'}",
+        "identifiers": [
+            {"type": report.identifier_type, "hash": report.identifier_hash}
+        ],
+        "risk_score": report.score,
+        "risk_level": report.level,
+        "generated_at": datetime.now(timezone.utc).isoformat(),
+    }
+
+
+@router.post("/digest/send")
+async def gateway_send_digest(
+    request: Request,
+    db: Session = Depends(get_db),
+):
+    institution = get_institution(request, db)
+    check_rate_limit(request, scope="gateway", identifier=institution.code)
+
+    today = datetime.now(timezone.utc).date()
+    today_start = datetime(today.year, today.month, today.day, tzinfo=timezone.utc)
+    result = await send_digest_to_institution(db, institution, today_start)
+    return result

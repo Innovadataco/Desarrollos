@@ -115,7 +115,7 @@ export default function SearchView({ onReport }) {
 
       {result && style && (
         <div
-          className={`rounded-xl border p-5 ${style.bg} ${style.border} ${style.text}`}
+          className={`rounded-xl border p-5 shadow-md transition-all duration-500 ease-out animate-fade-in ${style.bg} ${style.border} ${style.text}`}
         >
           <div className="flex items-center gap-3 mb-3">
             <span
@@ -145,13 +145,13 @@ export default function SearchView({ onReport }) {
           <div className="flex flex-col gap-2">
             <button
               onClick={() => onReport && onReport(identifier)}
-              className="w-full rounded-lg bg-[#E74C3C] py-3 text-white font-semibold"
+              className="w-full rounded-lg bg-[#E74C3C] py-3 text-white font-semibold transition-transform duration-200 hover:scale-[1.02] active:scale-95"
             >
               Reportar ahora
             </button>
             <button
               onClick={handleShare}
-              className="w-full rounded-lg border border-current bg-transparent py-2 text-sm font-medium"
+              className="w-full rounded-lg border border-current bg-transparent py-2 text-sm font-medium transition-colors duration-200 hover:bg-white/30"
             >
               {copied ? "✓ Enlace copiado" : "Compartir resultado"}
             </button>

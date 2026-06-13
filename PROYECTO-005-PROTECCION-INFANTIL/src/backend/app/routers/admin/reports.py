@@ -1,6 +1,8 @@
 from datetime import datetime, timezone
+from io import BytesIO
 
 from fastapi import APIRouter, Depends, HTTPException, Request
+from fastapi.responses import JSONResponse, StreamingResponse
 from sqlalchemy.orm import Session
 
 from app.database import get_db
@@ -14,6 +16,7 @@ from app.schemas import (
 )
 from app.services.auth import require_role
 from app.services.encryption import decrypt_field
+from app.services.export_service import export_report_json, export_report_pdf
 from app.services.rate_limit import check_rate_limit
 
 router = APIRouter(prefix="/reports", tags=["admin-reports"])
@@ -151,7 +154,7 @@ def decrypt_report(
     report_hash: str,
     payload: DecryptRequest,
     db: Session = Depends(get_db),
-    current_user: User = Depends(require_role("reviewer")),
+    current_user: User = Depends(require_role("supervisor")),
 ):
     check_rate_limit(request, scope="admin", identifier=current_user.username)
     from app.config import settings
@@ -185,3 +188,50 @@ def decrypt_report(
         evidence_type=report.evidence_type,
         audit_log_id=str(audit.id),
     )
+
+
+@router.get("/{report_hash}/export")
+def export_report(
+    request: Request,
+    report_hash: str,
+    format: str = "json",
+    include_encrypted: bool = False,
+    db: Session = Depends(get_db),
+    current_user: User = Depends(require_role("supervisor")),
+):
+    check_rate_limit(request, scope="admin", identifier=current_user.username)
+    report = db.query(Report).filter(Report.report_hash == report_hash).first()
+    if not report:
+        raise HTTPException(status_code=404, detail="Reporte no encontrado")
+
+    if format.lower() == "json":
+        data = export_report_json(report, include_encrypted=include_encrypted)
+        audit = AuditLog(
+            action="export_json",
+            actor_hash=str(current_user.id),
+            report_hash=report.report_hash,
+            details=f"encrypted={include_encrypted}",
+        )
+        db.add(audit)
+        db.commit()
+        return JSONResponse(content=data)
+
+    if format.lower() == "pdf":
+        pdf_bytes = export_report_pdf(report, include_encrypted=include_encrypted)
+        audit = AuditLog(
+            action="export_pdf",
+            actor_hash=str(current_user.id),
+            report_hash=report.report_hash,
+            details=f"encrypted={include_encrypted}",
+        )
+        db.add(audit)
+        db.commit()
+        return StreamingResponse(
+            BytesIO(pdf_bytes),
+            media_type="application/pdf",
+            headers={
+                "Content-Disposition": f"attachment; filename=reporte_{report_hash}.pdf"
+            },
+        )
+
+    raise HTTPException(status_code=400, detail="Formato no soportado: use json o pdf")

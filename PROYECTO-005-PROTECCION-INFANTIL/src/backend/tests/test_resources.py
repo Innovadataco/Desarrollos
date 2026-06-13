@@ -10,16 +10,21 @@ def test_list_resources_empty(client):
 
 
 def test_create_and_list_resource(client):
-    payload = {
-        "name": "CyberTipline",
-        "url": "https://www.cybertipline.org/",
-        "country": "US",
-    }
-    response = client.post(RESOURCES_ENDPOINT, json=payload)
+    response = client.post(
+        RESOURCES_ENDPOINT,
+        json={
+            "name": "Línea 123",
+            "url": "https://123.gov.co",
+            "country": "Colombia",
+            "phone": "123",
+            "description": "Línea de emergencia",
+            "priority": 1,
+        },
+    )
     assert response.status_code == status.HTTP_201_CREATED
     data = response.json()
-    assert data["name"] == payload["name"]
+    assert data["name"] == "Línea 123"
 
-    response = client.get(RESOURCES_ENDPOINT)
+    response = client.get(f"{RESOURCES_ENDPOINT}?country=Colombia")
     assert response.status_code == status.HTTP_200_OK
     assert len(response.json()) == 1

@@ -9,7 +9,7 @@ from app.models import SystemConfig, User
 from app.services.auth import require_role
 from app.services.rate_limit import check_rate_limit
 
-router = APIRouter(prefix="/api/v1/admin/config", tags=["admin-config"])
+router = APIRouter(prefix="/config", tags=["admin-config"])
 
 
 class ConfigUpdate(BaseModel):

@@ -97,3 +97,39 @@ def test_validate_network_by_cities(client):
     assert data["semaforo"] == "negro"
     assert data["is_network"] is True
     assert data["cities_count"] == 3
+
+
+def test_consulta_uses_cache(client):
+    # Primera consulta
+    response1 = client.post(
+        CONSULTA_ENDPOINT, json={"identifier": "cached@example.com"}
+    )
+    assert response1.status_code == status.HTTP_200_OK
+    assert response1.json()["report_count"] == 0
+
+    # Crear reporte con el mismo identificador
+    client.post(
+        REPORT_ENDPOINT,
+        json={
+            "reported_identifier": "cached@example.com",
+            "description": "Mensaje inapropiado",
+            "category": "grooming",
+        },
+    )
+
+    # Segunda consulta debe venir de cache (report_count=0)
+    response2 = client.post(
+        CONSULTA_ENDPOINT, json={"identifier": "cached@example.com"}
+    )
+    assert response2.status_code == status.HTTP_200_OK
+    assert response2.json()["report_count"] == 0
+
+    # Limpiar cache y volver a consultar
+    from app.services.cache_service import clear
+
+    clear()
+    response3 = client.post(
+        CONSULTA_ENDPOINT, json={"identifier": "cached@example.com"}
+    )
+    assert response3.status_code == status.HTTP_200_OK
+    assert response3.json()["report_count"] == 1

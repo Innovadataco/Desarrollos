@@ -26,8 +26,8 @@ export default defineConfig({
   ],
   webServer: [
     {
-      command: "cd ../backend && source .venv/bin/activate && DATABASE_URL=sqlite:///./e2e.db REPORT_ENCRYPTION_KEY=0000000000000000000000000000000000000000000000000000000000000000 ENVIRONMENT=development uvicorn app.main:app --host 0.0.0.0 --port 8000",
-      url: "http://localhost:8000/api/health",
+      command: "cd ../backend && source .venv/bin/activate && DATABASE_URL=sqlite:///:memory: REPORT_ENCRYPTION_KEY=0000000000000000000000000000000000000000000000000000000000000000 SECRET_KEY=e2e-test-secret ADMIN_ROOT_PASSWORD=e2eroot ENVIRONMENT=development uvicorn app.main:app --host 0.0.0.0 --port 8000",
+      url: "http://localhost:8000/health",
       reuseExistingServer: !process.env.CI,
       timeout: 120 * 1000,
     },

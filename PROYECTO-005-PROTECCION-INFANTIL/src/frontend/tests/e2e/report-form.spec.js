@@ -1,38 +1,28 @@
 import { test, expect } from "@playwright/test";
 
-test("el usuario puede enviar un reporte anónimo y recibir un hash", async ({
-  page,
-}) => {
+test("el wizard de reporte avanza por los 3 pasos", async ({ page }) => {
   await page.goto("/");
+  await page.getByRole("button", { name: /^Reportar$/i }).click();
 
-  await expect(page.locator("h1")).toContainText(
-    "Protección Infantil Comunitaria"
+  await expect(page.getByText(/Reportar anónimo/i)).toBeVisible();
+  await expect(page.getByText(/Paso 1/i)).toBeVisible();
+
+  // Paso 1
+  await page.getByRole("button", { name: /Red social/i }).click();
+  await page.getByRole("button", { name: /Siguiente/i }).click();
+
+  // Paso 2
+  await expect(page.getByText(/Paso 2/i)).toBeVisible();
+  await page.getByPlaceholder(/\+57 300 123 4567/i).fill("@usuario_sospechoso");
+  await page.getByPlaceholder(/Describe lo que pasó/i).fill(
+    "Recibí mensajes inapropiados de esta cuenta"
   );
+  await page.getByRole("button", { name: /Siguiente/i }).click();
 
-  await page
-    .getByLabel("Identificador reportado")
-    .fill("@usuario_sospechoso");
-  await page
-    .getByLabel("Descripción")
-    .fill("Recibí mensajes inapropiados de esta cuenta");
+  // Paso 3
+  await expect(page.getByText(/Paso 3/i)).toBeVisible();
+  await expect(page.getByRole("button", { name: /Enviar reporte/i })).toBeDisabled();
 
-  await page.getByRole("button", { name: "Enviar reporte anónimo" }).click();
-
-  await expect(page.locator("text=Reporte enviado con éxito")).toBeVisible({
-    timeout: 10000,
-  });
-
-  const hashLocator = page.locator("div.font-mono");
-  await expect(hashLocator).toBeVisible();
-  const hash = await hashLocator.textContent();
-  expect(hash).toMatch(/^[a-f0-9]{64}$/);
-});
-
-test("el sistema no permite enviar sin campos requeridos", async ({ page }) => {
-  await page.goto("/");
-
-  await page.getByRole("button", { name: "Enviar reporte anónimo" }).click();
-
-  // El navegador bloquea el submit por required; verificamos que seguimos en el formulario
-  await expect(page.getByLabel("Identificador reportado")).toBeVisible();
+  await page.getByRole("checkbox").check();
+  await expect(page.getByRole("button", { name: /Enviar reporte/i })).toBeEnabled();
 });

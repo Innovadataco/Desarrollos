@@ -6,9 +6,41 @@ from app.models import Analysis, Report, User
 from app.schemas import AnalysisResponse
 from app.services.analysis_service import analyze_report
 from app.services.auth import require_role
+from app.services.ia_audit_service import (
+    get_model_card,
+    run_fairness_audit,
+    run_red_team_audit,
+)
 from app.services.rate_limit import check_rate_limit
 
 router = APIRouter(prefix="/api/v1/analyze", tags=["analyze"])
+
+
+@router.get("/model-card")
+def model_card(
+    request: Request,
+    current_user: User = Depends(require_role("viewer")),
+):
+    check_rate_limit(request, scope="admin", identifier=current_user.username)
+    return get_model_card()
+
+
+@router.get("/fairness")
+def fairness_audit(
+    request: Request,
+    current_user: User = Depends(require_role("viewer")),
+):
+    check_rate_limit(request, scope="admin", identifier=current_user.username)
+    return run_fairness_audit()
+
+
+@router.get("/redteam")
+def red_team_audit(
+    request: Request,
+    current_user: User = Depends(require_role("supervisor")),
+):
+    check_rate_limit(request, scope="admin", identifier=current_user.username)
+    return run_red_team_audit()
 
 
 @router.get("/{report_id}", response_model=AnalysisResponse)

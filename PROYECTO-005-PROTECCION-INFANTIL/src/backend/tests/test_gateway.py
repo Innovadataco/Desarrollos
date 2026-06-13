@@ -116,6 +116,39 @@ class TestGatewayDigest:
         assert "severe_count" in data
 
 
+class TestGatewayNCMECExport:
+    def test_ncmec_export_success(self, client, institution, gateway_headers):
+        report_resp = client.post(
+            "/api/v1/reportes",
+            json={
+                "reported_identifier": "ncmec@test.org",
+                "description": "Contenido grave",
+                "category": "grooming",
+            },
+        )
+        report_hash = report_resp.json()["report_hash"]
+        response = client.post(
+            "/api/v1/gateway/ncmec-export",
+            json={"report_hash": report_hash},
+            headers=gateway_headers,
+        )
+        assert response.status_code == 200
+        data = response.json()
+        assert data["format"] == "ncmec-like"
+        assert data["report_hash"] == report_hash
+        assert data["reporting_person"]["anonymous"] is True
+
+
+class TestGatewayDigestSend:
+    def test_send_digest_unconfigured_smtp(self, client, institution, gateway_headers):
+        response = client.post(
+            "/api/v1/gateway/digest/send",
+            headers=gateway_headers,
+        )
+        assert response.status_code == 200
+        assert response.json()["sent"] is False
+
+
 class TestGatewayConfirm:
     def test_confirm_success(self, client, institution, gateway_headers):
         report_resp = client.post(

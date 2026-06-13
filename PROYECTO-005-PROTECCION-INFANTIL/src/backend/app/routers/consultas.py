@@ -4,6 +4,7 @@ from sqlalchemy.orm import Session
 from app.database import get_db
 from app.models import AuditLog, Report
 from app.schemas import ConsultaRequest, SemaforoResponse
+from app.services.cache_service import get as get_cache, set as set_cache
 from app.services.identifier import hash_identifier, normalize_identifier
 from app.services.rate_limit import check_rate_limit
 
@@ -144,8 +145,23 @@ def consulta_semaforo(
 
     identifier_type, _ = normalize_identifier(payload.identifier)
     identifier_hash = hash_identifier(payload.identifier)
+
+    cached = get_cache(identifier_hash)
+    if cached:
+        _log_audit(
+            db,
+            "consulta_cache",
+            actor_hash,
+            None,
+            f"Tipo {identifier_type}, cache hit",
+        )
+        db.commit()
+        return SemaforoResponse(**cached)
+
     reports = _query_reports(db, identifier_hash)
     result = _build_result(identifier_hash, reports)
+
+    set_cache(identifier_hash, result.model_dump(mode="json"), ttl_seconds=300)
 
     _log_audit(
         db,

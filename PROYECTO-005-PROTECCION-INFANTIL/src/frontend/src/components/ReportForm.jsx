@@ -93,7 +93,7 @@ export default function ReportForm({ prefillIdentifier = "" }) {
         </p>
         <div className="rounded-lg bg-white p-4 text-left">
           <p className="text-sm text-gray-600">Guarda este código:</p>
-          <p className="break-all font-mono text-sm font-semibold text-gray-900">
+          <p data-testid="report-hash" className="break-all font-mono text-sm font-semibold text-gray-900">
             {result.report_hash}
           </p>
         </div>
