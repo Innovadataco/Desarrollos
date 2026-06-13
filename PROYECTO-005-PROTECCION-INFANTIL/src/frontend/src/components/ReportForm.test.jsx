@@ -4,6 +4,23 @@ import ReportForm from "./ReportForm";
 
 const API_URL = "http://localhost:8000";
 
+async function fillAndSubmit(form) {
+  // Step 1: select type
+  fireEvent.click(screen.getByText(/Celular/i));
+  fireEvent.click(screen.getByRole("button", { name: /Siguiente/i }));
+  // Step 2: fill identifier and description
+  fireEvent.change(screen.getByLabelText(/Número o identificador reportado/i), {
+    target: { value: "@sospechoso" },
+  });
+  fireEvent.change(screen.getByLabelText(/¿Qué te pareció sospechoso?/i), {
+    target: { value: "Descripción del incidente suficiente" },
+  });
+  fireEvent.click(screen.getByRole("button", { name: /Siguiente/i }));
+  // Step 3: confirm and submit
+  fireEvent.click(screen.getByLabelText(/Confirmo que esta información es veraz/i));
+  fireEvent.click(screen.getByRole("button", { name: /Enviar reporte anónimo/i }));
+}
+
 describe("ReportForm", () => {
   beforeEach(() => {
     import.meta.env.VITE_API_URL = API_URL;
@@ -13,26 +30,17 @@ describe("ReportForm", () => {
     vi.restoreAllMocks();
   });
 
-  it("renderiza el formulario con campos requeridos", () => {
+  it("renderiza el wizard inicial en el paso 1", () => {
     render(<ReportForm />);
-    expect(screen.getByLabelText(/Identificador reportado/i)).toBeInTheDocument();
-    expect(screen.getByLabelText(/Descripción/i)).toBeInTheDocument();
-    expect(
-      screen.getByRole("button", { name: /Enviar reporte anónimo/i })
-    ).toBeInTheDocument();
+    expect(screen.getByText(/Paso 1/i)).toBeInTheDocument();
+    expect(screen.getByText(/Celular/i)).toBeInTheDocument();
   });
 
   it("muestra error si falla la conexión con el servidor", async () => {
     global.fetch = vi.fn().mockRejectedValueOnce(new Error());
 
     render(<ReportForm />);
-    fireEvent.change(screen.getByLabelText(/Identificador reportado/i), {
-      target: { value: "@sospechoso" },
-    });
-    fireEvent.change(screen.getByLabelText(/Descripción/i), {
-      target: { value: "Descripción del incidente" },
-    });
-    fireEvent.click(screen.getByRole("button", { name: /Enviar reporte anónimo/i }));
+    await fillAndSubmit();
 
     await waitFor(() => {
       expect(screen.getByText(/Error de conexión/i)).toBeInTheDocument();
@@ -50,16 +58,10 @@ describe("ReportForm", () => {
     });
 
     render(<ReportForm />);
-    fireEvent.change(screen.getByLabelText(/Identificador reportado/i), {
-      target: { value: "@sospechoso" },
-    });
-    fireEvent.change(screen.getByLabelText(/Descripción/i), {
-      target: { value: "Descripción del incidente" },
-    });
-    fireEvent.click(screen.getByRole("button", { name: /Enviar reporte anónimo/i }));
+    await fillAndSubmit();
 
     await waitFor(() => {
-      expect(screen.getByText(/Reporte enviado con éxito/i)).toBeInTheDocument();
+      expect(screen.getByText(/Protección activada/i)).toBeInTheDocument();
     });
     expect(screen.getByText(/abcdefabcdef/i)).toBeInTheDocument();
   });
@@ -74,13 +76,7 @@ describe("ReportForm", () => {
     });
 
     render(<ReportForm />);
-    fireEvent.change(screen.getByLabelText(/Identificador reportado/i), {
-      target: { value: "@sospechoso" },
-    });
-    fireEvent.change(screen.getByLabelText(/Descripción/i), {
-      target: { value: "Descripción del incidente" },
-    });
-    fireEvent.click(screen.getByRole("button", { name: /Enviar reporte anónimo/i }));
+    await fillAndSubmit();
 
     await waitFor(() => {
       expect(screen.getByText(/límite/i)).toBeInTheDocument();
@@ -99,16 +95,10 @@ describe("ReportForm", () => {
     });
 
     render(<ReportForm />);
-    fireEvent.change(screen.getByLabelText(/Identificador reportado/i), {
-      target: { value: "@sospechoso" },
-    });
-    fireEvent.change(screen.getByLabelText(/Descripción/i), {
-      target: { value: "Descripción del incidente" },
-    });
-    fireEvent.click(screen.getByRole("button", { name: /Enviar reporte anónimo/i }));
+    await fillAndSubmit();
 
     await waitFor(() => {
-      expect(screen.getByText(/campo inválido/i)).toBeInTheDocument();
+      expect(screen.getByText(/Verifica los campos/i)).toBeInTheDocument();
     });
   });
 });

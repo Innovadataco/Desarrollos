@@ -9,12 +9,16 @@ os.environ["DATABASE_URL"] = "sqlite:///:memory:"
 os.environ["REPORT_ENCRYPTION_KEY"] = (
     "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef"
 )
+os.environ["SECRET_KEY"] = "test-secret-key-for-jwt-signing-only"
+os.environ["ADMIN_ROOT_PASSWORD"] = "testrootpassword"
 os.environ["ENVIRONMENT"] = "testing"
 os.environ["REDIS_URL"] = ""
 
+REPORT_ENDPOINT = "/api/v1/reportes"
+
 
 def test_security_headers_present(client):
-    response = client.get("/api/health")
+    response = client.get("/health")
     assert response.status_code == status.HTTP_200_OK
     assert response.headers["X-Frame-Options"] == "DENY"
     assert response.headers["X-Content-Type-Options"] == "nosniff"
@@ -24,14 +28,14 @@ def test_security_headers_present(client):
 
 
 def test_hsts_only_in_production(client):
-    response = client.get("/api/health")
+    response = client.get("/health")
     assert "Strict-Transport-Security" not in response.headers
 
 
 def test_cors_rejects_unknown_origin(client):
     response = client.post(
-        "/api/reportes",
-        json={"reported_identifier": "x", "description": "y"},
+        REPORT_ENDPOINT,
+        json={"reported_identifier": "x", "description": "y" * 15},
         headers={"Origin": "http://evil.com"},
     )
     # La respuesta puede ser 201 si CORS no bloquea en servidor (lo hace el navegador)
@@ -47,6 +51,8 @@ def test_invalid_encryption_key_raises_on_startup():
             "DATABASE_URL": "sqlite:///:memory:",
             "ENVIRONMENT": "testing",
             "REDIS_URL": "",
+            "SECRET_KEY": "test",
+            "ADMIN_ROOT_PASSWORD": "test",
         },
         clear=False,
     ):
@@ -66,6 +72,8 @@ def test_missing_encryption_key_raises_on_startup():
             "DATABASE_URL": "sqlite:///:memory:",
             "ENVIRONMENT": "testing",
             "REDIS_URL": "",
+            "SECRET_KEY": "test",
+            "ADMIN_ROOT_PASSWORD": "test",
         },
         clear=False,
     ):
@@ -77,5 +85,5 @@ def test_missing_encryption_key_raises_on_startup():
 
 
 def test_report_endpoint_does_not_expose_server_header(client):
-    response = client.get("/api/health")
+    response = client.get("/health")
     assert "server" not in response.headers.get("server", "").lower()

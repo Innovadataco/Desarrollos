@@ -14,6 +14,16 @@ logger = logging.getLogger(__name__)
 
 MAX_MEMORY_KEYS = 1000
 
+DEFAULT_LIMITS = {
+    "report": 5,
+    "validate": 10,
+    "health": 100,
+    "login": 5,
+    "decrypt": 10,
+    "gateway": 100,
+    "admin": 1000,
+}
+
 
 def _build_limiter():
     if settings.redis_url:
@@ -36,7 +46,6 @@ def _build_limiter():
 
 
 _limiter = _build_limiter()
-_rate_limit_item = RateLimitItemPerMinute(5)
 
 
 class InMemoryRateLimiter:
@@ -81,7 +90,11 @@ class InMemoryRateLimiter:
 
 
 # Respaldos para tests y desarrollo sin Redis
-_fallback_rate_limiter = InMemoryRateLimiter()
+_fallback_limiters = {
+    name: InMemoryRateLimiter(max_requests=limit, window_seconds=3600)
+    for name, limit in DEFAULT_LIMITS.items()
+}
+_fallback_limiters["login"] = InMemoryRateLimiter(max_requests=5, window_seconds=900)
 
 
 def _using_memory_storage() -> bool:
@@ -95,19 +108,33 @@ def get_client_ip(request: Request) -> str:
     return request.client.host if request.client else "unknown"
 
 
-def check_rate_limit(request: Request):
-    ip = get_client_ip(request)
+def _make_key(scope: str, identifier: str) -> str:
+    return f"{scope}:{identifier}"
+
+
+def check_rate_limit(
+    request: Request, scope: str = "report", identifier: str | None = None
+):
+    key = identifier or get_client_ip(request)
+    limit = DEFAULT_LIMITS.get(scope, 5)
 
     if _using_memory_storage():
-        if not _fallback_rate_limiter.is_allowed(ip):
+        limiter = _fallback_limiters.get(scope, _fallback_limiters["report"])
+        if not limiter.is_allowed(key):
             raise HTTPException(
                 status_code=429,
-                detail="Has alcanzado el límite de reportes. Intenta más tarde.",
+                detail="Has alcanzado el límite de solicitudes. Intenta más tarde.",
             )
         return
 
-    if not _limiter.hit(_rate_limit_item, ip):
+    item = RateLimitItemPerMinute(limit)
+    if not _limiter.hit(item, f"{scope}:{key}"):
         raise HTTPException(
             status_code=429,
-            detail="Has alcanzado el límite de reportes. Intenta más tarde.",
+            detail="Has alcanzado el límite de solicitudes. Intenta más tarde.",
         )
+
+
+def reset_fallback_limiters():
+    for limiter in _fallback_limiters.values():
+        limiter.reset()

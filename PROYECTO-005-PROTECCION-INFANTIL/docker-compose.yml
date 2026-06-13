@@ -7,7 +7,7 @@ services:
     ports:
       - "8000:8000"
     environment:
-      - DATABASE_URL=${DATABASE_URL:-sqlite:///./proteccion.db}
+      - DATABASE_URL=${DATABASE_URL:-sqlite:///./data/proteccion.db}
       - REPORT_ENCRYPTION_KEY=${REPORT_ENCRYPTION_KEY}
       - ENVIRONMENT=${ENVIRONMENT:-development}
       - REDIS_URL=${REDIS_URL:-}

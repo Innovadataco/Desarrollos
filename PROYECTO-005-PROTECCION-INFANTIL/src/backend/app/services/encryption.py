@@ -4,6 +4,8 @@ import struct
 
 from cryptography.hazmat.primitives.ciphers.aead import AESGCM
 
+AAD = b"proteccion-infantil-v1"
+
 
 def derive_kek(key_hex: str) -> bytes:
     """Decodifica la clave maestra desde hex. Debe ser exactamente 32 bytes."""
@@ -19,8 +21,7 @@ def _encrypt(plaintext: str, key: bytes) -> bytes:
     """Encripta texto con AES-256-GCM. Retorna nonce(12) + tag(16) + ciphertext."""
     aesgcm = AESGCM(key)
     nonce = secrets.token_bytes(12)
-    ciphertext = aesgcm.encrypt(nonce, plaintext.encode("utf-8"), None)
-    # ciphertext incluye el tag de 16 bytes al final
+    ciphertext = aesgcm.encrypt(nonce, plaintext.encode("utf-8"), AAD)
     return nonce + ciphertext
 
 
@@ -31,7 +32,7 @@ def _decrypt(blob: bytes, key: bytes) -> str:
     nonce = blob[:12]
     ciphertext = blob[12:]
     aesgcm = AESGCM(key)
-    plaintext = aesgcm.decrypt(nonce, ciphertext, None)
+    plaintext = aesgcm.decrypt(nonce, ciphertext, AAD)
     return plaintext.decode("utf-8")
 
 
@@ -67,3 +68,8 @@ def generate_report_hash(identifier: str, timestamp_iso: str) -> str:
     nonce = secrets.token_hex(16)
     payload = f"{nonce}:{timestamp_iso}:{identifier.strip().lower()}"
     return hashlib.sha256(payload.encode("utf-8")).hexdigest()
+
+
+def hash_identifier(identifier: str) -> str:
+    """SHA-256 canonizado para indexar reportes sin revelar el identificador."""
+    return hashlib.sha256(identifier.strip().lower().encode("utf-8")).hexdigest()

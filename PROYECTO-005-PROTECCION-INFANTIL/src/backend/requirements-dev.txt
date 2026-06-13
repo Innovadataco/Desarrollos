@@ -1,5 +1,8 @@
-# Dependencias de desarrollo para el backend
--r requirements.txt
-
 ruff==0.15.17
 black==26.5.1
+pytest==9.0.3
+pytest-asyncio==1.4.0
+pytest-cov>=7.0.0
+httpx==0.28.1
+factory-boy==3.3.3
+Faker==37.2.0
