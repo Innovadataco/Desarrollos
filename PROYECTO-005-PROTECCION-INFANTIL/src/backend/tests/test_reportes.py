@@ -197,6 +197,27 @@ def test_rate_limit_does_not_persist_ip_after_reset(client):
     assert response.status_code == status.HTTP_201_CREATED
 
 
+def test_rate_limit_hashes_ip_in_fallback_storage(client):
+    """El rate limiter en memoria nunca almacena la IP en texto plano."""
+    import hashlib
+    from unittest.mock import MagicMock
+
+    from app.services.rate_limit import _fallback_limiters, check_rate_limit
+
+    _fallback_limiters["report"].reset()
+    raw_ip = "203.0.113.42"
+    request = MagicMock()
+    request.headers = {}
+    request.client.host = raw_ip
+
+    check_rate_limit(request, scope="report", identifier=raw_ip)
+
+    store = _fallback_limiters["report"]._store
+    hashed_ip = hashlib.sha256(raw_ip.encode("utf-8")).hexdigest()
+    assert raw_ip not in store
+    assert hashed_ip in store
+
+
 def test_no_metadata_columns_in_report_model():
     from app.models import Report
 

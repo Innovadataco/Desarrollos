@@ -109,22 +109,26 @@ def get_client_ip(request: Request) -> str:
     return request.client.host if request.client else "unknown"
 
 
-def _make_key(scope: str, identifier: str) -> str:
+def _hash_identifier(identifier: str) -> str:
     # Normalizamos y hasheamos el identificador (IP) para no almacenar PII.
     normalized = identifier.strip().lower().encode("utf-8")
-    hashed = hashlib.sha256(normalized).hexdigest()
-    return f"{scope}:{hashed}"
+    return hashlib.sha256(normalized).hexdigest()
+
+
+def _make_key(scope: str, hashed_identifier: str) -> str:
+    return f"{scope}:{hashed_identifier}"
 
 
 def check_rate_limit(
     request: Request, scope: str = "report", identifier: str | None = None
 ):
     key = identifier or get_client_ip(request)
+    hashed_key = _hash_identifier(key)
     limit = DEFAULT_LIMITS.get(scope, 5)
 
     if _using_memory_storage():
         limiter = _fallback_limiters.get(scope, _fallback_limiters["report"])
-        if not limiter.is_allowed(key):
+        if not limiter.is_allowed(hashed_key):
             raise HTTPException(
                 status_code=429,
                 detail="Has alcanzado el límite de solicitudes. Intenta más tarde.",
@@ -132,7 +136,7 @@ def check_rate_limit(
         return
 
     item = RateLimitItemPerHour(limit)
-    if not _limiter.hit(item, _make_key(scope, key)):
+    if not _limiter.hit(item, _make_key(scope, hashed_key)):
         raise HTTPException(
             status_code=429,
             detail="Has alcanzado el límite de solicitudes. Intenta más tarde.",
