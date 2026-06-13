@@ -104,6 +104,7 @@ export default function ReportForm({ prefillIdentifier = "" }) {
   const [copied, setCopied] = useState(false);
   const [result, setResult] = useState(null);
   const [error, setError] = useState(null);
+  const [isDragging, setIsDragging] = useState(false);
 
   useEffect(() => {
     setIdentifier(prefillIdentifier);
@@ -131,8 +132,7 @@ export default function ReportForm({ prefillIdentifier = "" }) {
     (step === 2 && isIdentifierValid && description.trim().length >= 10) ||
     step === 3;
 
-  const handleFileChange = (e) => {
-    const file = e.target.files[0];
+  const validateAndSetFile = (file) => {
     setError(null);
     if (!file) {
       setEvidenceFile(null);
@@ -141,12 +141,10 @@ export default function ReportForm({ prefillIdentifier = "" }) {
     }
     if (!ALLOWED_TYPES.includes(file.type)) {
       setError("Formato no permitido. Usa PNG, JPG, PDF, MP4, MP3 o TXT.");
-      e.target.value = "";
       return;
     }
     if (file.size > MAX_SIZE_MB * 1024 * 1024) {
       setError(`El archivo excede ${MAX_SIZE_MB} MB.`);
-      e.target.value = "";
       return;
     }
     setEvidenceFile(file);
@@ -155,6 +153,28 @@ export default function ReportForm({ prefillIdentifier = "" }) {
     } else {
       setFilePreview(null);
     }
+  };
+
+  const handleFileChange = (e) => {
+    validateAndSetFile(e.target.files[0]);
+    e.target.value = "";
+  };
+
+  const handleDragOver = (e) => {
+    e.preventDefault();
+    setIsDragging(true);
+  };
+
+  const handleDragLeave = (e) => {
+    e.preventDefault();
+    setIsDragging(false);
+  };
+
+  const handleDrop = (e) => {
+    e.preventDefault();
+    setIsDragging(false);
+    const file = e.dataTransfer.files[0];
+    validateAndSetFile(file);
   };
 
   const handleSubmit = async (e) => {
@@ -396,19 +416,40 @@ export default function ReportForm({ prefillIdentifier = "" }) {
         <div className="space-y-4">
           <p className="font-semibold text-gray-800">Paso 3: Evidencia (opcional)</p>
           <div>
-            <label htmlFor="evidence" className="block text-sm font-medium text-gray-700">
-              Adjuntar evidencia
+            <label className="block text-sm font-medium text-gray-700">
+              Arrastra un archivo o haz clic para seleccionar
             </label>
-            <input
-              id="evidence"
-              type="file"
-              accept=".png,.jpg,.jpeg,.gif,.webp,.pdf,.txt,.mp3,.wav,.mp4,.webm"
-              onChange={handleFileChange}
-              className="mt-1 block w-full text-sm text-gray-700 file:mr-4 file:rounded-lg file:border-0 file:bg-[#1A3A5C] file:px-4 file:py-2 file:text-white file:font-semibold hover:file:bg-[#4A90D9]"
-            />
-            <p className="text-xs text-gray-500 mt-1">
-              Formatos: PNG, JPG, PDF, MP4, MP3, TXT. Máx. {MAX_SIZE_MB} MB.
-            </p>
+            <div
+              onDragOver={handleDragOver}
+              onDragLeave={handleDragLeave}
+              onDrop={handleDrop}
+              className={`mt-1 flex flex-col items-center justify-center rounded-lg border-2 border-dashed px-6 py-10 text-center transition ${
+                isDragging
+                  ? "border-[#4A90D9] bg-[#4A90D9]/10"
+                  : "border-gray-300 bg-gray-50 hover:bg-gray-100"
+              }`}
+            >
+              <div className="text-3xl mb-2">📎</div>
+              <p className="text-sm text-gray-700">
+                {evidenceFile ? evidenceFile.name : "Arrastra aquí tu evidencia"}
+              </p>
+              <p className="text-xs text-gray-500 mt-1">
+                Formatos: PNG, JPG, PDF, MP4, MP3, TXT. Máx. {MAX_SIZE_MB} MB.
+              </p>
+              <label
+                htmlFor="evidence"
+                className="mt-3 cursor-pointer rounded-lg bg-[#1A3A5C] px-4 py-2 text-sm font-semibold text-white hover:bg-[#4A90D9]"
+              >
+                Seleccionar archivo
+              </label>
+              <input
+                id="evidence"
+                type="file"
+                accept=".png,.jpg,.jpeg,.gif,.webp,.pdf,.txt,.mp3,.wav,.mp4,.webm"
+                onChange={handleFileChange}
+                className="hidden"
+              />
+            </div>
             {evidenceFile && (
               <div className="mt-3 rounded-lg border border-gray-200 bg-gray-50 p-3">
                 <p className="text-sm font-medium text-gray-800">{evidenceFile.name}</p>
