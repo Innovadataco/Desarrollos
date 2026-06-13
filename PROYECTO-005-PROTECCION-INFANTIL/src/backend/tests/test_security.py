@@ -4,7 +4,6 @@ from unittest.mock import patch
 import pytest
 from fastapi import status
 
-
 # Forzar un entorno de prueba antes de importar la app/config
 os.environ["DATABASE_URL"] = "sqlite:///:memory:"
 os.environ["REPORT_ENCRYPTION_KEY"] = (
