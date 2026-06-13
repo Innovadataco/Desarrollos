@@ -2,6 +2,23 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { API_URL } from "../api";
 
+const PLACEHOLDERS = {
+  phone: "+57 300 123 4567",
+  email: "correo@ejemplo.com",
+  social: "@usuario",
+  url: "https://sitio.com/perfil",
+  text: "Escribe un nombre o identificador",
+};
+
+function detectType(value) {
+  const v = value.trim();
+  if (/^\+?\d[\d\s\-\(\)]{6,20}$/.test(v)) return "phone";
+  if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) return "email";
+  if (v.startsWith("@")) return "social";
+  if (/^https?:\/\//i.test(v)) return "url";
+  return "text";
+}
+
 const LEVEL_STYLES = {
   verde: {
     bg: "bg-green-50",
@@ -99,7 +116,7 @@ export default function SearchView() {
               inputMode="search"
               value={identifier}
               onChange={(e) => setIdentifier(e.target.value)}
-              placeholder="+57 300 123 4567, @usuario, email o URL"
+              placeholder={PLACEHOLDERS[detectType(identifier)]}
               className="w-full rounded-lg border border-gray-300 pl-10 pr-4 py-3 text-base focus:outline-none focus:ring-2 focus:ring-[#4A90D9]"
               required
               aria-describedby="search-help"
