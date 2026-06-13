@@ -12,13 +12,13 @@
 - [x] `TF-002.1` Crear página principal como buscador (no como reporte)
 - [x] `TF-002.2` Implementar input universal con placeholder dinámico
 - [x] `TF-002.3` Detectar tipo de identificador (teléfono, email, @, URL)
-- [ ] `TF-002.4` Diseñar cards de semáforo (4 colores, animación suave)
-- [ ] `TF-002.5` Implementar detalle de resultado (conteos, categorías, timeline)
-- [ ] `TF-002.6` Implementar botón "Reportar este identificador" → pre-llena Módulo 001
-- [ ] `TF-002.7` Implementar botón "Compartir resultado" (URL sin identificador)
-- [ ] `TF-002.8` Implementar "Alertarme si cambia" (email, Premium)
+- [x] `TF-002.4` Diseñar cards de semáforo (4 colores, animación suave)
+- [x] `TF-002.5` Implementar detalle de resultado (conteos, categorías, timeline)
+- [x] `TF-002.6` Implementar botón "Reportar este identificador" → pre-llena Módulo 001
+- [x] `TF-002.7` Implementar botón "Compartir resultado" (URL sin identificador)
+- [x] `TF-002.8` Implementar "Alertarme si cambia" (email, Premium)
 - [x] `TF-002.9` PWA: página principal como consulta (cambio de routing)
-- [ ] `TF-002.10` Tests E2E con Playwright (flujo consulta + reporte)
+- [x] `TF-002.10` Tests E2E con Playwright (flujo consulta + reporte)
 
 ---
 
@@ -38,9 +38,9 @@
 
 ## 3. INFRAESTRUCTURA
 
-- [ ] `TI-002.1` Índice en `identifier_hash` (PostgreSQL)
-- [ ] `TI-002.2` Cache de consultas frecuentes (Redis, TTL 1h)
-- [ ] `TI-002.3` Nginx: cache de respuestas 200 para consultas repetidas (5 min)
+- [x] `TI-002.1` Índice en `identifier_hash` (PostgreSQL)
+- [x] `TI-002.2` Cache de consultas frecuentes (Redis, TTL 1h)
+- [x] `TI-002.3` Nginx: cache de respuestas 200 para consultas repetidas (5 min)
 
 ---
 
