@@ -19,6 +19,27 @@ function detectType(value) {
   return "text";
 }
 
+const CATEGORY_LABELS = {
+  contacto_inapropiado: "Contacto inapropiado",
+  solicitud_material: "Solicitud de material sexual",
+  grooming: "Grooming / Engaño",
+  cita_persona: "Cita en persona",
+  extorsion: "Extorsión",
+  desconocido: "Desconocido",
+  otro: "Otro",
+};
+
+function formatDate(value) {
+  if (!value) return null;
+  const d = new Date(value);
+  if (Number.isNaN(d.getTime())) return value;
+  return d.toLocaleDateString("es-CO", {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+  });
+}
+
 const LEVEL_STYLES = {
   verde: {
     bg: "bg-green-50",
@@ -163,21 +184,74 @@ export default function SearchView() {
           </div>
           <p className="text-base mb-4">{result.message}</p>
           {result.report_count > 0 && (
-            <ul className="text-sm space-y-1 mb-4">
-              <li>Reportes asociados: {result.report_count}</li>
-              <li>Categorías: {result.categories?.join(", ") || "—"}</li>
-              <li>
-                Score: promedio {result.score_average ?? "—"}, máximo{" "}
-                {result.score_max ?? "—"}
-              </li>
-              <li>
-                Geografía: {result.cities_count} ciudad(es),{" "}
-                {result.countries_count} país(es)
-              </li>
-              {result.is_network && (
-                <li className="font-semibold">⚠️ Posible red de contacto</li>
+            <div className="mb-4 space-y-4 text-sm">
+              <div className="grid grid-cols-2 gap-3">
+                <div className="rounded-lg bg-white/60 p-3 text-center">
+                  <p className="text-2xl font-bold">{result.report_count}</p>
+                  <p className="text-xs opacity-80">reportes</p>
+                </div>
+                <div className="rounded-lg bg-white/60 p-3 text-center">
+                  <p className="text-2xl font-bold">
+                    {result.score_average != null
+                      ? Number(result.score_average).toFixed(2)
+                      : "—"}
+                  </p>
+                  <p className="text-xs opacity-80">score promedio</p>
+                </div>
+                <div className="rounded-lg bg-white/60 p-3 text-center">
+                  <p className="text-2xl font-bold">{result.cities_count ?? 0}</p>
+                  <p className="text-xs opacity-80">ciudades</p>
+                </div>
+                <div className="rounded-lg bg-white/60 p-3 text-center">
+                  <p className="text-2xl font-bold">{result.countries_count ?? 0}</p>
+                  <p className="text-xs opacity-80">países</p>
+                </div>
+              </div>
+
+              {result.categories?.length > 0 && (
+                <div>
+                  <p className="mb-2 text-xs font-semibold uppercase tracking-wide opacity-70">
+                    Categorías reportadas
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    {result.categories.map((cat) => (
+                      <span
+                        key={cat}
+                        className="rounded-full bg-white/70 px-3 py-1 text-xs font-medium"
+                      >
+                        {CATEGORY_LABELS[cat] || cat}
+                      </span>
+                    ))}
+                  </div>
+                </div>
               )}
-            </ul>
+
+              <div>
+                <p className="mb-2 text-xs font-semibold uppercase tracking-wide opacity-70">
+                  Línea de tiempo
+                </p>
+                <div className="space-y-2">
+                  <div className="flex justify-between rounded-lg bg-white/50 px-3 py-2">
+                    <span>Primera vez reportado</span>
+                    <span className="font-medium">
+                      {formatDate(result.first_reported_at) || "—"}
+                    </span>
+                  </div>
+                  <div className="flex justify-between rounded-lg bg-white/50 px-3 py-2">
+                    <span>Última vez reportado</span>
+                    <span className="font-medium">
+                      {formatDate(result.last_reported_at) || "—"}
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              {result.is_network && (
+                <p className="rounded-lg bg-red-100/50 p-2 text-center font-semibold">
+                  ⚠️ Posible red de contacto
+                </p>
+              )}
+            </div>
           )}
           <div className="flex flex-col gap-2">
             <button
