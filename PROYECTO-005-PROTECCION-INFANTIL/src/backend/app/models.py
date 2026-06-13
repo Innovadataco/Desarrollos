@@ -50,6 +50,7 @@ class Report(Base):
         default=lambda: datetime.now(timezone.utc),
         nullable=False,
     )
+    reported_at_bucket = Column(DateTime(timezone=True), nullable=True)
     updated_at = Column(
         DateTime(timezone=True),
         default=lambda: datetime.now(timezone.utc),
@@ -78,7 +79,9 @@ class Evidence(Base):
     kind = Column(String(20), nullable=False)
     content = Column(LargeBinary, nullable=True)
     file_path = Column(String(255), nullable=True)
+    thumbnail_path = Column(String(255), nullable=True)
     original_filename = Column(String(255), nullable=True)
+    is_encrypted = Column(Boolean, nullable=False, default=True)
     source = Column(String(20), nullable=False, default="user_upload")
     created_at = Column(
         DateTime(timezone=True),

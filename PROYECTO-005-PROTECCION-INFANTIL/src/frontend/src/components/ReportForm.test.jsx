@@ -16,7 +16,9 @@ async function fillAndSubmit() {
     target: { value: "Descripción del incidente suficiente" },
   });
   fireEvent.click(screen.getByRole("button", { name: /Siguiente/i }));
-  // Step 3: confirm and submit
+  // Step 3: evidence (optional)
+  fireEvent.click(screen.getByRole("button", { name: /Siguiente/i }));
+  // Step 4: review, confirm and submit
   fireEvent.click(screen.getByLabelText(/Confirmo que esta información es veraz/i));
   fireEvent.click(screen.getByRole("button", { name: /Enviar reporte anónimo/i }));
 }

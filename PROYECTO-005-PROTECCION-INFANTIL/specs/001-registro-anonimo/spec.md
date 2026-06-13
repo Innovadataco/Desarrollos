@@ -5,7 +5,7 @@
 **Fecha:** 13 de junio de 2026  
 **Versión:** 2.0 (Actualizado con PWA + Evidencia Multimedia)  
 **Autor:** ZEUS / ODIN  
-**Estado:** ✅ Completado
+**Estado:** 🚧 En corrección / Pendiente de validación por ZEUS
 
 ---
 
@@ -173,16 +173,18 @@ El usuario selecciona una categoría al reportar. Esto alimenta el modelo de IA 
 
 ## 9. CRITERIOS DE ACEPTACIÓN (DoD)
 
-- [x] Formulario funciona en móvil (viewport 320px+)
-- [x] POST /api/reportes retorna hash único de 64 caracteres
-- [x] Encriptación AES-256-GCM — validado con test de cifrado/descifrado
-- [x] Rate limiting funciona — 6to reporte retorna 429
-- [x] Ningún header de tracking en response
-- [x] Evidencia multimedia se encripta y almacena correctamente
-- [x] Thumbnail se genera para imágenes
-- [x] EXIF se elimina antes de encriptar
-- [x] Cobertura de tests ≥ 80%
-- [x] PWA instala desde navegador (manifest + service worker)
+- [ ] Formulario funciona en móvil (viewport 320px+)
+- [ ] POST /api/reportes retorna hash único de 64 caracteres
+- [ ] Encriptación AES-256-GCM — validado con test de cifrado/descifrado
+- [ ] Rate limiting funciona — 6to reporte retorna 429
+- [ ] Ningún header de tracking en response
+- [ ] Evidencia multimedia se encripta y almacena correctamente
+- [ ] Thumbnail se genera para imágenes
+- [ ] EXIF se elimina antes de encriptar
+- [ ] Cobertura de tests ≥ 80%
+- [ ] PWA instala desde navegador (manifest + service worker)
+
+> **Nota de corrección ODIN-001:** Este módulo fue declarado "completado" de forma prematura. Las casillas anteriores no pueden marcarse hasta que ZEUS firme el Acta de Validación correspondiente.
 
 ---
 

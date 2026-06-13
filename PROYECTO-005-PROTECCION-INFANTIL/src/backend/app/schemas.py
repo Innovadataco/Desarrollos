@@ -24,6 +24,7 @@ class ReportCreate(BaseModel):
     ] = "desconocido"
     evidence: EvidenceCreate | None = None
     consent_location: bool = False
+    honeypot: str | None = Field(default=None, max_length=255)
 
     @field_validator("reported_identifier")
     @classmethod

@@ -1,15 +1,21 @@
 """Gestión segura de archivos de evidencia."""
 
+import io
+import logging
 import mimetypes
-import shutil
 import uuid
 from pathlib import Path
 from typing import BinaryIO
 
 from fastapi import HTTPException, UploadFile
+from PIL import Image
 from sqlalchemy.orm import Session
 
+from app.config import settings
 from app.models import Evidence, Report
+from app.services.encryption import decrypt_file, encrypt_file
+
+logger = logging.getLogger(__name__)
 
 _ALLOWED_MIME_EXTENSIONS = {
     "image/png": ".png",
@@ -27,8 +33,10 @@ _ALLOWED_MIME_EXTENSIONS = {
     "video/webm": ".webm",
 }
 
+_IMAGE_EXTENSIONS = {".png", ".jpg", ".jpeg", ".webp", ".gif"}
 _MAX_FILE_SIZE_BYTES = 10 * 1024 * 1024  # 10 MB
 _UPLOAD_DIR = Path(__file__).resolve().parents[3] / "uploads"
+_THUMBNAIL_SIZE = (256, 256)
 
 
 def _ensure_upload_dir() -> Path:
@@ -46,6 +54,40 @@ def _sanitize_filename(filename: str) -> str:
     return name.strip() or "evidencia"
 
 
+def _is_image(extension: str) -> bool:
+    return extension.lower() in _IMAGE_EXTENSIONS
+
+
+def _strip_exif(content: bytes) -> bytes:
+    """Elimina metadatos EXIF de imágenes compatibles. Si falla, retorna original."""
+    try:
+        image = Image.open(io.BytesIO(content))
+        # Creamos una copia limpia descartando información EXIF/ICC.
+        data = io.BytesIO()
+        if image.mode in ("RGBA", "P"):
+            image.save(data, format=image.format or "PNG")
+        else:
+            image.save(data, format=image.format or "JPEG")
+        return data.getvalue()
+    except Exception as exc:
+        logger.warning("No se pudieron eliminar metadatos EXIF: %s", exc)
+        return content
+
+
+def _create_thumbnail(content: bytes, extension: str) -> bytes | None:
+    """Genera una miniatura cuadrada para previsualización."""
+    try:
+        image = Image.open(io.BytesIO(content))
+        image.thumbnail(_THUMBNAIL_SIZE)
+        fmt = "PNG" if extension.lower() == ".png" else "JPEG"
+        data = io.BytesIO()
+        image.convert("RGB" if fmt == "JPEG" else None).save(data, format=fmt)
+        return data.getvalue()
+    except Exception as exc:
+        logger.warning("No se pudo generar thumbnail: %s", exc)
+        return None
+
+
 def validate_upload(file: UploadFile) -> tuple[str, str]:
     content_type = file.content_type or "application/octet-stream"
     extension = _ALLOWED_MIME_EXTENSIONS.get(content_type)
@@ -59,6 +101,12 @@ def validate_upload(file: UploadFile) -> tuple[str, str]:
             detail=f"Tipo de archivo no permitido: {content_type}",
         )
     return content_type, extension
+
+
+def _write_encrypted(path: Path, content: bytes) -> None:
+    encrypted = encrypt_file(content, settings.encryption_kek())
+    with open(path, "wb") as buffer:
+        buffer.write(encrypted)
 
 
 def save_evidence_file(
@@ -81,23 +129,31 @@ def save_evidence_file(
             detail=f"Archivo demasiado grande. Máximo {_MAX_FILE_SIZE_BYTES // (1024 * 1024)} MB.",
         )
 
+    if _is_image(extension):
+        content = _strip_exif(content)
+
     upload_dir = _ensure_upload_dir()
     safe_name = _sanitize_filename(file.filename or "evidencia")
-    # Evitar colisiones: hash aleatorio + extensión confiable.
-    stored_name = f"{report_hash}_{uuid.uuid4().hex}{extension}"
+    stored_name = f"{report_hash}_{uuid.uuid4().hex}{extension}.enc"
     file_path = upload_dir / stored_name
+    _write_encrypted(file_path, content)
 
-    with open(file_path, "wb") as buffer:
-        buffer.write(content)
-        # Si el archivo es mayor al chunk leído (no debería tras validación),
-        # copiar el resto.
-        shutil.copyfileobj(file.file, buffer)
+    thumbnail_path: str | None = None
+    if _is_image(extension):
+        thumb_content = _create_thumbnail(content, extension)
+        if thumb_content:
+            thumb_name = f"{report_hash}_{uuid.uuid4().hex}_thumb{extension}.enc"
+            thumb_path = upload_dir / thumb_name
+            _write_encrypted(thumb_path, thumb_content)
+            thumbnail_path = str(thumb_path)
 
     evidence = Evidence(
         report_id=report.id,
         kind=extension.lstrip("."),
         file_path=str(file_path),
+        thumbnail_path=thumbnail_path,
         original_filename=safe_name,
+        is_encrypted=True,
         source="user_upload",
     )
     db.add(evidence)
@@ -112,5 +168,8 @@ def read_evidence_file(evidence: Evidence) -> tuple[BinaryIO, str | None]:
             status_code=404, detail="Archivo de evidencia no encontrado"
         )
     file_path = Path(evidence.file_path)
-    content_type = mimetypes.guess_type(file_path.name)[0]
-    return open(file_path, "rb"), content_type
+    content = file_path.read_bytes()
+    if evidence.is_encrypted:
+        content = decrypt_file(content, settings.encryption_kek())
+    content_type = mimetypes.guess_type(evidence.original_filename or file_path.name)[0]
+    return io.BytesIO(content), content_type

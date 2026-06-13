@@ -1,3 +1,4 @@
+import hashlib
 from datetime import datetime, timezone
 
 from fastapi import APIRouter, Depends, HTTPException, Request, status
@@ -13,6 +14,7 @@ from app.services.encryption import encrypt_field, generate_report_hash
 from app.services.identifier import detect_identifier_type, hash_identifier
 from app.services.profile_service import update_profile_from_report
 from app.services.rate_limit import check_rate_limit
+from app.utils.time import truncate_to_hours
 
 router = APIRouter(prefix="/api/v1/reportes", tags=["reportes"])
 MAX_HASH_RETRIES = 5
@@ -24,7 +26,11 @@ def _check_rate_limit(request: Request, db: Session):
         check_rate_limit(request, scope="report", identifier=client_ip)
     except HTTPException as exc:
         _log_audit(
-            db, "rate_limit", client_ip, None, f"HTTP {exc.status_code}: {exc.detail}"
+            db,
+            "rate_limit",
+            _hash_ip(client_ip),
+            None,
+            f"HTTP {exc.status_code}: {exc.detail}",
         )
         raise
 
@@ -34,6 +40,10 @@ def _get_client_ip(request: Request) -> str:
     if forwarded:
         return forwarded.split(",")[0].strip()
     return request.client.host if request.client else "unknown"
+
+
+def _hash_ip(ip: str) -> str:
+    return hashlib.sha256(ip.encode("utf-8")).hexdigest()
 
 
 def _log_audit(
@@ -65,6 +75,21 @@ def create_report(
     db: Session = Depends(get_db),
 ):
     _check_rate_limit(request, db)
+
+    if payload.honeypot and payload.honeypot.strip():
+        client_ip = _get_client_ip(request)
+        _log_audit(
+            db,
+            "honeypot_triggered",
+            _hash_ip(client_ip),
+            None,
+            "Campo honeypot completado",
+        )
+        db.commit()
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Solicitud no válida.",
+        )
 
     reported_at = datetime.now(timezone.utc)
     identifier_stripped = payload.reported_identifier.strip().lower()
@@ -102,6 +127,7 @@ def create_report(
         country=country,
         consent_location=bool(payload.consent_location),
         reported_at=reported_at,
+        reported_at_bucket=truncate_to_hours(reported_at, 6),
         status="received",
     )
 
@@ -144,7 +170,7 @@ def create_report(
             _log_audit(
                 db,
                 "report_created",
-                _get_client_ip(request),
+                _hash_ip(_get_client_ip(request)),
                 report_hash,
                 "Reporte recibido",
             )

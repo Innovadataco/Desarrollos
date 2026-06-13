@@ -89,7 +89,9 @@ export default function ReportForm({ prefillIdentifier = "" }) {
   const [evidenceFile, setEvidenceFile] = useState(null);
   const [filePreview, setFilePreview] = useState(null);
   const [confirmed, setConfirmed] = useState(false);
+  const [honeypot, setHoneypot] = useState("");
   const [loading, setLoading] = useState(false);
+  const [copied, setCopied] = useState(false);
   const [result, setResult] = useState(null);
   const [error, setError] = useState(null);
 
@@ -102,7 +104,8 @@ export default function ReportForm({ prefillIdentifier = "" }) {
   const isIdentifierValid = selected ? selected.validate(identifier) : identifier.trim().length >= 1;
   const canNext =
     (step === 1 && type) ||
-    (step === 2 && isIdentifierValid && description.trim().length >= 10);
+    (step === 2 && isIdentifierValid && description.trim().length >= 10) ||
+    step === 3;
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];
@@ -140,6 +143,7 @@ export default function ReportForm({ prefillIdentifier = "" }) {
       reported_identifier: identifier,
       description,
       category: selected?.category || "otro",
+      honeypot,
     };
 
     try {
@@ -197,8 +201,21 @@ export default function ReportForm({ prefillIdentifier = "" }) {
     setEvidenceFile(null);
     setFilePreview(null);
     setConfirmed(false);
+    setHoneypot("");
+    setCopied(false);
     setResult(null);
     setError(null);
+  };
+
+  const copyHash = async () => {
+    if (!result?.report_hash) return;
+    try {
+      await navigator.clipboard.writeText(result.report_hash);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch {
+      setError("No se pudo copiar el código. Escríbelo manualmente.");
+    }
   };
 
   if (result) {
@@ -237,8 +254,20 @@ export default function ReportForm({ prefillIdentifier = "" }) {
         </p>
       </div>
 
+      {/* Honeypot oculto: los bots lo llenan, los humanos no. */}
+      <input
+        type="text"
+        name="website"
+        value={honeypot}
+        onChange={(e) => setHoneypot(e.target.value)}
+        tabIndex={-1}
+        autoComplete="off"
+        aria-hidden="true"
+        className="absolute opacity-0 pointer-events-none h-0 w-0"
+      />
+
       <div className="flex justify-center gap-2" aria-label="Progreso">
-        {[1, 2, 3].map((s) => (
+        {[1, 2, 3, 4].map((s) => (
           <span
             key={s}
             className={`h-3 w-3 rounded-full ${
@@ -319,10 +348,10 @@ export default function ReportForm({ prefillIdentifier = "" }) {
 
       {step === 3 && (
         <div className="space-y-4">
-          <p className="font-semibold text-gray-800">Paso 3: Evidencia y confirmación</p>
+          <p className="font-semibold text-gray-800">Paso 3: Evidencia (opcional)</p>
           <div>
             <label htmlFor="evidence" className="block text-sm font-medium text-gray-700">
-              Adjuntar evidencia (opcional)
+              Adjuntar evidencia
             </label>
             <input
               id="evidence"
@@ -347,6 +376,31 @@ export default function ReportForm({ prefillIdentifier = "" }) {
                     className="mt-2 max-h-40 rounded border border-gray-300"
                   />
                 )}
+              </div>
+            )}
+          </div>
+        </div>
+      )}
+
+      {step === 4 && (
+        <div className="space-y-4">
+          <p className="font-semibold text-gray-800">Paso 4: Revisa y envía</p>
+          <div className="rounded-lg border border-gray-200 bg-gray-50 p-4 space-y-3 text-sm text-gray-800">
+            <div>
+              <span className="font-semibold">Tipo:</span> {selected?.label || type}
+            </div>
+            <div>
+              <span className="font-semibold">Identificador:</span>{" "}
+              <span className="font-mono">{identifier}</span>
+            </div>
+            <div>
+              <span className="font-semibold">Descripción:</span>
+              <p className="mt-1 whitespace-pre-wrap">{description}</p>
+            </div>
+            {evidenceFile && (
+              <div>
+                <span className="font-semibold">Evidencia:</span> {evidenceFile.name} (
+                {(evidenceFile.size / 1024 / 1024).toFixed(2)} MB)
               </div>
             )}
           </div>
@@ -382,7 +436,7 @@ export default function ReportForm({ prefillIdentifier = "" }) {
         ) : (
           <div className="flex-1" />
         )}
-        {step < 3 ? (
+        {step < 4 ? (
           <button
             type="button"
             onClick={() => setStep(step + 1)}

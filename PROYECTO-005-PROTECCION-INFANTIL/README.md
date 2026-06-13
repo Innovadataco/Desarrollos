@@ -52,7 +52,7 @@ Cada identificador consultado muestra un **semáforo de confianza comunitaria**:
 ┌──────────────────────────────────────────────────────────────────────────┐
 │  BACKEND — FastAPI + SQLAlchemy + PostgreSQL                            │
 │  ┌────────────────────────────────────────────────────────────────────┐  │
-│  │ MÓDULO 001: Registro Anónimo (COMPLETADO)                         │  │
+│  │ MÓDULO 001: Registro Anónimo (🚧 EN CORRECCIÓN / NO VALIDADO)      │  │
 │  │ POST /api/reportes — Encriptación AES-256-GCM, rate limiting    │  │
 │  └────────────────────────────────────────────────────────────────────┘  │
 │  ┌────────────────────────────────────────────────────────────────────┐  │
@@ -151,7 +151,7 @@ Cada identificador consultado muestra un **semáforo de confianza comunitaria**:
 
 ```
 specs/
-├── 001-registro-anonimo/          # Módulo 001 (COMPLETADO)
+├── 001-registro-anonimo/          # Módulo 001 (🚧 EN CORRECCIÓN / NO VALIDADO)
 │   ├── spec.md
 │   ├── plan.md
 │   └── tasks.md

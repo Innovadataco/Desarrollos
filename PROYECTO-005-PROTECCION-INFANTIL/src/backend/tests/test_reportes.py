@@ -203,3 +203,30 @@ def test_no_metadata_columns_in_report_model():
     forbidden = {"ip_address", "user_agent", "cookies", "device_metadata"}
     columns = {c.name for c in Report.__table__.columns}
     assert forbidden.isdisjoint(columns)
+
+
+def test_honeypot_rejects_request(client, db_session):
+    payload = {
+        "reported_identifier": "+573001234567",
+        "description": "Recibí mensajes inapropiados",
+        "honeypot": "spam bot value",
+    }
+    response = client.post(REPORT_ENDPOINT, json=payload)
+    assert response.status_code == status.HTTP_400_BAD_REQUEST
+    assert db_session.query(Report).count() == 0
+
+
+def test_reported_at_bucket_truncated_to_6h(client, db_session):
+    payload = {
+        "reported_identifier": "+573001234567",
+        "description": "Recibí mensajes inapropiados",
+    }
+    response = client.post(REPORT_ENDPOINT, json=payload)
+    assert response.status_code == status.HTTP_201_CREATED
+
+    report = db_session.query(Report).first()
+    assert report.reported_at_bucket is not None
+    assert report.reported_at_bucket.minute == 0
+    assert report.reported_at_bucket.second == 0
+    assert report.reported_at_bucket.microsecond == 0
+    assert report.reported_at_bucket.hour % 6 == 0

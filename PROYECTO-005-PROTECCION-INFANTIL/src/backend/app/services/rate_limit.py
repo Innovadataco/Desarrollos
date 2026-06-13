@@ -1,10 +1,11 @@
+import hashlib
 import logging
 import time
 from collections import defaultdict
 from threading import Lock
 
 from fastapi import HTTPException, Request
-from limits import RateLimitItemPerMinute
+from limits import RateLimitItemPerHour
 from limits.storage import MemoryStorage, RedisStorage
 from limits.strategies import MovingWindowRateLimiter
 
@@ -109,7 +110,10 @@ def get_client_ip(request: Request) -> str:
 
 
 def _make_key(scope: str, identifier: str) -> str:
-    return f"{scope}:{identifier}"
+    # Normalizamos y hasheamos el identificador (IP) para no almacenar PII.
+    normalized = identifier.strip().lower().encode("utf-8")
+    hashed = hashlib.sha256(normalized).hexdigest()
+    return f"{scope}:{hashed}"
 
 
 def check_rate_limit(
@@ -127,8 +131,8 @@ def check_rate_limit(
             )
         return
 
-    item = RateLimitItemPerMinute(limit)
-    if not _limiter.hit(item, f"{scope}:{key}"):
+    item = RateLimitItemPerHour(limit)
+    if not _limiter.hit(item, _make_key(scope, key)):
         raise HTTPException(
             status_code=429,
             detail="Has alcanzado el límite de solicitudes. Intenta más tarde.",
