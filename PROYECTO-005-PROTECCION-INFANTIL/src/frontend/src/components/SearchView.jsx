@@ -107,12 +107,28 @@ export default function SearchView() {
     }
   };
 
-  const handleShare = () => {
+  const handleShare = async () => {
     const url = `${window.location.origin}${window.location.pathname}?ref=consulta`;
-    navigator.clipboard.writeText(url).then(() => {
+    const text = result
+      ? `Semáforo de Confianza: ${style?.label || result.semaforo}. Consulta contactos sospechosos de forma anónima.`
+      : "Consulta contactos sospechosos de forma anónima en el Semáforo de Confianza.";
+
+    if (navigator.share) {
+      try {
+        await navigator.share({ title: "Semáforo de Confianza", text, url });
+        return;
+      } catch (err) {
+        if (err.name === "AbortError") return;
+      }
+    }
+
+    try {
+      await navigator.clipboard.writeText(`${text} ${url}`);
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
-    });
+    } catch {
+      // ignore
+    }
   };
 
   const style = result ? LEVEL_STYLES[result.semaforo] || LEVEL_STYLES.verde : null;

@@ -66,4 +66,38 @@ describe("SearchView", () => {
     expect(screen.getByText(/múltiples reportes/i)).toBeInTheDocument();
     expect(screen.getByText(/Posible red de contacto/i)).toBeInTheDocument();
   });
+
+  it("comparte la URL sin incluir el identificador buscado", async () => {
+    fetch.mockResolvedValueOnce({
+      ok: true,
+      json: async () => ({
+        identifier_hash: "abc123",
+        semaforo: "verde",
+        report_count: 0,
+        message: "Sin reportes.",
+        report_button: true,
+      }),
+    });
+
+    setup();
+    const input = screen.getByRole("textbox", { name: /número o identificador/i });
+    fireEvent.change(input, { target: { value: "+573001234567" } });
+    fireEvent.click(screen.getByRole("button", { name: /buscar/i }));
+
+    await waitFor(() =>
+      expect(screen.getByText("Sin reportes previos")).toBeInTheDocument()
+    );
+
+    fireEvent.click(screen.getByRole("button", { name: /compartir resultado/i }));
+
+    await waitFor(() => {
+      expect(navigator.clipboard.writeText).toHaveBeenCalledWith(
+        expect.stringContaining("?ref=consulta")
+      );
+    });
+
+    const written = navigator.clipboard.writeText.mock.calls[0][0];
+    expect(written).not.toContain("+573001234567");
+    expect(written).not.toContain("3001234567");
+  });
 });
