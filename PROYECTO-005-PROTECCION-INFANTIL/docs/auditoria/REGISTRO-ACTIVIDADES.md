@@ -82,11 +82,18 @@
 - **Contexto:** Corrección de bugs encontrados en ACTA-CORRECCION-ODIN-001.md. Bugs: rate limiting, CSS mobile, logo desaparece, otros.
 
 #### FIN (Registrado por ODIN)
-- **Fecha/hora fin:** PENDIENTE — ODIN aún trabajando
-- **Registrado por:** PENDIENTE
-- **Estado declarado:** PENDIENTE
-- **Entregables:** PENDIENTE
-- **Notas:** PENDIENTE
+- **Fecha/hora fin:** 2026-06-14 04:40 CST (Shanghai) / 15:40 (Bogotá)
+- **Registrado por:** ODIN
+- **Estado declarado:** LISTO PARA VALIDACIÓN
+- **Entregables:**
+  1. [fa03d23](https://github.com/Innovadataco/Desarrollos/commit/fa03d23) — docs: corrige estado del Módulo 001 a 'en corrección'
+  2. [0f53748](https://github.com/Innovadataco/Desarrollos/commit/0f53748) — fix: hashea IP en rate limiting fallback
+  3. [a947d56](https://github.com/Innovadataco/Desarrollos/commit/a947d56) — feat: alinea modelo Report con SPEC-001
+  4. [331df10](https://github.com/Innovadataco/Desarrollos/commit/331df10) — feat: selector de categorías CAT-01..CAT-06
+  5. [edd4cb8](https://github.com/Innovadataco/Desarrollos/commit/edd4cb8) — feat: zona drag & drop para evidencia multimedia
+  6. [e5e140b](https://github.com/Innovadataco/Desarrollos/commit/e5e140b) — feat: infraestructura con TLS 1.3 staging
+  7. [f257ab2](https://github.com/Innovadataco/Desarrollos/commit/f257ab2) — docs: METODOLOGIA-ODIN.md
+- **Notas:** Todas las correcciones referencian `ACTA-CORRECCION-ODIN-001-v2.md`. Tests backend (110) y frontend (6) pasan.
 
 #### AUDITORÍA (Registrado por ZEUS)
 - **Fecha/hora inicio auditoría:** 2026-06-14 04:07 CST (Shanghai) / 03:07 (Bogotá)
@@ -143,7 +150,7 @@
 
 | ACT | Módulo | Descripción | Inicio ODIN | Fin ODIN | Estado ODIN | Inicio ZEUS | Fin ZEUS | Resultado ZEUS | Acta |
 |-----|--------|-------------|-------------|----------|-------------|-------------|----------|----------------|------|
-| 001 | 001 | Corrección bugs | 2026-06-14 02:40 | PENDIENTE | PENDIENTE | PENDIENTE | PENDIENTE | PENDIENTE | PENDIENTE |
+| 001 | 001 | Corrección bugs | 2026-06-14 02:40 | 2026-06-14 04:40 | LISTO PARA VALIDACIÓN | PENDIENTE | PENDIENTE | PENDIENTE | PENDIENTE |
 | 002 | 002 | Implementación | PENDIENTE | PENDIENTE | PENDIENTE | PENDIENTE | PENDIENTE | PENDIENTE | PENDIENTE |
 | 003 | 003 | IA Triage | PENDIENTE | PENDIENTE | PENDIENTE | PENDIENTE | PENDIENTE | PENDIENTE | PENDIENTE |
 | 004 | 004 | Clustering | PENDIENTE | PENDIENTE | PENDIENTE | PENDIENTE | PENDIENTE | PENDIENTE | PENDIENTE |
