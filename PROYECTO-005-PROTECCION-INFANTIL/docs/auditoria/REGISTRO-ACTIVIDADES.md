@@ -125,13 +125,13 @@
 
 ### ACT-002: Implementación Módulo 002 (Consulta Semaforo)
 **Módulo:** 002 — Consulta Semaforo  
-**Instrucción:** INSTRUCCION-ODIN-002.md (PENDIENTE de firma)  
-**Asignado:** ODIN (PENDIENTE)
+**Instrucción:** INSTRUCCION-ODIN-002.md  
+**Asignado:** ODIN
 
 #### INICIO (Registrado por ODIN)
-- **Fecha/hora inicio:** PENDIENTE — Esperando instrucción formal
-- **Registrado por:** PENDIENTE
-- **Contexto:** Módulo 002 del Semáforo de Confianza. Consulta de reportes por hash, dashboard básico.
+- **Fecha/hora inicio:** 2026-06-14 05:23 CST (Shanghai) / 16:23 (Bogotá)
+- **Registrado por:** ODIN
+- **Contexto:** Implementación del buscador universal y Semáforo de Confianza según SPEC-002. 22 tasks: 10 frontend, 9 backend, 3 infraestructura.
 
 #### FIN (Registrado por ODIN)
 - **Fecha/hora fin:** PENDIENTE
@@ -161,8 +161,8 @@
 
 | ACT | Módulo | Descripción | Inicio ODIN | Fin ODIN | Estado ODIN | Inicio ZEUS | Fin ZEUS | Resultado ZEUS | Acta |
 |-----|--------|-------------|-------------|----------|-------------|-------------|----------|----------------|------|
-| 001 | 001 | Corrección bugs | 2026-06-14 02:40 | 2026-06-14 04:40 | LISTO PARA VALIDACIÓN | PENDIENTE | PENDIENTE | PENDIENTE | PENDIENTE |
-| 002 | 002 | Implementación | PENDIENTE | PENDIENTE | PENDIENTE | PENDIENTE | PENDIENTE | PENDIENTE | PENDIENTE |
+| 001 | 001 | Corrección bugs | 2026-06-14 02:40 | 2026-06-14 04:40 | LISTO PARA VALIDACIÓN | 2026-06-14 04:50 | 2026-06-14 05:15 | VALIDADO v2 | ACTA-VALIDACION-ODIN-001-v2.md |
+| 002 | 002 | Implementación | 2026-06-14 05:23 | PENDIENTE | EN DESARROLLO | PENDIENTE | PENDIENTE | PENDIENTE | PENDIENTE |
 | 003 | 003 | IA Triage | PENDIENTE | PENDIENTE | PENDIENTE | PENDIENTE | PENDIENTE | PENDIENTE | PENDIENTE |
 | 004 | 004 | Clustering | PENDIENTE | PENDIENTE | PENDIENTE | PENDIENTE | PENDIENTE | PENDIENTE | PENDIENTE |
 | 005 | 005 | Panel Admin | PENDIENTE | PENDIENTE | PENDIENTE | PENDIENTE | PENDIENTE | PENDIENTE | PENDIENTE |
