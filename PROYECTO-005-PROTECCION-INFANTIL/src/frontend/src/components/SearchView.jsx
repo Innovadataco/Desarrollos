@@ -26,6 +26,7 @@ const LEVEL_STYLES = {
     text: "text-green-800",
     badge: "bg-green-600",
     label: "Sin reportes previos",
+    emoji: "🟢",
   },
   amarillo: {
     bg: "bg-yellow-50",
@@ -33,6 +34,7 @@ const LEVEL_STYLES = {
     text: "text-yellow-800",
     badge: "bg-yellow-500",
     label: "Precaución: reportes previos",
+    emoji: "🟡",
   },
   rojo: {
     bg: "bg-red-50",
@@ -40,6 +42,7 @@ const LEVEL_STYLES = {
     text: "text-red-800",
     badge: "bg-red-600",
     label: "Riesgo alto",
+    emoji: "🔴",
   },
   negro: {
     bg: "bg-gray-900",
@@ -47,6 +50,7 @@ const LEVEL_STYLES = {
     text: "text-white",
     badge: "bg-red-700",
     label: "Riesgo crítico: posible red organizada",
+    emoji: "⚫",
   },
 };
 
@@ -152,10 +156,9 @@ export default function SearchView() {
           className={`rounded-xl border p-5 shadow-md transition-all duration-500 ease-out animate-fade-in ${style.bg} ${style.border} ${style.text}`}
         >
           <div className="flex items-center gap-3 mb-3">
-            <span
-              className={`inline-block h-4 w-4 rounded-full ${style.badge}`}
-              aria-hidden="true"
-            />
+            <span className="text-2xl" aria-hidden="true">
+              {style.emoji}
+            </span>
             <h3 className="text-lg font-bold">{style.label}</h3>
           </div>
           <p className="text-base mb-4">{result.message}</p>
@@ -181,7 +184,7 @@ export default function SearchView() {
               onClick={() => navigate(`/report?identifier=${encodeURIComponent(identifier)}`)}
               className="w-full rounded-lg bg-[#E74C3C] py-3 text-white font-semibold transition-transform duration-200 hover:scale-[1.02] active:scale-95"
             >
-              📣 Reportar este {result.identifier_type === "email" ? "correo" : "identificador"}
+              📣 Reportar este {detectType(identifier) === "email" ? "correo" : "identificador"}
             </button>
             <button
               onClick={handleShare}
