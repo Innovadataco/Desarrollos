@@ -193,7 +193,7 @@ docs/
 
 | Fase | Módulo | Fecha | Estado | Horas |
 |------|--------|-------|--------|-------|
-| 1 | 001 Registro Anónimo | Junio 2026 | ✅ Completado | 40h |
+| 1 | 001 Registro Anónimo | Junio 2026 | 🚧 En corrección — pendiente validación ZEUS | 40h |
 | 2 | 002 Consulta Semáforo | Julio 2026 | ⬜ Nuevo | 36h |
 | 3 | 003 IA Triage | Agosto 2026 | ⬜ Nuevo | 48h |
 | 4 | 004 Clustering + Perfil | Septiembre 2026 | ⬜ Nuevo | 54h |
