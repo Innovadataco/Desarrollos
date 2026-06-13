@@ -8,6 +8,8 @@ Sistema de reporte anónimo y seguro para incidentes de protección infantil.
 - **Backend:** FastAPI + SQLAlchemy + PostgreSQL/SQLite
 - **Encriptación:** AES-256-GCM (DEK por campo, KEK derivada)
 - **Rate Limiting:** Redis (prod) / Memoria (dev)
+- **CI/CD:** GitHub Actions
+- **Contenedores:** Docker + Docker Compose
 
 ## Variables de Entorno
 
@@ -18,7 +20,23 @@ Copiar `src/backend/.env.example` a `src/backend/.env` y configurar:
 - `ENVIRONMENT` — `development` o `production`
 - `REDIS_URL` — opcional, para rate limiting distribuido
 
-## Levantar
+## Levantar con Docker Compose
+
+```bash
+docker compose up -d
+```
+
+- Frontend: http://localhost:5173
+- Backend: http://localhost:8000
+- Documentación API: http://localhost:8000/docs
+
+Para detener:
+
+```bash
+docker compose down
+```
+
+## Levantar manualmente
 
 Backend:
 
@@ -59,11 +77,20 @@ npx playwright install chromium webkit
 npm run e2e
 ```
 
-Para ver la ejecución en Safari/WebKit:
+Para ver la ejecución en Safari/WebKit localmente:
 
 ```bash
 npm run e2e -- --project=webkit --headed
 ```
+
+## CI/CD
+
+El workflow `.github/workflows/ci.yml` ejecuta automáticamente:
+
+- Lint y formato del backend (`ruff`, `black`)
+- Tests del backend con cobertura (`pytest`)
+- Tests unitarios del frontend (`vitest`)
+- Build de producción del frontend (`vite build`)
 
 ## Decisiones de Arquitectura
 
@@ -72,3 +99,4 @@ npm run e2e -- --project=webkit --headed
 - **PostgreSQL en prod:** Escalable, con backups.
 - **Rate limiting por IP:** Protección básica sin identificar usuarios.
 - **Sin metadata identificable:** No se guardan IPs, user-agents, cookies ni datos de navegador.
+- **Docker Compose:** Entorno de desarrollo reproducible y portable.
