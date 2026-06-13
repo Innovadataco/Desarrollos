@@ -1,5 +1,6 @@
 from fastapi import status
 
+from app.routers.consultas import _calculate_semaphore
 from app.services.identifier import hash_identifier
 
 REPORT_ENDPOINT = "/api/v1/reportes"
@@ -37,6 +38,16 @@ def test_validate_not_found(client):
     data = response.json()
     assert data["semaforo"] == "verde"
     assert data["report_count"] == 0
+
+
+def test_calculate_semaphore_rules():
+    assert _calculate_semaphore(0, None, 0, 0) == ("verde", False)
+    assert _calculate_semaphore(1, None, 1, 1) == ("amarillo", False)
+    assert _calculate_semaphore(1, 0.55, 1, 1) == ("amarillo", False)
+    assert _calculate_semaphore(3, None, 1, 1) == ("rojo", False)
+    assert _calculate_semaphore(0, 0.85, 1, 1) == ("rojo", False)
+    assert _calculate_semaphore(3, 0.9, 3, 1) == ("negro", True)
+    assert _calculate_semaphore(1, 0.4, 3, 1) == ("negro", True)
 
 
 def test_validate_green(client):
