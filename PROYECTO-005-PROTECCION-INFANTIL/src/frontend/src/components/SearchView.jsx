@@ -81,13 +81,37 @@ export default function SearchView() {
   const [result, setResult] = useState(null);
   const [error, setError] = useState(null);
   const [copied, setCopied] = useState(false);
+  const [alertEmail, setAlertEmail] = useState("");
+  const [alertSaved, setAlertSaved] = useState(false);
   const navigate = useNavigate();
+
+  function loadAlertState(hash) {
+    try {
+      const raw = localStorage.getItem("alerts");
+      const alerts = raw ? JSON.parse(raw) : {};
+      return alerts[hash] || null;
+    } catch {
+      return null;
+    }
+  }
+
+  function saveAlertState(hash, email) {
+    try {
+      const raw = localStorage.getItem("alerts");
+      const alerts = raw ? JSON.parse(raw) : {};
+      alerts[hash] = { email, createdAt: new Date().toISOString() };
+      localStorage.setItem("alerts", JSON.stringify(alerts));
+    } catch {
+      // ignore
+    }
+  }
 
   const handleSearch = async (e) => {
     e.preventDefault();
     setLoading(true);
     setResult(null);
     setError(null);
+    setAlertSaved(false);
     try {
       const encoded = encodeURIComponent(identifier.trim());
       const res = await fetch(`${API_URL}/api/v1/validate/${encoded}`, {
@@ -99,6 +123,7 @@ export default function SearchView() {
         setError(data.detail || "No pudimos completar la búsqueda.");
       } else {
         setResult(data);
+        setAlertSaved(!!loadAlertState(data.identifier_hash));
       }
     } catch {
       setError("Error de conexión. Intenta de nuevo.");
@@ -283,6 +308,46 @@ export default function SearchView() {
               {copied ? "✓ Enlace copiado" : "Compartir resultado"}
             </button>
           </div>
+
+          {result.report_count > 0 && (
+            <div className="mt-4 rounded-lg bg-white/50 p-3">
+              <p className="mb-2 text-xs font-semibold uppercase tracking-wide opacity-70">
+                🔔 Alertarme si cambia
+              </p>
+              {alertSaved ? (
+                <p className="text-sm font-medium">✓ Alerta activada para este identificador.</p>
+              ) : (
+                <form
+                  onSubmit={(e) => {
+                    e.preventDefault();
+                    if (!alertEmail.trim() || !result.identifier_hash) return;
+                    saveAlertState(result.identifier_hash, alertEmail.trim());
+                    setAlertSaved(true);
+                    setAlertEmail("");
+                  }}
+                  className="flex flex-col gap-2"
+                >
+                  <input
+                    type="email"
+                    value={alertEmail}
+                    onChange={(e) => setAlertEmail(e.target.value)}
+                    placeholder="tu@email.com"
+                    required
+                    className="w-full rounded-lg border border-gray-300 px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#4A90D9]"
+                  />
+                  <button
+                    type="submit"
+                    className="w-full rounded-lg bg-[#1A3A5C] py-2 text-sm font-semibold text-white transition-transform duration-200 hover:scale-[1.02] active:scale-95"
+                  >
+                    Activar alerta Premium
+                  </button>
+                  <p className="text-xs opacity-70">
+                    Gratis durante el lanzamiento. Luego $2.99/mes.
+                  </p>
+                </form>
+              )}
+            </div>
+          )}
         </div>
       )}
 
