@@ -186,6 +186,35 @@ def test_validate_aggregates_multiple_reports(client, db_session):
     assert data["semaforo"] == "rojo"
 
 
+def test_validate_response_exposes_only_aggregates(client):
+    identifier = "+573006666666"
+    for category in ["CAT-03", "CAT-02", "CAT-03"]:
+        client.post(
+            REPORT_ENDPOINT,
+            json={
+                "reported_identifier": identifier,
+                "description": "Incidente de prueba",
+                "category": category,
+                "consent_location": True,
+            },
+            headers={"x-client-city": "Bogota", "x-client-country": "Colombia"},
+        )
+
+    response = client.get(f"{VALIDATE_ENDPOINT}/{identifier}")
+    assert response.status_code == status.HTTP_200_OK
+    data = response.json()
+    # Solo datos agregados
+    assert "categories" in data
+    assert set(data["categories"]) == {"grooming", "solicitud_material"}
+    assert data["report_count"] == 3
+    assert data["cities_count"] == 1
+    # Nunca datos individuales del reportante
+    assert "reports" not in data
+    assert "descriptions" not in data
+    assert "report_hash" not in data
+    assert "reported_identifier" not in data
+
+
 def test_query_does_not_expose_reporter_pii(client, db_session):
     identifier = "+573005555555"
     client.post(
