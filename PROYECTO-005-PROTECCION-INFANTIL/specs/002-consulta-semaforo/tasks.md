@@ -32,7 +32,7 @@
 - [x] `TB-002.6` Implementar rate limiting 10/hr para consulta
 - [x] `TB-002.7` Implementar respuesta que NO expone datos del reportante
 - [x] `TB-002.8` Tests unitarios (pytest, cobertura ≥ 80%)
-- [ ] `TB-002.9` Tests de integración (TestClient, fixtures con datos)
+- [x] `TB-002.9` Tests de integración (TestClient, fixtures con datos)
 
 ---
 

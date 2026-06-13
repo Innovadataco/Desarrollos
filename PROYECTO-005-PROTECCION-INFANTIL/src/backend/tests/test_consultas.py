@@ -244,6 +244,29 @@ def test_query_does_not_expose_reporter_pii(client, db_session):
     assert "report_hash" not in data
 
 
+def test_consulta_and_validate_return_same_result(client):
+    identifier = "+573007777777"
+    client.post(
+        REPORT_ENDPOINT,
+        json={
+            "reported_identifier": identifier,
+            "description": "Incidente de integración",
+            "category": "CAT-03",
+        },
+    )
+
+    post_response = client.post(CONSULTA_ENDPOINT, json={"identifier": identifier})
+    get_response = client.get(f"{VALIDATE_ENDPOINT}/{identifier}")
+
+    assert post_response.status_code == status.HTTP_200_OK
+    assert get_response.status_code == status.HTTP_200_OK
+    post_data = post_response.json()
+    get_data = get_response.json()
+    assert post_data["identifier_hash"] == get_data["identifier_hash"]
+    assert post_data["report_count"] == get_data["report_count"] == 1
+    assert post_data["semaforo"] == get_data["semaforo"] == "amarillo"
+
+
 def test_consulta_uses_cache(client):
     # Primera consulta
     response1 = client.post(
