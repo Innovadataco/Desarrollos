@@ -45,6 +45,31 @@ def test_validate_green(client):
     assert data["report_count"] == 0
 
 
+def test_validate_endpoint_schema(client):
+    """GET /api/v1/validate/{identifier} retorna el schema SemaforoResponse completo."""
+    response = client.get(f"{VALIDATE_ENDPOINT}/+573009998877")
+    assert response.status_code == status.HTTP_200_OK
+    data = response.json()
+    expected = {
+        "identifier_hash",
+        "semaforo",
+        "report_count",
+        "score_average",
+        "score_max",
+        "first_reported_at",
+        "last_reported_at",
+        "categories",
+        "cities_count",
+        "countries_count",
+        "is_network",
+        "message",
+        "report_button",
+    }
+    assert expected.issubset(set(data.keys()))
+    assert data["report_button"] is True
+    assert data["semaforo"] in {"verde", "amarillo", "rojo", "negro"}
+
+
 def test_validate_yellow_after_one_report(client):
     identifier = "+573001111111"
     client.post(
