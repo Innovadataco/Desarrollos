@@ -129,9 +129,12 @@
 **Asignado:** ODIN (PENDIENTE)
 
 #### INICIO (Registrado por ODIN)
-- **Fecha/hora inicio:** PENDIENTE — Esperando instrucción formal
-- **Registrado por:** PENDIENTE
-- **Contexto:** Módulo 002 del Semáforo de Confianza. Consulta de reportes por hash, dashboard básico.
+- **Fecha/hora inicio:** 2026-06-14 05:22 CST (Shanghai) / 04:22 (Bogotá) — CEO activó ODIN con instrucción
+- **Registrado por:** ZEUS (en nombre de ODIN, por activación del CEO)
+- **Contexto:** CEO Jelkin Carrillo confirmó activación de ODIN para Módulo 002. Instrucción aprobada y enviada a ODIN vía Kimi Code.
+- **Instrucción:** INSTRUCCION-ODIN-002.md (APROBADA, firmada por CEO)
+- **Estado inicial:** ACT-001 VALIDADO, ACT-002 INICIADO
+- **Nota:** ODIN debe registrar fin con timestamp cuando termine implementación.
 
 #### FIN (Registrado por ODIN)
 - **Fecha/hora fin:** PENDIENTE
@@ -162,7 +165,7 @@
 | ACT | Módulo | Descripción | Inicio ODIN | Fin ODIN | Estado ODIN | Inicio ZEUS | Fin ZEUS | Resultado ZEUS | Acta |
 |-----|--------|-------------|-------------|----------|-------------|-------------|----------|----------------|------|
 | 001 | 001 | Corrección bugs | 2026-06-14 02:40 | 2026-06-14 04:40 | LISTO PARA VALIDACIÓN | PENDIENTE | PENDIENTE | PENDIENTE | PENDIENTE |
-| 002 | 002 | Implementación | PENDIENTE | PENDIENTE | PENDIENTE | PENDIENTE | PENDIENTE | PENDIENTE | PENDIENTE |
+| 002 | 002 | Implementación | 2026-06-14 05:22 | PENDIENTE | EN IMPLEMENTACIÓN | PENDIENTE | PENDIENTE | PENDIENTE | PENDIENTE |
 | 003 | 003 | IA Triage | PENDIENTE | PENDIENTE | PENDIENTE | PENDIENTE | PENDIENTE | PENDIENTE | PENDIENTE |
 | 004 | 004 | Clustering | PENDIENTE | PENDIENTE | PENDIENTE | PENDIENTE | PENDIENTE | PENDIENTE | PENDIENTE |
 | 005 | 005 | Panel Admin | PENDIENTE | PENDIENTE | PENDIENTE | PENDIENTE | PENDIENTE | PENDIENTE | PENDIENTE |
