@@ -29,6 +29,23 @@ def test_normalize_url():
     assert "example.com/path" in normalized
 
 
+def test_normalize_url_strips_query_params():
+    t, normalized = normalize_identifier("https://Example.com/path?ref=123&x=1")
+    assert t == "url"
+    assert "?" not in normalized
+    assert normalized == "example.com/path"
+
+
+def test_normalize_email_variants():
+    variants = [
+        "Test@Example.COM",
+        "  Test@Example.COM  ",
+        "test@example.com",
+    ]
+    hashes = {hash_identifier(v) for v in variants}
+    assert len(hashes) == 1, "Variantes de email deben normalizar al mismo hash"
+
+
 def test_detect_identifier_type():
     assert detect_identifier_type("+573001234567") == "phone"
     assert detect_identifier_type("a@b.com") == "email"

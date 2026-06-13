@@ -25,7 +25,7 @@
 ## 2. BACKEND — API
 
 - [x] `TB-002.1` Implementar endpoint GET /api/validate/{identifier}
-- [ ] `TB-002.2` Implementar normalización de identificadores (E.164, email, @, URL)
+- [x] `TB-002.2` Implementar normalización de identificadores (E.164, email, @, URL)
 - [ ] `TB-002.3` Implementar hash SHA-256 para búsqueda
 - [ ] `TB-002.4` Implementar query agregada por identifier_hash
 - [ ] `TB-002.5` Implementar algoritmo de semáforo (verde/amarillo/rojo/negro)
