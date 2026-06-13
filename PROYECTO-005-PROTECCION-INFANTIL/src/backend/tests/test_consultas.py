@@ -1,5 +1,7 @@
 from fastapi import status
 
+from app.services.identifier import hash_identifier
+
 REPORT_ENDPOINT = "/api/v1/reportes"
 CONSULTA_ENDPOINT = "/api/v1/consultas"
 VALIDATE_ENDPOINT = "/api/v1/validate"
@@ -122,6 +124,57 @@ def test_validate_network_by_cities(client):
     assert data["semaforo"] == "negro"
     assert data["is_network"] is True
     assert data["cities_count"] == 3
+
+
+def test_validate_aggregates_multiple_reports(client, db_session):
+    identifier = "+573004444444"
+    for i, score in enumerate([0.3, 0.7, 0.9], start=1):
+        client.post(
+            REPORT_ENDPOINT,
+            json={
+                "reported_identifier": identifier,
+                "description": f"Agregación de scores {i}",
+                "category": "CAT-03",
+            },
+        )
+
+    # Forzar scores específicos para validar agregación
+    from app.models import Report
+
+    reports = (
+        db_session.query(Report)
+        .filter(Report.identifier_hash == hash_identifier(identifier))
+        .all()
+    )
+    for report, score in zip(reports, [0.3, 0.7, 0.9]):
+        report.score = score
+    db_session.commit()
+
+    response = client.get(f"{VALIDATE_ENDPOINT}/{identifier}")
+    assert response.status_code == status.HTTP_200_OK
+    data = response.json()
+    assert data["report_count"] == 3
+    assert data["score_average"] == 0.633
+    assert data["score_max"] == 0.9
+    assert data["semaforo"] == "rojo"
+
+
+def test_query_does_not_expose_reporter_pii(client, db_session):
+    identifier = "+573005555555"
+    client.post(
+        REPORT_ENDPOINT,
+        json={
+            "reported_identifier": identifier,
+            "description": "Datos sensibles del reportante",
+            "category": "CAT-02",
+        },
+    )
+    response = client.get(f"{VALIDATE_ENDPOINT}/{identifier}")
+    assert response.status_code == status.HTTP_200_OK
+    data = response.json()
+    assert "description" not in data
+    assert "reported_identifier" not in data
+    assert "report_hash" not in data
 
 
 def test_consulta_uses_cache(client):

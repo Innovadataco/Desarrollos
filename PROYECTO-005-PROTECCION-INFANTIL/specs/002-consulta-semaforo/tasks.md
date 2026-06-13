@@ -27,7 +27,7 @@
 - [x] `TB-002.1` Implementar endpoint GET /api/validate/{identifier}
 - [x] `TB-002.2` Implementar normalización de identificadores (E.164, email, @, URL)
 - [x] `TB-002.3` Implementar hash SHA-256 para búsqueda
-- [ ] `TB-002.4` Implementar query agregada por identifier_hash
+- [x] `TB-002.4` Implementar query agregada por identifier_hash
 - [ ] `TB-002.5` Implementar algoritmo de semáforo (verde/amarillo/rojo/negro)
 - [ ] `TB-002.6` Implementar rate limiting 10/hr para consulta
 - [ ] `TB-002.7` Implementar respuesta que NO expone datos del reportante
