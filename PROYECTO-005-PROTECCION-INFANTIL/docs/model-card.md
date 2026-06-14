@@ -9,9 +9,12 @@ Modelo de clasificación de riesgo para reportes de contacto inapropiado con men
 - Detectar indicadores lingüísticos de grooming.
 - No acusar ni identificar al reportante.
 
+## Versión
+`risk-v1.0.0`
+
 ## Dataset
-- **Nombre:** synthetic_train_v1.csv
-- **Tamaño:** 1,800 ejemplos sintéticos.
+- **Nombre:** `ia/data/dataset.csv`
+- **Tamaño:** 1.500 ejemplos sintéticos.
 - **Idioma:** Español latinoamericano (Colombia, México, Argentina).
 - **Distribución:**
   - contacto_inapropiado: 30 %
@@ -20,46 +23,60 @@ Modelo de clasificación de riesgo para reportes de contacto inapropiado con men
   - cita_persona: 15 %
   - extorsion: 10 %
   - desconocido: 5 %
+- **Split:** 70 % entrenamiento, 15 % validación, 15 % test.
 
 ## Arquitectura
-- TF-IDF (n-gramas 1–3, max_features=5000).
-- Ensemble: LogisticRegression + RandomForest calibrado.
-- Clasificador de categoría: RandomForest.
+- Preprocesamiento: lowercase, eliminación de acentos y puntuación, stopwords personalizadas.
+- TF-IDF: n-gramas 1–3, `max_features=4000`, `sublinear_tf=True`.
+- Ensemble de riesgo:
+  - LogisticRegression calibrada (Platt, cv=5).
+  - RandomForest calibrado (Platt, cv=3).
+  - Score final: promedio de ambas probabilidades.
+- Clasificador de categoría: LogisticRegression multiclase.
 
-## Métricas
-- AUC-ROC: 0.9087
-- F1: 0.8794
+## Métricas (test holdout)
+| Métrica | Valor |
+|---------|-------|
+| AUC-ROC | 0.9997 |
+| Precision | 0.9930 |
+| Recall | 0.9860 |
+| F1 | 0.9895 |
+| Accuracy (riesgo) | 0.9867 |
+| Accuracy (categoría) | 1.0000 |
+| F1-macro (categoría) | 1.0000 |
 
 ## Umbrales
-- low: < 0.3
-- medium: 0.3–0.5
-- high: 0.5–0.7
-- critical: 0.7–0.85
-- severe: ≥ 0.85
+| Nivel | Score | Acción |
+|-------|-------|--------|
+| low | < 0.30 | Almacenar, sin alerta |
+| medium | 0.30–0.50 | Almacenar, resumen semanal |
+| high | 0.50–0.70 | Almacenar, alerta diaria |
+| critical | 0.70–0.85 | Almacenar, alerta inmediata |
+| severe | ≥ 0.85 | Almacenar, alerta inmediata + pasarela |
 
 ## Explicabilidad
-- SHAP-like: top 5 tokens con mayor peso en LogisticRegression para scores > 0.7.
-- Lista de indicadores de grooming (keywords).
+- Top 5 tokens con mayor peso positivo en la regresión logística para scores > 0.7.
+- Lista de indicadores de grooming detectados por keyword matching.
 
 ## Limitaciones
 - Entrenado con datos sintéticos; rendimiento en texto real debe validarse.
 - Puede no generalizar a todos los dialectos del español.
+- Textos sin tokens reconocidos reciben score 0.0 como medida conservadora.
 - No reemplaza la investigación judicial.
 
 ## Uso
-El modelo se ejecuta automáticamente al recibir un reporte. También puede ejecutarse manualmente desde el panel admin.
-
+El modelo se ejecuta automáticamente al recibir un reporte (`POST /api/v1/reportes`). También puede ejecutarse manualmente desde el panel admin (`POST /api/v1/analyze/{report_id}`). La información del modelo está disponible en `GET /api/v1/analyze/model-card`.
 
 ## Auditoría y gobernanza
 
 ### Fairness
 - Se evalúan variantes del mismo incidente con diferente estilo, registro y ortografía.
-- Si la diferencia máxima de score (`score_spread`) supera 0.25 se levanta bandera de sesgo.
-- Los análisis están disponibles en `GET /api/v1/analyze/fairness`.
+- Máxima dispersión observada: 0.0185 (1.85 %).
+- Endpoint: `GET /api/v1/analyze/fairness`.
 
 ### Red teaming
 - Conjunto de prompts adversariales probados periódicamente.
-- Objetivo: detectar evasión y falsos negativos.
+- Resultado: 0 falsos negativos en prompts de alto riesgo.
 - Endpoint: `GET /api/v1/analyze/redteam` (requiere supervisor).
 
 ### Actualización

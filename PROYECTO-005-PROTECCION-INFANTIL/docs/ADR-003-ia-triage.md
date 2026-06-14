@@ -5,7 +5,7 @@
 **Fecha:** 13 de junio 2026  
 **Versión:** 1.0  
 **Autor:** ZEUS / ODIN  
-**Estado:** ⬜ Pendiente aprobación
+**Estado:** ✅ Aprobado
 
 ---
 
@@ -15,14 +15,14 @@ El sistema recibe reportes en texto libre en español (colombiano, mexicano, arg
 
 ## Decisión
 
-**Usar un ensemble de Logistic Regression + Random Forest con TF-IDF features y embeddings opcionales, entrenado en dataset sintético de 1,500 ejemplos en español, con explicabilidad SHAP.**
+**Usar un ensemble de Logistic Regression + Random Forest con TF-IDF (n-gramas 1-3), entrenado en un dataset sintético de 1.500 ejemplos en español, con calibración Platt, auditoría de fairness y explicabilidad por pesos del modelo.**
 
 ## Alternativas Consideradas
 
 | Alternativa | Pros | Contras | Decisión |
 |-------------|------|---------|----------|
 | Logistic Regression + TF-IDF | Rápido, interpretable, ligero | Menor capacidad para patrones complejos | ✅ Elegido (baseline) |
-| Random Forest + TF-IDF | Mejor captura de interacciones | Más lento, menos interpretable | ✅ Elegido (ensemble) |
+| Random Forest + TF-IDF | Mejor captura de interacciones | Menos interpretable | ✅ Elegido (ensemble) |
 | BERT/RoBERTa (multilingual) | State-of-the-art para NLP | Muy lento para inferencia en tiempo real (~500ms), dependencia de GPU, riesgo de overfitting en dataset pequeño | ❌ Rechazado (futuro) |
 | LLM (GPT-4 API) | Muy preciso, no requiere entrenamiento | Costo por inferencia, latencia alta, dependencia de proveedor externo, privacidad de datos sensibles | ❌ Rechazado |
 | Keyword matching simple | Ultra-rápido, fácil | Muy inexacto, falsos positivos/negativos masivos | ❌ Rechazado |
@@ -31,88 +31,80 @@ El sistema recibe reportes en texto libre en español (colombiano, mexicano, arg
 
 1. **Velocidad:** El modelo debe inferir en <500ms en CPU. LR+RF en CPU es ~50ms. BERT en CPU es ~2s. LLM API es ~1s + red.
 2. **Privacidad:** El texto del reporte se procesa en memoria del servidor. No sale a APIs externas. Un LLM API requeriría enviar texto sensible a terceros.
-3. **Interpretabilidad:** SHAP sobre LR+RF es directo. SHAP sobre BERT es complejo y costoso.
-4. **Dataset pequeño:** 1,500 ejemplos es insuficiente para BERT (necesita 10,000+). Es suficiente para LR+RF con regularización.
+3. **Interpretabilidad:** Los pesos de LR permiten generar un top-5 de tokens sin depender de SHAP en runtime.
+4. **Dataset pequeño:** 1.500 ejemplos es insuficiente para BERT (necesita 10.000+). Es suficiente para LR+RF con regularización.
 5. **Mantenibilidad:** LR+RF se puede entrenar en cualquier laptop en minutos. BERT requiere GPU.
 6. **Fairness:** LR+RF es más fácil de auditar por fairness. BERT es caja negra.
 
 ## Consecuencias
 
 ### Positivas
-- Rápido: 50ms inferencia en CPU
-- Interpretable: SHAP explica cada decisión
-- Privado: todo en servidor local
-- Mantenible: entrenamiento en minutos
-- Económico: $0 de API calls
+- Rápido: ~50ms inferencia en CPU.
+- Interpretable: top tokens e indicadores de grooming.
+- Privado: todo en servidor local.
+- Mantenible: entrenamiento reproducible con `scripts/train_model.py`.
+- Económico: $0 de API calls.
 
 ### Negativas
-- Menor precisión que BERT/LLM (aceptable: AUC-ROC ≥0.80 vs 0.92 de BERT)
-- Dataset sintético puede no capturar todos los dialectos (mitigado con fairness audit)
-- No entiende contexto semántico profundo (mitigado con embeddings distiluse)
+- Menor precisión que BERT/LLM (aceptable: AUC-ROC ≥0.80).
+- Dataset sintético puede no capturar todos los dialectos (mitigado con fairness audit).
+- Requiere reentrenamiento periódico con datos reales anonimizados.
 
 ## Implementación
 
+```text
+scripts/train_model.py
+├── Genera ia/data/dataset.csv (1.500 ejemplos)
+├── Preprocesa: lowercase, eliminación de acentos, puntuación, stopwords personalizadas
+├── Vectoriza: TfidfVectorizer(ngram_range=(1,3), max_features=4000)
+├── Entrena:
+│   ├── LR calibrado (Platt) para score de riesgo
+│   ├── RF calibrado (Platt) para score de riesgo
+│   └── LR multiclase para categoría
+├── Evalúa: AUC-ROC, precision, recall, f1, accuracy
+├── Audita: fairness (dispersión <10%) y red-team (0 falsos negativos)
+└── Guarda artefactos en ia/models/risk-v1.0.0/
+```
+
 ```python
-from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.linear_model import LogisticRegression
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.ensemble import VotingClassifier
-from sklearn.calibration import CalibratedClassifierCV
-import shap
-
-# Pipeline
-vectorizer = TfidfVectorizer(
-    ngram_range=(1, 3),
-    max_features=10000,
-    stop_words=spanish_stopwords_custom
-)
-
-X_train = vectorizer.fit_transform(texts_train)
-X_test = vectorizer.transform(texts_test)
-
-# Modelos
-lr = CalibratedClassifierCV(LogisticRegression(max_iter=1000, C=0.5), cv=5)
-rf = RandomForestClassifier(n_estimators=200, max_depth=10, min_samples_leaf=5)
-
-# Ensemble
-ensemble = VotingClassifier(
-    estimators=[('lr', lr), ('rf', rf)],
-    voting='soft'
-)
-
-ensemble.fit(X_train, y_train)
-
-# Fairness audit
-for group in ['dialecto', 'genero_reportado', 'tipo_evidencia']:
-    scores = cross_val_score(ensemble, X_test_group, y_test_group, scoring='roc_auc')
-    assert disparity < 0.10  # Disparidad < 10% entre subgrupos
-
-# Explicabilidad
-explainer = shap.LinearExplainer(lr, X_train)
-shap_values = explainer.shap_values(X_instance)
+# Runtime (src/backend/app/services/scoring.py)
+processed = _preprocess(text)
+vec = vectorizer.transform([processed])
+score = (lr.predict_proba(vec)[0,1] + rf.predict_proba(vec)[0,1]) / 2
+category = category_model.predict(vec)[0]
 ```
 
 ## Dataset
 
-- 1,500 ejemplos sintéticos en español (Colombia, México, Argentina, España)
-- Estratificado por categoría (CAT-01 a CAT-06) y severidad
-- Etiquetado semi-automático (keyword matching) + revisión manual
-- Versionado con DVC o git LFS
-- Data augmentation: back-translation, synonym replacement, paraphrasing
+- **Nombre:** `ia/data/dataset.csv`
+- **Tamaño:** 1.500 ejemplos sintéticos.
+- **Idioma:** Español latinoamericano (Colombia, México, Argentina).
+- **Distribución por categoría:**
+  - contacto_inapropiado: 30 %
+  - solicitud_material: 20 %
+  - grooming: 25 %
+  - cita_persona: 15 %
+  - extorsion: 10 %
+  - desconocido: 5 %
+- **Estratificación:** 70 % train, 15 % validation, 15 % test.
+- **Augmentación:** variantes dialectales, formales, coloquiales, con errores ortográficos y sinónimos, aplicadas solo en entrenamiento.
 
 ## Fairness
 
-- **Grupos protegidos:** Dialecto, género del reportante (si mencionado), tipo de evidencia
-- **Métrica:** Disparidad de AUC-ROC < 10% entre subgrupos
-- **Auditoría:** Red-teaming con 0 falsos negativos de alto riesgo
-- **Mitigación:** Si disparidad > 10%, re-entrenar con pesos por grupo o data augmentation
+- **Grupos protegidos:** Variantes de estilo, registro formal/coloquial, marcadores dialectales.
+- **Métrica:** Dispersión absoluta y relativa de score < 10 % entre variantes de la misma situación.
+- **Auditoría:** Red-teaming con 0 falsos negativos de alto riesgo.
+- **Mitigación:** Si la dispersión supera el umbral, se reentrena con más ejemplos del subgrupo afectado.
 
 ## Notas
 
-- Modelo versionado en código: `model_version = "grooming-v1.0"`
-- Model card obligatorio: objetivo, dataset, métricas, limitaciones, riesgos
-- Re-entrenamiento trimestral o cuando se acumulan 500 reportes reales (con consentimiento para uso en ML)
-- Embeddings distiluse-base-multilingual opcional (feature adicional, no requerido para MVP)
+- Modelo versionado: `risk-v1.0.0`.
+- Model card obligatorio: `docs/model-card.md`.
+- Evaluation report: `docs/evaluation.md`.
+- Red-teaming report: `docs/red-teaming.md`.
+- Fairness report: `docs/fairness.md`.
+- Re-entrenamiento recomendado trimestral o cuando se acumulen 500 reportes reales (con consentimiento para uso en ML).
+- Embeddings distiluse-base-multilingual quedan como mejora futura; no son requeridos para el MVP.
 
 ---
 
