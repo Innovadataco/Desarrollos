@@ -143,6 +143,14 @@
   3. Infraestructura: índices PostgreSQL y configuración de cache en nginx.
 - **Notas:** Todas las tasks de TASKS-002 implementadas. Tests backend 123 passed (90% cobertura), frontend 10 passed, E2E 10 passed.
 
+#### CORRECCIÓN (Registrado por ODIN)
+- **Fecha/hora corrección:** 2026-06-14 12:04 CST (Shanghai) / 23:04 (Bogotá)
+- **Registrado por:** ODIN
+- **Hallazgos corregidos:**
+  1. **TI-002.3 (nginx cache):** se refactorizó `nginx/nginx.conf` para cachear tanto `GET /api/v1/validate/` como `POST /api/v1/consultas` durante 5 minutos, con clave de cache que incluye el cuerpo en POST, bypass por `Cache-Control` y protección de cookies.
+  2. **Tests (confirmación de ejecución):** se creó `scripts/run-tests.sh` y se generó `docs/auditoria/CONFIRMACION-PRUEBAS-002.md` con la ejecución completa de backend, frontend, build y E2E.
+- **Estado tras corrección:** LISTO PARA VALIDACIÓN
+
 #### AUDITORÍA (Registrado por ZEUS)
 - **Fecha/hora inicio auditoría:** PENDIENTE
 - **Fecha/hora fin auditoría:** PENDIENTE
@@ -165,7 +173,7 @@
 | ACT | Módulo | Descripción | Inicio ODIN | Fin ODIN | Estado ODIN | Inicio ZEUS | Fin ZEUS | Resultado ZEUS | Acta |
 |-----|--------|-------------|-------------|----------|-------------|-------------|----------|----------------|------|
 | 001 | 001 | Corrección bugs | 2026-06-14 02:40 | 2026-06-14 04:40 | LISTO PARA VALIDACIÓN | 2026-06-14 04:50 | 2026-06-14 05:15 | VALIDADO v2 | ACTA-VALIDACION-ODIN-001-v2.md |
-| 002 | 002 | Implementación | 2026-06-14 05:23 | 2026-06-14 05:57 | LISTO PARA VALIDACIÓN | PENDIENTE | PENDIENTE | PENDIENTE | PENDIENTE |
+| 002 | 002 | Implementación | 2026-06-14 05:23 | 2026-06-14 12:04 | LISTO PARA VALIDACIÓN | PENDIENTE | PENDIENTE | PENDIENTE | PENDIENTE |
 | 003 | 003 | IA Triage | PENDIENTE | PENDIENTE | PENDIENTE | PENDIENTE | PENDIENTE | PENDIENTE | PENDIENTE |
 | 004 | 004 | Clustering | PENDIENTE | PENDIENTE | PENDIENTE | PENDIENTE | PENDIENTE | PENDIENTE | PENDIENTE |
 | 005 | 005 | Panel Admin | PENDIENTE | PENDIENTE | PENDIENTE | PENDIENTE | PENDIENTE | PENDIENTE | PENDIENTE |
