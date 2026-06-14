@@ -1,5 +1,6 @@
 import hashlib
 import logging
+import os
 import time
 from collections import defaultdict
 from threading import Lock
@@ -16,13 +17,13 @@ logger = logging.getLogger(__name__)
 MAX_MEMORY_KEYS = 1000
 
 DEFAULT_LIMITS = {
-    "report": 5,
-    "validate": 10,
-    "health": 100,
-    "login": 5,
-    "decrypt": 10,
-    "gateway": 100,
-    "admin": 1000,
+    "report": int(os.getenv("RATE_LIMIT_REPORT", "5")),
+    "validate": int(os.getenv("RATE_LIMIT_VALIDATE", "10")),
+    "health": int(os.getenv("RATE_LIMIT_HEALTH", "100")),
+    "login": int(os.getenv("RATE_LIMIT_LOGIN", "5")),
+    "decrypt": int(os.getenv("RATE_LIMIT_DECRYPT", "10")),
+    "gateway": int(os.getenv("RATE_LIMIT_GATEWAY", "100")),
+    "admin": int(os.getenv("RATE_LIMIT_ADMIN", "1000")),
 }
 
 
