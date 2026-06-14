@@ -159,34 +159,11 @@ identifier: string (teléfono, email, @usuario, URL)
 ```json
 {
   "access_token": "jwt-1h",
-  "refresh_token": "jwt-24h",
   "token_type": "bearer"
 }
 ```
 
-#### `POST /api/v1/admin/auth/refresh`
-
-**Headers:**
-```
-Authorization: Bearer <refresh_token>
-```
-
-**Response 200:**
-```json
-{
-  "access_token": "new-jwt-1h",
-  "token_type": "bearer"
-}
-```
-
-#### `POST /api/v1/admin/auth/logout`
-
-**Headers:**
-```
-Authorization: Bearer <access_token>
-```
-
-**Response 204:** No content
+> Nota: el backend emite un único token de acceso JWT. El refresh token está planificado para futuras versiones.
 
 ---
 
@@ -319,6 +296,42 @@ Authorization: Bearer <access_token>
 
 ### Perfiles
 
+#### `GET /api/v1/admin/profiles`
+
+Lista todos los perfiles con filtros opcionales.
+
+**Query Parameters:**
+```
+?report_count_min=3&score_min=0.5&is_network=true
+```
+
+**Response 200:**
+```json
+[
+  {
+    "identifier_hash": "SHA256-DE-IDENTIFICADOR",
+    "identifier_type": "phone",
+    "report_count": 12,
+    "score_average": 0.74,
+    "score_max": 0.95,
+    "cities": ["Bogotá", "Medellín", "Cali", "Barranquilla"],
+    "countries": ["Colombia", "México"],
+    "cities_count": 4,
+    "countries_count": 2,
+    "is_network": true,
+    "evidence_types": ["image", "audio", "screenshot"],
+    "categories": ["grooming", "solicitud_material", "cita_persona"],
+    "first_reported": "2026-02-15",
+    "last_reported": "2026-06-10",
+    "timeline": [
+      {"month": "2026-02", "count": 2, "score_avg": 0.65},
+      {"month": "2026-03", "count": 3, "score_avg": 0.72}
+    ],
+    "alert": "POSIBLE RED ORGANIZADA: 12 reportes desde 4 ciudades y 2 países."
+  }
+]
+```
+
 #### `GET /api/v1/admin/profiles/{identifier_hash}`
 
 **Response 200:**
@@ -329,6 +342,7 @@ Authorization: Bearer <access_token>
   "report_count": 12,
   "score_average": 0.74,
   "score_max": 0.95,
+  "score_min": 0.45,
   "cities": ["Bogotá", "Medellín", "Cali", "Barranquilla"],
   "countries": ["Colombia", "México"],
   "cities_count": 4,
@@ -344,29 +358,69 @@ Authorization: Bearer <access_token>
     {"month": "2026-04", "count": 4, "score_avg": 0.78},
     {"month": "2026-05", "count": 2, "score_avg": 0.81},
     {"month": "2026-06", "count": 1, "score_avg": 0.85}
-  ]
+  ],
+  "alert": "POSIBLE RED ORGANIZADA: 12 reportes desde 4 ciudades y 2 países."
 }
 ```
 
-#### `GET /api/v1/admin/networks`
+#### `GET /api/v1/admin/profiles/{identifier_hash}/timeline`
 
 **Response 200:**
 ```json
 {
-  "total": 4,
-  "networks": [
+  "identifier_hash": "SHA256-DE-IDENTIFICADOR",
+  "timeline": [
+    {"month": "2026-02", "count": 2, "score_avg": 0.65}
+  ]
+}
+```
+
+#### `GET /api/v1/admin/profiles/{identifier_hash}/updates`
+
+Audit trail de cambios en el perfil.
+
+**Response 200:**
+```json
+{
+  "identifier_hash": "SHA256-DE-IDENTIFICADOR",
+  "updates": [
     {
-      "identifier_hash": "SHA256-1",
-      "identifier_type": "phone",
-      "report_count": 12,
-      "cities_count": 4,
-      "countries_count": 2,
-      "score_max": 0.95,
-      "first_reported": "2026-02-15",
-      "last_reported": "2026-06-10"
+      "id": "uuid",
+      "old_score_avg": 0.65,
+      "new_score_avg": 0.74,
+      "old_cities_count": 2,
+      "new_cities_count": 4,
+      "old_countries_count": 1,
+      "new_countries_count": 2,
+      "old_is_network": false,
+      "new_is_network": true,
+      "triggered_network": true,
+      "created_at": "2026-06-10T12:00:00Z"
     }
   ]
 }
+```
+
+#### `GET /api/v1/admin/profiles/networks/list`
+
+Lista todos los identificadores con `is_network = true`.
+
+**Response 200:**
+```json
+[
+  {
+    "identifier_hash": "SHA256-1",
+    "identifier_type": "phone",
+    "report_count": 12,
+    "cities_count": 4,
+    "countries_count": 2,
+    "score_max": 0.95,
+    "first_reported": "2026-02-15",
+    "last_reported": "2026-06-10",
+    "is_network": true,
+    "alert": "POSIBLE RED ORGANIZADA: 12 reportes desde 4 ciudades y 2 países."
+  }
+]
 ```
 
 ---

@@ -3,9 +3,9 @@
 **Proyecto:** Semáforo de Confianza (005)  
 **Código:** IDC_2026_05  
 **Fecha:** 13 de junio 2026  
-**Versión:** 1.0  
+**Versión:** 1.1  
 **Autor:** ZEUS / ODIN  
-**Estado:** ⬜ Pendiente aprobación
+**Estado:** ✅ Aprobado
 
 ---
 
@@ -34,6 +34,7 @@ El sistema necesita detectar si un mismo identificador (teléfono, email, cuenta
 - Local: GeoLite2 se descarga, no hay API externa que vea IPs
 - Consentimiento: usuario explícito "Compartir ciudad aproximada"
 - Detección: puede identificar redes organizadas (mismo ID desde 3+ ciudades)
+- Cache Redis de perfiles y redes reduce carga de PostgreSQL
 
 ### Negativas
 - GeoLite2 no es 100% preciso (ciudad puede estar mal en móvil, VPN)
@@ -42,34 +43,26 @@ El sistema necesita detectar si un mismo identificador (teléfono, email, cuenta
 
 ## Implementación
 
-```python
-import geoip2.database
-from hashlib import sha256
+El servicio `app/services/geoip_service.py` encapsula la resolución:
 
-def get_location_from_ip(ip: str, consent: bool) -> tuple[str, str] | None:
-    """
-    Retorna (city, country) si consent=True, None si consent=False.
-    IP se hashea y descarta inmediatamente. No se almacena.
-    """
-    if not consent:
-        return None
-    
-    # Hash de IP para rate limiting (no se almacena la IP original)
-    ip_hash = sha256(ip.encode()).hexdigest()[:16]
-    
-    # Geocodificación con GeoLite2 local
-    reader = geoip2.database.Reader("/app/GeoLite2-City.mmdb")
-    response = reader.city(ip)
-    
-    city = response.city.name or "unknown"
-    country = response.country.name or "unknown"
-    
-    # Truncar precisión: ciudad aproximada, no barrio ni coordenadas
-    # No almacenar lat/lon, postal_code, metro_code, etc.
-    
-    return (city, country)
-    
-    # IP se descarta de memoria (no se almacena en ningún lado)
+```python
+from app.services.geoip_service import get_location_from_ip
+
+city, country = get_location_from_ip(client_ip, request, consent=True)
+```
+
+Reglas:
+
+1. Si `consent=False` retorna `(None, None)`.
+2. La IP se hashea con SHA-256 y se descarta inmediatamente.
+3. Si existe `data/GeoLite2-City.mmdb` (o la ruta configurada en `GEOLITE2_PATH`), se usa GeoLite2.
+4. Si GeoLite2 no está disponible, se usan las cabeceras `X-Client-City` y `X-Client-Country`.
+5. Solo se retorna ciudad/país. Coordenadas, códigos postales, etc. nunca se consultan ni almacenan.
+
+El `reportes.py` utiliza este servicio cuando `consent_location=True`:
+
+```python
+city, country = _extract_location(request, consent=bool(payload.consent_location))
 ```
 
 ## Almacenamiento
@@ -79,12 +72,14 @@ def get_location_from_ip(ip: str, consent: bool) -> tuple[str, str] | None:
 | IP original | ❌ NO | Hasheada y descartada inmediatamente |
 | IP hash | ⚠️ Solo en Redis | Para rate limiting, TTL 1h |
 | Coordenadas GPS | ❌ NO | Nunca |
-| Ciudad aproximada | ✅ SÍ | En Report.city, solo si consent=True |
-| País | ✅ SÍ | En Report.country, solo si consent=True |
+| Ciudad aproximada | ✅ SÍ | En `Report.city`, solo si `consent=True` |
+| País | ✅ SÍ | En `Report.country`, solo si `consent=True` |
 | Barrio/Zona | ❌ NO | Nunca |
 | Código postal | ❌ NO | Nunca |
 
 ## Algoritmo de Red Organizada
+
+Se requieren 2 o más criterios para marcar `is_network = true`:
 
 ```python
 def is_network(profile: Profile) -> bool:
@@ -102,13 +97,22 @@ def is_network(profile: Profile) -> bool:
     return criterios >= 2
 ```
 
+## Caché
+
+| Clave | TTL | Uso |
+|-------|-----|-----|
+| `profile:{hash}` | 1h | Perfil serializado |
+| `networks:list` | 15 min | Lista de perfiles con `is_network=true` |
+
+La cache se invalida automáticamente al recalcular un perfil (`profile_service.update_profile_from_report`).
+
 ## Notas
 
-- GeoLite2 se actualiza mensualmente (cron job: primer lunes de mes)
-- Si GeoLite2 no está disponible, el sistema continúa operando sin geocodificación (graceful degradation)
-- El consentimiento es explícito: checkbox "Compartir mi ciudad aproximada para detectar redes organizadas" (no pre-marcado)
-- El checkbox puede ser desactivado sin afectar el envío del reporte (solo afecta clustering)
-- Para reportes sin geocodificación, el score individual sigue siendo válido para alertas
+- GeoLite2 se actualiza mensualmente (cron job: primer lunes de mes).
+- Si GeoLite2 no está disponible, el sistema continúa operando con cabeceras (graceful degradation).
+- El consentimiento es explícito: checkbox "Compartir mi ciudad aproximada para detectar redes organizadas" (no pre-marcado).
+- El checkbox puede ser desactivado sin afectar el envío del reporte (solo afecta clustering).
+- Para reportes sin geocodificación, el score individual sigue siendo válido para alertas.
 
 ---
 
