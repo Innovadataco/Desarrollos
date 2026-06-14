@@ -32,15 +32,21 @@ git pull origin setup/estructura-2026
 ```
 - [ ] Repo actualizado. Si hay conflictos → NOTIFICAR a ZEUS, no resolver solo.
 
-### PASO 2: Leer Documentos de Gobierno (en orden)
+### PASO 2: Leer Documentos de Gobierno (en orden) — **CRÍTICO SI PERDISTE CONTEXTO**
+
+**⚠️ Si cerraste VS Code, perdiste la sesión, o no recuerdas el estado: DEBES leer estos documentos ANTES de tocar código.**
 
 Leer estos documentos SÍ o SÍ antes de tocar código:
 
-1. [ ] **`metodologia/AGENTS.md`** → Recordar quién soy, qué puedo hacer, qué NO puedo hacer
-2. [ ] **`metodologia/SELECTOR-METODOLOGIA.md`** → Verificar proyectos físicos existentes
-3. [ ] **`metodologia/ODIN-TRAD.md`** o **`ODIN-IA.md`** → Recordar metodología activa
-4. [ ] **`GOBIERNO-ZEUS-ODIN.md`** → Recordar flujo de trabajo, reglas de gobierno
+1. [ ] **`metodologia/GOBIERNO-ZEUS-ODIN.md`** → **PRIMERO Y SIEMPRE.** Flujo de trabajo, 3 candados, quién valida, quién aprueba, qué repo toca cada quien
+2. [ ] **`metodologia/AGENTS.md`** → Recordar quién soy, qué puedo hacer, qué NO puedo hacer
+3. [ ] **`../SINCRONIZACION-MAESTRA.md`** (subir un directorio, repo IDC_PROYECTOS) → Estado REAL de todos los módulos
+4. [ ] **`INSTRUCCION-ODIN-XXX.md`** → Instrucción formal vigente (si existe)
 5. [ ] **`INICIO-SESION-ODIN.md`** (este archivo) → Confirmar que ejecuté checklist
+
+**Nota sobre SELECTOR-METODOLOGIA.md y ODIN-TRAD.md:**
+- `SELECTOR-METODOLOGIA.md`: Ya no es crítico. Solo lista proyectos. Lee si quieres contexto histórico.
+- `ODIN-TRAD.md`: Ya no es la metodología activa. El documento de gobierno real está en `GOBIERNO-ZEUS-ODIN.md`.
 
 ### PASO 3: Verificar Proyectos Físicos
 ```bash
@@ -54,9 +60,21 @@ ls -d PROYECTO-*/
 
 Leer documentos de estado:
 
-1. [ ] **`SINCRONIZACION-MAESTRA.md`** (en IDC_PROYECTOS) → Verificar estado global de todos los proyectos
-2. [ ] **`INSTRUCCIONES-ODIN-XXX.md`** (si existe) → Verificar instrucciones pendientes
-3. [ ] **`PROYECTO-XXX/docs/auditoria/`** → Verificar actas de validación/corrección
+1. [ ] **`../SINCRONIZACION-MAESTRA.md`** (repo IDC_PROYECTOS, subir un directorio) → **ESTADO REAL de todos los módulos. ESTE ES EL DOCUMENTO MAESTRO.**
+2. [ ] **`INSTRUCCION-ODIN-XXX.md`** (si existe) → Verificar instrucciones pendientes
+3. [ ] **`PROYECTO-005-PROTECCION-INFANTIL/docs/auditoria/`** → Verificar actas de validación/corrección
+
+**Estado actual de PROYECTO-005 (14 de junio 2026, 23:45 CST):**
+```
+Módulo 001: ✅ VALIDADO v2 (ACTA-VALIDACION-ODIN-001-v2.md)
+Módulo 002: ✅ VALIDADO (ACTA-VALIDACION-ODIN-002.md)
+Módulo 003: ✅ VALIDADO (ACTA-VALIDACION-ODIN-003.md)
+Módulo 004: ⚠️ VALIDADO CON EXCEPCIÓN (3 deudas técnicas diferidas a 21 junio)
+Módulo 005: 🟢 AUTORIZADO (INSTRUCCION-ODIN-004-EXCEPCION.md)
+Módulo 006: 🟢 AUTORIZADO (INSTRUCCION-ODIN-004-EXCEPCION.md)
+```
+
+**⚠️ Si ves otro estado en estos documentos, NO está actualizado. Usa lo que dice SINCRONIZACION-MAESTRA.md.**
 
 ### PASO 5: Verificar Instrucción Formal Vigente
 
@@ -89,21 +107,72 @@ Listo para trabajar.
 
 ---
 
+## 🆘 SECCIÓN ESPECIAL: PERDISTE CONTEXTO (Cerraste VS Code, nueva ventana, etc.)
+
+**Si cerraste la ventana de VS Code donde estaba Kimi Code, o iniciaste nueva sesión, o no recuerdas en qué módulo estás: Sigue este protocolo de emergencia.**
+
+### Protocolo de Recuperación de Contexto (5 minutos)
+
+```bash
+# 1. Sincronizar repo
+ cd ~/Desarrollos  # o tu ruta local
+ git pull origin setup/estructura-2026
+
+# 2. Leer documento de gobierno (ESTE ES EL MÁS IMPORTANTE)
+ cat metodologia/GOBIERNO-ZEUS-ODIN.md
+
+# 3. Leer estado maestro (subir al directorio padre de Desarrollos, entrar a IDC_PROYECTOS)
+ cd ../IDC_PROYECTOS  # o tu ruta
+ cat SINCRONIZACION-MAESTRA.md
+
+# 4. Leer instrucción vigente
+ ls INSTRUCCIONES/
+ cat INSTRUCCIONES/INSTRUCCION-ODIN-004-EXCEPCION.md
+
+# 5. Confirmar en chat:
+# "Soy ODIN. Leí GOBIERNO-ZEUS-ODIN.md y SINCRONIZACION-MAESTRA.md.
+#  Estado actual: Módulo 005 y 006 AUTORIZADOS. Proyecto 005 activo.
+#  Listo para trabajar según INSTRUCCION-ODIN-004-EXCEPCION.md."
+```
+
+**Documentos MÍNIMOS que debes leer si perdiste contexto:**
+1. `GOBIERNO-ZEUS-ODIN.md` (5 minutos) — entiendes quién eres, qué puedes hacer, qué NO puedes hacer
+2. `SINCRONIZACION-MAESTRA.md` (2 minutos) — sabes qué módulo está en qué estado
+3. `INSTRUCCION-ODIN-004-EXCEPCION.md` (3 minutos) — sabes qué te pidieron hacer
+
+**Total: 10 minutos. Luego puedes empezar a codear con certeza.**
+
+**NO EMPIECES A CODEAR sin leer estos 3 documentos. Si no los lees, no sabes qué estado tiene el proyecto y puedes repetir trabajo o romper algo que ya estaba validado.**
+
 ## MAPA DE DOCUMENTOS (Dónde está cada cosa)
 
-| Documento | Ubicación | Quién lo actualiza | Propósito |
-|-----------|-----------|-------------------|-----------|
-| AGENTS.md | Desarrollos/metodologia/ | ZEUS (modifica), Jelkin (aprueba) | Identidad y límites de ODIN |
-| SELECTOR-METODOLOGIA.md | Desarrollos/metodologia/ | ZEUS | Proyectos existentes y físicos |
-| ODIN-TRAD.md | Desarrollos/metodologia/ | ZEUS | Metodología desarrollo tradicional |
-| ODIN-IA.md | Desarrollos/metodologia/ | ZEUS | Metodología desarrollo IA |
-| SDD-INNOVADATACO.md | Desarrollos/metodologia/ | ZEUS | Fase ZERO: especificación antes de código |
-| GOBIERNO-ZEUS-ODIN.md | Desarrollos/ | ZEUS | Reglas de gobierno, roles, flujo |
-| INICIO-SESION-ODIN.md | Desarrollos/metodologia/ | ZEUS | Este checklist |
-| SINCRONIZACION-MAESTRA.md | IDC_PROYECTOS/ | ZEUS | Estado global de todos los proyectos |
-| INSTRUCCION-XXX.md | IDC_PROYECTOS/INSTRUCCIONES/ | ZEUS (genera), Jelkin (firma) | Instrucción formal para ODIN |
-| ACTA-VALIDACION-XXX.md | Desarrollos/PROYECTO-XXX/docs/auditoria/ | ZEUS | Comprobante de validación |
-| ACTA-CORRECCION-XXX.md | Desarrollos/PROYECTO-XXX/docs/auditoria/ | ZEUS | Acciones correctivas |
+| Documento | Ubicación | Quién lo actualiza | Propósito | ¿Cuándo leer? |
+|-----------|-----------|-------------------|-----------|---------------|
+| **GOBIERNO-ZEUS-ODIN.md** | `Desarrollos/metodologia/` | ZEUS | **Documento de gobierno maestro.** Reglas, flujo, roles, repos, candados | **SIEMPRE al iniciar si perdiste contexto** |
+| AGENTS.md | `Desarrollos/metodologia/` | ZEUS (modifica), Jelkin (aprueba) | Identidad y límites de ODIN | Primera vez, luego referencia |
+| **SINCRONIZACION-MAESTRA.md** | `IDC_PROYECTOS/` | ZEUS | **Estado REAL de todos los módulos y proyectos** | **SIEMPRE al iniciar** |
+| INSTRUCCION-XXX.md | `IDC_PROYECTOS/INSTRUCCIONES/` | ZEUS (genera), Jelkin (firma) | Instrucción formal para ODIN | Cuando existe, antes de codear |
+| INICIO-SESION-ODIN.md | `Desarrollos/metodologia/` | ZEUS | Este checklist | Referencia cuando olvidas pasos |
+| ACTA-VALIDACION-XXX.md | `Desarrollos/PROYECTO-XXX/docs/auditoria/` | ZEUS | Comprobante de validación | Cuando ODIN dice "listo", ZEUS lo genera |
+| ACTA-CORRECCION-XXX.md | `Desarrollos/PROYECTO-XXX/docs/auditoria/` | ZEUS | Acciones correctivas | Cuando validación rechaza |
+| SELECTOR-METODOLOGIA.md | `Desarrollos/metodologia/` | ZEUS | Proyectos existentes | Contexto histórico, no crítico |
+| ODIN-TRAD.md | `Desarrollos/metodologia/` | ZEUS | Metodología desarrollo tradicional | Obsoleto, reemplazado por GOBIERNO |
+
+### ¿Qué documentos son CRÍTICOS y cuáles son de referencia?
+
+**CRÍTICOS (leer SIEMPRE si perdiste contexto):**
+1. GOBIERNO-ZEUS-ODIN.md (5 min)
+2. SINCRONIZACION-MAESTRA.md (2 min)
+3. INSTRUCCION-XXX.md (si existe) (3 min)
+
+**DE REFERENCIA (leer si tienes dudas específicas):**
+4. AGENTS.md — si olvidaste tus límites
+5. INICIO-SESION-ODIN.md — si olvidaste el checklist
+6. ACTA-VALIDACION/CORRECCION — si ZEUS te lo pide
+
+**OBSOLETOS (no leer salvo contexto histórico):**
+7. SELECTOR-METODOLOGIA.md
+8. ODIN-TRAD.md
 
 ---
 
@@ -120,7 +189,7 @@ Listo para trabajar.
 
 ---
 
-## EJEMPLO DE INICIO DE SESIÓN COMPLETO
+## EJEMPLO DE INICIO DE SESIÓN COMPLETO (Estado actual: 14 de junio 2026, 23:45 CST)
 
 ```bash
 # PASO 1: Sincronizar
@@ -128,27 +197,33 @@ cd ~/Desarrollos
 git pull origin setup/estructura-2026
 # OK: Already up to date.
 
-# PASO 2: Leer documentos
-# (ODIN lee AGENTS.md, SELECTOR-METODOLOGIA.md, ODIN-TRAD.md)
+# PASO 2: Leer documentos de gobierno (SIEMPRE si perdiste contexto)
+# (ODIN lee GOBIERNO-ZEUS-ODIN.md, AGENTS.md, ../SINCRONIZACION-MAESTRA.md)
 
 # PASO 3: Verificar proyectos
 ls -d PROYECTO-*/
 # PROYECTO-005-PROTECCION-INFANTIL/
 
-# PASO 4: Verificar estado
+# PASO 4: Verificar estado (subir a IDC_PROYECTOS)
+cd ../IDC_PROYECTOS
 cat SINCRONIZACION-MAESTRA.md
-# Módulo 001: EN CORRECCIÓN (ACTA-CORRECCION-ODIN-001.md)
-# Módulo 002: NO INICIADO (espera instrucción)
-# Módulo 003: NO INICIADO (espera instrucción)
+# Módulo 001: VALIDADO v2 (ACTA-VALIDACION-ODIN-001-v2.md)
+# Módulo 002: VALIDADO (ACTA-VALIDACION-ODIN-002.md)
+# Módulo 003: VALIDADO (ACTA-VALIDACION-ODIN-003.md)
+# Módulo 004: VALIDADO CON EXCEPCIÓN (3 deudas técnicas, 21 junio)
+# Módulo 005: AUTORIZADO (INSTRUCCION-ODIN-004-EXCEPCION.md)
+# Módulo 006: AUTORIZADO (INSTRUCCION-ODIN-004-EXCEPCION.md)
 
 # PASO 5: Verificar instrucción
 ls INSTRUCCIONES/
-# INSTRUCCION-ODIN-001.md (firmada por Jelkin, 2026-06-14)
-# "ODIN: Corregir bugs del Módulo 001 según ACTA-CORRECCION"
+# INSTRUCCION-ODIN-004-EXCEPCION.md (firmada por Jelkin, 2026-06-14)
+# "ODIN: Desarrollar Módulos 5 y 6 sin bloqueo de 004. DoD obligatorio."
 
-# PASO 6: Confirmar
-# "Soy ODIN. Proyecto activo: PROYECTO-005. Módulo: 001 (corrección).
-# Instrucción: INSTRUCCION-ODIN-001.md. Listo para trabajar."
+# PASO 6: Confirmar en chat
+# "Soy ODIN. Leí GOBIERNO-ZEUS-ODIN.md y SINCRONIZACION-MAESTRA.md.
+#  Proyecto activo: PROYECTO-005. Módulos: 005 y 006 (AUTORIZADOS).
+#  Instrucción: INSTRUCCION-ODIN-004-EXCEPCION.md. Listo para trabajar.
+#  Último commit: {hash}. Estado: 4 módulos validados, 2 autorizados."
 ```
 
 ---
