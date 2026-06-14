@@ -1,44 +1,61 @@
-from fastapi import APIRouter, Depends, HTTPException, Request
+from fastapi import APIRouter, Depends, HTTPException, Query, Request
 from sqlalchemy.orm import Session
 
 from app.database import get_db
 from app.models import AuditLog, Profile, ProfileUpdate, User
 from app.schemas import ProfileResponse
+from app.services import cache_service
 from app.services.auth import require_role
+from app.services.profile_service import profile_to_dict
 from app.services.rate_limit import check_rate_limit
 
 router = APIRouter(prefix="/profiles", tags=["admin-profiles"])
 
 
-def _profile_to_dict(profile: Profile) -> dict:
-    return {
-        "identifier_hash": profile.identifier_hash,
-        "identifier_type": profile.identifier_type,
-        "report_count": profile.report_count,
-        "score_average": profile.score_average,
-        "score_max": profile.score_max,
-        "score_min": profile.score_min,
-        "cities": profile.cities,
-        "countries": profile.countries,
-        "cities_count": profile.cities_count,
-        "countries_count": profile.countries_count,
-        "is_network": profile.is_network,
-        "evidence_types": profile.evidence_types,
-        "categories": profile.categories,
-        "first_reported": (
-            profile.first_reported.isoformat() if profile.first_reported else None
-        ),
-        "last_reported": (
-            profile.last_reported.isoformat() if profile.last_reported else None
-        ),
-        "timeline": profile.timeline,
-        "alert": (
-            f"POSIBLE RED ORGANIZADA: {profile.report_count} reportes desde "
-            f"{profile.cities_count} ciudades y {profile.countries_count} países."
-            if profile.is_network
-            else None
-        ),
-    }
+@router.get("", response_model=list[ProfileResponse])
+def list_profiles(
+    request: Request,
+    report_count_min: int | None = Query(None, ge=0),
+    score_min: float | None = Query(None, ge=0.0, le=1.0),
+    is_network: bool | None = None,
+    db: Session = Depends(get_db),
+    current_user: User = Depends(require_role("viewer")),
+):
+    check_rate_limit(request, scope="admin", identifier=current_user.username)
+    query = db.query(Profile)
+    if report_count_min is not None:
+        query = query.filter(Profile.report_count >= report_count_min)
+    if score_min is not None:
+        query = query.filter(Profile.score_average >= score_min)
+    if is_network is not None:
+        query = query.filter(Profile.is_network.is_(is_network))
+
+    profiles = query.order_by(Profile.updated_at.desc()).all()
+    return [profile_to_dict(p) for p in profiles]
+
+
+@router.get("/networks/list", response_model=list[ProfileResponse])
+def list_networks(
+    request: Request,
+    db: Session = Depends(get_db),
+    current_user: User = Depends(require_role("viewer")),
+):
+    check_rate_limit(request, scope="admin", identifier=current_user.username)
+
+    cache_key = "networks:list"
+    cached = cache_service.get_key(cache_key)
+    if cached:
+        return [ProfileResponse(**item) for item in cached]
+
+    profiles = (
+        db.query(Profile)
+        .filter(Profile.is_network.is_(True))
+        .order_by(Profile.updated_at.desc())
+        .all()
+    )
+    data = [profile_to_dict(p) for p in profiles]
+    cache_service.set_key(cache_key, data, ttl_seconds=900)
+    return [ProfileResponse(**item) for item in data]
 
 
 @router.get("/{identifier_hash}", response_model=ProfileResponse)
@@ -49,6 +66,20 @@ def get_profile(
     current_user: User = Depends(require_role("viewer")),
 ):
     check_rate_limit(request, scope="admin", identifier=current_user.username)
+
+    cache_key = f"profile:{identifier_hash}"
+    cached = cache_service.get_key(cache_key)
+    if cached:
+        audit = AuditLog(
+            action="view_profile",
+            actor_hash=str(current_user.id),
+            report_hash=None,
+            details=f"profile_hash={identifier_hash} (cache)",
+        )
+        db.add(audit)
+        db.commit()
+        return ProfileResponse(**cached)
+
     profile = (
         db.query(Profile).filter(Profile.identifier_hash == identifier_hash).first()
     )
@@ -63,7 +94,10 @@ def get_profile(
     )
     db.add(audit)
     db.commit()
-    return ProfileResponse(**_profile_to_dict(profile))
+
+    data = profile_to_dict(profile)
+    cache_service.set_key(cache_key, data, ttl_seconds=3600)
+    return ProfileResponse(**data)
 
 
 @router.get("/{identifier_hash}/timeline")
@@ -120,19 +154,3 @@ def get_updates(
             for u in updates
         ],
     }
-
-
-@router.get("/networks/list")
-def list_networks(
-    request: Request,
-    db: Session = Depends(get_db),
-    current_user: User = Depends(require_role("viewer")),
-):
-    check_rate_limit(request, scope="admin", identifier=current_user.username)
-    profiles = (
-        db.query(Profile)
-        .filter(Profile.is_network.is_(True))
-        .order_by(Profile.updated_at.desc())
-        .all()
-    )
-    return [_profile_to_dict(p) for p in profiles]

@@ -11,6 +11,7 @@ from app.models import AuditLog, Evidence, Identifier, Report
 from app.schemas import ReportCreate, ReportResponse
 from app.services.analysis_service import analyze_report
 from app.services.encryption import encrypt_field, generate_report_hash
+from app.services.geoip_service import get_location_from_ip
 from app.services.identifier import detect_identifier_type, hash_identifier
 from app.services.profile_service import update_profile_from_report
 from app.services.rate_limit import check_rate_limit
@@ -64,10 +65,9 @@ def _log_audit(
     db.add(log)
 
 
-def _extract_location(request: Request):
-    country = request.headers.get("x-client-country")
-    city = request.headers.get("x-client-city")
-    return city, country
+def _extract_location(request: Request, consent: bool = True):
+    client_ip = _get_client_ip(request)
+    return get_location_from_ip(client_ip, request, consent=consent)
 
 
 @router.post("", response_model=ReportResponse, status_code=status.HTTP_201_CREATED)
@@ -113,9 +113,7 @@ def create_report(
             payload.evidence.content, settings.encryption_kek()
         )
 
-    city, country = (None, None)
-    if payload.consent_location:
-        city, country = _extract_location(request)
+    city, country = _extract_location(request, consent=bool(payload.consent_location))
 
     report = Report(
         identifier_hash=identifier_hash,

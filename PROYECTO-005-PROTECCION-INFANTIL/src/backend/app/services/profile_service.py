@@ -4,6 +4,7 @@ from typing import Any
 from sqlalchemy.orm import Session
 
 from app.models import Profile, ProfileUpdate, Report
+from app.services import cache_service
 
 
 def _month_key(dt: datetime) -> str:
@@ -27,6 +28,38 @@ def _detect_network(profile: Profile) -> tuple[bool, list[str]]:
     if len(evidence_types) >= 3:
         criteria.append("evidence_types>=3")
     return len(criteria) >= 2, criteria
+
+
+def profile_to_dict(profile: Profile) -> dict[str, Any]:
+    """Serializa un Profile para respuestas de API y cache."""
+    return {
+        "identifier_hash": profile.identifier_hash,
+        "identifier_type": profile.identifier_type,
+        "report_count": profile.report_count,
+        "score_average": profile.score_average,
+        "score_max": profile.score_max,
+        "score_min": profile.score_min,
+        "cities": profile.cities or [],
+        "countries": profile.countries or [],
+        "cities_count": profile.cities_count,
+        "countries_count": profile.countries_count,
+        "is_network": profile.is_network,
+        "evidence_types": profile.evidence_types or [],
+        "categories": profile.categories or [],
+        "first_reported": (
+            profile.first_reported.isoformat() if profile.first_reported else None
+        ),
+        "last_reported": (
+            profile.last_reported.isoformat() if profile.last_reported else None
+        ),
+        "timeline": profile.timeline or [],
+        "alert": (
+            f"POSIBLE RED ORGANIZADA: {profile.report_count} reportes desde "
+            f"{profile.cities_count} ciudades y {profile.countries_count} países."
+            if profile.is_network
+            else None
+        ),
+    }
 
 
 def update_profile_from_report(report: Report, db: Session) -> Profile:
@@ -128,4 +161,11 @@ def update_profile_from_report(report: Report, db: Session) -> Profile:
     db.add(update)
     db.commit()
     db.refresh(profile)
+
+    # Cache del perfil (TTL 1h) e invalidación de la lista de redes.
+    cache_service.set_key(
+        f"profile:{profile.identifier_hash}", profile_to_dict(profile), ttl_seconds=3600
+    )
+    cache_service.delete_key("networks:list")
+
     return profile

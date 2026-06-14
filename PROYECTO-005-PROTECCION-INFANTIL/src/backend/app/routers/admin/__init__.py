@@ -6,10 +6,11 @@ from app.models import Report, User
 from app.services.auth import require_role
 from app.services.rate_limit import check_rate_limit
 
-from . import alerts, analytics, audit, config, digest, profiles, reports, users
+from . import alerts, analytics, audit, auth, config, digest, profiles, reports, users
 
 router = APIRouter(prefix="/api/v1/admin", tags=["admin"])
 
+router.include_router(auth.router)
 router.include_router(alerts.router)
 router.include_router(analytics.router)
 router.include_router(audit.router)

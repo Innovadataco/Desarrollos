@@ -61,6 +61,44 @@ def set(identifier_hash: str, data: dict[str, Any], ttl_seconds: int = 300) -> N
     _memory_cache[key] = (payload, expires)
 
 
+def get_key(key: str) -> Any | None:
+    """Obtiene cualquier valor cacheado por clave exacta."""
+    client = _get_redis()
+    if client:
+        value = client.get(key)
+        if value:
+            return json.loads(value)
+        return None
+
+    entry = _memory_cache.get(key)
+    if not entry:
+        return None
+    value, expires = entry
+    if datetime.now(timezone.utc).timestamp() > expires:
+        del _memory_cache[key]
+        return None
+    return json.loads(value)
+
+
+def set_key(key: str, data: Any, ttl_seconds: int = 300) -> None:
+    """Guarda cualquier valor JSON-serializable bajo una clave exacta."""
+    payload = json.dumps(data)
+    client = _get_redis()
+    if client:
+        client.setex(key, ttl_seconds, payload)
+        return
+    expires = datetime.now(timezone.utc).timestamp() + ttl_seconds
+    _memory_cache[key] = (payload, expires)
+
+
+def delete_key(key: str) -> None:
+    """Elimina una clave del cache."""
+    client = _get_redis()
+    if client:
+        client.delete(key)
+    _memory_cache.pop(key, None)
+
+
 def clear() -> None:
     global _memory_cache
     client = _get_redis()

@@ -31,3 +31,28 @@ def get_db():
 
 def init_db():
     Base.metadata.create_all(bind=engine)
+    _ensure_root_user()
+
+
+def _ensure_root_user():
+    """Crea el usuario root si no existe ningún usuario en la base de datos."""
+    from app.models import User
+    from app.services.auth import hash_password
+
+    db = SessionLocal()
+    try:
+        existing = db.query(User).first()
+        if existing:
+            return
+        root = User(
+            username="root",
+            password_hash=hash_password(settings.admin_root_password),
+            role="admin",
+            is_active=True,
+        )
+        db.add(root)
+        db.commit()
+    except Exception:
+        db.rollback()
+    finally:
+        db.close()
