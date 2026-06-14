@@ -1,14 +1,15 @@
 import json
+import re
 from pathlib import Path
 
 import joblib
 import numpy as np
 
-_ROOT = Path(__file__).resolve().parents[3]
+# scoring.py está en src/backend/app/services/, por tanto el proyecto raíz es parents[4].
+_ROOT = Path(__file__).resolve().parents[4]
 _MODEL_DIR = _ROOT / "ia" / "models" / "risk-v1.0.0"
 
 _GROOMING_KEYWORDS = [
-    "secreto",
     "secreto",
     "no le cuentes",
     "no le digas",
@@ -29,9 +30,26 @@ _GROOMING_KEYWORDS = [
     "dinero",
     "amenaz",
     "difundir",
+    "ropa interior",
+    "chantaje",
+    "extorsion",
 ]
 
 _models = {}
+
+
+def _remove_accents(text: str) -> str:
+    mapping = str.maketrans("áéíóúüÁÉÍÓÚÜ", "aeiouuAEIOUU")
+    return text.translate(mapping)
+
+
+def _preprocess(text: str) -> str:
+    """Limpieza ligera compatible con el vectorizador entrenado."""
+    text = text.lower()
+    text = _remove_accents(text)
+    text = re.sub(r"[^\w\s]", " ", text)
+    text = re.sub(r"\s+", " ", text).strip()
+    return text
 
 
 def _load_models():
@@ -42,7 +60,7 @@ def _load_models():
         _models["rf"] = joblib.load(_MODEL_DIR / "model_rf.joblib")
         _models["category"] = joblib.load(_MODEL_DIR / "model_category.joblib")
         _models["vectorizer"] = joblib.load(_MODEL_DIR / "vectorizer.joblib")
-        with open(_MODEL_DIR / "metadata.json") as f:
+        with open(_MODEL_DIR / "metadata.json", encoding="utf-8") as f:
             _models["metadata"] = json.load(f)
     except Exception as exc:
         raise RuntimeError(f"No se pudieron cargar los modelos de IA: {exc}")
@@ -58,29 +76,55 @@ def _detect_grooming_indicators(text: str) -> list[str]:
     return found[:5]
 
 
+def _extract_lr_estimator(lr):
+    """Obtiene el estimador base de LR, ya sea calibrado o no."""
+    if hasattr(lr, "calibrated_classifiers_") and lr.calibrated_classifiers_:
+        return lr.calibrated_classifiers_[0].estimator
+    if hasattr(lr, "coef_"):
+        return lr
+    return None
+
+
 def _top_tokens(text: str, lr, vectorizer, top_n: int = 5) -> list[dict]:
-    vec = vectorizer.transform([text])
+    processed = _preprocess(text)
+    vec = vectorizer.transform([processed])
     feature_names = np.array(vectorizer.get_feature_names_out())
-    try:
-        estimator = lr.calibrated_classifiers_[0].estimator
-    except Exception:
+
+    estimator = _extract_lr_estimator(lr)
+    if estimator is None:
         return []
+
     try:
         weights = estimator.coef_[0]
     except Exception:
         return []
+
     scores = np.asarray(vec.toarray()[0]) * weights
     top_idx = np.argsort(scores)[-top_n:][::-1]
     return [
         {"token": feature_names[i], "weight": round(float(scores[i]), 4)}
         for i in top_idx
-        if scores[i] != 0
+        if scores[i] > 0
     ]
 
 
 def score_text(text: str, explain: bool = True) -> dict:
     models = _load_models()
-    vec = models["vectorizer"].transform([text])
+    processed = _preprocess(text)
+    vec = models["vectorizer"].transform([processed])
+
+    # Texto sin tokens reconocidos: no se puede inferir riesgo, se asigna nivel bajo.
+    if vec.nnz == 0:
+        return {
+            "score": 0.0,
+            "level": "low",
+            "category": "desconocido",
+            "category_confidence": 1.0,
+            "model_version": models["metadata"].get("version", "risk-v1.0.0"),
+            "grooming_indicators": [],
+            "explanation": [],
+        }
+
     prob_lr = models["lr"].predict_proba(vec)[0, 1]
     prob_rf = models["rf"].predict_proba(vec)[0, 1]
     score = float((prob_lr + prob_rf) / 2.0)

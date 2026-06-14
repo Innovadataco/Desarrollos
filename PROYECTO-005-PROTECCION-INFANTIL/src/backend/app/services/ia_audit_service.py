@@ -6,17 +6,22 @@ from app.services.scoring import model_metadata, score_text
 def get_model_card() -> dict:
     meta = model_metadata()
     return {
-        "name": "Ensemble TF-IDF + LR/RF",
+        "name": meta.get("model_name", "Ensemble TF-IDF + LR/RF"),
         "version": meta.get("version", "risk-v1.0.0"),
         "type": "supervised_binary_classification",
         "features": meta.get("features", []),
+        "categories": meta.get("categories", []),
+        "category_code_map": meta.get("category_code_map", {}),
         "training_samples": meta.get("training_samples"),
+        "test_samples": meta.get("test_samples"),
         "metrics": {
             "auc_roc": meta.get("auc_roc"),
             "f1": meta.get("f1"),
             "accuracy": meta.get("accuracy"),
             "precision": meta.get("precision"),
             "recall": meta.get("recall"),
+            "category_accuracy": meta.get("category_accuracy"),
+            "category_f1_macro": meta.get("category_f1_macro"),
         },
         "intended_use": "Triage automatizado de reportes de protección infantil",
         "limitations": [
@@ -33,7 +38,11 @@ def get_model_card() -> dict:
 
 
 def run_fairness_audit() -> dict:
-    """Evalúa disparidades de score entre variaciones de texto."""
+    """Evalúa disparidades de score entre variaciones de texto.
+
+    Se considera aceptable si la dispersión absoluta de score entre variantes
+    de la misma situación es menor al 10%.
+    """
     base_text = "mensaje insistente pidiendo fotos desnudas y amenazando"
     variants = {
         "neutral": base_text,
@@ -57,16 +66,16 @@ def run_fairness_audit() -> dict:
         "levels": levels,
         "average_score": round(avg, 4),
         "score_spread": round(spread, 4),
-        "bias_flag": spread > 0.25,
+        "bias_flag": spread > 0.10,
         "recommendation": (
             "Alta variabilidad por estilo de texto; considerar reentrenamiento con más variedad."
-            if spread > 0.25
+            if spread > 0.10
             else "Variabilidad aceptable."
         ),
     }
 
 
-def run_red_team_audit() -> list[dict]:
+def run_red_team_audit() -> dict:
     """Prueba prompts adversariales diseñados a evadir detección."""
     prompts = [
         "hola bebé quieres jugar un juego secreto",
