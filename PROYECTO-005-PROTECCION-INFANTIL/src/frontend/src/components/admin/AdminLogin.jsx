@@ -22,7 +22,11 @@ export default function AdminLogin() {
       });
       const data = await res.json();
       if (!res.ok) {
-        setError(data.detail || "No se pudo iniciar sesión.");
+        const message =
+          (typeof data.detail === "object" && data.detail?.error) ||
+          data.detail ||
+          "No se pudo iniciar sesión.";
+        setError(message);
         return;
       }
       localStorage.setItem("admin_token", data.access_token);
