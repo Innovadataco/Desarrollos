@@ -99,6 +99,7 @@ export default function ReportForm({ prefillIdentifier = "" }) {
   const [evidenceFile, setEvidenceFile] = useState(null);
   const [filePreview, setFilePreview] = useState(null);
   const [confirmed, setConfirmed] = useState(false);
+  const [consentLocation, setConsentLocation] = useState(false);
   const [honeypot, setHoneypot] = useState("");
   const [loading, setLoading] = useState(false);
   const [copied, setCopied] = useState(false);
@@ -203,6 +204,7 @@ export default function ReportForm({ prefillIdentifier = "" }) {
       reported_identifier: identifier,
       description,
       category: category || "CAT-06",
+      consent_location: consentLocation,
       honeypot,
     };
 
@@ -520,6 +522,17 @@ export default function ReportForm({ prefillIdentifier = "" }) {
             />
             <span className="text-sm text-gray-700">
               Confirmo que esta información es veraz y la comparto de forma anónima.
+            </span>
+          </label>
+          <label className="flex items-start gap-3">
+            <input
+              type="checkbox"
+              checked={consentLocation}
+              onChange={(e) => setConsentLocation(e.target.checked)}
+              className="mt-1 h-5 w-5 accent-[#1A3A5C]"
+            />
+            <span className="text-sm text-gray-700">
+              Autorizo usar mi conexión para estimar ciudad/país aproximados. No se guarda mi IP ni mi ubicación exacta.
             </span>
           </label>
         </div>
