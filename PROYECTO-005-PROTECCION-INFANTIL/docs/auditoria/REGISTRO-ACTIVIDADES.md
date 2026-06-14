@@ -206,6 +206,51 @@
 
 ---
 
+### ACT-004: Implementación Módulo 004 (Clustering Geográfico y Perfil de Agresor)
+**Módulo:** 004 — Clustering Geográfico y Perfil de Agresor  
+**Instrucción:** INSTRUCCION-ODIN-004.md  
+**Asignado:** ODIN
+
+#### INICIO (Registrado por ODIN)
+- **Fecha/hora inicio:** 2026-06-14 03:30 CST (Shanghai) / 14:30 (Bogotá)
+- **Registrado por:** ODIN
+- **Contexto:** Implementación de geocodificación con privacidad, modelo de perfiles de agresor, detección de redes organizadas y panel administrativo según SPEC-004.
+
+#### FIN (Registrado por ODIN)
+- **Fecha/hora fin:** 2026-06-14 04:25 CST (Shanghai) / 15:25 (Bogotá)
+- **Registrado por:** ODIN
+- **Estado declarado:** LISTO PARA VALIDACIÓN
+- **Entregables:**
+  1. Backend: geocodificación (GeoLite2 + cabeceras), modelos `Profile`/`ProfileUpdate`, detección de redes, endpoints admin con cache.
+  2. Frontend: panel admin (login, perfiles, detalle, redes) y test E2E.
+  3. Documentación: ADR-004 y `api-reference.md` actualizados.
+  4. Commits:
+     - [`629f8ff`](https://github.com/Innovadataco/Desarrollos/commit/629f8ff) — feat(backend): módulo 004 clustering geográfico, perfiles de agresor y endpoints admin
+     - [`7749ea8`](https://github.com/Innovadataco/Desarrollos/commit/7749ea8) — feat(frontend): panel administrativo de perfiles y redes organizadas
+     - [`c147962`](https://github.com/Innovadataco/Desarrollos/commit/c147962) — docs(clustering): ADR-004, referencia API y tareas del módulo 004
+- **Notas:**
+  - Tests backend perfiles + geoip: 9 passed.
+  - Tests frontend: 10 passed.
+  - E2E admin panel: 2 passed.
+  - Se detectó y eliminó un proceso uvicorn obsoleto en puerto 8000 antes de validar.
+
+#### AUDITORÍA (Registrado por ZEUS)
+- **Fecha/hora inicio auditoría:** PENDIENTE
+- **Fecha/hora fin auditoría:** PENDIENTE
+- **Duración auditoría:** PENDIENTE
+- **Registrado por:** ZEUS
+- **Resultado:** PENDIENTE
+- **Acta generada:** PENDIENTE
+- **Hallazgos:** PENDIENTE
+- **Acciones:** PENDIENTE
+
+#### SINCRONIZACIÓN (Registrado por ZEUS)
+- **Fecha/hora actualización maestra:** PENDIENTE
+- **Estado en maestra:** NO INICIADO
+- **Próxima actividad:** PENDIENTE
+
+---
+
 ## REGISTRO DE ACTIVIDADES POR MÓDULO (Tabla resumen)
 
 | ACT | Módulo | Descripción | Inicio ODIN | Fin ODIN | Estado ODIN | Inicio ZEUS | Fin ZEUS | Resultado ZEUS | Acta |
@@ -213,7 +258,7 @@
 | 001 | 001 | Corrección bugs | 2026-06-14 02:40 | 2026-06-14 04:40 | LISTO PARA VALIDACIÓN | 2026-06-14 04:50 | 2026-06-14 05:15 | VALIDADO v2 | ACTA-VALIDACION-ODIN-001-v2.md |
 | 002 | 002 | Implementación | 2026-06-14 05:23 | 2026-06-14 12:04 | LISTO PARA VALIDACIÓN | PENDIENTE | PENDIENTE | PENDIENTE | PENDIENTE |
 | 003 | 003 | IA Triage | 2026-06-14 12:29 | 2026-06-14 12:29 | LISTO PARA VALIDACIÓN | PENDIENTE | PENDIENTE | PENDIENTE | PENDIENTE |
-| 004 | 004 | Clustering | PENDIENTE | PENDIENTE | PENDIENTE | PENDIENTE | PENDIENTE | PENDIENTE | PENDIENTE |
+| 004 | 004 | Clustering | 2026-06-14 03:30 | 2026-06-14 04:25 | LISTO PARA VALIDACIÓN | PENDIENTE | PENDIENTE | PENDIENTE | PENDIENTE |
 | 005 | 005 | Panel Admin | PENDIENTE | PENDIENTE | PENDIENTE | PENDIENTE | PENDIENTE | PENDIENTE | PENDIENTE |
 | 006 | 006 | Pasarela | PENDIENTE | PENDIENTE | PENDIENTE | PENDIENTE | PENDIENTE | PENDIENTE | PENDIENTE |
 
