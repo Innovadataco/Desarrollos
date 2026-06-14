@@ -1,0 +1,1501 @@
+text,category,category_code,severity,risk,dialect
+una persona me escribio diciendo que un tipo me hizo creer que era el unico que me entendia y me exploto sexualmente,grooming,CAT-03,severe,1,colombia
+recibi un mensaje de un adulto exigio fotografias sin ropa bajo presion,solicitud_material,CAT-02,critical,1,neutral
+recibi un mensaje de un adulto manifesto comentarios de indole pues sexual explicita bacano,contacto_inapropiado,CAT-01,critical,1,colombia
+vi un mensaje de un tipo verbalizo contenido sexual agresivo man,contacto_inapropiado,CAT-01,critical,1,colombia
+vi un mensaje de un desconocido me pregunto si podia enviarle una foto,solicitud_material,CAT-02,low,0,mexico
+me contactaron por redes diciendo que mandame una foto en ropa interior,solicitud_material,CAT-02,high,1,neutral
+un niño la chantajearon con fotos intimas posta,extorsion,CAT-05,critical,1,argentina
+recibi un mensaje de un desconocido me amenazo con contar un secreto,extorsion,CAT-05,medium,0,neutral
+recibi un mensaje de un adulto amenazo con divulgar entonces imagenes privadas,extorsion,CAT-05,high,1,colombia
+un tipo me envio comentarios sexuales explicitos parce,contacto_inapropiado,CAT-01,high,1,colombia
+vi un mensaje de alguien me dijo que tus viejos no entienden y me pidio fotos,grooming,CAT-03,high,1,neutral
+un pues menor la chantajearon con fotos intimas,extorsion,CAT-05,critical,1,neutral
+una persona me escribio todos los dias pidiendo confianza parce,grooming,CAT-03,low,0,colombia
+entonces recibi un mensaje de una mujer amenazo con difundir fotos,extorsion,CAT-05,high,1,mexico
+una persona me escribio diciendo que un tipo me saludo de una forma extraña,contacto_inapropiado,CAT-01,low,0,neutral
+vi un mensaje de la verdad alguien me presiono para vernos a solas orale,cita_persona,CAT-04,critical,1,mexico
+una persona me escribio diciendo que mandame dinero y mas fotos o publico todo,extorsion,CAT-05,severe,1,argentina
+una mujer insistio en quedar solo a pesar de que le dije que no,cita_persona,CAT-04,critical,1,argentina
+vi un mensaje de un desconocido me obligo a escuchar descripciones sexuales violentas,contacto_inapropiado,CAT-01,severe,1,mexico
+alguien me dijo que recibi un mensaje de un tipo que no entendi bien,contacto_inapropiado,CAT-01,low,0,colombia
+me contactaron por redes diciendo que pasame plata o difundo las fotos,extorsion,CAT-05,severe,1,neutral
+recibi un mensaje de solo la verdad yo te entiendo pasame fotos,grooming,CAT-03,critical,1,mexico
+alguien me dijo que un tipo me dijo que nos vieramos sin nadie mas,cita_persona,CAT-04,medium,0,colombia
+alguien me dijo que un tipo me propuso quedar en un sitio apartado wey,cita_persona,CAT-04,high,1,mexico
+un desconocido me controlo tu familia no entiende y me obligo a enviar fotos desnudas,grooming,CAT-03,severe,1,neutral
+una persona me escribio entonces diciendo que mi amigo recibio amenazas sexuales de un hombre,contacto_inapropiado,CAT-01,severe,1,neutral
+vi un mensaje de un hombre amenazo con difundir material intimo si no recibia mas wey,extorsion,CAT-05,severe,1,mexico
+vi un mensaje entonces de un hombre me extorsiono exigiendo mas fotos o publicaria todo parcero,extorsion,CAT-05,severe,1,colombia
+me contactaron por redes diciendo que una mujer me escribio todos los dias pidiendo confianza man,grooming,CAT-03,low,0,colombia
+me contactaron por redes diciendo que un adulto me presiono para vernos a solas parcero,cita_persona,CAT-04,critical,1,colombia
+bueno una persona mayor exigio mas imagenes so pena de publicarlas,extorsion,CAT-05,critical,1,neutral
+vi un mensaje de tu familia no entiende yo si mandame fotos chido,grooming,CAT-03,severe,1,mexico
+un adulto me exigio mas fotos o publicaria las que tenia copado,extorsion,CAT-05,critical,1,argentina
+una persona me dijo entonces que tus viejos no entienden,grooming,CAT-03,medium,0,neutral
+alguien la verdad me dijo que un adulto me hizo comentarios que me incomodaron,contacto_inapropiado,CAT-01,medium,0,colombia
+recibi un mensaje de alguien me envio mensajes subidos de tono,contacto_inapropiado,CAT-01,high,1,argentina
+vi un mensaje de mi hija recibio mensajes de una persona mayor con palabras sexuales agresivas posta,contacto_inapropiado,CAT-01,critical,1,argentina
+alguien me dijo que un adulto me dijo que me haria daño de forma sexual,contacto_inapropiado,CAT-01,severe,1,mexico
+vi un mensaje de mi hija fue extorsionado con fotos y amenazas de publicacion man,extorsion,CAT-05,severe,1,colombia
+vi un mensaje de una persona mayor me saludo de una forma extraña bueno orale,contacto_inapropiado,CAT-01,low,0,mexico
+una persona me escribio diciendo que un tipo me aislo de mis amigos y me pidio fotografias desnudas,grooming,CAT-03,critical,1,mexico
+recibi un mensaje de un tipo me amenazo con hacerme cosas sexuales si no obedecia,contacto_inapropiado,CAT-01,severe,1,argentina
+alguien me dijo que una persona mayor me extorsiono exigiendo mas fotos o publicaria todo,extorsion,CAT-05,severe,1,colombia
+me contactaron por redes diciendo que un desconocido me propuso un juego secreto y me exigio imagenes,grooming,CAT-03,high,1,argentina
+alguien me dijo que shh es secreto la verdad mandame fotos desnudas,grooming,CAT-03,severe,1,neutral
+alguien me dijo que mi hijo recibio mensajes de un desconocido con contenido sexual,contacto_inapropiado,CAT-01,high,1,neutral
+una persona mayor verbalizo contenido sexual ogresivo,contacto_inapropiado,CAT-01,critical,1,argentina
+una persona me escribio diciendo que un tipo me envio comentarios entonces sexuales explicitos parce,contacto_inapropiado,CAT-01,high,1,colombia
+una personi me escribio diciendo pues que pasame fotos sin ropa y no le digas a nadie,solicitud_material,CAT-02,severe,1,argentina
+alguien me dijo que un desconocido me pidio que no le cuontes a tus papas chido,grooming,CAT-03,medium,0,mexico
+mi sobrina la presionaron para quedar sola,cita_persona,CAT-04,critical,1,argentina
+vi un mensaje de mandame fotos desnudas ya,solicitud_material,CAT-02,high,1,colombia
+vi un mensaje de una persona la verdad me pregunto si queria verlo,cita_persona,CAT-04,low,0,colombia
+recibi un mensaje de una persona mayor me propuso quedar en un sitio o sea apartado,cita_persona,CAT-04,high,1,neutral
+un adulto me presiono para vernos a solas pibe,cita_persona,CAT-04,critical,1,argentina
+alguien me dijo que mandame fotos en ropa interior o me chantajeo boliche,solicitud_material,CAT-02,severe,1,argentina
+me contactaron por redes diciendo que una niña recibio un mensaje de alguien un poco incomodo orale,contacto_inapropiado,CAT-01,low,0,mexico
+me contactaron por redes diciendo que un niño le pidieron una foto comun,solicitud_material,CAT-02,medium,0,colombia
+recibi un mensaje de una persona mayor me envio mensajes subidos de tono,contacto_inapropiado,CAT-01,high,1,neutral
+vi un mensaje de un tipo me dijo que yo si te entiendo y me pidio pues fotos boliche,grooming,CAT-03,high,1,argentina
+bueno juguemos un juego secreto y mandame fotos parcero,grooming,CAT-03,high,1,colombia
+vi un mensaje de un desconocido solicito fotografias desnudas de manera insistente,solicitud_material,CAT-02,high,1,argentina
+recibi un mensaje de una persona me pidio una foto normal chevere,solicitud_material,CAT-02,medium,0,colombia
+me contactaron por redes diciendo que una persona me saludo de una forma extraña,contacto_inapropiado,CAT-01,low,0,neutral
+recibi un mensaje de una niña le dijeron que es nuestro secreto,grooming,CAT-03,medium,0,mexico
+una persona me escribio diciendo que una persona me pidio una foto normal,solicitud_material,CAT-02,medium,0,neutral
+la verdad una mujer me envio comentarios sexuales explicitos wey,contacto_inapropiado,CAT-01,high,1,mexico
+una persona me escribio diciendo que alguien me escribio todos los dias pidiendo confianza,grooming,CAT-03,low,0,colombia
+vi un mensaje de una persona mayor me dijo que pues nos vieramos en un lugar escondido chido,cita_persona,CAT-04,high,1,mexico
+recibi un mensaje de la verdad un desconocido me hablo de forma inapropiada,contacto_inapropiado,CAT-01,medium,0,argentina
+me contactaron por redes diciando que una niña recibio mensajes de una persona mayor con contenido sexual,contacto_inapropiado,CAT-01,high,1,argentina
+alguien me dijo que una persona me pregunto si queria verlo,cita_persona,CAT-04,low,0,argentina
+recibi un mensaje de un niño le dijeron que es solo para nosotros chevere,grooming,CAT-03,medium,0,colombia
+recibi un mensaje de un hombre me dijo cosas sexuales sin que yo lo pidiera,contacto_inapropiado,CAT-01,high,1,neutral
+vi un mensaje de enviame fotos intimas o publico todo,solicitud_material,CAT-02,severe,1,argentina
+vi un mensaje de mandame fotos desnudas o te funo,solicitud_material,CAT-02,severe,1,argentina
+o sea una persona me escribio diciendo que shh es secreto mandame fotos desnudas,grooming,CAT-03,severe,1,mexico
+una persona me escribio diciendo que mandame fotos desnudas ya,solicitud_material,CAT-02,high,1,neutral
+una persona me escribio diciendo que alguien me pregunto si podia enviarle una foto,solicitud_material,CAT-02,low,0,argentina
+una persona me escribio diciendo que alguien me dijo que tu familia no entiende y me pidio fotos,grooming,CAT-03,high,1,neutral
+mi sobrino quisioron verla sola,cita_persona,CAT-04,medium,0,mexico
+recibi un mensaje de un adulto que no entendi bien,contacto_inapropiado,CAT-01,low,0,argentina
+una persona me escribio diciendo que una persona mayor me hizo comentarios que me incomodaron wey,contacto_inapropiado,CAT-01,medium,0,mexico
+recibi un mensaje de un tipo me dijo que tus papas no entienden,grooming,CAT-03,medium,0,neutral
+vi bueno un mensaje de una mujer me dijo que tus papas no entienden,grooming,CAT-03,medium,0,neutral
+vi un mensaje de mi hija recibio un mensaje de alguien un poco incomodo,contacto_inapropiado,CAT-01,low,0,neutral
+vi un mensaje de una persona me presiono para mandar fotos sin ropa,solicitud_material,CAT-02,critical,1,colombia
+una persona me escribio diciendo que un adulto me dijo que tus amigos no te quieren y me pidio fotos posta,grooming,CAT-03,high,1,argentina
+un tipo me manipulo diciendo que tus viejos no entienden y me exigio fotos pibe,grooming,CAT-03,critical,1,argentina
+una persona me escribio diciendo que un hombre chantajeo con material intimo,extorsion,CAT-05,critical,1,mexico
+recibi un mensaje de alguien me pidio fotos desnudas,solicitud_material,CAT-02,high,1,argentina
+recibi un mensaje de un tipo me envio mensajes subidos de tono,contacto_inapropiado,CAT-01,high,1,colombia
+una persona me escribio diciendo que un niño recibio mensajes de una mujer con contenido o sea sexual,contacto_inapropiado,CAT-01,high,1,argentina
+vi un mensaje de un niño la chantajearon con fetos intimas parcero,extorsion,CAT-05,critical,1,colombia
+me contactaron por redes diciendo que shh es secreto mandame fotos desnudas parcero,grooming,CAT-03,severe,1,colombia
+mi sobrina pues le pidieron una foto comun,solicitud_material,CAT-02,medium,0,colombia
+me contactaron por redes diciendo que un adulto manifesto comentarios de indole sexual explicita,contacto_inapropiado,CAT-01,critical,1,argentina
+vi un mensaje de recibi un mensaje de un desconocido que no entendi bien,contacto_inapropiado,CAT-01,low,0,neutral
+recibi un mensaje de un desconocido me presiono para vernos a solas,cita_persona,CAT-04,critical,1,neutral
+me contactaron por redes diciendo que un tipo manifesto comentarios de indole sexual explicita,contacto_inapropiado,CAT-01,critical,1,argentina
+una persona me escribio diciendo que un adulto me manipulo diciendo que yo si te entiendo y me exigio fotos,grooming,CAT-03,critical,1,mexico
+la verdad alguien me dijo que una niña fue manipulado por una persona mayor para enviar material intimo,grooming,CAT-03,severe,1,neutral
+vi un mensaje de alguien me dijo que o sea tus papas no entienden carnal,grooming,CAT-03,medium,0,mexico
+alguien me dijo que pues un tipo exigio mas imagenes so pena de publicarlas,extorsion,CAT-05,critical,1,neutral
+vi un mensaje de una persona me pidio que me mostrara en poca ropa,solicitud_material,CAT-02,medium,0,argentina
+recibi un mensaje de un adulto me envio un pues mensaje que me parecio raro,contacto_inapropiado,CAT-01,low,0,neutral
+recibi un mensaje de alguien me saludo de una forma extraña boliche,contacto_inapropiado,CAT-01,low,0,argentina
+alguien me dijo que no le digas a tus papas y enviame fotos chevere,grooming,CAT-03,high,1,colombia
+un hombre me saludo de una forma extraña carnal,contacto_inapropiado,CAT-01,low,0,mexico
+me contactaron por redes diciendo que juguemos un juego secreto y mandame fotos parce,grooming,CAT-03,high,1,colombia
+una persona me escribio diciendo que mi sobrina le pidieron una foto comun,solicitud_material,CAT-02,medium,0,neutral
+alguien me dijo que una persona exigio fotografias sin ropa bajo presion,solicitud_material,CAT-02,critical,1,neutral
+vi un mensaje de una persona mayor solicito material sexual de forma coercitiva chevere,solicitud_material,CAT-02,severe,1,colombia
+alguien me dijo que una persona me hizo comentarios pues que me incomodaron boliche,contacto_inapropiado,CAT-01,medium,0,argentina
+recibi un mensaje de una persona mayor me saludo de una forma extraña,contacto_inapropiado,CAT-01,low,0,argentina
+recibi un mensaje de mi amiga recibio amenazas sexuales de un desconocido,contacto_inapropiado,CAT-01,severe,1,neutral
+una persona me escribio diciendo que alguien me dijo que tus amigos no te quieren,grooming,CAT-03,medium,0,neutral
+un hombre me hablo de forma inapropiada,contacto_inapropiado,CAT-01,medium,0,argentina
+alguien me dijo que un hombre me saludo de una forma extraña,contacto_inapropiado,CAT-01,low,0,neutral
+una pues persona me hizo creer que era el unico que me entendia y me exploto sexualmente,grooming,CAT-03,severe,1,neutral
+me contactaron por redes diciendo que solo yo te entiendo pasame fotos,grooming,CAT-03,critical,1,mexico
+vi un mensaje de un hombre me propuso quedar en un sitio apartado,cita_persona,CAT-04,high,1,neutral
+una persona me escribio pues diciendo que una mujer solicito material sexual de forma coercitiva parce,solicitud_material,CAT-02,severe,1,colombia
+una persona me escribio diciendo que alguien me describio actos sexuales de forma directa,contacto_inapropiado,CAT-01,critical,1,neutral
+alguien me dijo que un hombre me dijo cosas que no me gustaron,contacto_inapropiado,CAT-01,medium,0,mexico
+alguien me dijo que mi hijo le propusieron verse en un lugur escondido,cita_persona,CAT-04,high,1,colombia
+me contactaron por redes diciendo que un adulto me dijo que era especial parcero,grooming,CAT-03,low,0,colombia
+recibi un mensaje de una persona mayor exigio fotografias y videos desnudos y amenazo entonces con difundirlos orale,solicitud_material,CAT-02,severe,1,mexico
+entonces una persona me escribio diciendo que alguien me manipulo diciendo que tus padres no te comprenden y me exigio fotos,grooming,CAT-03,critical,1,mexico
+alguien me dijo que mi hijo le pidieron una foto,solicitud_material,CAT-02,low,0,neutral
+mandame fotos en ropa interior o le cuento a todos,solicitud_material,CAT-02,critical,1,argentina
+vi un mensaje de mi sobrino recibio un mensaje de una mujer un poco incomodo,contacto_inapropiado,CAT-01,low,0,colombia
+una persona me escribio pues diciendo que un desconocido me manipulo diciendo que yo si te entiendo y me exigio fotos orale,grooming,CAT-03,critical,1,mexico
+recibi un mensaje de un desconocido me propuso quedar en un sitio apartado,cita_persona,CAT-04,high,1,argentina
+mi hija le propusieron verse en un lugar escondido pues,cita_persona,CAT-04,high,1,argentina
+recibi un mensaje de una persona mayor me envio un mensaje que me parecio raro chido,contacto_inapropiado,CAT-01,low,0,mexico
+mi hijo le pidieron una foto comun la verdad,solicitud_material,CAT-02,medium,0,neutral
+me contactaron por redes diciendo que un niño recibio mensajes de una persona con contenido sexual,contacto_inapropiado,CAT-01,high,1,neutral
+una persona me escribio diciendo que mi sobrino la aislaron y le bueno pidieron fotos intimas,grooming,CAT-03,critical,1,neutral
+vi un mensaje de un hombre me envio comentarios sexuales explicitos,contacto_inapropiado,CAT-01,high,1,mexico
+alguien la verdad me dijo que tu familia no entiende yo si mandame fotos,grooming,CAT-03,severe,1,neutral
+me contactaron por redes diciendo que un adulto me envio mensajes subidos de tono,contacto_inapropiado,CAT-01,high,1,argentina
+mi amiga le insistieron en enviar fotos intimas,solicitud_material,CAT-02,critical,1,colombia
+me contactaron por redes diciendo que mi hija recibio comentarios de una persona mayor que la pues incomodaron,contacto_inapropiado,CAT-01,medium,0,colombia
+alguien me dijo que una persona me pregunto si queria verlo wey,cita_persona,CAT-04,low,0,mexico
+me contactaron por redes diciendo que un hombre me dijo que yo si te entiendo y me pidio fotos,grooming,CAT-03,high,1,argentina
+un hombre me manipulo diciendo que solo yo te quiero ayudar y me exigio fotos,grooming,CAT-03,critical,1,neutral
+recibi un mensaje de un adulto exigio fotografias y videos desnudos y amenazo con difundirlos,solicitud_material,CAT-02,severe,1,argentina
+recibi entonces un mensaje de un hombre me dijo cosas sexuales sin que yo lo pidiera bacano,contacto_inapropiado,CAT-01,high,1,colombia
+una persona me escribio diciendo que no le digas a tus entonces papas y enviame fotos,grooming,CAT-03,high,1,neutral
+una mujer me propuso un juego secreto y me pidio material intimo pibe,grooming,CAT-03,high,1,argentina
+recibi un mensaje de una mujer me hizo creer que era el unico que me entendia y me exploto sexualmente chido,grooming,CAT-03,severe,1,mexico
+me contactaron por rades diciendo que alguien me la verdad invito a salir,cita_persona,CAT-04,low,0,argentina
+recibi un mensaje de pusame plata o difundo las fotos,extorsion,CAT-05,severe,1,neutral
+una persona me escribio diciendo que pasame una foto en ropa interior,solicitud_material,CAT-02,high,1,mexico
+una persona mayor me invito a salir,cita_persona,CAT-04,low,0,neutral
+alguien me dijo que mi amigo la aislaron y le pidieron fotos intimas boliche,grooming,CAT-03,critical,1,argentina
+me contactaron por redes diciendo que una persona me dijo cosas que no me gustiron chevere,contacto_inapropiado,CAT-01,medium,0,colombia
+alguien me dijo que un hombre me envio comentarios sexuales explicitos chido,contacto_inapropiado,CAT-01,high,1,mexico
+recibi un mensaje la verdad de alguien que no entendi bien,contacto_inapropiado,CAT-01,low,0,mexico
+me contactaron por redes diciendo que mi sobrina recibio mensajes de una persona con palabras sexuales agresivas,contacto_inapropiado,CAT-01,critical,1,neutral
+me contactaron por redes diciendo que un desconocido me envio mensajes subidos de tono,contacto_inapropiado,CAT-01,high,1,neutral
+vi un mensaje de una mujer me manipulo diciendo que tus viejos no entienden y me exigio fotos,grooming,CAT-03,critical,1,mexico
+vi un mensaje de un hombre entonces me controlo tus padres no te comprenden y me obligo a enviar fotos desnudas parce,grooming,CAT-03,severe,1,colombia
+una persona me escribio diciendo que un niño recibio un mensaje de alguien un o sea poco incomodo,contacto_inapropiado,CAT-01,low,0,neutral
+una persona me envio un mensaje que me parecio raro orele,contacto_inapropiado,CAT-01,low,0,mexico
+vi un mensaje de una persona mayor me amenazo con difundir material intimo si no enviaba mas orale,extorsion,CAT-05,severe,1,mexico
+me contactaron por redes diciendo que tu familia no entiende yo si mandame fotos che,grooming,CAT-03,severe,1,argentina
+una persona me escribio diciendo que shh es secreto mandame fotos desnudas,grooming,CAT-03,severe,1,colombia
+me contactaron por redes diciendo que un adulto me dijo cosas sexuales o sea muy explicitas,contacto_inapropiado,CAT-01,critical,1,neutral
+una persona me escribio diciendo que un o sea niño recibio comentarios de una persona que la incomodaron copado,contacto_inapropiado,CAT-01,medium,0,argentina
+me contactaron por redes diciendo que un adulto me extorsiono exigiendo mas fotos o publicaria todo parce,extorsion,CAT-05,severe,1,colombia
+alguien me dijo que una persona mayor me pidio que me mostrara en poca ropa bacano,solicitud_material,CAT-02,medium,0,colombia
+vi un mensaje de una persona me pidio material sexual y mantenlo en secreto,solicitud_material,CAT-02,severe,1,neutral
+una persona me escribio diciendo que mi amiga recibio un mensaje de un hombre un poco incomodo,contacto_inapropiado,CAT-01,low,0,colombia
+me contactaron por redes diciendo que la verdad un tipo me hizo comentarios que me incomodaron carnal,contacto_inapropiado,CAT-01,medium,0,mexico
+una persona insistio en que le enviara fotos intimas pues,solicitud_material,CAT-02,critical,1,neutral
+me contactaron por redes diciendo que un tipo insistio en quedar solo a pesar de que le dije que no,cita_persona,CAT-04,critical,1,neutral
+vi entonces un mensaje de una niña le pidieron una foto comun,solicitud_material,CAT-02,medium,0,colombia
+me contactaron por redes diciendo que una mujer quiso verme la verdad a solas,cita_persona,CAT-04,medium,0,argentina
+una persona me escribio diciendo que un menor recibio mensajes de una mujer con contenido sexual,contacto_inapropiado,CAT-01,high,1,colombia
+un adulto requirio imagenes intimas sin consontimiento,solicitud_material,CAT-02,high,1,neutral
+alguien me dijo que un entonces adulto me hizo comentarios que me incomodaron,contacto_inapropiado,CAT-01,medium,0,neutral
+me contactaron por redes diciendo que un niño recibio un mensaje de un hombre un poco incomodo,contacto_inapropiado,CAT-01,low,0,mexico
+alguien me dijo que una persona mayor insistio en que le enviara fotos intimas,solicitud_material,CAT-02,critical,1,mexico
+alguien me pregunto si queria verlo,cita_persona,CAT-04,low,0,mexico
+una mujer me controlo tus amigos no te quieren y me obligo a enviar fotos desnudas,grooming,CAT-03,severe,1,neutral
+un tipo me insulto de forma sexual carnal,contacto_inapropiado,CAT-01,critical,1,mexico
+vi un mensaje de shh es secreto mandame fotos desnudas boliche,grooming,CAT-03,severe,1,argentina
+recibi un mensaje de pasame una foto en ropa interior,solicitud_material,CAT-02,high,1,neutral
+vi un mensaje de un tipo me presiono para mandar fotos sin buino ropa,solicitud_material,CAT-02,critical,1,argentina
+me contactaron por redes diciendo que un tipo me obligo a encontrarme con el a escondidas,cita_persona,CAT-04,severe,1,mexico
+una persona mayor exigio fotografias y videos desnudos y amenazo con difundirlos o sea,solicitud_material,CAT-02,severe,1,neutral
+alguien me dijo que mi hija la presionaron para entonces quedar sola copado,cita_persona,CAT-04,critical,1,argentina
+una persona me escribio diciendo que un desconocido me dijo que solo yo te quiero ayudar y me pidio fotos orale,grooming,CAT-03,high,1,mexico
+recibi un mensaje de una mujer me hizo comentarios que me incomodaron chido,contacto_inapropiado,CAT-01,medium,0,mexico
+un niño le propusieron un juego secreto y le pidieron fotos wey,grooming,CAT-03,high,1,mexico
+recibi un mensaje de una persona me dijo cosas sexuales sin que entonces yo lo pidiera bacano,contacto_inapropiado,CAT-01,high,1,colombia
+vi un mensaje de una persona mayor me dijo que era especial,grooming,CAT-03,low,0,colombia
+me contactaron por redes diciendo la verdad que un adulto me insulto de forma sexual boliche,contacto_inapropiado,CAT-01,critical,1,argentina
+recibi un mensaje de una persona me dijo que era especial,grooming,CAT-03,low,0,neutral
+bueno una persono me escribio diciendo que enviame fotografias intimas,solicitud_material,CAT-02,high,1,colombia
+vi un mensaje de un adulto verbalizo contenido sexual agresivo chevere,contacto_inapropiado,CAT-01,critical,1,colombia
+recibi un mensaje de una persona o sea mayor me pidio que le mandara una foto parcero,solicitud_material,CAT-02,low,0,colombia
+me contactaron por redes diciendo que una persona mayor quiso verme a solas bacano,cita_persona,CAT-04,medium,0,colombia
+me contactaron por redes diciendo que una mujer me propuso un juego secreto y me pidio fotos sin ropa,grooming,CAT-03,high,1,mexico
+una persona mayor me hizo comentarios que me incomodaron carnal,contacto_inapropiado,CAT-01,medium,0,mexico
+ilguien me dijo que un niño le propusieron un juego secreto y le pidieron fotos,grooming,CAT-03,high,1,neutral
+una persona me escribio diciendo que una persona mayor me envio comentarios sexuales explicitos,contacto_inapropiado,CAT-01,high,1,neutral
+un tipo me dijo que tu familia pues no entiende y me pidio fotos orale,grooming,CAT-03,high,1,mexico
+recibi un mensaje de una persona me envio un mensaje que me parecio raro,contacto_inapropiado,CAT-01,low,0,neutral
+alguien me dijo que un hombre amenazo con difundir material intimo si no recibia mas,extorsion,CAT-05,severe,1,colombia
+me contactaron por redes diciendo que mandame fotos desnudas ya,solicitud_material,CAT-02,high,1,colombia
+una persona me escribio diciendo que un tipo me propuso un juego secreto y me pidio fotos,grooming,CAT-03,high,1,neutral
+alguien me dijo que un desconocido me envio mensajes subidos de tono neta,contacto_inapropiado,CAT-01,high,1,mexico
+alguien me dijo que un hombre me envio comentarios sexuales explicitos,contacto_inapropiado,CAT-01,high,1,mexico
+mi amigo le dijeron que no le cuentes a tus pues papas,grooming,CAT-03,medium,0,neutral
+alguien me dijo que un hombre me pregunto si podia enviarle una foto,solicitud_material,CAT-02,low,0,neutral
+me contactaron por redes diciendo que mandame fotos en ropa interior o publicaria las fotos,solicitud_material,CAT-02,severe,1,argentina
+alguien me dijo que alguien me hablo de forma inapropiada,contacto_inapropiado,CAT-01,medium,0,colombia
+enviame fotos en ropa intirior ya,solicitud_material,CAT-02,critical,1,argentina
+no le digas a tus papas y pues enviame fotos boliche,grooming,CAT-03,high,1,argentina
+recibi un mensaje de no le digas a tus papas y enviame fotos,grooming,CAT-03,high,1,argentina
+una persona me escribio diciendo que una persona me hizo creer que era el unico que me entendia y me exploto sexualmente,grooming,CAT-03,severe,1,argentina
+bueno un hombre me hablo de forma inapropiada,contacto_inapropiado,CAT-01,medium,0,argentina
+una persona me pidio que le mandara una foto,solicitud_material,CAT-02,low,0,mexico
+alguien me dijo que alguien me envio un mensaje que me parecio raro,contacto_inapropiado,CAT-01,low,0,mexico
+alguien me dijo que recibi un mensaje de una persona mayor que no entendi bien,contacto_inapropiado,CAT-01,low,0,neutral
+un adulto me dijo pues que nos vieramos en un lugar escondido,cita_persona,CAT-04,high,1,colombia
+una persona me escribio diciendo que tu familia no entiende mandame fotos chevere,grooming,CAT-03,critical,1,colombia
+una persona me escribio diciendo que una persona mayor me controlo tus padres no te comprenden y me obligo a enviar fotos desnudas,grooming,CAT-03,severe,1,neutral
+una persona me escribio diciendo que un niño recibio amenazas sexuales de un hombre,contacto_inapropiado,CAT-01,severe,1,colombia
+recibi un mensaje de una la verdad niña amenazaron con difundir sus fotos posta,extorsion,CAT-05,high,1,argentina
+una persona mayor me presiono para vernos a solas entonces,cita_persona,CAT-04,critical,1,neutral
+alguien me dijo que tu familia no entiende mandame fotos neta,grooming,CAT-03,critical,1,mexico
+una persona me escribio diciendo que un desconocido me dijo que yo si te entiendo y me pidio fotos,grooming,CAT-03,high,1,argentina
+alguien me dijo que alguien me hizo creer que era bueno el unico que me entendia y me exploto sexualmente,grooming,CAT-03,severe,1,colombia
+vi un mensaje de alguien amenazo con difundir material intimo si no recibia mas,extorsion,CAT-05,severe,1,neutral
+alguien me dijo que solo yo te entiendo pasame fotos chido,grooming,CAT-03,critical,1,mexico
+me contactaron por redes diciendo que una persona extorsiono exigiendo mas fotografias o publicaria todo,extorsion,CAT-05,severe,1,mexico
+vi un mensaje de un desconocido me presiono para mandar fotos sin ropa,solicitud_material,CAT-02,critical,1,mexico
+alguien me dijo que mi amigo fue manipulado por un adulto para enviar material intimo,grooming,CAT-03,severe,1,mexico
+me contactaron por redes diciendo que un adulto me pidio que shh es secreto,grooming,CAT-03,medium,0,mexico
+pues recibi un mensaje de alguien me saludo de una forma extraña,contacto_inapropiado,CAT-01,low,0,mexico
+recibi un mensaje de mi hijo le pidieron fotos desnudas copado,solicitud_material,CAT-02,high,1,argentina
+me contactaron por redes diciendo que pasame una foto en ropa interior,solicitud_material,CAT-02,high,1,neutral
+una persona me escribio diciendo que mi amigo la obligaron a encontrarse a escondidas con alguien posta,cita_persona,CAT-04,severe,1,argentina
+una persona me escribio diciendo que una mujer me presiono para mandar entonces fotos sin ropa chido,solicitud_material,CAT-02,critical,1,mexico
+alguien me dijo que una persona me presiono para vernos a solas,cita_persona,CAT-04,critical,1,argentina
+mi hijo la obligaron a encontrarse a escondidas con la verdad una persona mayor,cita_persona,CAT-04,severe,1,neutral
+me contactaron por redes diciendo que mandame dinero y mas fotos o publico todo,extorsion,CAT-05,severe,1,argentina
+vi un mensaje de un adulto me dijo cosas sexuales sin que yo lo pidiera bacano,contacto_inapropiado,CAT-01,high,1,colombia
+una persona me escribio diciendo que pasame fotos sin ropa y no le digas a nadie,solicitud_material,CAT-02,severe,1,neutral
+vi un mensaje de un adulto me propuso quedar en un sitio apartado orale pues,cita_persona,CAT-04,high,1,mexico
+una persona me escribio diciendo que una persona mayor requirio material intimo de forma reiterada,solicitud_material,CAT-02,critical,1,mexico
+vi un mensaje de una mujer me manipulo diciendo que tus amigos no te quieren y me exigio fotos,grooming,CAT-03,critical,1,mexico
+una persona me escribio diciendo que un tipo me insulto de forma sexual boliche,contacto_inapropiado,CAT-01,critical,1,argentina
+una persona me escribio diciendo que una mujer requirio imagenes intimas sin consentimiento,solicitud_material,CAT-02,high,1,neutral
+mi sobrino la aislaron y le pidieron fotos intimas,grooming,CAT-03,critical,1,neutral
+una persona me escribio diciendo que una mujer quiso verme a solas,cita_persona,CAT-04,medium,0,argentina
+un hombre me pidio que no le digas a pues nadie,grooming,CAT-03,medium,0,neutral
+bueno recibi un mensaje de un hombre me hizo comentarios que me incomodaron,contacto_inapropiado,CAT-01,medium,0,argentina
+vi un mensaje de un desconocido me pidio fotos desnudas,solicitud_material,CAT-02,high,1,colombia
+una persona me escribio diciendo que tu familia no entiende mandame fotos chido,grooming,CAT-03,critical,1,mexico
+vi un mensaje de alguien extorsiono exigiendo mas fotografias o publicaria pues todo becano,extorsion,CAT-05,severe,1,colombia
+alguien me dijo que un adulto me dijo que era especial,grooming,CAT-03,low,0,argentina
+me contactaron por redes diciendo que una mujer me pidio fotos desnudas,solicitud_material,CAT-02,high,1,neutral
+me contactaron por redes diciendo que alguien me hablo de forma inapropiada chevere,contacto_inapropiado,CAT-01,medium,0,colombia
+vi un mensaje de una mujer me dijo que era especial pibe,grooming,CAT-03,low,0,argentina
+mi hijo o sea le propusieron un juego secreto y le pidieron fotos,grooming,CAT-03,high,1,neutral
+vi un mensaje la verdad de mi sobrino recibio mensajes de un desconocido con contenido sexual,contacto_inapropiado,CAT-01,high,1,neutral
+mi hija recibio un mensaje de una mujer un poco incomodo,contacto_inapropiado,CAT-01,low,0,mexico
+me contactaron por redes diciendo que un desconocido me dijo cosas sexuales sin que yo lo pidiera,contacto_inapropiado,CAT-01,high,1,argentina
+una persona me escribio diciendo que mandame fotos en ropa interior o le cuento a todos,solicitud_material,CAT-02,critical,1,neutral
+me contactaron por redes diciendo que un adulto me dijo bueno que nos vieramos en un lugur escondido,cita_persona,CAT-04,high,1,argentina
+una persona me escribio diciendo que mi amigo la presionaron para quedar sola,cita_persona,CAT-04,critical,1,neutral
+me contactaron bueno por redes diciendo que pasame fotos en ropa interior es solo para mi,solicitud_material,CAT-02,severe,1,colombia
+vi un mensaje de una mujer me propuso quedar en un sitio apartado,cita_persona,CAT-04,high,1,neutral
+alguien me dijo que un adulto me dijo cosas sexuales muy explicitas,contacto_inapropiado,CAT-01,critical,1,neutral
+un tipo me pidio que es nuestro secreto,grooming,CAT-03,medium,0,mexico
+me contactaron por redes diciendo que un menor quisieron verla sola o sea chido,cita_persona,CAT-04,medium,0,mexico
+un tipo me invito a salir chevere,cita_persona,CAT-04,low,0,colombia
+una persona me escribio diciendo que una mujer me propuso quedar en un bueno sitio apartado,cita_persona,CAT-04,high,1,mexico
+alguien exigio fotografias y videos desnudos y amenazo con difundirlos parcero,solicitud_material,CAT-02,severe,1,colombia
+un tipo pues me hablo de forma inapropiada,contacto_inapropiado,CAT-01,medium,0,argentina
+me contuctaron por redes diciendo que un hombre me pidio fotos sin ropa,solicitud_material,CAT-02,high,1,colombia
+me contactaron por redes diciendo que un hombre me hablo de forma inapropiada man,contacto_inapropiado,CAT-01,medium,0,colombia
+alguien entonces me dijo que un tipo me dijo que nos vieramos en un lugar escondido,cita_persona,CAT-04,high,1,neutral
+una persona me escribio diciendo que alguien me saludo de una forma extraña,contacto_inapropiado,CAT-01,low,0,colombia
+alguien me dijo que una persona mayor exigio mas imagenes so pena de publicarlas,extorsion,CAT-05,critical,1,mexico
+me contactaron por redes diciendo que pasame una foto en ropa interior,solicitud_material,CAT-02,high,1,mexico
+un tipo me o sea propuso quedar en un sitio apartado orale,cita_persona,CAT-04,high,1,mexico
+recibi un mensaje de un desconocido que no entendi bien wey,contacto_inapropiado,CAT-01,low,0,mexico
+me contactaron por redes diciendo que un desconocido me presiono para vernos a solas copado,cita_persona,CAT-04,critical,1,argentina
+una persona me escribio diciendo que una persona mayor me escribio todos los dias pidiendo confianza bacano,grooming,CAT-03,low,0,colombia
+recibi un mensaje de mi sobrina la aislaron y le pidieron fotos intimas,grooming,CAT-03,critical,1,mexico
+vi un mensaje de mandame fotos sin ropa ya,solicitud_material,CAT-02,critical,1,neutral
+vi un mensaje de pasame plata la verdad o difundo las fotos man,extorsion,CAT-05,severe,1,colombia
+una mujer exigio fotografias sin ropa la verdad bajo presion,solicitud_material,CAT-02,critical,1,mexico
+vi un mensaje de pasame imagenes desnudas ya,solicitud_material,CAT-02,critical,1,neutral
+alguien me dijo que un desconocido manifesto comentarios de indole sexual explicita,contacto_inapropiado,CAT-01,critical,1,mexico
+pasame una foto en ropa interior,solicitud_material,CAT-02,high,1,colombia
+alguien me dijo que un pues desconocido me propuso quedar en un sitio apartado parcero,cita_persona,CAT-04,high,1,colombia
+alguien me dijo que una mujer me hizo creer que era bueno el unico que me entendia y me exploto sexualmente,grooming,CAT-03,severe,1,colombia
+me contactaron por redes diciendo que una persona mayor me dijo cosas sexuales sin que yo lo pidiera orale,contacto_inapropiado,CAT-01,high,1,mexico
+un hombre verbalizo contenido sexual agresivo bacano,contacto_inapropiado,CAT-01,critical,1,colombia
+me contactaron por redes diciendo que un tipo me amenazo con difundir material intimo la verdad si no enviaba mas chido,extorsion,CAT-05,severe,1,mexico
+una persona me escribio diciendo que solo yo te entiendo pasame fotos chevere,grooming,CAT-03,critical,1,colombia
+vi un mensaje de un hombre me controlo solo yo te quiero ayudar y me obligo a enviar fotos desnudas,grooming,CAT-03,severe,1,colombia
+me contactaron por redes diciendo que alguien me dijo cosas sexuales bueno sin que yo lo pidiera,contacto_inapropiado,CAT-01,high,1,argentina
+un tipo describio actos sexuales violentos de forma directa posta,contacto_inapropiado,CAT-01,severe,1,argentina
+recibi un mensaje de tu familia no entiende mandame fotos,grooming,CAT-03,critical,1,neutral
+una persona me escribio diciendo que una persona mayor manifesto comentarios de indole sexual explicita,contacto_inapropiado,CAT-01,critical,1,neutral
+entonces una persona me escribio diciendo que alguien exigio fotografias sin ropa bajo presion,solicitud_material,CAT-02,critical,1,colombia
+recibi un mensaje de solo yo te entiendo pasame fotos posta,grooming,CAT-03,critical,1,argentina
+recibi un mensaje de un tipo me exigio fotos y videos desnudos y publicaria en la verdad internet,solicitud_material,CAT-02,severe,1,argentina
+recibi un mensaje de enviame fotos en ropa interior entonces y es nuestro secreto,solicitud_material,CAT-02,severe,1,argentina
+una persona me escribio diciendo que mi sobrina quisieron verla sola orale,cita_persona,CAT-04,medium,0,mexico
+pues una persona me escribio diciendo que mi hija recibio mensajes de una persona con contenido sexual,contacto_inapropiado,CAT-01,high,1,neutral
+una mujer me hizo creer que era el unico que me entendia y me exploto sexualmente,grooming,CAT-03,severe,1,neutral
+me contactaron por redes diciendo que no le digas a tus papas y enviame fotos,grooming,CAT-03,high,1,colombia
+vi un mensaje de mandame una foto en ropa interior,solicitud_material,CAT-02,high,1,mexico
+me contactaron por redes diciendo que una persona mayor me presiono para mandar fotos sin ropa,solicitud_material,CAT-02,critical,1,mexico
+vi un mensaje de mi hija la la verdad aislaron y le pidieron fotos intimas,grooming,CAT-03,critical,1,neutral
+vi un mensaje de un desconocido amenazo con divulgar imagenes privadas,extorsion,CAT-05,high,1,neutral
+vi un mensaje de mi amiga le propusieron verse en un lugar escondido wey,cita_persona,CAT-04,high,1,mexico
+recibi un mensaje de recibi un mensaje de un tipo que no entendi bien chevere,contacto_inapropiado,CAT-01,low,0,colombia
+me pues contactaron por redes diciendo que una persona chantajeo con material intimo neta,extorsion,CAT-05,critical,1,mexico
+alguien me envio mensajes subidos la verdad de tono,contacto_inapropiado,CAT-01,high,1,mexico
+vi un mensaje de alguien me envio mensajes subidos de tono parce,contacto_inapropiado,CAT-01,high,1,colombia
+recibi un mensaje de una mujer extorsiono exigiendo mas fotografias o publicaria todo,extorsion,CAT-05,severe,1,mexico
+recibi un mensaje de juguemos un juego secreto y mandame fotos bacano,grooming,CAT-03,high,1,colombia
+vi un mensaje de mi sobrino le propusieron salir,cita_persona,CAT-04,low,0,argentina
+una persona me escribio diciendo que pasame fotos sin ropa y no le digas a nadie che,solicitud_material,CAT-02,severe,1,argentina
+me contactaron por redes diciendo que mandame una foto en ropa interior,solicitud_material,CAT-02,high,1,argentina
+una persona me escribio diciendo que mandame dinero y mas fotos o publico todo,extorsion,CAT-05,severe,1,mexico
+una persona me dijo cosas que no me gustaron orale entonces,contacto_inapropiado,CAT-01,medium,0,mexico
+vi un mensaje de un hombre me envio un mensaje que me parecio raro,contacto_inapropiado,CAT-01,low,0,neutral
+me contactaron por redes diciendo que mi amiga le propusieron verse en un lugar escondido wey,cita_persona,CAT-04,high,1,mexico
+recibi un mensaje de una mujer requirio imagenes intimas sin consentimiento,solicitud_material,CAT-02,high,1,neutral
+me contactaron por redes diciendo que un o sea adulto me hablo de forma inapropiada carnal,contacto_inapropiado,CAT-01,medium,0,mexico
+me contactaron por redes diciendo que mandame fotos desnudas ya posta,solicitud_material,CAT-02,high,1,argentina
+alguien me dijo que mi hija fue manipulado por una persona para enviar material intimo posta,grooming,CAT-03,severe,1,argentina
+recibi un mensaje de una persona mayor quiso verme a solas,cita_persona,CAT-04,medium,0,mexico
+recibi un mensaje de alguien me manipulo diciendo que solo yo te quiero ayudar y me exigio fotos,grooming,CAT-03,critical,1,argentina
+una persona me escribio diciendo que una persona me aislo de mis amigos y me pidio material intimo,grooming,CAT-03,critical,1,colombia
+me contactaron por redes diciendo que un hombre me dijo cosas sexuales sin que yo lo pidiera boliche,contacto_inapropiado,CAT-01,high,1,argentina
+no le digas a tus papas y enviame fotos chevere,grooming,CAT-03,high,1,colombia
+me contactaron por redes diciendo que un adulto me describio actos sexuales de forma directa,contacto_inapropiado,CAT-01,critical,1,colombia
+recibi un mensaje de alguien quiso o sea verme a solas,cita_persona,CAT-04,medium,0,argentina
+vi un mensaje de un hombre me saludo de una forma extraña,contacto_inapropiado,CAT-01,low,0,argentina
+vi un mensaje de enviame fotografias intimas,solicitud_material,CAT-02,high,1,colombia
+alguien me dijo que un adulto me hizo comentarios que me incomodaron carnal,contacto_inapropiado,CAT-01,medium,0,mexico
+me o sea contactaron por redes diciendo que tu familia no entiende mandame fotos,grooming,CAT-03,critical,1,neutral
+alguien me dijo que una niña le propusieron un juego secreto y le pidieron fotos,grooming,CAT-03,high,1,neutral
+alguien me dijo que un hombre me pidio que no se lo digas a nadie,grooming,CAT-03,medium,0,colombia
+una niña le pidieron fotos desnudas,solicitud_material,CAT-02,high,1,neutral
+vi un mensaje de mi hija le propusieron un juego secreto y le pidieron fotos chido,grooming,CAT-03,high,1,mexico
+recibi un mensaje de mandame fotos en ropa interior o le cuento a todos,solicitud_material,CAT-02,critical,1,mexico
+un hombre me hablo de forma inapropiada boliche,contacto_inapropiado,CAT-01,medium,0,argentina
+recibi un mensaje de mi pues amiga le exigieron fotos intimas y me chantajeo,solicitud_material,CAT-02,severe,1,mexico
+me contactaron por redes diciendo que un desconocido me dijo que tus viejos no entienden y me pues pidio fotos,grooming,CAT-03,high,1,argentina
+me contactaron por redes diciendo que mi sobrina quisieron verla sola,cita_persona,CAT-04,medium,0,argentina
+recibi un mensaje de un niño le propusieron verse en un lugar escondido,cita_persona,CAT-04,high,1,argentina
+alguien me dijo que un adulto quiso verme a solas,cita_persona,CAT-04,medium,0,mexico
+alguien me entonces dijo que mi amigo quisieron verla sola chido,cita_persona,CAT-04,medium,0,mexico
+mi sobrina recibio un mensaje bueno de una persona mayor un poco incomodo posta,contacto_inapropiado,CAT-01,low,0,argentina
+un tipo exigio fotografias sin ropa bajo presion,solicitud_material,CAT-02,critical,1,neutral
+me contactaron entonces por redes diciendo que recibi un mensaje de una persona que no entendi bien chido,contacto_inapropiado,CAT-01,low,0,mexico
+recibi un mensaje de una persona me controlo tus papas no entonces entienden y me obligo a enviar fotos desnudas,grooming,CAT-03,severe,1,argentina
+un tipo o sea me dijo cosas que no me gustaron,contacto_inapropiado,CAT-01,medium,0,colombia
+un niño la presionaron para quedar sola,cita_persona,CAT-04,critical,1,colombia
+una persona me escribio diciendo que alguien me dijo que nos vieramos en un lugar escondido wey,cita_persona,CAT-04,high,1,mexico
+vi un mensaje de una mujer extorsiono exigiendo mas fotografias o publicaria todo chevere,extorsion,CAT-05,severe,1,colombia
+una persona me escribio diciendo que shh es secreto mandame fotos desnudas bacano,grooming,CAT-03,severe,1,colombia
+recibi un mensaje de mi sobrina le dijeron que es solo para nosotros,grooming,CAT-03,medium,0,argentina
+alguien me dijo que una persona me propuso bueno quedar en un sitio apartado,cita_persona,CAT-04,high,1,neutral
+o sea recibi un mensaje de mandame dinero y mas fotos o publico todo,extorsion,CAT-05,severe,1,neutral
+me contactaron por redes diciendo que un desconocido quiso verme a solas carnal,cita_persona,CAT-04,medium,0,mexico
+una persona me escribio diciendo que una persona me hablo de forma inapropiada che,contacto_inapropiado,CAT-01,medium,0,argentina
+me la verdad contactaron por redes diciendo que tu familia no entiende mandame fotos,grooming,CAT-03,critical,1,colombia
+me contactaron por redes diciendo que un tipo me extorsiono exigiendo mas fetos o publicaria todo carnal,extorsion,CAT-05,severe,1,mexico
+alguien me dijo que solo yo te entiendo pasame fotos bueno,grooming,CAT-03,critical,1,argentina
+una persona me escribio diciendo que juguemos un juego secreto y mandame fotos,grooming,CAT-03,high,1,argentina
+alguien me dijo que una persona me pidio que shh es secreto neta,grooming,CAT-03,medium,0,mexico
+recibi un mensaje de un hombre verbalizo contenido sexual agresivo,contacto_inapropiado,CAT-01,critical,1,neutral
+mi sobrino quisieron verla sola chido,cita_persona,CAT-04,medium,0,mexico
+vi un mensaje de un adulto quiso verme a solas entonces che,cita_persona,CAT-04,medium,0,argentina
+una persona me envio comentarios sexuales explicitos,contacto_inapropiado,CAT-01,high,1,neutral
+una niña la aislaron y le pidieron fotos intimas,grooming,CAT-03,critical,1,neutral
+me contactaron por redes diciendo que una niña le insistieron en enviar fotos intimas wey,solicitud_material,CAT-02,critical,1,mexico
+mi sobrino le propusieron un juego secreto y le pidieron fotos carnal,grooming,CAT-03,high,1,mexico
+vi un mensaje de o sea alguien exigio mas imagenes so pena de publicarlas,extorsion,CAT-05,critical,1,colombia
+mandame fotos desnudas ya,solicitud_material,CAT-02,high,1,colombia
+vi un mensaje de un niño le propusieron salir,cita_persona,CAT-04,low,0,neutral
+vi un mensaje de una niña la obligaron a encontrarse a escondidas con un tipo,cita_persona,CAT-04,severe,1,colombia
+una persona me escribio diciendo que una persona me hublo de forma inapropiada boliche bueno,contacto_inapropiado,CAT-01,medium,0,argentina
+un hombre amenazo con difundir material intimo si no recibia mas,extorsion,CAT-05,severe,1,neutral
+me contactaron por redes diciendo que una mujer me pidio que entonces no le digas a nadie neta,grooming,CAT-03,medium,0,mexico
+alguien me dijo que mi sobrina recibio mensajes de un hombre diciendole que era especial,grooming,CAT-03,low,0,mexico
+una niña le dijeron que contarian algo si no obedecia,extorsion,CAT-05,medium,0,neutral
+recibi un mensaje de un tipo me describio actos sexuales de forma directa,contacto_inapropiado,CAT-01,critical,1,argentina
+recibi un mensaje de un adulto me chantajeo con imagenes intimas chevere,extorsion,CAT-05,critical,1,colombia
+me contactaron por redes diciendo que un hombre me dijo que nos vieramos en un lugar escondido,cita_persona,CAT-04,high,1,mexico
+me contactaron por redes diciendo que alguien me dijo cosas sexuales sin que yo lo pidiera orale,contacto_inapropiado,CAT-01,high,1,mexico
+vi un pues mensaje de una persona me propuso un juego secreto y me pidio fotografias desnudas,grooming,CAT-03,high,1,mexico
+recibi un mensaje de alguien manifesto comentarios de indole sexual explicita boliche,contacto_inapropiado,CAT-01,critical,1,argentina
+alguien me dijo que un niño recibio mensajes de un adulto con palabras sexuales agresivas,contacto_inapropiado,CAT-01,critical,1,neutral
+me contactaron por redes diciendo que recibi un mensaje de un desconocido que no entendi bien,contacto_inapropiado,CAT-01,low,0,neutral
+recibi un mensaje de alguien me pidio que mantenlo en secreto,grooming,CAT-03,medium,0,mexico
+recibi un mensaje de enviame fotografias intimas man,solicitud_material,CAT-02,high,1,colombia
+una persona me escribio diciendo que una persona mayor me envio comentarios sexuales explicitos posta,contacto_inapropiado,CAT-01,high,1,argentina
+recibi un mensaje de una persona mayor me propuso un juego secreto y me entonces pidio fotos desnudas,grooming,CAT-03,high,1,argentina
+una persona me escribio diciendo que un hombre me envio un mensaje que me parecio raro,contacto_inapropiado,CAT-01,low,0,argentina
+mandame mas la verdad imagenes o viralizo man,extorsion,CAT-05,critical,1,colombia
+vi un mensaje de solo yo te entiendo pasame fotos man,grooming,CAT-03,critical,1,colombia
+me contactaron por redes diciendo que alguien pues me saludo de una forma extraña,contacto_inapropiado,CAT-01,low,0,mexico
+alguien me dijo que una mujer me escribio todos los dias pidiendo confianza boliche,grooming,CAT-03,low,0,argentina
+un desconocido la verdad me presiono para mandar fotos sin ropa,solicitud_material,CAT-02,critical,1,colombia
+recibi un mensaje de mandame mas fotos o publico todo orale,extorsion,CAT-05,high,1,mexico
+alguien me dijo que una persone me envio comentarios sexuales explicitos,contacto_inapropiado,CAT-01,high,1,mexico
+una persona me escribio diciendo que enviame fotos en ropa interior y es solo para mi parce,solicitud_material,CAT-02,severe,1,colombia
+recibi un mensaje de un niño recibio mensajes de una persona mayor con contenido sexual,contacto_inapropiado,CAT-01,high,1,argentina
+una persona me escribio diciendo que alguien solicito fotografias desnudas de bueno manera insistente man,solicitud_material,CAT-02,high,1,colombia
+una persona me escribio diciendo que un desconocido me dijo que tus viejos no entienden y me pidio fotos,grooming,CAT-03,high,1,neutral
+me contactaron por redes diciendo que una mujer me dijo que nos vieramos en un lugar escondido,cita_persona,CAT-04,high,1,neutral
+me contactaron por redes diciendo que un tipo insistio en quedar solo a pesar de que le dije que no parcero,cita_persona,CAT-04,critical,1,colombia
+una persona me escribio diciendo que una persona mayor verbalizo contenido sexual agresivo,contacto_inapropiado,CAT-01,critical,1,argentina
+alguien me dijo que una persona mayor me dijo cosas sexuales sin que yo lo pidiera,contacto_inapropiado,CAT-01,high,1,argentina
+un tipo me amenazo con difundir material intimo si no enviaba mas boliche,extorsion,CAT-05,severe,1,argentina
+una persona me escribio diciendo que mandame dinero y mas fotos o publico todo neta,extorsion,CAT-05,severe,1,mexico
+alguien me dijo que una niña recibio un mensaje de alguien un poco incomodo neta,contacto_inapropiado,CAT-01,low,0,mexico
+alguien me dijo que una persona mayor me envio mensajes subidos de tono parce,contacto_inapropiado,CAT-01,high,1,colombia
+una persona me escribio diciendo que un hombre me dijo cosas sexuales sin que yo lo pidiera,contacto_inapropiado,CAT-01,high,1,neutral
+me contactaron por redes diciendo que no le digas a tus papas y enviame fotos,grooming,CAT-03,high,1,neutral
+mi amigo amenazaron con difundir sus fotos bacano,extorsion,CAT-05,high,1,colombia
+vi un mensaje de entonces una persona requirio material intimo de forma reiterada,solicitud_material,CAT-02,critical,1,colombia
+recibi un mensaje de un menor recibio mensajes de una persona con o sea contenido sexual,contacto_inapropiado,CAT-01,high,1,mexico
+una persona me escribio diciendo que alguien me hablo bueno de forma inapropiada che,contacto_inapropiado,CAT-01,medium,0,argentina
+una persona me escribio diciendo que un niño le propusieron bueno un juego secreto y le pidieron fotos,grooming,CAT-03,high,1,colombia
+mandame mas fotos o publico todo posta,extorsion,CAT-05,high,1,argentina
+vi un mensaje de mi sobrina fue manipulado por alguien para enviar material intimo wey,grooming,CAT-03,severe,1,mexico
+me contactaron por redes diciendo que mi amiga recibio comentarios de un adulto que la incomodaron,contacto_inapropiado,CAT-01,medium,0,colombia
+me contactaron por redes diciendo que una persona me exigio mas fotos o publicaria las que tenia,extorsion,CAT-05,critical,1,argentina
+me contactaron por redes diciendo que mi amiga recibio comentarios de una mujer que la bueno incomodaron neta,contacto_inapropiado,CAT-01,medium,0,mexico
+me contactaron por redes diciendo que alguien me hizo creer que era el unico que me entendia y me exploto sexualmente copado,grooming,CAT-03,severe,1,argentina
+me contactaron por redes diciendo que un hombre me pregunto si queria verlo,cita_persona,CAT-04,low,0,neutral
+me contactaron por redes diciendo que una pues mujer exigio fotografias sin ropa bajo presion,solicitud_material,CAT-02,critical,1,colombia
+una persona me escribio diciendo que alguien me dijo que nos vieramos sin nadie mas,cita_persona,CAT-04,medium,0,argentina
+alguien me dijo que una mujer me dijo que nos vieramos en un lugar escondido,cita_persona,CAT-04,high,1,mexico
+recibi un mensaje de alguien me pidio una foto normal copado,solicitud_material,CAT-02,medium,0,argentina
+alguien me dijo que una mujer solicito fotografias desnudas de manera insistente carnal pues,solicitud_material,CAT-02,high,1,mexico
+vi un mensaje de mi hijo recibio comentarios de una persona mayor que la incomodaron,contacto_inapropiado,CAT-01,medium,0,argentina
+recibi un mensaje o sea de una persona me manipulo diciendo que tu familia no entiende y me exigio fotos boliche,grooming,CAT-03,critical,1,argentina
+alguien me dijo que mi amigo la presionaron para quedar sola posta,cita_persona,CAT-04,critical,1,argentina
+vi un mensaje entonces de un hombre me amenazo para que lo viera solo,cita_persona,CAT-04,severe,1,argentina
+una persona me escribio diciendo que mandame mas fotos o o sea publico todo che,extorsion,CAT-05,high,1,argentina
+recibi un mensaje de mi amiga fue manipulado por un adulto para enviar material intimo,grooming,CAT-03,severe,1,mexico
+me contactaron por redes diciendo que un desconocido me saludo de una forma extraña pibe,contacto_inapropiado,CAT-01,low,0,argentina
+mi sobrino recibio comentarios de un desconocido que la incomodaron orale,contacto_inapropiado,CAT-01,medium,0,mexico
+una persona me escribio diciendo que un niño le exigieron fotos intimas y si no lo hacia me funaria neta,solicitud_material,CAT-02,severe,1,mexico
+me contactaron por redes diciendo que un desconocido me dijo cosas sexuales sin que yo lo pidiera carnal,contacto_inapropiado,CAT-01,high,1,mexico
+una persona me escribio diciendo que una persona me envio comentarios sexuales explicitos man,contacto_inapropiado,CAT-01,high,1,colombia
+alguien me pues dijo que pasame imagenes desnudas ya chevere,solicitud_material,CAT-02,critical,1,colombia
+una persona me escribio diciendo que mi amiga recibio mensajes de una mujer con contenido sexual orale,contacto_inapropiado,CAT-01,high,1,mexico
+recibi un mensaje de mandame fotos en ropa interior o le cuento a todos orale,solicitud_material,CAT-02,critical,1,mexico
+alguien me dijo que mandame fotos sin ropa ya boliche,solicitud_material,CAT-02,critical,1,argentina
+alguien me dijo que la verdad un desconocido me amenazo con difundir material intimo si no enviaba mas,extorsion,CAT-05,severe,1,neutral
+una persona me escribio diciendo que un niño entonces le insistieron en enviar fotos intimas,solicitud_material,CAT-02,critical,1,argentina
+una persona me dijo que tus emigos no te quieren chido,grooming,CAT-03,medium,0,mexico
+recibi un mensaje de un adulto me saludo de una forma extraña,contacto_inapropiado,CAT-01,low,0,mexico
+me contactaron por redes diciendo que shh pues es secreto mandame fotos desnudas,grooming,CAT-03,severe,1,neutral
+vi un mensaje de una persona me envio comentarios sexuales explicitos,contacto_inapropiado,CAT-01,high,1,mexico
+vi un mensaje de una persona mayor me envio comentarios sexuales explicitos,contacto_inapropiado,CAT-01,high,1,neutral
+un adulto me pidio material sexual y no se lo digas a nadie che,solicitud_material,CAT-02,severe,1,argentina
+recibi un mensaje de un adulto me pidio la verdad que le mandara una foto,solicitud_material,CAT-02,low,0,colombia
+recibi un mensaje de mandame fotos desnudas o te funo,solicitud_material,CAT-02,severe,1,argentina
+me contactaron por redes diciendo que una persona mayor me dijo cosas que no me gustaron,contacto_inapropiado,CAT-01,medium,0,neutral
+una persona me escribio diciendo que un menor le pidieron una foto comun parce,solicitud_material,CAT-02,medium,0,colombia
+me contactaron por redes diciendo que un desconocido solicito fotografias desnudas de manera insistente,solicitud_material,CAT-02,high,1,neutral
+vi un mensaje de un hombre me hizo creer que era el unico que me entendia y me exploto sexualmente chido,grooming,CAT-03,severe,1,mexico
+vi un mensaje de una persona me amenazo con hacerme cosas sexuales si no obedecia,contacto_inapropiado,CAT-01,severe,1,mexico
+vi un mensaje de mi amigo le propusieron un juego secreto y le pidieron fotos man,grooming,CAT-03,high,1,colombia
+alguien me dijo que mi sobrino la aislaron y le pidieron fotos intimas,grooming,CAT-03,critical,1,neutral
+vi un mensaje de un tipo requirio material intimo de forma reiterada,solicitud_material,CAT-02,critical,1,mexico
+alguien me dijo que enviame fotos en ropa interior y no le cuentes a tus papas,solicitud_material,CAT-02,severe,1,argentina
+recibi un mensaje de una mujer me hizo comentarios que me incomodaron,contacto_inapropiado,CAT-01,medium,0,neutral
+alguien me dijo que un hombre me dijo que nos vieramos sin nadie mas parcero,cita_persona,CAT-04,medium,0,colombia
+me contactaron por redes diciendo que alguien chantajeo con material intimo orale,extorsion,CAT-05,critical,1,mexico
+recibi un mensaje de una mujer me pidio fotos sin ropa,solicitud_material,CAT-02,high,1,argentina
+alguien me dijo que un menor recibio mensajes de un tipo con contenido sexual,contacto_inapropiado,CAT-01,high,1,argentina
+alguien me bueno dijo que mandame fotos en ropa interior o publicaria las fotos che,solicitud_material,CAT-02,severe,1,argentina
+una persona me escribio diciendo que un hombre me extorsiono exigiendo mas fotos o publicoria todo,extorsion,CAT-05,severe,1,neutral
+alguien me dijo que un desconocido quiso verme a solas,cita_persona,CAT-04,medium,0,mexico
+me contactaron por redes diciendo que tu familia no entiende mandame fotos copado,grooming,CAT-03,critical,1,argentina
+me contactaron por rodes diciendo que una persona amenazo con difundir fotos,extorsion,CAT-05,high,1,argentina
+alguien me dijo que un hombre me presiono para vernos a solas che,cita_persona,CAT-04,critical,1,argentina
+una persona me escribio diciendo que una niña recibio comentarios de una persona que la incomodaron,contacto_inapropiado,CAT-01,medium,0,argentina
+vi un mensaje de un desconocido me dijo que nos vieramos en un lugar escondido,cita_persona,CAT-04,high,1,neutral
+recibi un mensaje de alguien me dijo que nos vieramos sin nadie mas posta,cita_persona,CAT-04,medium,0,argentina
+pues vi un mensaje de un tipo me dijo que me haria daño de forma sexual chevere,contacto_inapropiado,CAT-01,severe,1,colombia
+un adulto extorsiono exigiendo mas fotografias o publicaria todo,extorsion,CAT-05,severe,1,mexico
+una persona me escribio diciendo que una persona mayor me obligo a encontrarme con el a escondidas che,cita_persona,CAT-04,severe,1,argentina
+vi un mensaje de alguien me saludo de una forma extraña,contacto_inapropiado,CAT-01,low,0,colombia
+alguien me dijo que pasame una foto en ropa interior,solicitud_material,CAT-02,high,1,mexico
+una mujer me dijo que nos vieramos en un lugar escondido,cita_persona,CAT-04,high,1,neutral
+una persona me hablo de forma inapropiada,contacto_inapropiado,CAT-01,medium,0,neutral
+alguien me dijo que alguien me describio actos sexuales de forma directa,contacto_inapropiado,CAT-01,critical,1,argentina
+recibi un mensaje de una mujer me insulto de o sea forma sexual,contacto_inapropiado,CAT-01,critical,1,neutral
+recibi un mensaje de mi amigo le propusieron verse en un lugar escondido bacano,cita_persona,CAT-04,high,1,colombia
+una persona mayor me pidio que le mandara una foto,solicitud_material,CAT-02,low,0,neutral
+alguien me la verdad dijo que alguien requirio imagenes intimas sin consentimiento,solicitud_material,CAT-02,high,1,mexico
+una persona me hizo creer que era el unico que me entendia y me exploto sexualmente,grooming,CAT-03,severe,1,neutral
+me contactaron por redes diciendo que juguemos un juego secreto y mandame fotos man,grooming,CAT-03,high,1,colombia
+una persona me propuso un juego secreto y me pidio fotos en ropa interior,grooming,CAT-03,high,1,neutral
+vi un mensaje de una persona mayor me amenazo con hacerme cosas sexuales si o sea no obedecia posta,contacto_inapropiado,CAT-01,severe,1,argentina
+me contactaron por redes diciendo que alguien me dijo cosas que no me gustaron,contacto_inapropiado,CAT-01,medium,0,argentina
+vi un mensaje de mi amigo recibio mensajes de un hombre con palabras sexuales agresivas pibe,contacto_inapropiado,CAT-01,critical,1,argentina
+una persona me escribio diciendo que una mujer entonces me presiono para vernos a solas parce,cita_persona,CAT-04,critical,1,colombia
+entonces pasame material o lo dafundo neta,extorsion,CAT-05,high,1,mexico
+un adulto me dijo que pues nos vieramos en un lugar escondido carnal,cita_persona,CAT-04,high,1,mexico
+alguien me dijo que pasame imagenes desnudas ya carnal,solicitud_material,CAT-02,critical,1,mexico
+vi un mensaje de alguien solicito fotografias desnudas de manera insistente boliche,solicitud_material,CAT-02,high,1,argentina
+una persona me escribio diciendo que tu familia no entiende yo si mendame fotos,grooming,CAT-03,severe,1,neutral
+recibi un mensaje de pasame fotos o le cuento a todos,extorsion,CAT-05,critical,1,argentina
+una persona me escribio diciendo que un adulto me pidio que no le digas a nadie,grooming,CAT-03,medium,0,neutral
+pasame fotos en ropa interior es solo para mi posta o sea,solicitud_material,CAT-02,severe,1,argentina
+bueno shh es secreto mandame fotos desnudas,grooming,CAT-03,severe,1,neutral
+vi un mensaje de una persona me envio comentarios sexuales explicitos,contacto_inapropiado,CAT-01,high,1,colombia
+recibi un mensaje de pasame fotos sin ropa orale,solicitud_material,CAT-02,high,1,mexico
+alguien me dijo que un hombre ensistio en quedar solo a pesar de que le dije que no,cita_persona,CAT-04,critical,1,mexico
+vi un mensaje de un desconocido me envio un mensaje que me parecio raro copado,contacto_inapropiado,CAT-01,low,0,argentina
+recibi un mensaje de una persona me manipulo diciendo que tu familia no entiende y me exigio fotos,grooming,CAT-03,critical,1,neutral
+vi un mensaje de mi hija le propusieron un juego secreto y le pidieron fotos,grooming,CAT-03,high,1,neutral
+vi un mensaje de un tipo me prupuso quedar en un sitio apartado posta,cita_persona,CAT-04,high,1,argentina
+recibi un mensaje de entonces mi amigo le insistieron en enviar fotos intimas carnal,solicitud_material,CAT-02,critical,1,mexico
+una persona me escribio diciendo que una persona mayor undico que publicaria fotografias intimas,extorsion,CAT-05,high,1,neutral
+una persona me escribio diciendo que una mujer me dijo que tus padres no te comprenden y me pidio fotos parcero,grooming,CAT-03,high,1,colombia
+una persona me escribio diciendo que un adulto me dijo que tus padres no te comprenden y me pidio fotos,grooming,CAT-03,high,1,argentina
+vi un mensaje de una persona mayor me envio mensajes subidos de tono,contacto_inapropiado,CAT-01,high,1,colombia
+recibi un mensaje de mi sobrino bueno la chantajearon con fotos intimas orale,extorsion,CAT-05,critical,1,mexico
+enviame fotografias intimas copado,solicitud_material,CAT-02,high,1,argentina
+una persona me escribio diciendo que o sea un adulto me dijo cosas sexuales sin que yo lo pidiera,contacto_inapropiado,CAT-01,high,1,mexico
+recibi un mensaje de un desconocido me aislo de mis amigos y me pidio fotografias desnudas,grooming,CAT-03,critical,1,neutral
+pasame fotos o le cuento a todos,extorsion,CAT-05,critical,1,neutral
+vi un mensaje de mi la verdad hija le exigieron fotos intimas y publicaria en internet carnal,solicitud_material,CAT-02,severe,1,mexico
+vi un mensaje de tu familia no entiende mandame fotos la verdad parcero,grooming,CAT-03,critical,1,colombia
+alguien me dijo que pasame plata o difundo las fotos parcero,extorsion,CAT-05,severe,1,colombia
+vi un mensaje de mi amiga le pidieron una foto boliche,solicitud_material,CAT-02,low,0,argentina
+recibi un mensaje de un adulto me describio actos sexuales de forma directe bueno,contacto_inapropiado,CAT-01,critical,1,mexico
+un adulto entonces me envio comentarios sexuales explicitos,contacto_inapropiado,CAT-01,high,1,mexico
+o sea recibi un mensaje de alguien me escribio todos los dias pidiendo confianza che,grooming,CAT-03,low,0,argentina
+vi un mensaje de un desconocido insistio en quedar solo a pesar de que le dije que no,cita_persona,CAT-04,critical,1,neutral
+pasame pues fotos sin ropa y no le digas a nadie copado,solicitud_material,CAT-02,severe,1,argentina
+recibi un mensaje de una mujer amenazo con divulgar imagenes privadas,extorsion,CAT-05,high,1,neutral
+recibi un la verdad mensaje de mi hija le pidieron fotos desnudas,solicitud_material,CAT-02,high,1,neutral
+me contactaron por redes diciendo que un desconocido me envio comentarios sexuales explicitos,contacto_inapropiado,CAT-01,high,1,neutral
+una persona me escribio diciendo que una mujer me dijo cosas sexuales sin que yo lo pidiera che,contacto_inapropiado,CAT-01,high,1,argentina
+vi un mensaje de un tipo me invito a salir,cita_persona,CAT-04,low,0,argentina
+me contactaron por redes diciendo que mi amigo quisieron verla sola,cita_persona,CAT-04,medium,0,neutral
+vi un mensaje de mi amigo recibio un mensaje de un tipo un poco incomodo,contacto_inapropiado,CAT-01,low,0,argentina
+alguien me dijo que un tipo me hizo comentarios que me incomodaron,contacto_inapropiado,CAT-01,medium,0,neutral
+una persona me escribio diciendo que mi amigo bueno recibio mensajes de una persona mayor con contenido sexual neta,contacto_inapropiado,CAT-01,high,1,mexico
+una niña le dijeron que es nuestro secreto orale,grooming,CAT-03,medium,0,mexico
+o sea alguien me dijo que juguemos un juego secreto y mandame fotos,grooming,CAT-03,high,1,mexico
+me contactaron por redes diciendo que una mujer me dijo que solo yo te quiero ayudar,grooming,CAT-03,medium,0,mexico
+recibi un mensaje de un menor recibio comentarios de un desconocido que la incomodaron,contacto_inapropiado,CAT-01,medium,0,argentina
+una persona me escribio diciendo que una mujer me pidio fotos sin ropa,solicitud_material,CAT-02,high,1,argentina
+alguien me dijo que enviame fotos en ropa interior ya neta,solicitud_material,CAT-02,critical,1,mexico
+recibi un mensaje de no le digas a tus papas y enviame fotos,grooming,CAT-03,high,1,colombia
+un desconocido me dijo que tus papas no entienden,grooming,CAT-03,medium,0,argentina
+un hombre solicito fotografias desnudas de manera insistente,solicitud_material,CAT-02,high,1,colombia
+alguien me dijo que un adulto me hizo comentarios que me incomodaron,contacto_inapropiado,CAT-01,medium,0,neutral
+alguien me dijo que mi amiga la presionaron para quedar sola,cita_persona,CAT-04,critical,1,mexico
+un niño le la verdad propusieron un juego secreto y le pidieron fotos parcero,grooming,CAT-03,high,1,colombia
+una persona me escribio diciendo que un menor recibio comentarios de un adulto que la incomodaron,contacto_inapropiado,CAT-01,medium,0,argentina
+recibi un mensaje de un menor le pidieron fotos desnudas chido,solicitud_material,CAT-02,high,1,mexico
+una persona me escribio diciendo que un desconocido manifesto comentarios de indole pues sexual explicita,contacto_inapropiado,CAT-01,critical,1,argentina
+vi un mensaje de mi sobrina recibio mensajes de alguien con contenido sexual,contacto_inapropiado,CAT-01,high,1,argentina
+una persona me escribio diciendo que una persona mayor me envio mensajes subidos de tono neta,contacto_inapropiado,CAT-01,high,1,mexico
+alguien me dijo que un tipo me propuso un juego secreto y me pidio fotos en ropa interior boliche,grooming,CAT-03,high,1,argentina
+me contactaron por redes diciendo que mi amigo le dijeron que no le cuentes a tus papas,grooming,CAT-03,medium,0,neutral
+recibi un mensaje de una mujer me chantajeo con imagenes intimas,extorsion,CAT-05,critical,1,neutral
+me contactaron por redes diciendo que una mujer indico que publicaria fotografias intimas chido,extorsion,CAT-05,high,1,mexico
+vi un mensaje de tu familia no entiende mandame fotos neta,grooming,CAT-03,critical,1,mexico
+vi un mensaje de una niña la aislaron y le pidieron fotos intimas,grooming,CAT-03,critical,1,argentina
+vi un mensaje de una mujer solicito fotografias desnudas de manera insistente,solicitud_material,CAT-02,high,1,colombia
+me contactaron por redes diciendo que un desconocido me pidio pues que me mostrara en poca ropa boliche,solicitud_material,CAT-02,medium,0,argentina
+alguien me dijo que un menor fue manipulado por un desconocido para enviar material intimo parce,grooming,CAT-03,severe,1,colombia
+recibi un mensaje de una persona mayor me saludo de una forma extraña,contacto_inapropiado,CAT-01,low,0,neutral
+una persona me escribio diciendo que un desconocido me dijo que le debia algo neta,extorsion,CAT-05,low,0,mexico
+vi un mensaje de una persona me pidio que le mandara una foto,solicitud_material,CAT-02,low,0,neutral
+mi amigo recibio mensajes de un adulto con contenido sexual,contacto_inapropiado,CAT-01,high,1,argentina
+me contactaron por redes diciendo que recibi un mensaje de un tipo que no entendi bien wey,contacto_inapropiado,CAT-01,low,0,mexico
+me contactaron por redes diciendo bueno que mi hijo la aislaron y le pidieron fotos intimas copado,grooming,CAT-03,critical,1,argentina
+vi un mensaje de mi sobrina le pidieron fotos desnudas,solicitud_material,CAT-02,high,1,colombia
+alguien me dijo que alguien me aislo de mis amigos y me pidio material intimo,grooming,CAT-03,critical,1,argentina
+una persona me escribio diciendo que alguien me saludo de una forma extraña,contacto_inapropiado,CAT-01,low,0,colombia
+vi un mensaje de un hombre solicito fotografias desnudas de manera insistente,solicitud_material,CAT-02,high,1,neutral
+bueno recibi un mensaje de una mujer me hizo comentarios que me incomodaron orale,contacto_inapropiado,CAT-01,medium,0,mexico
+me contactaron por redes diciendo que una persona me hablo de forma inapropiada,contacto_inapropiado,CAT-01,medium,0,argentina
+recibi un mensaje de un menor le dijeron que es solo para nosotros,grooming,CAT-03,medium,0,mexico
+una persona me escribio diciendo que un tipo me dijo que nos vieramos sin nadie mas,cita_persona,CAT-04,medium,0,colombia
+alguien me dijo que juguemos un juego secreto y mandame fotos,grooming,CAT-03,high,1,argentina
+una persona me escribio diciendo que una persona amenazo con divulgar imagenes privadas orale,extorsion,CAT-05,high,1,mexico
+alguien me dijo que mi hijo la chantajearon con fotos intimas chido,extorsion,CAT-05,critical,1,mexico
+enviame pues fotografias intimas neta,solicitud_material,CAT-02,high,1,mexico
+me contactaron por redes diciendo que pasame plata o difundo las bueno fotos carnal,extorsion,CAT-05,severe,1,mexico
+vi un mensaje de shh es secreto mandame fotos desnudas bacano,grooming,CAT-03,severe,1,colombia
+una persona me escribio diciendo que pasame fotos o le cuento a todos chevere,extorsion,CAT-05,critical,1,colombia
+me contactaron por redes diciendo que un tipo me insulto de forma sexual orale,contacto_inapropiado,CAT-01,critical,1,mexico
+alguien me dijo que alguien me envio mensajes subidos de tono,contacto_inapropiado,CAT-01,high,1,neutral
+una persona me escribio diciendo que una persona describio actos sexuales violentos de forma directa pibe,contacto_inapropiado,CAT-01,severe,1,argentina
+alguien me dijo que una persona mayor me envio mensajes subidos de tono copado,contacto_inapropiado,CAT-01,high,1,argentina
+vi un mensaje de una persona mayor me dijo que solo yo bueno te quiero ayudar,grooming,CAT-03,medium,0,neutral
+una persona mayor indico que publicaria fotografias intimas,extorsion,CAT-05,high,1,neutral
+una persona me invito a salir,cita_persona,CAT-04,low,0,mexico
+una persona me escribio diciendo que un hombre verbalizo contenido sexual agresivo,contacto_inapropiado,CAT-01,critical,1,neutral
+enviame una foto en ropa interior,solicitud_material,CAT-02,high,1,colombia
+una persona me escribio diciendo que enviame una foto en ropa interior,solicitud_material,CAT-02,high,1,neutral
+una persona me escribio diciendo que mi sobrino le propusieron un juego secreto y le pidieron fotos parcero,grooming,CAT-03,high,1,colombia
+un desconocido me amenazo para que lo viera solo,cita_persona,CAT-04,severe,1,neutral
+me contactaron por redes diciendo que un adulto me propuso quedar en un sitio apartado,cita_persona,CAT-04,high,1,argentina
+mi sobrina quisiuron verla sola,cita_persona,CAT-04,medium,0,colombia
+alguien me hablo de forma inapropiada chido,contacto_inapropiado,CAT-01,medium,0,mexico
+alguien me dijo que un o sea desconocido me pidio material sexual y es solo para mi orale,solicitud_material,CAT-02,severe,1,mexico
+recibi un mensaje de un niño le dijeron que es nuestro secreto,grooming,CAT-03,medium,0,colombia
+alguien me dijo que un tipo quiso verme a solas,cita_persona,CAT-04,medium,0,neutral
+una persona me escribio diciendo que una persona me dijo que nos vieramos sin nadie mas carnal,cita_persona,CAT-04,medium,0,mexico
+una persona me oscribio diciendo que recibi un mensaje de una persona que no entendi bien,contacto_inapropiado,CAT-01,low,0,argentina
+recibi un mensaje de un desconocido manifesto comentarios de indole sexual explicita la verdad posta,contacto_inapropiado,CAT-01,critical,1,argentina
+una persona me escribio diciendo que una mujer solicito fotografias desnudas de manera insistente,solicitud_material,CAT-02,high,1,colombia
+una persona me entonces escribio diciendo que solo yo te entiendo pasame fotos,grooming,CAT-03,critical,1,mexico
+vi un mensaje de una persona mayor me hizo comentarios que me incomodaron wey,contacto_inapropiado,CAT-01,medium,0,mexico
+me contactaron por redes diciendo que una persona quiso verme a solas wey,cita_persona,CAT-04,medium,0,mexico
+un menor recibio mensajes de una persona diciendole que era especial,grooming,CAT-03,low,0,colombia
+una persona me escribio diciendo que la verdad mandame una foto en ropa interior chido,solicitud_material,CAT-02,high,1,mexico
+vi un mensaje de una persona mayor me presiono para vernos a solas,cita_persona,CAT-04,critical,1,colombia
+una persona mayor o sea exigio fotografias y videos dusnudos y amenazo con difundirlos che,solicitud_material,CAT-02,severe,1,argentina
+me contactaron por redes diciendo que recibi un mensaje de un hombre que no entendi bien chevere,contacto_inapropiado,CAT-01,low,0,colombia
+recibi un mensaje de mi sobrina le pidieron dinero,extorsion,CAT-05,low,0,colombia
+recibi un mensaje de una persona me aislo de mis amigos y me exigio imagenes che,grooming,CAT-03,critical,1,argentina
+alguien me dijo que no le digas a tus papas y enviame fotos,grooming,CAT-03,high,1,colombia
+me contactaron por redes diciendo que un hombre insistio en que le enviara fotos intimas bueno parce,solicitud_material,CAT-02,critical,1,colombia
+alguien me dijo que mi hija le pidieron dinero pibe,extorsion,CAT-05,low,0,argentina
+alguien me dijo que mandame fotos sin ropa ya,solicitud_material,CAT-02,critical,1,mexico
+la verdad vi un mensaje de alguien me manipulo diciendo que yo si te entiendo y me exigio fotos,grooming,CAT-03,critical,1,neutral
+vi un mensaje de una persona me chantajeo con imagenes intimas,extorsion,CAT-05,critical,1,mexico
+recibi un mensaje de mi sobrina la aislaron y le pidieron fotos intimas,grooming,CAT-03,critical,1,colombia
+recibi un mensaje de un adulto me envio comentarios sexuales explicitos orale,contacto_inapropiado,CAT-01,high,1,mexico
+recibi un entonces mensaje de un tipo me pregunto si queria verlo che,cita_persona,CAT-04,low,0,argentina
+un desconocido manifesto comentarios de indole sexual explicita bacano,contacto_inapropiado,CAT-01,critical,1,colombia
+mandame fotos en ropa interior o le cuento a pues todos,solicitud_material,CAT-02,critical,1,argentina
+recibi un mensaje de una mujer que no entendi bien,contacto_inapropiado,CAT-01,low,0,mexico
+recibi un mensaje de una persona me saludo de una forma extraña,contacto_inapropiado,CAT-01,low,0,argentina
+recibi un mensaje de mi amigo recibio mensajes de una persona con contenido sexual,contacto_inapropiado,CAT-01,high,1,argentina
+una persona me escribio diciendo que un tipo me presiono para vernos a solas,cita_persona,CAT-04,critical,1,mexico
+recibi un mensaje de un tipo me propuso un juego secreto y me pidio material intimo pibe,grooming,CAT-03,high,1,argentina
+recibi un mensaje de mandame dinero y mas fotos o publico todo,extorsion,CAT-05,severe,1,argentina
+me contactaron por redes diciendo que un tipo me dijo cosas que no me gustaron bacano,contacto_inapropiado,CAT-01,medium,0,colombia
+un niño fue extorsionado con fotos y amenazas de publicacion parce,extorsion,CAT-05,severe,1,colombia
+recibi un mensaje de una mujer me saludo de una forma extraña copado,contacto_inapropiado,CAT-01,low,0,argentina
+una persona me escribio diciendo que bueno shh es secreto mandame fotos desnudas,grooming,CAT-03,severe,1,neutral
+un tipo me propuso un juego secreto y me pidio fotos,grooming,CAT-03,high,1,mexico
+me contactaron por redes diciendo que mi amiga le exigieron fotos intimas y me extorsionaria,solicitud_material,CAT-02,severe,1,colombia
+alguien me dijo que una mujer exigio fotografias sin ropa bajo presion,solicitud_material,CAT-02,critical,1,neutral
+alguien me dijo que un hombre me escribio todos los dias pidiendo confianza che,grooming,CAT-03,low,0,argentina
+alguien me dijo que un adulto me dijo que nos vieramos sin nedie mas,cita_persona,CAT-04,medium,0,argentina
+recibi un mensaje de mandame fotos sin ropa ya,solicitud_material,CAT-02,critical,1,neutral
+una persona me escribio diciendo que tu familia no entiende mandame la verdad fotos,grooming,CAT-03,critical,1,neutral
+una persona mayor me envio comentarios sexuales explicitos chevere,contacto_inapropiado,CAT-01,high,1,colombia
+recibi un mensaje de mi hija recibio un mensaje de un desconocido un poco incomodo,contacto_inapropiado,CAT-01,low,0,argentina
+recibi un mensaje de una mujer me envio mensajes bueno subidos de tono,contacto_inapropiado,CAT-01,high,1,neutral
+una bueno mujer me pidio fotos desnudas chevere,solicitud_material,CAT-02,high,1,colombia
+alguien me dijo que un adulto me envio un mensaje que me parecio bueno raro,contacto_inapropiado,CAT-01,low,0,argentina
+una persona me escribio diciendo que una mujer me envio un mensaje que me parecio raro neta,contacto_inapropiado,CAT-01,low,0,mexico
+alguien me dijo que una mujer me envio mensajes subidos de tono neta,contacto_inapropiado,CAT-01,high,1,mexico
+alguien me dijo que recibi un mensaje de una persona que no entendi bien,contacto_inapropiado,CAT-01,low,0,neutral
+recibi un mensaje de entonces un hombre me pidio que mantenlo en secreto,grooming,CAT-03,medium,0,neutral
+mi sobrina recibio comentarios de alguien que la incomodaron,contacto_inapropiado,CAT-01,medium,0,argentina
+recibi un mensaje de un desconocido me o sea saludo de una forma extroña parce,contacto_inapropiado,CAT-01,low,0,colombia
+recibi un mensaje de una persona o sea me amenazo con contar un secreto,extorsion,CAT-05,medium,0,neutral
+una persona me escribio diciando que una persona solicito material sexual de forma coercitiva,solicitud_material,CAT-02,severe,1,mexico
+una persona me escribio diciendo que una persona mayor me saludo de una forma extraña,contacto_inapropiado,CAT-01,low,0,mexico
+alguien me dijo que mi sobrino recibio mensajes de alguien diciendole que era especial,grooming,CAT-03,low,0,colombia
+alguien me dijo que mi hijo le exigieron fotos intimas y o viralizaria todo,solicitud_material,CAT-02,severe,1,argentina
+recibi un mensaje de un hombre que no entendi bien,contacto_inapropiado,CAT-01,low,0,mexico
+una persona me propuso quedar en un sitio apartado,cita_persona,CAT-04,high,1,argentina
+pasame fotos sin ropa la verdad,solicitud_material,CAT-02,high,1,neutral
+vi bueno un mensaje de un adulto me dijo que tus viejos no entienden y me pidio fotos,grooming,CAT-03,high,1,mexico
+vi un mensaje de un bueno desconocido quiso verme a solas,cita_persona,CAT-04,medium,0,colombia
+alguien me dijo que no le digas a tus papas y enviame fotos la verdad,grooming,CAT-03,high,1,colombia
+vi entonces un mensaje de una persona mayor me amenazo con difundir material intimo si no enviaba mas parce,extorsion,CAT-05,severe,1,colombia
+una persona me escribio diciendo que mandame fotos desnudas ya,solicitud_material,CAT-02,high,1,mexico
+alguien bueno me dijo que un adulto me amenazo con difundir material intimo si no enviaba mas parce,extorsion,CAT-05,severe,1,colombia
+alguien me dijo o sea que pasame imagenes desnudas ya,solicitud_material,CAT-02,critical,1,argentina
+vi un mensaje de mi hijo le pidieron una foto pibe,solicitud_material,CAT-02,low,0,argentina
+recibi un mensaje de una persona mayor me dijo que tus amigos no te quieren man,grooming,CAT-03,medium,0,colombia
+una persona me escribio diciendo que mi sobrino la presionaron para quedar sola boliche,cita_persona,CAT-04,critical,1,argentina
+alguien me dijo que un hombre me escribio todos los dias pidiendo o sea confianza,grooming,CAT-03,low,0,mexico
+vi un mensaje de no le digas a tus papas y enviame fotos orale,grooming,CAT-03,high,1,mexico
+una persona me escribio diciendo que recibi un mensaje de una persona que no entendi bien,contacto_inapropiado,CAT-01,low,0,neutral
+alguien me dijo que juguemos un juego secreto y mandame fotos,grooming,CAT-03,high,1,neutral
+recibi un mensaje de un hombre me envio un mensaje que me parecio raro,contacto_inapropiado,CAT-01,low,0,mexico
+un tipo me presiono para mandar fotos sin ropa,solicitud_material,CAT-02,critical,1,argentina
+vi un mensaje de mandame fotos en ropa interior o me amenazo con publicarlas,solicitud_material,CAT-02,severe,1,neutral
+mi sobrino recibio comentarios de una pues mujer que la incomodaron,contacto_inapropiado,CAT-01,medium,0,neutral
+vi un mensaje de una persona me envio mensajes subidos de tono orale,contacto_inapropiado,CAT-01,high,1,mexico
+una persona me escribio diciendo que mandame fotos en ropa interior o o viralizaria todo,solicitud_material,CAT-02,severe,1,neutral
+alguien me describio actos sexuales de forma directa o sea copado,contacto_inapropiado,CAT-01,critical,1,argentina
+mandame fotos desnudas ya pibe,solicitud_material,CAT-02,high,1,argentina
+alguien me dijo que un adulto me pidio que no se lo digas a nadie,grooming,CAT-03,medium,0,colombia
+me contactaron por redes diciendo que tu familia no entiende yo si mandame fotos wey,grooming,CAT-03,severe,1,mexico
+entonces recibi un mensaje de un adulto me hizo comentarios que me incomodaron,contacto_inapropiado,CAT-01,medium,0,argentina
+vi un mensaje de tu familia no entiende la verdad mandame fotos neta,grooming,CAT-03,critical,1,mexico
+alguien me dijo que recibi un mensaje de una persona mayor que no entendi bien,contacto_inapropiado,CAT-01,low,0,neutral
+vi un mensaje de mi amigo recibio un mensaje de un desconocido la verdad un poco incomodo copado,contacto_inapropiado,CAT-01,low,0,argentina
+una mujer me dijo que tus papas no entienden y me pidio fotos,grooming,CAT-03,high,1,argentina
+alguien me dijo cosas que no me gustaron,contacto_inapropiado,CAT-01,medium,0,neutral
+una persona me escribio diciendo que un hombre me propuso quedar en un sitio apartado bacano,cita_persona,CAT-04,high,1,colombia
+una persona me escribio diciendo que un menor recibio un mensaje de una mujer un poco incomodo chido,contacto_inapropiado,CAT-01,low,0,mexico
+una persona me escribio diciendo que un tipo me pidio fotos sin ropa,solicitud_material,CAT-02,high,1,neutral
+alguien me dijo que un niño la aislaron y le pidieron fotos intimas,grooming,CAT-03,critical,1,argentina
+me contactaron por redes diciendo que una persona me hizo creer que era el unico que me entendia y me exploto sexualmente,grooming,CAT-03,severe,1,mexico
+alguien me dijo que alguien me dijo que tu familia no entiende y me pidio fotos,grooming,CAT-03,high,1,argentina
+una persona me escribio diciendo que un tipo me escribio todos los dias pidiendo entonces confianza man,grooming,CAT-03,low,0,colombia
+la verdad una persona me hizo comentarios que me incomodaron,contacto_inapropiado,CAT-01,medium,0,mexico
+alguien me dijo que mi sobrina recibio comentarios de un desconocido que la incomodaron,contacto_inapropiado,CAT-01,medium,0,argentina
+alguien me dijo que mi amiga la obligaron a encontrarse a escondidas con una persona,cita_persona,CAT-04,severe,1,colombia
+vi un mensaje de recibi un mensaje de una mujer que no entendi bien,contacto_inapropiado,CAT-01,low,0,colombia
+recibi un mensaje de una persona mayor me propuso quedar en un sitio apartado,cita_persona,CAT-04,high,1,mexico
+me contactaron por redes diciendo que una niña recibio un mensaje de un hombre un poco incomodo,contacto_inapropiado,CAT-01,low,0,argentina
+recibi un mensaje de una persona mayor me pidio fotos sin ropa parce,solicitud_material,CAT-02,high,1,colombia
+recibi un mensaje de un adulto me hizo creer que era el unico que me entendia y me exploto sexualmente chido,grooming,CAT-03,severe,1,mexico
+recibi un mensaje de un niño le pidieron una foto comun,solicitud_material,CAT-02,medium,0,argentina
+un hombre me dijo cosas que no me gustaron,contacto_inapropiado,CAT-01,medium,0,argentina
+recibi un mensaje de un hombre me envio mensajes subidos de tono,contacto_inapropiado,CAT-01,high,1,neutral
+o sea una mujer me dijo cosas sexuales sin que yo lo pidiera,contacto_inapropiado,CAT-01,high,1,argentina
+recibi un mensaje de una persona me amenazo con hacerme cosas sexuales pues si no obedecia copado,contacto_inapropiado,CAT-01,severe,1,argentina
+una persona me escribio diciendo que un niño fue extorsionado con fotos y amenazas de publicacion,extorsion,CAT-05,severe,1,neutral
+vi un mensaje de un tipo me envio mensajes subidos de tono boliche,contacto_inapropiado,CAT-01,high,1,argentina
+vi un mensaje de recibi un mensaje de un hombre que no entendi bien man,contacto_inapropiado,CAT-01,low,0,colombia
+alguien me dijo que un tipo me amenazo con contar un secreto pibe,extorsion,CAT-05,medium,0,argentina
+vi un mensaje de un hombre exigio fotografias y videos desnudos y amenazo con difundirlos bueno,solicitud_material,CAT-02,severe,1,colombia
+vi un mensaje de un menor le propusieron salir,cita_persona,CAT-04,low,0,neutral
+un desconocido me dijo que tu familia no entiende y me pidio fotos chido,grooming,CAT-03,high,1,mexico
+me contactaron por redes diciendo que alguien me envio un mensaje que me parecio raro,contacto_inapropiado,CAT-01,low,0,neutral
+un hombre me dijo que me haria daño de forma sexual parce,contacto_inapropiado,CAT-01,severe,1,colombia
+una persona me escribio diciendo bueno que una mujer me saludo de una forma extraña chevere,contacto_inapropiado,CAT-01,low,0,colombia
+me contactaron por redes diciendo que una persona mayor me amenazo para que lo viera solo o sea bacano,cita_persona,CAT-04,severe,1,colombia
+una persona me escribio diciendo que mi amigo le propusieron verse en un lugar escondido,cita_persona,CAT-04,high,1,neutral
+recibi un mensaje de mi sobrina le dijeron que contarian algo si no obedecia,extorsion,CAT-05,medium,0,mexico
+alguien me dijo que una persona me envio mensajes subidos de tono,contacto_inapropiado,CAT-01,high,1,colombia
+alguien me dijo que una persona mayor me pidio dinero,extorsion,CAT-05,low,0,argentina
+recibi un mensaje de un hombre me dijo que nos vieramos en un lugar escondido,cita_persona,CAT-04,high,1,colombia
+alguien me dijo que pasame fotos sin ropa y no le digas a nadie,solicitud_material,CAT-02,severe,1,neutral
+recibi un mensaje de una persona mayor me entonces describio actos sexuales de forma directa,contacto_inapropiado,CAT-01,critical,1,colombia
+recibi un mensaje de una o sea persona me dijo cosas que no me gustaron carnal,contacto_inapropiado,CAT-01,medium,0,mexico
+recibi un mensaje de alguien me propuso quedar en un sitio apartado wey,cita_persona,CAT-04,high,1,mexico
+una persona me escribio diciendo que una mujer me envio comentarios sexuales explicitos,contacto_inapropiado,CAT-01,high,1,colombia
+vi un mensaje de un tipo me dijo cosas sexuales sin que yo lo pidiera,contacto_inapropiado,CAT-01,high,1,argentina
+recibi un mensaje de una mujer me saludo de una forma extraña,contacto_inapropiado,CAT-01,low,0,mexico
+vi un mensaje de mi amiga le propusieron verse en un lugar escondido copado,cita_persona,CAT-04,high,1,argentina
+una persona me escribio diciendo que enviame fotos en ropa interior ya boliche,solicitud_material,CAT-02,critical,1,argentina
+una persona me escribio diciendo que una persona me envio mensajes subidos de tono,contacto_inapropiado,CAT-01,high,1,argentina
+una persona me escribio diciendo que un desconocido me amenazo con difundir material intimo si no enviaba mas,extorsion,CAT-05,severe,1,neutral
+pues tu familia no entiende yo si mandame fotos,grooming,CAT-03,severe,1,mexico
+bueno me contactaron por redes diciendo que mi amiga recibio un mensaje de un desconocido un poco incomodo,contacto_inapropiado,CAT-01,low,0,neutral
+recibi un mensaje de recibi un mensaje de un hombre que no entendi bien,contacto_inapropiado,CAT-01,low,0,neutral
+una persona me escribio diciendo que una persona mayor me amenazo para que lo viera solo bueno,cita_persona,CAT-04,severe,1,neutral
+me contactaron por redes diciendo que recibi un mensaje de alguien que no entendi bien,contacto_inapropiado,CAT-01,low,0,colombia
+una persona mayor me hizo creer que era el unico que me entendia y me exploto sexualmente,grooming,CAT-03,severe,1,neutral
+alguien me dijo que un menor recibio amenazas sexuales de una mujer posta,contacto_inapropiado,CAT-01,severe,1,argentina
+alguien me dijo que alguien me obligo a escuchar descripciones sexuales violentas,contacto_inapropiado,CAT-01,severe,1,argentina
+un desconocido me dijo que era especial man,grooming,CAT-03,low,0,colombia
+vi un mensaje de una o sea persona exigio fotografias y videos desnudos y imenazo con difundirlos,solicitud_material,CAT-02,severe,1,argentina
+una persona me escribio diciendo que un menor le propusieron un juego secreto y le pidieron fotos,grooming,CAT-03,high,1,mexico
+alguien me o sea dijo que alguien me invito a salir,cita_persona,CAT-04,low,0,neutral
+recibi un mensaje de no le o sea digas a tus papas y enviame fotos,grooming,CAT-03,high,1,neutral
+vi un mensaje de mi hija la aislaron y le pidieron fotos intimas,grooming,CAT-03,critical,1,neutral
+recibi un mensaje de una mujer que no entendi bien,contacto_inapropiado,CAT-01,low,0,colombia
+una persona me escribio diciendo que un bueno niño recibio un mensaje de un desconocido un poco incomodo pibe,contacto_inapropiado,CAT-01,low,0,argentina
+vi un mensaje de alguien insistio en quedar solo a pesar de que le dije que no copado,cita_persona,CAT-04,critical,1,argentina
+alguien me dijo que mi hijo recibio un mensaje de un hombre un poco incomodo che,contacto_inapropiado,CAT-01,low,0,argentina
+la verdad una persona me escribio diciendo que un adulto me pregunto si podia enviarle una foto posta,solicitud_material,CAT-02,low,0,argentina
+solo yo te entiendo pasame fotos,grooming,CAT-03,critical,1,argentina
+vi un mensaje de enviame fotos intimas o publico todo,solicitud_material,CAT-02,severe,1,neutral
+vi un mensaje de una mujer me manipulo diciendo o sea que tu familia no entiende y me exigio fotos,grooming,CAT-03,critical,1,mexico
+me contactaron por redes diciendo que un hombre me hizo creer que era el unico que la verdad me entendia y me exploto sexualmente,grooming,CAT-03,severe,1,neutral
+un desconocido me amenazo con hacerme cosas sexuales si no obedecia,contacto_inapropiado,CAT-01,severe,1,neutral
+me contactaron por redes diciendo que una persona me dijo que era especial,grooming,CAT-03,low,0,colombia
+pasame imagenes desnudas ya wey,solicitud_material,CAT-02,critical,1,mexico
+alguien me dijo que un desconocido me dijo que tus la verdad viejos no entienden y me pidio fotos,grooming,CAT-03,high,1,neutral
+alguien me propuso un juego secreto y me exigio imagenes pibe,grooming,CAT-03,high,1,argentina
+me contactaron por redes diciendo que una mujer quiso verme a solas,cita_persona,CAT-04,medium,0,colombia
+me contactaron por redes diciendo que alguien verbalizo contenido sexual agresivo,contacto_inapropiado,CAT-01,critical,1,colombia
+una persona me escribio diciendo que un tipo insistio en quedar solo a pesar de que le dije que no,cita_persona,CAT-04,critical,1,argentina
+tu familia no entiende mandame fotos,grooming,CAT-03,critical,1,neutral
+recibi un mensaje de un menor le propusieron salir carnal,cita_persona,CAT-04,low,0,mexico
+recibi un mensaje de una mujer me saludo de una forma extraña,contacto_inapropiado,CAT-01,low,0,colombia
+me contactaron por redes diciendo que mandame fotos sin ropa ya bacano,solicitud_material,CAT-02,critical,1,colombia
+alguien me dijo que no le bueno digas a tus papas y enviame fotos,grooming,CAT-03,high,1,neutral
+una persona me escribio diciendo que un hombre me exigio fotos y videos desnudos y me amenazo con publicarlas parcero,solicitud_material,CAT-02,severe,1,colombia
+alguien me dijo que una persona mayor me dijo que tus viejos no entienden y me pidio fotos parcero la verdad,grooming,CAT-03,high,1,colombia
+alguien me dijo que no le digas a tus papas y enviame fotos bacano,grooming,CAT-03,high,1,colombia
+recibi un mensaje de recibi un mensaje de un adulto que no entendi bien,contacto_inapropiado,CAT-01,low,0,neutral
+un hombre me dijo cosas sexuales sin que yo lo pidiera chevere,contacto_inapropiado,CAT-01,high,1,colombia
+vi un mensaje de una mujer me dijo que era especial boliche,grooming,CAT-03,low,0,argentina
+alguien me dijo que un menor fue manipulado por una persona para enviar la verdad material intimo,grooming,CAT-03,severe,1,neutral
+me contactaron por redes diciendo que alguien me hizo comentarios que me incomodaron,contacto_inapropiado,CAT-01,medium,0,argentina
+recibi un mensaje pues de una persona mayor me dijo cosas que no me gustaron,contacto_inapropiado,CAT-01,medium,0,neutral
+una persona me escribio diciendo que alguien me hizo comentarios que me incomodaron che,contacto_inapropiado,CAT-01,medium,0,argentina
+vi un mensaje de pasame fotos o le cuento a todos che,extorsion,CAT-05,critical,1,argentina
+alguien me dijo que mi sobrino recibio mensajes de una persona con palabras sexuales entonces agresivas che,contacto_inapropiado,CAT-01,critical,1,argentina
+vi un mensaje de un adulto me dijo que nos vieramos en un lugar escondido,cita_persona,CAT-04,high,1,colombia
+mi sobrino recibio un mensaje de un hombre un poco incomodo neta,contacto_inapropiado,CAT-01,low,0,mexico
+vi un mensaje de un desconocido me chantajeo con imagenes intimas,extorsion,CAT-05,critical,1,colombia
+una persona me escribio diciendo que un desconocido me envio mensajes subidos de tono,contacto_inapropiado,CAT-01,high,1,mexico
+un hombre me extorsiono exigiendo mas fotos o publicaria todo,extorsion,CAT-05,severe,1,neutral
+una persona me escribio diciendo que solo yo te entiendo pasame fotos,grooming,CAT-03,critical,1,mexico
+alguien me dijo que recibi un mensaje de alguien que no entendi bien,contacto_inapropiado,CAT-01,low,0,mexico
+una persona me escribio diciendo que o sea mi hija le pidieron una foto,solicitud_material,CAT-02,low,0,colombia
+recibi un mensaje de mi sobrina le propusieron salir boliche,cita_persona,CAT-04,low,0,argentina
+vi un mensaje de un adulto exigio fotografias y videos desnudos y amenazo con difundirlos,solicitud_material,CAT-02,severe,1,mexico
+me contactaron por redes diciendo que alguien me dijo cosas sexuales sin que yo lo pidiera,contacto_inapropiado,CAT-01,high,1,argentina
+recibi un mensaje de una persona requirio imagenes intimas sin consentimiento wey,solicitud_material,CAT-02,high,1,mexico
+alguien me dijo que un hombre me dijo cosas sexuales muy explicitas orale,contacto_inapropiado,CAT-01,critical,1,mexico
+alguien me dijo que una mujer me aislo de mis amigos y me pidio fotos sin ropa carnal,grooming,CAT-03,critical,1,mexico
+alguien me dijo que o sea un tipo quiso verme a solas copado,cita_persona,CAT-04,medium,0,argentina
+una persona me escribio diciendo que enviame fotografias intimas posta,solicitud_material,CAT-02,high,1,argentina
+una persona me escribio diciendo que mi sobrina la presionaron para quedar sola,cita_persona,CAT-04,critical,1,argentina
+alguien me dijo que un desconocido amenazo con difundir material intimo si no recibia mas boliche,extorsion,CAT-05,severe,1,argentina
+me contactaron por redes diciendo que un adulto me pregunto si podia enviarle una foto copado,solicitud_material,CAT-02,low,0,argentina
+un hombre me pidio material sexual y no se lo digas a nadie wey,solicitud_material,CAT-02,severe,1,mexico
+alguien me dijo que una persona mayor pues amenazo con difundir fotos man,extorsion,CAT-05,high,1,colombia
+alguien me dijo que un tipo me dijo cosas que no me gustaron,contacto_inapropiado,CAT-01,medium,0,argentina
+recibi un mensaje de la verdad mi amiga le pidieron una foto comun,solicitud_material,CAT-02,medium,0,argentina
+mi hija fue manipulado por una persona mayor para enviar material intimo entonces parce,grooming,CAT-03,severe,1,colombia
+una persona me escribio diciendo que pasame fotos sin ropa y no le digas a nadie entonces man,solicitud_material,CAT-02,severe,1,colombia
+me contactaron por redes diciendo que pasame material o lo difundo,extorsion,CAT-05,high,1,neutral
+me contactaron por redes diciendo que un hombre me pidio material sexual y es solo para nosotros bacano,solicitud_material,CAT-02,severe,1,colombia
+me contactaron por redes diciendo que un hombre solicito fotografias desnudas de manera insistente,solicitud_material,CAT-02,high,1,mexico
+vi un mensaje de un hombre me dijo cosas que no me gustaron,contacto_inapropiado,CAT-01,medium,0,colombia
+alguien me dijo que una persona me extorsiono exigiendo mas fotos o publicaria todo,extorsion,CAT-05,severe,1,neutral
+me contactaron por redes diciendo que una persona mayor me exigio fotos y videos desnudos y o viralizaria todo,solicitud_material,CAT-02,severe,1,neutral
+recibi un mensaje de una persona mayor me propuso un juego secreto y me la verdad pidio fotografias desnudas,grooming,CAT-03,high,1,mexico
+un tipo me hizo creer que era el unico que me entendia y me exploto pues sexualmente,grooming,CAT-03,severe,1,neutral
+alguien me dijo que un adulto me pregunto si queria verlo boliche,cita_persona,CAT-04,low,0,argentina
+un adulto me dijo que tus padres no te comprenden y me pidio fotos chevere la verdad,grooming,CAT-03,high,1,colombia
+la verdad recibi un mensaje de pasame plata o difundo las fotos,extorsion,CAT-05,severe,1,argentina
+mi sobrino recibio un mensaje de un hombre un poco entonces incomodo,contacto_inapropiado,CAT-01,low,0,mexico
+me contactaron por redes diciendo que mi sobrino la presionaron para quedar sola,cita_persona,CAT-04,critical,1,colombia
+mi sobrino le insistieron en enviar fotos intimas,solicitud_material,CAT-02,critical,1,mexico
+vi la verdad un mensaje de un desconocido amenazo con divulgar imagenes privadas,extorsion,CAT-05,high,1,colombia
+una persona me escribio diciendo que un menor recibio mensajes de un hombre con contenido sexual posta,contacto_inapropiado,CAT-01,high,1,argentina
+un desconocido me escribio todos los dias pidiendo confianza,grooming,CAT-03,low,0,mexico
+una persona me escribio diciendo que un adulto solicito material sexual de forma coercitiva man,solicitud_material,CAT-02,severe,1,colombia
+alguien me dijo que un desconocido me dijo cosas sexuales sin que yo lo pidiera,contacto_inapropiado,CAT-01,high,1,argentina
+alguien bueno me dijo que mi hijo le propusieron verse en un lugar escondido,cita_persona,CAT-04,high,1,argentina
+una persona me escribio diciendo que una persona me pregunto si queria verlo man,cita_persona,CAT-04,low,0,colombia
+alguien me dijo que un tipo me hizo creer que era el unico que me entendia y me exploto sexualmente,grooming,CAT-03,severe,1,neutral
+olguien me dijo que un menor recibio mensajes de una mujer con contenido sexual,contacto_inapropiado,CAT-01,high,1,argentina
+vi un mensaje de un desconocido quiso verme a solas chido,cita_persona,CAT-04,medium,0,mexico
+recibi la verdad un mensaje de una mujer verbalizo contenido sexual agresivo,contacto_inapropiado,CAT-01,critical,1,argentina
+alguien me dijo que mi sobrina fue manipulado por un tipo la verdad para enviar material intimo,grooming,CAT-03,severe,1,colombia
+vi un mensaje de juguemos un juego sucreto y mandame fotos man,grooming,CAT-03,high,1,colombia
+recibi un mensaje de un desconocido me dijo cosas que no me gustaron,contacto_inapropiado,CAT-01,medium,0,mexico
+una persona me escribio diciendo que enviame una foto en ropa interior,solicitud_material,CAT-02,high,1,colombia
+vi un mensaje entonces de una mujer me pregunto si queria verlo,cita_persona,CAT-04,low,0,neutral
+me contactaron por redes diciendo que alguien me manipulo diciendo que tus papas no entienden y me exigio fotos,grooming,CAT-03,critical,1,colombia
+recibi un mensaje de un desconocido me extorsiono exigiendo mas fitos o publicaria todo,extorsion,CAT-05,severe,1,mexico
+alguien chantajeo con material intimo parcero,extorsion,CAT-05,critical,1,colombia
+bueno me contactaron por redes diciendo que mi amigo recibio amenazas sexuales de un hombre,contacto_inapropiado,CAT-01,severe,1,colombia
+me contactaron por redes diciendo que enviame fotografias intimas,solicitud_material,CAT-02,high,1,mexico
+vi un mensaje de un tipo me dijo que nos vieramos en un lugar escondido,cita_persona,CAT-04,high,1,mexico
+una persona mayor me hablo de forma inapropiada,contacto_inapropiado,CAT-01,medium,0,argentina
+recibi un mensaje de tu familia no entiende mandame fotos,grooming,CAT-03,critical,1,neutral
+mi hijo recibio comentarios de alguien que la incomodaron o sea man,contacto_inapropiado,CAT-01,medium,0,colombia
+una persona mayor me presiono para vernos a solas chido,cita_persona,CAT-04,critical,1,mexico
+recibi un mensaje de un desconocido insistio en quedar solo a pesar de que le dije que no,cita_persona,CAT-04,critical,1,neutral
+me contactaron por redes diciendo que entonces una mujer me dijo cosas que no me gustaron,contacto_inapropiado,CAT-01,medium,0,argentina
+un adulto me envio un mensaje que me parecio raro,contacto_inapropiado,CAT-01,low,0,colombia
+alguien me dijo que un hombre me dijo cosas que no me gustaron,contacto_inapropiado,CAT-01,medium,0,colombia
+recibi un mensaje de una persona mayor me pidio que shh es secreto orale,grooming,CAT-03,medium,0,mexico
+vi un mensaje de alguien me propuso un juego secreto y me exigio imagenes,grooming,CAT-03,high,1,neutral
+me contactaron por redes diciendo que un adulto me propuso quedar en un sitio apartado pibe,cita_persona,CAT-04,high,1,argentina
+vi un mensaje de un tipo ensistio en que le enviara fotos intimas parce,solicitud_material,CAT-02,critical,1,colombia
+me contactaron por redes diciendo que una persona me pregunto si queria verlo pibe,cita_persona,CAT-04,low,0,argentina
+alguien me dijo que un hombre solicito fotografias desnudas de manera insistente carnal,solicitud_material,CAT-02,high,1,mexico
+vi un mensaje de una persona mayor me dijo que solo yo te quiero ayudar y me pidio fotos wey,grooming,CAT-03,high,1,mexico
+vi un mensaje de recibi un mensaje de una persona mayor que no entendi bien,contacto_inapropiado,CAT-01,low,0,neutral
+alguien me dijo que alguien me hizo creer que era el unico pues que me entendia y me exploto sexualmente,grooming,CAT-03,severe,1,mexico
+una persona me escribio diciendo que una persona mayor la verdad me dijo que yo si te entiendo carnal,grooming,CAT-03,medium,0,mexico
+vi un mensaje de un desconocido me describio actos sexuales de forma directe,contacto_inapropiado,CAT-01,critical,1,argentina
+me contactaron por redes diciendo que un desconocido verbalizo contenido sexual agresivo,contacto_inapropiado,CAT-01,critical,1,colombia
+alguien me dijo que un tipo me pidio una foto normal copado,solicitud_material,CAT-02,medium,0,argentina
+vi un mensaje de mi amiga la presionaron para quedar sola,cita_persona,CAT-04,critical,1,neutral
+me contactaron por redes diciendo que un desconocido me pidio una foto normal,solicitud_material,CAT-02,medium,0,colombia
+me contactaron por redes diciendo que alguien me amenazo para que lo viera solo che,cita_persona,CAT-04,severe,1,argentina
+un adulto me dijo cosas sexuales sin que yo lo pidiera,contacto_inapropiado,CAT-01,high,1,argentina
+recibi un mensaje de una niña recibio mensajes de un adulto con palabras sexuales agresivas,contacto_inapropiado,CAT-01,critical,1,argentina
+entonces alguien me dijo que una mujer me envio un mensaje que me parecio raro che,contacto_inapropiado,CAT-01,low,0,argentina
+mi amigo recibio mensajes de una mujer la verdad con palabras sexuales agresivas,contacto_inapropiado,CAT-01,critical,1,neutral
+recibi un mensaje de un desconocido me propuso un juego secreto y me pidio fotos desnudas,grooming,CAT-03,high,1,mexico
+recibi un mensaje de una persona mayor me dijo que tus amigos no te quieren carnal,grooming,CAT-03,medium,0,mexico
+una persona me escribio diciendo que una persona chantajeo con material intimo,extorsion,CAT-05,critical,1,argentina
+o sea vi un mensaje de mi sobrino le pidieron una foto,solicitud_material,CAT-02,low,0,neutral
+alguien me dijo que una persona me amenazo para que lo viera solo carnal,cita_persona,CAT-04,severe,1,mexico
+una persona me escribio diciendo que mi hija recibio un mensaje de una mujer un poco incomodo entonces,contacto_inapropiado,CAT-01,low,0,mexico
+recibi un mensaje de una niña le insistieron en la verdad enviar fotos intimas parce,solicitud_material,CAT-02,critical,1,colombia
+un o sea adulto insistio en quedar solo a pesar de que le dije que no,cita_persona,CAT-04,critical,1,neutral
+me contactaron la verdad por redes diciendo que un desconocido me controlo solo yo te quiero ayudar y me obligo a enviar fotos desnudas,grooming,CAT-03,severe,1,argentina
+vi un mensaje de una niña le propusieron verse en un lugar escondido,cita_persona,CAT-04,high,1,neutral
+recibi un mensaje de alguien o sea me hizo comentarios que me incomodaron,contacto_inapropiado,CAT-01,medium,0,colombia
+recibi un mensaje de alguien me pregunto si podia enviarle una foto copado,solicitud_material,CAT-02,low,0,argentina
+vi un mensaje de mi hija recibio un mensaje de una mujer un poco incomodo neta,contacto_inapropiado,CAT-01,low,0,mexico
+vi un mensaje de alguien me presiono para vernos a solas neta,cita_persona,CAT-04,critical,1,mexico
+alguien bueno me dijo que pasame fotos sin ropa,solicitud_material,CAT-02,high,1,neutral
+me contactaron por redes diciendo que una mujer me dijo que tus papas no entienden y me pidio fotos,grooming,CAT-03,high,1,neutral
+recibi un mensaje de enviame fotos intimas o publico todo pibe,solicitud_material,CAT-02,severe,1,argentina
+alguien me dijo que una persona mayor me envio un mensaje que me parecio raro,contacto_inapropiado,CAT-01,low,0,neutral
+vi un mensaje de un tipo amenazo con difundir material intimo si no recibia mas,extorsion,CAT-05,severe,1,colombia
+recibi un mensaje de una persona me hablo de forma inapropiada,contacto_inapropiado,CAT-01,medium,0,neutral
+una persona me escribio diciendo que un dosconocido me dijo que tus amigos no te quieren y me pidio fotos,grooming,CAT-03,high,1,mexico
+bueno me contactaron por redes diciendo que mi sobrina la oislaron y le pidieron fotos intimas,grooming,CAT-03,critical,1,argentina
+recibi un mensaje de alguien me dijo que era especial,grooming,CAT-03,low,0,neutral
+me contactaron por redes diciendo que alguien manifesto comentarios de indole sexual explicita,contacto_inapropiado,CAT-01,critical,1,neutral
+recibi un mensaje de mi sobrina recibio mensajes de un desconocido con contenido sexual,contacto_inapropiado,CAT-01,high,1,mexico
+alguien me dijo que mi amiga recibio un mensaje de un desconocido un poco incomodo,contacto_inapropiado,CAT-01,low,0,neutral
+vi un mensaje de un niño le dijeron que no le digas a nadie,grooming,CAT-03,medium,0,colombia
+una persona me escribio o sea diciendo que una persona me saludo de una forma extraña,contacto_inapropiado,CAT-01,low,0,colombia
+una persona me escribio diciendo que un hombre me envio comentarios sexuales explicitos orale,contacto_inapropiado,CAT-01,high,1,mexico
+solo yo te entiendo pasame fotos,grooming,CAT-03,critical,1,mexico
+alguien me dijo que la verdad mi amiga recibio mensajes de una persona con contenido sexual parcero,contacto_inapropiado,CAT-01,high,1,colombia
+recibi un mensaje de pasame plata o difundo las fotos,extorsion,CAT-05,severe,1,neutral
+una mujer me invito a salir,cita_persona,CAT-04,low,0,argentina
+una persona me escribio diciendo que un menor le pidieron una foto comun,solicitud_material,CAT-02,medium,0,neutral
+una persona me escribio diciendo que una persona mayor me dijo que nos vieramos en un lugar escondido,cita_persona,CAT-04,high,1,neutral
+vi un mensaje de un adulto me dijo que tus padres no te comprenden pibe,grooming,CAT-03,medium,0,argentina
+me contactaron por redes diciendo que una mujer verbalizo contenido entonces sexual agresivo che,contacto_inapropiado,CAT-01,critical,1,argentina
+alguien me dijo que una persona mayor me pidio que me mostrara en poca ropa carnal,solicitud_material,CAT-02,medium,0,mexico
+un hombre extorsiono exigiendo mas fotografias o sea o publicaria todo,extorsion,CAT-05,severe,1,neutral
+me contactaron por redes diciendo que un desconocido me envio mensajes subidos de tono,contacto_inapropiado,CAT-01,high,1,neutral
+recibi un mensaje de una persona me insulto de forma sexual,contacto_inapropiado,CAT-01,critical,1,colombia
+alguien me dijo que un tipo me dijo o sea cosas que no me gustaron,contacto_inapropiado,CAT-01,medium,0,neutral
+una persona me escribio diciendo que un adulto me saludo de una forma extraña,contacto_inapropiado,CAT-01,low,0,neutral
+una persona me escribio diciendo que un tipo me pidio fotos sin ropa,solicitud_material,CAT-02,high,1,argentina
+una persona me escribio diciendo que un desconocido me dijo cosas que no la verdad me gustaron che,contacto_inapropiado,CAT-01,medium,0,argentina
+una persona me escribio diciendo que solo yo te entiendo pasame fotos,grooming,CAT-03,critical,1,neutral
+un adulto amenazo con difundir material intimo si no recibia mas,extorsion,CAT-05,severe,1,neutral
+recibi un mensaje de no le digas a tus papas y enviame fotos neta,grooming,CAT-03,high,1,mexico
+me contactaron por redes diciendo que mi emigo le dijeron que contarian algo si no obedecia,extorsion,CAT-05,medium,0,mexico
+mi sobrina recibio comentarios de una persona mayor que la incomodaron,contacto_inapropiado,CAT-01,medium,0,argentina
+una persona me escribio diciendo que mi amigo recibio comentarios de una persona mayor que la incomodaron chevere,contacto_inapropiado,CAT-01,medium,0,colombia
+una persona me escribio diciendo que mandame fotos sin ropa ya wey,solicitud_material,CAT-02,critical,1,mexico
+una persona me escribio diciendo o sea que un menor recibio comentarios de un tipo que la incomodaron,contacto_inapropiado,CAT-01,medium,0,neutral
+alguien me dijo que mi sobrino le pidieron fotos desnudas,solicitud_material,CAT-02,high,1,mexico
+una persona me escribio diciendo que una mujer me amenazo con difundir material intimo si no enviaba mas che,extorsion,CAT-05,severe,1,argentina
+recibi un mensaje de un niño quisieron verla sola orale,cita_persona,CAT-04,medium,0,mexico
+recibi un mensaje de no le digas a tus papas y enviame fotos,grooming,CAT-03,high,1,neutral
+recibi un mensaje la verdad de una persona me pidio una foto normal,solicitud_material,CAT-02,medium,0,neutral
+recibi un mensaje de juguemos un juego secreto y mandame fotos orale,grooming,CAT-03,high,1,mexico
+vi un mensaje de mi hijo recibio un mensaje de un adulto un poco incomodo neta,contacto_inapropiado,CAT-01,low,0,mexico
+me contactaron por redes diciendo que una persona me amenazo entonces para que lo viera solo,cita_persona,CAT-04,severe,1,colombia
+vi un mensaje de enviame fotografias intimas,solicitud_material,CAT-02,high,1,neutral
+una persona me escribio diciendo que una persona me dijo que era especial,grooming,CAT-03,low,0,argentina
+me contactaron por redes diciendo que mandame fotos en ropa interior o le cuento a todos,solicitud_material,CAT-02,critical,1,neutral
+alguien me dijo que mi hijo le dijeron que no se lo digas a nadie,grooming,CAT-03,medium,0,neutral
+una persona me escribio entonces diciendo que alguien me hizo comentarios que me incomodaron copado,contacto_inapropiado,CAT-01,medium,0,argentina
+recibi un mensaje de mandame fotos desnudas o te funo posta,solicitud_material,CAT-02,severe,1,argentina
+me contactaron por redes diciendo que un menor recibio comentarios de una mujer que la incomodaron,contacto_inapropiado,CAT-01,medium,0,colombia
+vi un mensaje de un adulto me dijo cosas que no me gustaron,contacto_inapropiado,CAT-01,medium,0,mexico
+una persona mayor me saludo de una forma extraña,contacto_inapropiado,CAT-01,low,0,neutral
+una persona bueno me escribio diciendo que mi sobrina fue manipulado por una mujer para enviar material intimo,grooming,CAT-03,severe,1,argentina
+me contactaron por redes diciendo que un desconocido me hizo comentarios que me incomodaron,contacto_inapropiado,CAT-01,medium,0,colombia
+alguien me dijo que un tipo me dijo que nos vieramos en un lugar escondido,cita_persona,CAT-04,high,1,mexico
+alguien me dijo que o sea juguemos un juego secreto y mandame fotos,grooming,CAT-03,high,1,neutral
+una persona me hablo de forma inapropiada man,contacto_inapropiado,CAT-01,medium,0,colombia
+una persona me escribio diciendo que un menor recibio un mensaje de un tipo un poco incomodo,contacto_inapropiado,CAT-01,low,0,neutral
+vi un mensaje de mi amiga le exigieron fotos intimas y o difundiria todo bueno chevere,solicitud_material,CAT-02,severe,1,colombia
+una persona me escribio diciendo que mi amigo recibio un mensaje de una persona un poco incomodo,contacto_inapropiado,CAT-01,low,0,colombia
+recibi un mensaje de recibi un mensaje de una persona que no entendi bien la verdad,contacto_inapropiado,CAT-01,low,0,neutral
+me contactaron por pues redes diciendo que un adulto requirio imagenes intimas sin consentimiento wey,solicitud_material,CAT-02,high,1,mexico
+vi un mensaje de alguien me exigio mas fotos o publicaria las que tenia,extorsion,CAT-05,critical,1,neutral
+recibi o sea un mensaje de una persona me dijo que nos vieramos en un lugar escondido,cita_persona,CAT-04,high,1,colombia
+recibi un mensaje de una persona amenazo con difundir entonces material intimo si no recibia mas che,extorsion,CAT-05,severe,1,argentina
+vi un mensaje de una persona me pidio una foto normal boliche,solicitud_material,CAT-02,medium,0,argentina
+bueno mi amiga le pidieron una foto,solicitud_material,CAT-02,low,0,mexico
+me contactaron por redes diciendo que no le digas a tus papas y enviame fotos neta,grooming,CAT-03,high,1,mexico
+una persona me escribio diciendo que juguemos un juego secreto y mandame fotos man,grooming,CAT-03,high,1,colombia
+recibi un mensaje de un dusconocido que no entonces entendi bien,contacto_inapropiado,CAT-01,low,0,neutral
+vi un mensaje de un hombre entonces me manipulo diciendo que tu familia no entiende y me exigio fotos,grooming,CAT-03,critical,1,colombia
+me contactaron por redes diciendo que mi sobrina le pidieron dinero,extorsion,CAT-05,low,0,argentina
+me contactaron por redes diciendo que mi amigo recibio pues un mensaje de un tipo un poco incomodo posta,contacto_inapropiado,CAT-01,low,0,argentina
+vi un mensaje de una persona me dijo que tus padres no te comprenden y me pidio fotos,grooming,CAT-03,high,1,argentina
+recibi un mensaje de una persona me amenazo para que lo viera solo pibe,cita_persona,CAT-04,severe,1,argentina
+recibi un mensaje de una persona mayor me dijo cosas sexuales muy explicitas pibe,contacto_inapropiado,CAT-01,critical,1,argentina
+una persona me escribio diciendo que un menor le pidieron una foto comun,solicitud_material,CAT-02,medium,0,colombia
+alguien entonces me dijo que no le digas a tus papas y enviame fotos,grooming,CAT-03,high,1,neutral
+recibi un mensaje de mi sobrina la presionaron para quedar sola wey,cita_persona,CAT-04,critical,1,mexico
+mi amiga recibio mensajes de un hombre con palabras sexuales agresivas,contacto_inapropiado,CAT-01,critical,1,mexico
+me contactaron por redes diciendo que pasame fotos en ropa interior es solo para mi parcero,solicitud_material,CAT-02,severe,1,colombia
+mi sobrina le exigieron fotos intimas y o difundiria todo,solicitud_material,CAT-02,severe,1,colombia
+vi un mensaje de alguien extorsiono exigiendo mas fotografias o publicaria todo,extorsion,CAT-05,severe,1,neutral
+alguien me bueno dijo que una persona mayor me pregunto si podia enviarle una foto parcero,solicitud_material,CAT-02,low,0,colombia
+alguien me dijo que una mujer me dijo cosas sexuales sin que yo lo pidiera,contacto_inapropiado,CAT-01,high,1,neutral
+me contactaron por redes diciendo que mi amiga recibio un mensaje de un tipo un poco incomodo parce,contacto_inapropiado,CAT-01,low,0,colombia
+vi un mensaje de juguemos un juego secreto y mandame fotos la verdod,grooming,CAT-03,high,1,argentina
+me contactaron por redes diciendo que un adulto pues me hizo comentarios que me incomodaron,contacto_inapropiado,CAT-01,medium,0,colombia
+alguien me dijo que una persona mayor describio actos sexuales violentos de forma directa chido,contacto_inapropiado,CAT-01,severe,1,mexico
+una persona me escribio diciendo que una mujer manifesto comentarios de indole sexual explicita,contacto_inapropiado,CAT-01,critical,1,neutral
+vi un mensaje de alguien requirio material intimo de forma reiterada neta,solicitud_material,CAT-02,critical,1,mexico
+recibi un mensaje de un adulto me dijo cosas que no me gustaron,contacto_inapropiado,CAT-01,medium,0,colombia
+vi un mensaje de mi sobrino recibio un mensaje de un desconocido un poco incomodo che,contacto_inapropiado,CAT-01,low,0,argentina
+recibi un mensaje de una mujer me presiono para vernos a solas wey,cita_persona,CAT-04,critical,1,mexico
+alguien me controlo yo si te entiendo y me obligo a enviar fotos desnudas,grooming,CAT-03,severe,1,colombia
+me contactaron por redes diciendo que una persona mayor me envio mensajes subidos de tono chevere,contacto_inapropiado,CAT-01,high,1,colombia
+alguien me dijo que tu entonces familia no entiende mandame fotos,grooming,CAT-03,critical,1,neutral
+me contactaron por redes diciendo que juguemos un juego secreto y mandame fotos,grooming,CAT-03,high,1,mexico
+me contactaron por redes diciendo que enviame fotografias intimas carnal,solicitud_material,CAT-02,high,1,mexico
+vi un mensaje de alguien me envio un mensaje que me parecio raro,contacto_inapropiado,CAT-01,low,0,colombia
+recibi un mensaje de una persona me dijo que nos vieramos en un lugar escondido che,cita_persona,CAT-04,high,1,argentina
+recibi un mensaje de una mujer me envio mensajes subidos de tono,contacto_inapropiado,CAT-01,high,1,neutral
+me contactaron por redes diciendo que mi amiga le propusieron verse en un lugar escondido,cita_persona,CAT-04,high,1,argentina
+recibi un mensaje de un tipo me propuso un juego secreto y me pidio fotos desnudas pibe,grooming,CAT-03,high,1,argentina
+alguien me dijo que mi sobrino quisieron verla sola,cita_persona,CAT-04,medium,0,colombia
+una persona me escribio diciendo que una mujer me chantajeo con imagenes intimas,extorsion,CAT-05,critical,1,neutral
+recibi un mensaje de mi amigo recibio mensajes de un desconocido con contenido sexual,contacto_inapropiado,CAT-01,high,1,argentina
+mi sobrina recibio un mensaje de un tipo un poco incomodo,contacto_inapropiado,CAT-01,low,0,neutral
+alguien me dijo que enviame fotos en ropa interior ya,solicitud_material,CAT-02,critical,1,mexico
+alguien me dijo que un adulto me dijo que le debia algo,extorsion,CAT-05,low,0,argentina
+alguien me dijo que mi sobrina fue manipulado por un tipo para enviar material intimo,grooming,CAT-03,severe,1,colombia
+recibi un mensaje de tu entonces familia no entiende mandame fotos boliche,grooming,CAT-03,critical,1,argentina
+pasame fotos en ropa interior es solo para mi pibe,solicitud_material,CAT-02,severe,1,argentina
+recibi un mensaje de una mujer me hizo comentarios que me incomodaron man,contacto_inapropiado,CAT-01,medium,0,colombia
+una persona me escribio diciendo que entonces una persona me dijo que tus padres no te comprenden y me pidio fotos parce,grooming,CAT-03,high,1,colombia
+una mujer me pregunto si podia enviarle una foto,solicitud_material,CAT-02,low,0,mexico
+alguien me dijo que mandame fotos en ropa interior o publicaria las fotos che,solicitud_material,CAT-02,severe,1,argentina
+vi un mensaje de alguien me escribio todos los dias pidiendo confianza parce,grooming,CAT-03,low,0,colombia
+me contactaron por redes diciendo que una persona me dijo que le debia algo chevere,extorsion,CAT-05,low,0,colombia
+enviame fotos en ropa interior y no le digas a nadie,solicitud_material,CAT-02,severe,1,colombia
+una persona me insulto de forma sexual neta,contacto_inapropiado,CAT-01,critical,1,mexico
+vi un menseje de un tipo me dijo que tus viejos no entienden wey,grooming,CAT-03,medium,0,mexico
+ilguien me dijo que un adulto me presiono para mandar fotos sin ropa,solicitud_material,CAT-02,critical,1,mexico
+alguien me dijo que un niño recibio un mensaje entonces de un adulto un poco incomodo man,contacto_inapropiado,CAT-01,low,0,colombia
+me contactaron por redes diciendo que un desconocido me dijo cosas sexuales muy explicitas copado,contacto_inapropiado,CAT-01,critical,1,argentina
+vi un mensaje de un tipo me exigio mas fotos o publicaria las que tenia o sea,extorsion,CAT-05,critical,1,mexico
+una persona me escribio diciendo que tu familia no entiende mandame fotos pibe,grooming,CAT-03,critical,1,argentina
+me contactaron por redes diciendo que un desconocido me presiono para mandar fotos sin ropa,solicitud_material,CAT-02,critical,1,mexico
+me o sea contactaron por redes diciendo que un adulto chintajeo con material intimo,extorsion,CAT-05,critical,1,mexico
+me contactaron por redes diciendo que un adulto me saludo de una forma extraña,contacto_inapropiado,CAT-01,low,0,colombia
+un hombre me propuso un juego secreto y me pidio o sea fotos en ropa interior,grooming,CAT-03,high,1,neutral
+bueno vi un mensaje de una niña la presionaron para quedar sola parcero,cita_persona,CAT-04,critical,1,colombia
+recibi un mensaje de una mujer chantajeo con material intimo orale,extorsion,CAT-05,critical,1,mexico
+vi un mensaje de un desconocido me escribio todos los dias pidiendo confianza posta,grooming,CAT-03,low,0,argentina
+una persona mayor me pidio una foto normal parce,solicitud_material,CAT-02,medium,0,colombia
+alguien me dijo que un tipo me envio bueno un mensaje que me parecio raro,contacto_inapropiado,CAT-01,low,0,mexico
+una persona me escribio diciendo que un tipo me dijo cosas sexuales muy explicitas,contacto_inapropiado,CAT-01,critical,1,neutral
+vi un mensaje de mi hijo recibio mensajes de un desconocido con contenido sexual,contacto_inapropiado,CAT-01,high,1,argentina
+una persona me escribio diciendo que una mujer exigio fotografias y videos desnudos y amenazo con difundirlos,solicitud_material,CAT-02,severe,1,argentina
+una persona me escribio la verdad diciendo que una persona mayor me propuso quedar en un sitio apartado che,cita_persona,CAT-04,high,1,argentina
+me contactaron por redes diciendo que un tipo chantajeo con material intimo chido,extorsion,CAT-05,critical,1,mexico
+recibi un mensaje de alguien me pidio material la verdad sexual y es nuestro secreto,solicitud_material,CAT-02,severe,1,colombia
+recibi un mensaje de juguemos un juego secreto y mandame fotos,grooming,CAT-03,high,1,neutral
+un hombre me hizo comentarios que me incomodaron,contacto_inapropiado,CAT-01,medium,0,colombia
+una persona me escribio diciendo que alguien me dijo que tu familia no entiende y me pidio fotos,grooming,CAT-03,high,1,mexico
+alguien me dijo que un tipo quiso verme a solas,cita_persona,CAT-04,medium,0,mexico
+recibi un mensaje de un hombre entonces me envio mensajes subidos de tono bacano,contacto_inapropiado,CAT-01,high,1,colombia
+un adulto me dijo cosas sexuales sin que yo lo pidiera wey,contacto_inapropiado,CAT-01,high,1,mexico
+alguien me dijo que un menor la chantajearon con fotos la verdad intimas,extorsion,CAT-05,critical,1,neutral
+alguien me dijo que mi hijo la aislaron y le pidieron fotos intimas posta,grooming,CAT-03,critical,1,argentina
+me contactaron por redes diciundo que un desconocido requirio imagenes intimas sin consentimiento,solicitud_material,CAT-02,high,1,colombia
+solo yo te entiendo pasame fotos man,grooming,CAT-03,critical,1,colombia
+vi un mensaje de un adulto me dijo que era especial man,grooming,CAT-03,low,0,colombia
+alguien me dijo que mi hijo la presionaron para quedar sola,cita_persona,CAT-04,critical,1,neutral
+un hombre me escribio todos o sea los dias pidiendo confianza,grooming,CAT-03,low,0,colombia
+me contactaron por redes diciendo que un tipo insistio en quedar solo a pesar de que le dije que no boliche,cita_persona,CAT-04,critical,1,argentina
+enviame una foto en ropa interior,solicitud_material,CAT-02,high,1,mexico
+vi un mensaje de una persona me saludo de una forma pues extraña wey,contacto_inapropiado,CAT-01,low,0,mexico
+una persona me oscribio diciendo que un hombre me envio mensajes subidos de tono,contacto_inapropiado,CAT-01,high,1,neutral
+vi un mensaje de mi amigo la presionaron para quedar sola,cita_persona,CAT-04,critical,1,mexico
+una persona me escribio diciendo que alguien me envio mensajes subidos de tono,contacto_inapropiado,CAT-01,high,1,mexico
+me contactaron por redes diciendo que un desconocido me amenazo con hacerme cosas sexuales si no obedecia,contacto_inapropiado,CAT-01,severe,1,mexico
+una bueno persona me pregunto si podia enviarle una foto posta,solicitud_material,CAT-02,low,0,argentina
+recibi un mensaje de un hombre me hablo de forma inapropiada bacano,contacto_inapropiado,CAT-01,medium,0,colombia
+recibi un mensaje de juguemos un pues juego secreto y mandame fitos,grooming,CAT-03,high,1,mexico
+pues alguien me dijo que una mujer me dijo que nos vieramos en un lugar escondido neta,cita_persona,CAT-04,high,1,mexico
+una persona me escribio diciendo que solo yo te entiendo pasame fotos,grooming,CAT-03,critical,1,colombia
+vi un mensaje bueno de mi hija fue extorsionado con fotos y amenazas de publicacion,extorsion,CAT-05,severe,1,neutral
+me contactaron por redes diciendo que un hombre me envio un mensaje que me parecio raro man,contacto_inapropiado,CAT-01,low,0,colombia
+me contactaron por redes diciendo que una persona me aislo de mis amigos y me pidio imagenes intimas,grooming,CAT-03,critical,1,neutral
+vi un mensaje de mi sobrino fue manipulado por un adulto para enviar material intimo chevere,grooming,CAT-03,severe,1,colombia
+shh es secreto bueno mandame fotos desnudas,grooming,CAT-03,severe,1,argentina
+una persona me escribio diciendo que enviame fotos en ropa interior bueno y entre nosotros,solicitud_material,CAT-02,severe,1,mexico
+recibi un mensaje de tu familia no entiende mandame fotos bacano,grooming,CAT-03,critical,1,colombia
+me contactaron por redes diciendo que un hombre me hablo de forma inapropiada,contacto_inapropiado,CAT-01,medium,0,mexico
+vi un mensaje de una mujer insistio en quedar solo a pesar de que le dije que no,cita_persona,CAT-04,critical,1,colombia
+me contactaron por redes diciendo pues que pasame plata o difundo las fotos chevere,extorsion,CAT-05,severe,1,colombia
+recibi un mensaje de una bueno mujer me pidio que entre nosotros,grooming,CAT-03,medium,0,mexico
+me contactaron por redes diciendo que pasame fotos sin ropa chevere,solicitud_material,CAT-02,high,1,colombia
+recibi pues un mensaje de pasame fotos en ropa interior es solo para mi neta,solicitud_material,CAT-02,severe,1,mexico
+me contactaron por redes diciendo que la verdad mi amiga le propusieron verse en un lugar escondido man,cita_persona,CAT-04,high,1,colombia
+recibi un mensaje de un tipo me pidio una foto normal carnal,solicitud_material,CAT-02,medium,0,mexico
+alguien me dijo que un pues tipo requirio imagenes intimas sin consentimiento,solicitud_material,CAT-02,high,1,neutral
+recibi un mensaje de alguien me pidio que entre nosotros boliche,grooming,CAT-03,medium,0,argentina
+pasame fotos sin la verdad ropa,solicitud_material,CAT-02,high,1,mexico
+me contactaron por redes diciendo que mandame fotos sin ropa ya,solicitud_material,CAT-02,critical,1,neutral
+vi un mensaje de una persona me hizo creer que era el unico que me entendia y me exploto sexualmente,grooming,CAT-03,severe,1,neutral
+una persona me escribio diciendo que un hombre me obligo a encontrarme con el a escondidas,cita_persona,CAT-04,severe,1,neutral
+una persona me escribio diciendo que un hombre me pidio que es solo para mi,grooming,CAT-03,medium,0,mexico
+vi un mensaje de una mujer me saludo de una forma extraña,contacto_inapropiado,CAT-01,low,0,neutral
+vi un mensaje de una mujer me pidio material sexual y entre nosotros,solicitud_material,CAT-02,severe,1,mexico
+alguien me dijo que un tipo me controlo tus papas no entienden y me obligo a enviar fotos desnudas,grooming,CAT-03,severe,1,neutral
+mi o sea sobrino le dijeron que es nuestro secreto,grooming,CAT-03,medium,0,mexico
+me contactaron por redes diciendo que un adulto me saludo de una forma extraña,contacto_inapropiado,CAT-01,low,0,neutral
+recibi un mensuje de pasame imagenes desnudas ya bueno man,solicitud_material,CAT-02,critical,1,colombia
+me contactaron por redes diciendo que alguien me presiono para mandar fotos sin ropa,solicitud_material,CAT-02,critical,1,mexico
+una persona me escribio diciendo que un menor recibio mensajes de un desconocido con palabras sexuales agresivas neta,contacto_inapropiado,CAT-01,critical,1,mexico
+vi un mensaje de un desconocido me dijo cosas sexuales sin que yo lo pidiera,contacto_inapropiado,CAT-01,high,1,neutral
+recibi un mensaje de una persona insistio en que le enviara fotos intimas,solicitud_material,CAT-02,critical,1,neutral
+me contactaron por redes diciendo que un menor la verdad le propusieron un juego secreto y le pidieron fotos,grooming,CAT-03,high,1,neutral
+recibi un mensaje de mi sobrina le dijeron que es solo para mi,grooming,CAT-03,medium,0,mexico
+una persona me escribio diciendo que mi hija le propusieron un juego secreto y le pidieron fotos entonces,grooming,CAT-03,high,1,argentina
+vi un mensaje de mi sobrino recibio un mensaje de alguien un poco incomodo,contacto_inapropiado,CAT-01,low,0,neutral
+me contactaron por o sea redes diciendo que un desconocido insistio en quedar solo a pesar de que le dije que no,cita_persona,CAT-04,critical,1,argentina
+recibi un mensaje de una mujer me entonces aislo de mis amigos y me exigio imagenes,grooming,CAT-03,critical,1,mexico
+una persona me escribio diciendo que juguemos un juego secreto y mandame fotos,grooming,CAT-03,high,1,argentina
+una persona me escribio diciendo que un desconocido me escribio todos los dias pidiendo confianza,grooming,CAT-03,low,0,colombia
+recibi un mensaje de me hablo de cosas normales pero me dio miedo,desconocido,CAT-06,medium,0,neutral
+alguien me dijo que recibi un mensaje de un desconocido que no entendi bien,contacto_inapropiado,CAT-01,low,0,mexico
+alguien me dijo que una persona mayor me manipulo diciendo que tus viejos no entienden y me exigio fotos chevere,grooming,CAT-03,critical,1,colombia
+alguien me dijo que alguien insistio en quedar solo a pesar de que le dije que no,cita_persona,CAT-04,critical,1,colombia
+recibi un mensaje de una persona mayor me dijo cosas sexuales sin que pues yo lo pidiera,contacto_inapropiado,CAT-01,high,1,neutral
+alguien me dijo que un tipo quiso verme a solas man,cita_persona,CAT-04,medium,0,colombia
+mandame mas fotos o publico todo wey,extorsion,CAT-05,high,1,mexico
+recibi un mensaje de una persona mayor me amenazo con hacerme cosas sexuales si no obedecia orale,contacto_inapropiado,CAT-01,severe,1,mexico
+alguien me aislo de mis amigos y la verdad me pidio imagenes intimas pibe,grooming,CAT-03,critical,1,argentina
+recibi un pues mensaje de tu familia no entiende yo si mandame fotos,grooming,CAT-03,severe,1,colombia
+recibi un mensaje de un hombre me pidio que no bueno le digas a nadie,grooming,CAT-03,medium,0,argentina
+una persona me escribio diciendo que un adulto me amenazo para que lo viera solo,cita_persona,CAT-04,severe,1,mexico
+vi un mensaje de mi amiga recibio mensajes de una mujer con contenido sexual,contacto_inapropiado,CAT-01,high,1,mexico
+me contactaron por redes diciendo que un tipo me dijo que nos vieramos sin nadie mas chevere,cita_persona,CAT-04,medium,0,colombia
+vi un mensaje de una persona mayor me envio mensajes subidos de tono,contacto_inapropiado,CAT-01,high,1,neutral
+alguien me dijo que un hombre me hizo comentarios que me incomodaron chido,contacto_inapropiado,CAT-01,medium,0,mexico
+me contactaron por redes diciendo que enviime fotografias intimas parcero,solicitud_material,CAT-02,high,1,colombia
+me contactaron por redes diciendo que recibi un mensaje de un adulto que no entendi bueno bien,contacto_inapropiado,CAT-01,low,0,argentina
+una personi me escribio diciendo que alguien me dijo que nos vieramos sin nadie mas,cita_persona,CAT-04,medium,0,colombia
+me contactaron por redes diciendo que pasame fotos sin ropa y no le digas a nadie,solicitud_material,CAT-02,severe,1,neutral
+recibi un mensaje de un desconocido me dijo que solo yo te quiero ayudar,grooming,CAT-03,medium,0,mexico
+alguien me dijo que una niña fue manipulado por un tipo para enviar material intimo,grooming,CAT-03,severe,1,colombia
+vi un mensaje de alguien me pregunto si podia enviarle una foto,solicitud_material,CAT-02,low,0,mexico
+una persona me escribio diciendo o sea que mi sobrino la aislaron y le pidieron fotos intimas copado,grooming,CAT-03,critical,1,argentina
+recibi un mensaje de una mujer me presiono para mandar fotos sin ropa parce,solicitud_material,CAT-02,critical,1,colombia
+vi un mensaje de un tipo bueno manifesto comentarios de indole sexual explicita,contacto_inapropiado,CAT-01,critical,1,colombia
+bueno recibi un mensaje de alguien me pidio fotos desnudas carnal,solicitud_material,CAT-02,high,1,mexico
+una persona me escribio diciendo que un tipo me dijo cosas sexuales sin que yo lo pidiera,contacto_inapropiado,CAT-01,high,1,colombia
+alguien me dijo que un adulto entonces me saludo de una forma extraña,contacto_inapropiado,CAT-01,low,0,neutral
+alguien me dijo que mi hija le exigieron fotos intimas y publicaria las fotos,solicitud_material,CAT-02,severe,1,mexico
+me contactaron por redes diciendo que una persona me envio un mensaje que me parecio raro che,contacto_inapropiado,CAT-01,low,0,argentina
+una persona me escribio diciendo que juguemos un juego secreto y mandame fotos boliche,grooming,CAT-03,high,1,argentina
+un desconocido me pidio que es nuestro pues secreto,grooming,CAT-03,medium,0,argentina
+una persona mayor me obligo a encontrarme con el a escondidas pibe,cita_persona,CAT-04,severe,1,argentina
+una persona me escribio diciendo que un tipo manifesto comentarios de indole sexual explicita,contacto_inapropiado,CAT-01,critical,1,neutral
+una persona mayor me dijo que tus padres no te la verdad comprenden y me pidio fotos,grooming,CAT-03,high,1,mexico
+alguien me dijo que pues un hombre solicito fotografias desnudas de manera insistente,solicitud_material,CAT-02,high,1,neutral
+recibi un mensaje de un hombre me dijo pues que era especial man,grooming,CAT-03,low,0,colombia
+me contactaron por redes diciendo que tu familia no entiende yo si mandame fotos pues,grooming,CAT-03,severe,1,neutral
+alguien me dijo que alguien me hizo comentarios que me incomodaron,contacto_inapropiado,CAT-01,medium,0,neutral
+recibi un mensaje de mi la verdad amiga le propusieron salir,cita_persona,CAT-04,low,0,colombia
+mi hija recibio mensajes de un adulto diciendole que entonces era especial,grooming,CAT-03,low,0,neutral
+una persona me escribio diciendo que una mujer me pidio una foto normal boliche,solicitud_material,CAT-02,medium,0,argentina
+recibi un mensaje de una niña recibio comenterios o sea de una persona mayor que la incomodaron chido,contacto_inapropiado,CAT-01,medium,0,mexico
+una persona me escribio diciendo que mi hija la aislaron y le pidieron fotos intimas carnal,grooming,CAT-03,critical,1,mexico
+alguien me dijo que no le digas a tus papas y enviame fotos pibe,grooming,CAT-03,high,1,argentina
+vi un mensaje de una persona me presiono para mandar la verdad fotos sin ropa,solicitud_material,CAT-02,critical,1,neutral
+entonces una persona me escribio diciendo que mandame fotos en ropa interior o si no lo hicia me funaria carnal,solicitud_material,CAT-02,severe,1,mexico
+mi sobrino le pidieron fotos desnudas man,solicitud_material,CAT-02,high,1,colombia
+una persona me escribio diciendo que alguien exigio mas imagenes so pena de publicarlas,extorsion,CAT-05,critical,1,mexico
+una persona me escribio diciendo que alguien me saludo de una forma extraña,contacto_inapropiado,CAT-01,low,0,mexico
+una persona me escribio diciendo que una mujer me saludo de una forma extraña,contacto_inapropiado,CAT-01,low,0,neutral
+me contactaron por redes diciendo que una niña le propusieron un juego secreto y le pidieron fotos,grooming,CAT-03,high,1,colombia
+me contactaron por redes diciendo que alguien me aislo de mis amigos y me pidio fotos,grooming,CAT-03,critical,1,neutral
+un niño o sea fue extorsionado con fotos y amenazas de publicacion carnal,extorsion,CAT-05,severe,1,mexico
+una persona me escribio diciendo que una persona mayor me hablo de forma inapropiada wey,contacto_inapropiado,CAT-01,medium,0,mexico
+recibi un mensaje de un adulto me pregunto si queria verlo,cita_persona,CAT-04,low,0,mexico
+me contactaron por redes diciendo que tu familia no entiende mandame fotos che,grooming,CAT-03,critical,1,argentina
+me contactaron por redes diciendo que un tipo amenazo con difundir material intimo si no recibia mas,extorsion,CAT-05,severe,1,mexico
+la verdad vi un mensaje de mi hijo le propusieron verse en un lugar escondido orale,cita_persona,CAT-04,high,1,mexico
+recibi un mensaje de un desconocido requirio material intimo de forma reiterada,solicitud_material,CAT-02,critical,1,neutral
+me contactaron por redes diciendo que un menor recibio comentarios o sea de alguien que la incomodaron,contacto_inapropiado,CAT-01,medium,0,colombia
+recibi un mensaje de una persona me dijo cosas sexuales entonces sin que yo lo pidiera man,contacto_inapropiado,CAT-01,high,1,colombia
+una persona me escribio diciendo la verdad que mi sobrino le pidieron una foto comun,solicitud_material,CAT-02,medium,0,neutral
+vi un mensaje de un desconocido me presiono para vernos a solas,cita_persona,CAT-04,critical,1,neutral
+alguien me dijo que una persona me presiono para vernos a solas,cita_persona,CAT-04,critical,1,colombia
+me contactaron por redes diciendo que un niño le propusieron verse en entonces un lugar escondido,cita_persona,CAT-04,high,1,colombia
+recibi un mensaje de pasame una foto en ropa interior,solicitud_material,CAT-02,high,1,argentina
+alguien me dijo que un adulto me controlo solo yo te quiero ayudar y me obligo a enviar fotos desnudas carnal,grooming,CAT-03,severe,1,mexico
+alguien pues me dijo que un desconocido me pidio que le mandara una foto posta,solicitud_material,CAT-02,low,0,argentina
+recibi un mensaje de un desconocido me hizo comentarios que me incomodaron,contacto_inapropiado,CAT-01,medium,0,argentina
+un hombre me dijo que nos vieramos sin nadie mas chevere,cita_persona,CAT-04,medium,0,colombia
+una persona mayor me saludo de una forma extraña,contacto_inapropiado,CAT-01,low,0,mexico
+alguien me dijo que un hombre me hizo creer que era el unico que me entendia y me exploto sexualmente,grooming,CAT-03,severe,1,neutral
+me contactaron por redes diciendo que mi hija le pidieron fotos desnudas,solicitud_material,CAT-02,high,1,colombia
+recibi un mensaje de pasame imagenes desnudas ya,solicitud_material,CAT-02,critical,1,neutral
+mi hija le propusieron verse en un lugar escondido,cita_persona,CAT-04,high,1,neutral
+una niña la aislaron y le untonces pidieron fotos intimas,grooming,CAT-03,critical,1,mexico
+vi un mensaje de un tipo me dijo que nos vieramos en un lugar escondido chevere,cita_persona,CAT-04,high,1,colombia
+recibi un mensaje de un desconocido me aislo o sea de mis amigos y me pidio imagenes intimas,grooming,CAT-03,critical,1,neutral
+un adulto me exigio mas fotos o publicaria las que tenia,extorsion,CAT-05,critical,1,colombia
+recibi un mensaje de un hombre me envio mensajes subidos de tono,contacto_inapropiado,CAT-01,high,1,argentina
+una mujer me pidio que mantenlo en secreto copado,grooming,CAT-03,medium,0,argentina
+una persona me escribio diciendo que o sea una persona mayor me hablo de forma inapropiada,contacto_inapropiado,CAT-01,medium,0,colombia
+mi sobrino recibio un mensaje de un desconocido un poco incomodo pibe,contacto_inapropiado,CAT-01,low,0,argentina
+alguien me dijo que mi hija recibio amenazas sexuales de una persona,contacto_inapropiado,CAT-01,severe,1,neutral
+recibi un mensaje de me hablaron de algo que no entendi,desconocido,CAT-06,low,0,argentina
+me contactaron por redes diciendo que una persona mayor me dijo cosas que no me gustaron,contacto_inapropiado,CAT-01,medium,0,argentina
+vi un mensaje de recibi un mensaje de una persona que no entendi bien,contacto_inapropiado,CAT-01,low,0,argentina
+me contactaron por redes diciendo pues que mi sobrina recibio mensajes de una persona mayor diciendole que era especial,grooming,CAT-03,low,0,argentina
+una persona me escribio diciendo que un hombre me manipulo diciendo que tu familia no entiende y me exigio fotos,grooming,CAT-03,critical,1,argentina
+me contactaron por redes diciendo que mi hija le pidieron una foto,solicitud_material,CAT-02,low,0,colombia
+recibi un mensaje la verdad de mi hija la presionaron para quedar sola chevere,cita_persona,CAT-04,critical,1,colombia
+una persona me escribio diciendo que mandame dinero y mas fotos o publico todo,extorsion,CAT-05,severe,1,colombia
+vi un mensaje de una mujer exigio fotografias y videos desnudos y amenazo con difundirlos man,solicitud_material,CAT-02,severe,1,colombia
+me contactaron por redes diciendo que una mujer me dijo que publicaria imagenes mias parce,extorsion,CAT-05,high,1,colombia
+una persona me escribio diciendo que mi sobrino le insistieron en enviar fotos intimas chevere,solicitud_material,CAT-02,critical,1,colombia
+vi un mensaje de un hombre insistio en quedar solo a pesar de que le dije que no,cita_persona,CAT-04,critical,1,argentina
+me contactaron por redes diciendo que un hombre me dijo que nos vieramos en un lugar escondido,cita_persona,CAT-04,high,1,colombia
+una mujer quiso verme a solas parce,cita_persona,CAT-04,medium,0,colombia
+bueno un hombre me dijo que nos vieramos en un lugar escondido,cita_persona,CAT-04,high,1,mexico
+me contactaron por redes diciendo que pasame material o lo difundo,extorsion,CAT-05,high,1,neutral
+alguien bueno me dijo que una niña le dijeron que no le cuentes a tus papas,grooming,CAT-03,medium,0,argentina
+vi un mensaje de alguien me dijo entonces cosas que no me gustaron,contacto_inapropiado,CAT-01,medium,0,neutral
+recibi un mensaje de mi amiga la aislaron y le pidieron fotos intimas parcero,grooming,CAT-03,critical,1,colombia
+me contactaron por redes diciendo que una persona mayor quiso verme a solas,cita_persona,CAT-04,medium,0,neutral
+un tipo me pidio que es solo para nosotros la verdad bacano,grooming,CAT-03,medium,0,colombia
+una niña la presionaron para quedar sola neta,cita_persona,CAT-04,critical,1,mexico
+me contactaron por redes diciendo que no le digas a tus papas y enviame fotos chevere,grooming,CAT-03,high,1,colombia
+una niña le propusieron un juego secreto y le pidieron fotos che,grooming,CAT-03,high,1,argentina
+una persona me escribio diciendo que mi sobrino recibio comentarios de una persona que la incomodaron,contacto_inapropiado,CAT-01,medium,0,argentina
+recibi un mensaje de mi amigo amenazaron con difundir sus fotos pues,extorsion,CAT-05,high,1,mexico
+una persona me escribio diciendo que una persona mayor requirio imagenes intimas sin consentimiento carnal,solicitud_material,CAT-02,high,1,mexico
+una mujer me invito a salir boliche,cita_persona,CAT-04,low,0,argentina
+alguien me dijo que nos vieramos en un lugar escondido parce,cita_persona,CAT-04,high,1,colombia
+una persona me escribio diciendo que una persona mayor me saludo de una forma extraña,contacto_inapropiado,CAT-01,low,0,colombia
+alguien me dijo que mandame una foto en ropa interior,solicitud_material,CAT-02,high,1,colombia
+vi un mensaje de un hombre me obligo a encontrarme con el a escondidas,cita_persona,CAT-04,severe,1,neutral
+una persona la verdad me escribio diciendo que un hombre me pregunto si queria verlo,cita_persona,CAT-04,low,0,mexico
+recibi un mensaje de o sea mi amigo recibio un mensaje de una mujer un poco incomodo bacano,contacto_inapropiado,CAT-01,low,0,colombia
+alguien me dijo que un adulto me hablo de forma inapropiada boliche,contacto_inapropiado,CAT-01,medium,0,argentina
+una mujer me dijo cosas la verdad sexuales muy explicitas che,contacto_inapropiado,CAT-01,critical,1,argentina
+una persona me amenazo con difundir material intimo si no enviaba mas,extorsion,CAT-05,severe,1,colombia
+mi sobrina recibio comentarios de una persona mayor que la incomodaron boliche,contacto_inapropiado,CAT-01,medium,0,argentina
+me contactaron por redes diciendo que pasame fotos o le cuento a todos parce,extorsion,CAT-05,critical,1,colombia
+tu familia no entiende yo si mandame fotos bacano,grooming,CAT-03,severe,1,colombia
+vi un mensaje de mi amigo recibio un mensaje de una persona un poco incomodo,contacto_inapropiado,CAT-01,low,0,colombia
+vi un mensaje de solo yo te entiendo pasame fotos,grooming,CAT-03,critical,1,argentina
+recibi un mensaje de un hombre me amenazo para que lo viera solo,cita_persona,CAT-04,severe,1,neutral
+una mujer me controlo tus padres no te comprenden y me obligo la verdad a enviar fotos desnudas chido,grooming,CAT-03,severe,1,mexico
+alguien me dijo que alguien me pidio que le mandara una foto man,solicitud_material,CAT-02,low,0,colombia
+recibi un la verdad mensaje de un desconocido me envio mensajes subidos de tono neta,contacto_inapropiado,CAT-01,high,1,mexico
+una persona me escribio diciendo que una persona mayor me propuso un juego secreto y me pidio fotos en ropa interior,grooming,CAT-03,high,1,argentina
+vi un mensaje de un niño la presionaron para quedar sola carnal,cita_persona,CAT-04,critical,1,mexico
+juguemos un juego secreto y mandame fotos,grooming,CAT-03,high,1,colombia
+alguien me exigio mas fotos o publicaria las que tenia,extorsion,CAT-05,critical,1,neutral
+vi un mensaje de mi amigo le insistieron en enviar fotos intimas,solicitud_material,CAT-02,critical,1,neutral
+alguien o sea me dijo que un hombre me dijo cosas sexuales sin que yo lo pidiera,contacto_inapropiado,CAT-01,high,1,colombia
+me contactaron por redes diciendo que mi sobrino la presionaron para quedar sola bacano,cita_persona,CAT-04,critical,1,colombia
+alguien me dijo que un tipo me envio comentarios sexuales explicitos,contacto_inapropiado,CAT-01,high,1,mexico
+alguien me dijo cosas que no entonces me gustaron copado,contacto_inapropiado,CAT-01,medium,0,argentina
+una persona me escribio diciendo que un tipo me pregunto si podia enviarle una foto,solicitud_material,CAT-02,low,0,neutral
+me contactaron por redes diciendo que enviame fotos en ropa interior ya parce,solicitud_material,CAT-02,critical,1,colombia
+recibi un mensaje de mandame dinero y mas fotos o publico todo parcero,extorsion,CAT-05,severe,1,colombia
+vi un mensaje de pasame fotos o le cuento a todos orale,extorsion,CAT-05,critical,1,mexico
+me contactaron por redes diciendo que un tipo solicito fotografias desnudas o sea de manera insistente posta,solicitud_material,CAT-02,high,1,argentina
+recibi un mensaje de mi hijo le propusieron un juego secreto y o sea le pidieron fotos neta,grooming,CAT-03,high,1,mexico
+me contactaron por redes diciendo que un desconocido me pidio una foto normal,solicitud_material,CAT-02,medium,0,mexico
+recibi un mensaje de un menor le dijeron que contarian algo si no obedecia,extorsion,CAT-05,medium,0,neutral
+una persona mayor me dijo que nos vieramos sin nadie mas orale,cita_persona,CAT-04,medium,0,mexico
+recibi un mensaje de alguien me hizo comentarios que me incomodaron,contacto_inapropiado,CAT-01,medium,0,argentina
+alguien me dijo que un tipo pues me describio actos sexuales de forma directa,contacto_inapropiado,CAT-01,critical,1,colombia
+recibi un mensaje de juguemos entonces un juego secreto y mandame fotos,grooming,CAT-03,high,1,argentina
+me contactaron por redes diciendo que un desconocido exigio mas imagenes so pena de publicarlas,extorsion,CAT-05,critical,1,argentina
+me contactaron por redes diciendo que alguien requirio material intimo de forma reiterada posta,solicitud_material,CAT-02,critical,1,argentina
+alguien me dijo que una persona mayor me pregunto si podia enviarle una foto wey,solicitud_material,CAT-02,low,0,mexico
+recibi un mensaje de una persona me hizo comentarios que me incomodaron posta,contacto_inapropiado,CAT-01,medium,0,argentina
+alguien me dijo que mi sobrino le propusieron salir,cita_persona,CAT-04,low,0,argentina
+vi un mensaje de un adulto me propuso quedar en un sitio apartado bacano,cita_persona,CAT-04,high,1,colombia
+me contactaron por redes diciendo que una niña le insistiiron en enviar fotos o sea intimas chevere,solicitud_material,CAT-02,critical,1,colombia
+una persona me escribio diciendo que mi sobrina recibio comentarios de un tipo que la incomodaron,contacto_inapropiado,CAT-01,medium,0,neutral
+una entonces mujer me dijo que era especial,grooming,CAT-03,low,0,colombia
+un hombre me aislo de mis amigos y me pidio fotos en la verdad ropa interior,grooming,CAT-03,critical,1,neutral
+me contactaron por redes diciendo que un la verdad adulto me dijo cosas que no me gustaron,contacto_inapropiado,CAT-01,medium,0,colombia
+me o sea contactaron por redes diciendo que mi amiga le propusieron un juego secreto y le pidieron fotos boliche,grooming,CAT-03,high,1,argentina
+una persona me escribio diciendo que mi sobrino recibio mensajes de una persona mayor con contenido sexual,contacto_inapropiado,CAT-01,high,1,neutral
+una mujer me envio comentarios sexuales explicitos neta,contacto_inapropiado,CAT-01,high,1,mexico
+recibi un mensaje de un hombre indico que publicaria fotografias intimas,extorsion,CAT-05,high,1,neutral
+me contactaron por redes la verdad diciendo que un menor recibio mensajes de un adulto con palabras sexuales agresivas chevere,contacto_inapropiado,CAT-01,critical,1,colombia
+una persona me ascribio diciendo que alguien me envio un mensaje que me parecio raro,contacto_inapropiado,CAT-01,low,0,colombia
+recibi un mensaje de un desconocido me dijo que nos vieramos en un lugar escondido orale,cita_persona,CAT-04,high,1,mexico
+me contactaron por redes diciendo que un tipo me hablo de forma inapropiada,contacto_inapropiado,CAT-01,medium,0,mexico
+me contactaron por redes diciendo que un desconocido me pidio que es nuestro secreto orale,grooming,CAT-03,medium,0,mexico
+alguien me dijo que mi hija recibio comentarios de un tipo que la incomodaron,contacto_inapropiado,CAT-01,medium,0,colombia
+una mujer exigio mas imagenes so pena de publicarlas,extorsion,CAT-05,critical,1,neutral
+vi un mensaje de un niño la chantajearon con fotos intimas che,extorsion,CAT-05,critical,1,argentina
+me contactaron por redes diciendo que un desconocido me invito a salir chido,cita_persona,CAT-04,low,0,mexico
+alguien me dijo que alguien me dijo cosas sexuales muy explicitas carnal,contacto_inapropiado,CAT-01,critical,1,mexico
+me contactaron por redes diciendo que una persona me presiono para vernos a solas,cita_persona,CAT-04,critical,1,mexico
+alguien me dijo que juguemos un juego secreto y mandame fotos parcero,grooming,CAT-03,high,1,colombia
+una mujer me la verdad dijo cosas que no me gustaron wey,contacto_inapropiado,CAT-01,medium,0,mexico
+me contactaron por redes diciendo que enviame fotos en ropa interior ya,solicitud_material,CAT-02,critical,1,colombia
+vi un mensaje la verdad de mi amiga recibio un mensaje de un tipo un poco incomodo pibe,contacto_inapropiado,CAT-01,low,0,argentina
+alguien me dijo que un tipo me saludo de una forma extraña,contacto_inapropiado,CAT-01,low,0,neutral
+vi un mensaje de un tipo exigio fotografias y videos desnudos y bueno amenazo con difundirlos carnal,solicitud_material,CAT-02,severe,1,mexico
+una persona me escribio diciendo que pasame fotos o bueno le cuento a todos,extorsion,CAT-05,critical,1,colombia
+una persona me escribio diciendo que una persona me dijo que yo si te entiendo y me pidio fotos wey,grooming,CAT-03,high,1,mexico
+mi sobrino la presionuron para quedar la verdad sola,cita_persona,CAT-04,critical,1,mexico
+me contactaron bueno por redes diciendo que un tipo insistio en quedar solo a pesar de que le dije que no,cita_persona,CAT-04,critical,1,neutral
+me contactaron por redes diciendo que mi amigo le pidieron dinero wey,extorsion,CAT-05,low,0,mexico
+me contactaron por bueno redes diciendo que una persona amenazo con realizar actos sexuales si no obedecia,contacto_inapropiado,CAT-01,severe,1,colombia
+una persona mayor me pregunto si queria verlo,cita_persona,CAT-04,low,0,argentina
+pues me contactaron por redes diciendo que mi hija le propusieron verse en un lugar escondido,cita_persona,CAT-04,high,1,colombia
+me contactaron por redes diciendo que mandame fotos sin la verdad ropa ya,solicitud_material,CAT-02,critical,1,argentina
+bueno un adulto amenazo con difundir fotos,extorsion,CAT-05,high,1,neutral
+recibi un mensaje de un tipo me dijo que nos vieramos en un lugar escondido parce,cita_persona,CAT-04,high,1,colombia
+alguien me dijo que mi amiga la obligaron a encontrarse a escondidas con alguien chevere,cita_persona,CAT-04,severe,1,colombia
+una persona mayor me entonces envio comentarios sexuales explicitos,contacto_inapropiado,CAT-01,high,1,neutral
+alguien me dijo que mandame fotos sin ropa ya,solicitud_material,CAT-02,critical,1,neutral
+me contactaron por redes diciendo que una mujer exigio fotografias y videos desnudos y amenazo con difundirlos,solicitud_material,CAT-02,severe,1,neutral
+me contactaron por redes diciendo que un adulto insistio en quedar solo a pesar de que le dije que no bueno,cita_persona,CAT-04,critical,1,neutral
+me o sea contectaron por redes diciendo que tu familia no entiende mandame fotos,grooming,CAT-03,critical,1,argentina
+alguien me dijo o sea que mandame fotos sin ropa ya che,solicitud_material,CAT-02,critical,1,argentina
+alguien me dijo que enviame fotos en ropa interior ya,solicitud_material,CAT-02,critical,1,neutral
+recibi un mensaje de mi amigo o sea la presionaron para quedar sola chevere,cita_persona,CAT-04,critical,1,colombia
+vi un mensaje de mi hijo le propusieron verse en un lugar o sea escondido,cita_persona,CAT-04,high,1,neutral
+me contactaron por redes diciendo que pasame plata o bueno difundo las fotos,extorsion,CAT-05,severe,1,neutral
+una persona me propuso quedar en un sitio apartado,cita_persona,CAT-04,high,1,mexico
+me contactaron por redes diciendo que pasame material o lo difundo neta,extorsion,CAT-05,high,1,mexico
+recibi un mensaje de un hombre me dijo que solo yo te quiero ayudar,grooming,CAT-03,medium,0,neutral
+alguien me dijo que enviame fotos en ropa interior ya,solicitud_material,CAT-02,critical,1,colombia
+mi sobrino la aislaron y le pidieron fotos intimas,grooming,CAT-03,critical,1,colombia
+un adulto requirio imagenes intimas sin consentimiento pibe,solicitud_material,CAT-02,high,1,argentina
+me contactaron por redes diciendo que entonces un hombre exigio fotografias y videos desnudos y amenazo con difundirlos chevere,solicitud_material,CAT-02,severe,1,colombia
+alguien me dijo que una mujer solicito fotografias desnudas de manera insistente parce,solicitud_material,CAT-02,high,1,colombia
+me contactaron por redes diciendo que shh es secreto mandame fotos desnudas,grooming,CAT-03,severe,1,mexico
+vi un mensaje de mi hijo le propusieron verse en un lugar escondido che,cita_persona,CAT-04,high,1,argentina
+mi hija quisieron verla sola,cita_persona,CAT-04,medium,0,neutral
+o sea vi un mensaje de mandame fotos desnudas ya bacano,solicitud_material,CAT-02,high,1,colombia
+una persona me escribio diciendo que shh es secreto mandame fotos desnudas,grooming,CAT-03,severe,1,neutral
+una persona me escribio diciendo que pasame una foto en ropa interior pibe,solicitud_material,CAT-02,high,1,argentina
+una persona me escribio diciendo que un tipo quiso verme a solas man,cita_persona,CAT-04,medium,0,colombia
+vi un mensaje de mi sobrina le exigieron fotos intimas y me chantajeo,solicitud_material,CAT-02,severe,1,neutral
+vi un mensaje de mi hijo amenazaron con difundir la verdad sus fotos orale,extorsion,CAT-05,high,1,mexico
+un odulto me pidio una foto normal,solicitud_material,CAT-02,medium,0,neutral
+una mujer me envio un mensaje que me parecio raro pibe,contacto_inapropiado,CAT-01,low,0,argentina
+me contactaron por redes diciendo que un desconocido me manipulo diciendo que tus amigos bueno no te quieren y me exigio fotos,grooming,CAT-03,critical,1,argentina
+enviame una foto en ropa interior wey,solicitud_material,CAT-02,high,1,mexico
+alguien me dijo que un tipo me propuso quedar en un sitio apartado man,cita_persona,CAT-04,high,1,colombia
+vi un mensaje de enviame fotos la verdad intimas o publico todo,solicitud_material,CAT-02,severe,1,mexico
+me contactaron por redes diciendo que juguemos un juego secreto y mandame fotos copado,grooming,CAT-03,high,1,argentina
+vi un mensaje de juguemos un juego secreto y mandame fotos,grooming,CAT-03,high,1,neutral
+una persona me escribio diciendo que tu familia no entiende mandame fotos,grooming,CAT-03,critical,1,neutral
+una persona me escribio diciendo que un hombre me hablo de forma inapropiada,contacto_inapropiado,CAT-01,medium,0,mexico
+vi un mensaje de un menor recibio mensajes de un adulto con palabras sexuales agresivas,contacto_inapropiado,CAT-01,critical,1,neutral
+vi un mensaje de un adulto me dijo que tus padres no te comprenden,grooming,CAT-03,medium,0,colombia
+alguien me dijo que yo si te entiendo y me pidio fotos,grooming,CAT-03,high,1,mexico
+me contactaron la verdad por redes diciendo que un adulto me describio actos sexuales de forma directa copado,contacto_inapropiado,CAT-01,critical,1,argentina
+una persona me escribio diciendo que mi amigo recibio mensajes de alguien diciendole que era especial neta,grooming,CAT-03,low,0,mexico
+recibi un mensaje de mi sobrina amenazaron con difundir sus fotos parce,extorsion,CAT-05,high,1,colombia
+vi un mensaje de mi hija le propusieron verse en un lugar escondido wey,cita_persona,CAT-04,high,1,mexico
+tu la verdad familia no entiende mandame fotos,grooming,CAT-03,critical,1,neutral
+una persona me bueno escribio diciendo que enviame fotos en ropa interior ya che,solicitud_material,CAT-02,critical,1,argentina
+me contactaron por redes diciendo o sea que mandame fotos en ropa interior o le cuento a todos,solicitud_material,CAT-02,critical,1,argentina
+me contactaron por redes diciendo que tu familia no intiende mandame fotos,grooming,CAT-03,critical,1,neutral
+vi un mensaje de mandame fotos desnudas o te funo copado,solicitud_material,CAT-02,severe,1,argentina
+me contactaron por redes diciendo que un tipo solicito material sexual de forma coercitiva carnal,solicitud_material,CAT-02,severe,1,mexico
+una persona me escribio diciendo que recibi un mensaje de un tipo que no entendi bien,contacto_inapropiado,CAT-01,low,0,mexico
+vi un pues mensaje de un tipo me dijo que tu familia no entiende,grooming,CAT-03,medium,0,neutral
+recibi un mensaje de una mujer munifesto comentarios de indole sexual explicita man,contacto_inapropiado,CAT-01,critical,1,colombia
+recibi un mensaje de una mujer me pidio una foto normal,solicitud_material,CAT-02,medium,0,colombia
+vi un mensaje de alguien me controlo tus amigos no te quieren y me obligo a enviar fotos desnudas,grooming,CAT-03,severe,1,argentina
+alguien me dijo que alguien me hizo creer que era el unico que me entendia y me exploto sexualmente orale,grooming,CAT-03,severe,1,mexico
+recibi un o sea mensaje de no le digas a tus papas y enviame fotos,grooming,CAT-03,high,1,neutral
+recibi un mensaje de mi amigo recibio mensajes de un desconocido diciendole que era especial pibe,grooming,CAT-03,low,0,argentina
+alguien me dijo que mi hijo recibio comentarios de alguien que la incomodaron,contacto_inapropiado,CAT-01,medium,0,argentina
+me contactaron por redes diciendo que recibi un mensaje de un tipo que no entendi bien parcero,contacto_inapropiado,CAT-01,low,0,colombia
+vi un mensaje de tu familia no entiende yo si mandame fotos orale,grooming,CAT-03,severe,1,mexico
+me contactaron por redes diciendo que alguien me envio un mensaje que me parecio raro,contacto_inapropiado,CAT-01,low,0,mexico
+vi un mensaje de un desconocido me manipulo diciendo entonces que tus padres no te comprenden y me exigio fotos parce,grooming,CAT-03,critical,1,colombia
+una persona me escribio diciendo que un hombre pues me dijo cosas que no me gustaron,contacto_inapropiado,CAT-01,medium,0,argentina
+me contactaron por redes diciendo que alguien verbalizo contenido pues sexual agresivo,contacto_inapropiado,CAT-01,critical,1,colombia
+un niño recibio mensajes de un desconocido con contenido sexual,contacto_inapropiado,CAT-01,high,1,argentina
+una persona mayor me insulto de formu sexual man,contacto_inapropiado,CAT-01,critical,1,colombia
+vi un mensaje de una mujer manifesto comentarios de indole sexual explicita bacano,contacto_inapropiado,CAT-01,critical,1,colombia
+vi un mensaje de una entonces persona mayor me pidio fotos sin ropa,solicitud_material,CAT-02,high,1,neutral
+alguien me dijo entonces que un desconocido quiso verme a solas,cita_persona,CAT-04,medium,0,argentina
+me contactaron por redes diciendo que mi amigo fue manipulado por una persona para enviar material intimo pues,grooming,CAT-03,severe,1,neutral
+recibi un mensaje de enviame fotos en ropa interior ya pibe,solicitud_material,CAT-02,critical,1,argentina
+alguien me dijo que mi sobrino le propusieron salir,cita_persona,CAT-04,low,0,mexico
+un adulto amenazo con difundir fotos,extorsion,CAT-05,high,1,neutral
+recibi un mensaje de pasame fotos sin ropa,solicitud_material,CAT-02,high,1,neutral
+mi amiga recibio un mensaje de un adulto un poco incomodo,contacto_inapropiado,CAT-01,low,0,mexico
+me contactaron por redes diciendo que mi amigo recibio un mensaje de un pues tipo un poco incomodo,contacto_inapropiado,CAT-01,low,0,mexico
+recibi un mensaje la verdad de una persona mayor quiso verme a solas man,cita_persona,CAT-04,medium,0,colombia
+vi un mensaje de mi amigo fue manipulado por una persona para enviar material intimo,grooming,CAT-03,severe,1,neutral
+me contactaron por redes diciendo que una mujer me pidio una foto normal,solicitud_material,CAT-02,medium,0,colombia
+un desconocido manifesto comentarios de indole sexual explicita,contacto_inapropiado,CAT-01,critical,1,mexico
+vi un mensaje de mi sobrina recibio comentarios de un adulto que la incomodaron,contacto_inapropiado,CAT-01,medium,0,argentina
+vi un mensaje de un desconocido me dijo que era especial,grooming,CAT-03,low,0,colombia
+me contactaron por redes diciendo que alguien me hizo comentarios que me incomodaron parce,contacto_inapropiado,CAT-01,medium,0,colombia
+recibi un mensaje de mi hijo le dijeron que no le cuentes a tus papas,grooming,CAT-03,medium,0,argentina
+me contactaron por redes diciendo bueno que una persona me controlo tus padres no te comprenden y me obligo a enviar fotos desnudas chevere,grooming,CAT-03,severe,1,colombia
+alguien me dijo que mi amigo le propusieron un juego secreto y le pidieron fotos che,grooming,CAT-03,high,1,argentina
+me contactaron por redes diciendo que una niña recibio mensajes de un desconocido con contenido sexual o sea che,contacto_inapropiado,CAT-01,high,1,argentina
+recibi un entonces mensaje de pasame fotos en ropa interior es solo para mi,solicitud_material,CAT-02,severe,1,neutral
+vi un mensaje de una persona mayor me envio comentarios sexuales explicitos chido,contacto_inapropiado,CAT-01,high,1,mexico
+me contactaron por redes diciendo que un niño la aislaron y le pidieron fotos intimas orale,grooming,CAT-03,critical,1,mexico
+una persona me escribio diciendo que alguien insistio en quedar solo a pesar de que le dije que no boliche,cita_persona,CAT-04,critical,1,argentina
+me contactaron por redes diciendo que mi hija le pidieron una foto,solicitud_material,CAT-02,low,0,argentina
+una persona me escribio diciendo que un pues tipo me amenazo con difundir material intimo si no enviaba mas,extorsion,CAT-05,severe,1,argentina
+alguien me dijo que un adulto me dijo que solo yo te quiero ayudar bacano,grooming,CAT-03,medium,0,colombia
+elguien me dijo que alguien me o sea dijo cosas sexuales sin que yo lo pidiera,contacto_inapropiado,CAT-01,high,1,colombia
+me contactaron por redes diciendo que tu familia no entiende mandame fotos neta,grooming,CAT-03,critical,1,mexico
+me contactaron por redes diciindo que mi amiga recibio comentarios de alguien que la incomodaron man,contacto_inapropiado,CAT-01,medium,0,colombia
+una persona me escribio diciendo que mi sobrino recibio comentarios de alguien que la incomodaron,contacto_inapropiado,CAT-01,medium,0,colombia
+una persona solicito material sexual de forma coercitiva,solicitud_material,CAT-02,severe,1,argentina
+una persona me escribio diciendo que un odulto me dijo cosas sexuales muy explicitas,contacto_inapropiado,CAT-01,critical,1,neutral
+vi un mensaje de pasame fotos en ropa interior es solo para mi chevere,solicitud_material,CAT-02,severe,1,colombia
+recibi un mensaje de un hombre me invito a salir che,cita_persona,CAT-04,low,0,argentina
+vi un mensoje de mandame pues fotos desnudas ya,solicitud_material,CAT-02,high,1,mexico
+alguien me dijo que pasame fotos o le cuento a todos che,extorsion,CAT-05,critical,1,argentina
+una persona me escribio diciendo o sea que solo yo te entiendo pasame fotos,grooming,CAT-03,critical,1,neutral
+un desconocido me aislo de mis amigos y me pidio imagenes intimas,grooming,CAT-03,critical,1,neutral
+me contactaron la verdad por redes diciendo que un adulto exigio mas imagenes so pena de publicarlas,extorsion,CAT-05,critical,1,argentina
+alguien me dijo que tu familia no entiende yo si mandame pues fotos,grooming,CAT-03,severe,1,mexico
+alguien me dijo la verdad que alguien me hablo de forma inapropiada chido,contacto_inapropiado,CAT-01,medium,0,mexico
+recibi un entonces mensoje de una persona me saludo de una forma extraña,contacto_inapropiado,CAT-01,low,0,mexico
+recibi un mensaje de un tipo me dijo que era especial posta,grooming,CAT-03,low,0,argentina
+me contactaron por redes diciendo que un niño le pidieron una foto comun,solicitud_material,CAT-02,medium,0,neutral
+vi un mensaje de un adulto amenazo con difundir material intimo si pues no recibia mas,extorsion,CAT-05,severe,1,colombia
+vi un mensaje de pasame material o lo difundo copado,extorsion,CAT-05,high,1,argentina
+me contactaron por redes diciendo que recibi un mensaje de una persona que no entendi bien wey,contacto_inapropiado,CAT-01,low,0,mexico
+recibi un mensaje de mi sobrina le dijeron que contarian algo si no obedecia parce o sea,extorsion,CAT-05,medium,0,colombia
+me contactaron por redes diciendo que no le digas a tus papas y enviame fotos boliche,grooming,CAT-03,high,1,argentina
+o sea me contactaron por redes diciendo que enviame fotografias intimas,solicitud_material,CAT-02,high,1,argentina
+un adulto amenazo con divulgar imagenes privadas,extorsion,CAT-05,high,1,colombia
+una persona me escribio diciendo que un adulto me dijo que era especial,grooming,CAT-03,low,0,neutral
+mi sobrina recibio pues comentarios de una mujer que la incomodaron chevere,contacto_inapropiado,CAT-01,medium,0,colombia
+una persona mayor me saludo pues de una forma extraña parce,contacto_inapropiado,CAT-01,low,0,colombia
+alguien me pues dijo que una persona me envio comentarios sexuales explicitos,contacto_inapropiado,CAT-01,high,1,neutral
+pasame imagenes desnudas ya,solicitud_material,CAT-02,critical,1,colombia
+vi un mensaje de un adulto verbalizo contenido sexual agresivo chido pues,contacto_inapropiado,CAT-01,critical,1,mexico
+alguien me dijo que un niño la presionaron para quedar sola parcero,cita_persona,CAT-04,critical,1,colombia
+me contactaron por redes diciendo que un adulto me hablo de forma inapropiada che,contacto_inapropiado,CAT-01,medium,0,argentina
+alguien me dijo que buano una persona me pidio que es solo para mi,grooming,CAT-03,medium,0,colombia
+vi un mensaje de bueno una persona mayor me envio un mensaje que me parecio raro,contacto_inapropiado,CAT-01,low,0,colombia
+alguien me dijo que una persona mayor me presiono para mandar fotos sin ropa,solicitud_material,CAT-02,critical,1,neutral
+una persona me escribio diciendo o sea que una mujer me invito a salir,cita_persona,CAT-04,low,0,argentina
+me contactaron por redes diciendo entonces que un niño le dijeron que entre nosotros,grooming,CAT-03,medium,0,neutral
+alguien me dijo que un adulto me dijo que nos vieramos en un lugar escondido,cita_persona,CAT-04,high,1,argentina
+mandame una foto en ropa interior chevere,solicitud_material,CAT-02,high,1,colombia
+recibi un mensaje de un desconocido me extorsiono exigiendo mas fotos o publicaria todo che,extorsion,CAT-05,severe,1,argentina
+me contactaron por redes diciendo que alguien exigio fotografias y videos desnudos y amenazo con difundirlos,solicitud_material,CAT-02,severe,1,mexico
+vi un mensaje de alguien me aislo de mis amigos y me pidio fotos desnudas man,grooming,CAT-03,critical,1,colombia
+recibi un mensaje de un hombre me hablo de forma inapropiada,contacto_inapropiado,CAT-01,medium,0,neutral
+vi un mensaje de mi amigo la aislaron y le pidieron fotos intimas,grooming,CAT-03,critical,1,colombia
+alguien me dijo que pasame fotos en ropa interior es solo para mi entonces,solicitud_material,CAT-02,severe,1,neutral
+pasame fotos sin ropa,solicitud_material,CAT-02,high,1,neutral
+recibi un mensaje de shh es secreto mandame fotos desnudas la verdad pibe,grooming,CAT-03,severe,1,argentina
+vi un mensaje de una persona me o sea pregunto si podia enviarle una foto che,solicitud_material,CAT-02,low,0,argentina
+vi un mensaje de un hombre me dijo que tus o sea padres no te comprenden y me pidio fotos,grooming,CAT-03,high,1,neutral
+me contactaron por redes diciendo que una mujer exigio fotografias y videos desnudos y amenazo con difundirlos man,solicitud_material,CAT-02,severe,1,colombia
+recibi un mensaje de mi sobrina recibio mensajes de un tipo con contenido sexual,contacto_inapropiado,CAT-01,high,1,argentina
+alguien me la verdad dijo que recibi un mensaje de una persona mayor que no entendi bien orale,contacto_inapropiado,CAT-01,low,0,mexico
+una persona me escribio diciendo que mi hija la obligaron a encontrarse a escondidas con un hombre wey,cita_persona,CAT-04,severe,1,mexico
+recibi un mensaje de un desconocido me pidio que le mandara una foto,solicitud_material,CAT-02,low,0,mexico
+recibi un mensaje entonces de un menor quisieron verla sola copado,cita_persona,CAT-04,medium,0,argentina
+alguien me dijo que mi sobrina recibio mensajes de un tipo con contenido sexual pibe,contacto_inapropiado,CAT-01,high,1,argentina
+alguien me aislo de mis amigos y me pidio fotos bueno en ropa interior copado,grooming,CAT-03,critical,1,argentina
+alguien me dijo que una persona me propuso quedar en un sitio apartado,cita_persona,CAT-04,high,1,neutral
+un desconocido me describio actos sexuales de forma directa man,contacto_inapropiado,CAT-01,critical,1,colombia
+recibi un mensaje de mi hijo le dijeron que es solo para mi bueno boliche,grooming,CAT-03,medium,0,argentina
+alguien me dijo que una persona mayor exigio mas imagenes so pena de publicarlas,extorsion,CAT-05,critical,1,colombia
+vi un mensaje de una niña recibio mensajes de una mujer con o sea contenido sexual boliche,contacto_inapropiado,CAT-01,high,1,argentina
+una persona me dijo que era especial che,grooming,CAT-03,low,0,argentina
+una persona me escribio diciendo que mi amiga la obligaron a la verdad encontrarse a escondidas con un hombre,cita_persona,CAT-04,severe,1,mexico
+alguien me dijo que una persona me saludo de una forma extraña pibe,contacto_inapropiado,CAT-01,low,0,argentina
+me contactaron por redes diciendo que juguemos un juego secreto y mandame fotos,grooming,CAT-03,high,1,colombia
+alguien me dijo que shh la verdad es secreto mandame fotos desnudas,grooming,CAT-03,severe,1,mexico
+una persona me escribio diciendo que mandame pues mas imagenes o viralizo boliche,extorsion,CAT-05,critical,1,argentina
+vi un mensaje de un desconocido me saludo de una forma extraña la verdad,contacto_inapropiado,CAT-01,low,0,mexico
+vi un mensaje de mandame dinero y mas fotos o publico todo bacano,extorsion,CAT-05,severe,1,colombia
+un hombre me envio comentarios sexuales explicitos boliche entonces,contacto_inapropiado,CAT-01,high,1,argentina
+vi un mensaje de mi hijo le propusieron verse en un lugar escondido,cita_persona,CAT-04,high,1,argentina
+alguien me pregunto si podia enviarle una foto pibe,solicitud_material,CAT-02,low,0,argentina
+recibi un mensaje de un tipo me envio pues un mensaje que me parecio raro,contacto_inapropiado,CAT-01,low,0,argentina
+una persona bueno me escribio diciendo que un tipo me manipulo diciendo que tu familia no entiende y me exigio fotos,grooming,CAT-03,critical,1,argentina
+alguien me dijo que mi hijo fue manipulado por una mujer para enviar material intimo,grooming,CAT-03,severe,1,argentina
+una persona me escribio diciendo que mi amigo le propusieron salir orale,cita_persona,CAT-04,low,0,mexico
+vi un mensaje de una persona insistio en quedar solo a pesar de que le dije que no,cita_persona,CAT-04,critical,1,neutral
+recibi un mensaje de un desconocido me propuso un juego secreto y me pidio fotos en ropa interior,grooming,CAT-03,high,1,argentina
