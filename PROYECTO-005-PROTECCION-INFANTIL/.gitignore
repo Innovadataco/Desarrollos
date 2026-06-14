@@ -1,0 +1,40 @@
+# Entorno
+.env
+.venv/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.so
+
+# Node
+node_modules/
+
+# Build / dist
+frontend/dist/
+dist/
+build/
+
+# Cachés y datos locales
+.pytest_cache/
+.ruff_cache/
+*.db
+.DS_Store
+.coverage
+
+# Playwright
+test-results/
+playwright-report/
+
+# Logs
+*.log
+
+# Archivos de evidencia subidos
+uploads/
+
+# Certificados TLS de staging (generados localmente)
+nginx/certs/*.pem
+nginx/certs/*.key

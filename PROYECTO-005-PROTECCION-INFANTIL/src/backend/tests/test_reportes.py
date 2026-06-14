@@ -4,11 +4,13 @@ from fastapi import status
 
 from app.models import Report
 
+REPORT_ENDPOINT = "/api/v1/reportes"
+
 
 def test_health_check(client):
-    response = client.get("/api/health")
+    response = client.get("/health")
     assert response.status_code == status.HTTP_200_OK
-    assert response.json() == {"status": "ok"}
+    assert response.json()["status"] == "ok"
 
 
 def test_create_report_success(client, db_session):
@@ -16,7 +18,7 @@ def test_create_report_success(client, db_session):
         "reported_identifier": "+573001234567",
         "description": "Recibí mensajes inapropiados",
     }
-    response = client.post("/api/reportes", json=payload)
+    response = client.post(REPORT_ENDPOINT, json=payload)
     assert response.status_code == status.HTTP_201_CREATED
     data = response.json()
     assert "report_hash" in data
@@ -38,7 +40,7 @@ def test_create_report_with_evidence(client, db_session):
             "content": "captura de pantalla descriptiva",
         },
     }
-    response = client.post("/api/reportes", json=payload)
+    response = client.post(REPORT_ENDPOINT, json=payload)
     assert response.status_code == status.HTTP_201_CREATED
 
     report = db_session.query(Report).first()
@@ -56,15 +58,70 @@ def test_create_report_with_image_evidence(client, db_session):
             "content": "base64:fakeimagecontent",
         },
     }
-    response = client.post("/api/reportes", json=payload)
+    response = client.post(REPORT_ENDPOINT, json=payload)
     assert response.status_code == status.HTTP_201_CREATED
     report = db_session.query(Report).first()
     assert report.evidence_type == "image"
 
 
+def test_create_report_rejects_invalid_category_code(client):
+    payload = {
+        "reported_identifier": "+573001234567",
+        "description": "Reporte con categoría inválida",
+        "category": "CAT-99",
+    }
+    response = client.post(REPORT_ENDPOINT, json=payload)
+    assert response.status_code == status.HTTP_422_UNPROCESSABLE_CONTENT
+
+
+def test_create_report_maps_category_code_to_slug(client, db_session):
+    payload = {
+        "reported_identifier": "+573001234567",
+        "description": "Reporte con categoría específica",
+        "category": "CAT-03",
+    }
+    response = client.post(REPORT_ENDPOINT, json=payload)
+    assert response.status_code == status.HTTP_201_CREATED
+
+    report = db_session.query(Report).first()
+    assert report.category == "grooming"
+
+
+def test_create_report_with_evidence_media_url(client, db_session):
+    payload = {
+        "reported_identifier": "+573001234567",
+        "description": "Enlace a evidencia externa",
+        "evidence_media_url": "https://cdn.semaforo.com/enc/abc123",
+    }
+    response = client.post(REPORT_ENDPOINT, json=payload)
+    assert response.status_code == status.HTTP_201_CREATED
+    data = response.json()
+    assert data["reported_at_bucket"] is not None
+
+    report = db_session.query(Report).first()
+    assert report.evidence_media_url == payload["evidence_media_url"]
+
+
+def test_create_report_truncates_reported_at_to_6h_bucket(client, db_session):
+    payload = {
+        "reported_identifier": "+573001234567",
+        "description": "Verificación de bucket temporal",
+    }
+    response = client.post(REPORT_ENDPOINT, json=payload)
+    assert response.status_code == status.HTTP_201_CREATED
+    data = response.json()
+
+    report = db_session.query(Report).first()
+    assert report.reported_at_bucket is not None
+    assert data["reported_at"] == report.reported_at_bucket.isoformat()
+    assert report.reported_at_bucket.minute == 0
+    assert report.reported_at_bucket.second == 0
+    assert report.reported_at_bucket.microsecond == 0
+
+
 def test_create_report_missing_identifier(client):
     payload = {"description": "Solo descripción"}
-    response = client.post("/api/reportes", json=payload)
+    response = client.post(REPORT_ENDPOINT, json=payload)
     assert response.status_code == status.HTTP_422_UNPROCESSABLE_CONTENT
 
 
@@ -74,7 +131,7 @@ def test_create_report_invalid_evidence_type(client):
         "description": "Incidente",
         "evidence": {"type": "video", "content": "contenido"},
     }
-    response = client.post("/api/reportes", json=payload)
+    response = client.post(REPORT_ENDPOINT, json=payload)
     assert response.status_code == status.HTTP_422_UNPROCESSABLE_CONTENT
 
 
@@ -84,7 +141,7 @@ def test_create_report_missing_evidence_content(client):
         "description": "Incidente",
         "evidence": {"type": "text"},
     }
-    response = client.post("/api/reportes", json=payload)
+    response = client.post(REPORT_ENDPOINT, json=payload)
     assert response.status_code == status.HTTP_422_UNPROCESSABLE_CONTENT
 
 
@@ -93,8 +150,8 @@ def test_create_report_generates_unique_hashes(client):
         "reported_identifier": "+573001234567",
         "description": "Mismo identificador",
     }
-    response1 = client.post("/api/reportes", json=payload)
-    response2 = client.post("/api/reportes", json=payload)
+    response1 = client.post(REPORT_ENDPOINT, json=payload)
+    response2 = client.post(REPORT_ENDPOINT, json=payload)
     assert response1.status_code == status.HTTP_201_CREATED
     assert response2.status_code == status.HTTP_201_CREATED
     assert response1.json()["report_hash"] != response2.json()["report_hash"]
@@ -115,18 +172,19 @@ def test_create_report_handles_hash_collision(client, db_session):
             return "a" * 64
         return "b" * 64
 
-    # Crear un reporte previo para forzar colisión con el primer hash
     db_session.add(
         Report(
             report_hash="a" * 64,
             reported_identifier=b"x",
             description=b"y",
+            identifier_hash="ab" * 32,
+            identifier_type="phone",
         )
     )
     db_session.commit()
 
     with patch("app.routers.reportes.generate_report_hash", side_effect=colliding_hash):
-        response = client.post("/api/reportes", json=payload)
+        response = client.post(REPORT_ENDPOINT, json=payload)
 
     assert response.status_code == status.HTTP_201_CREATED
     assert response.json()["report_hash"] == "b" * 64
@@ -147,12 +205,14 @@ def test_create_report_gives_up_after_max_collision_retries(client, db_session):
             report_hash="a" * 64,
             reported_identifier=b"x",
             description=b"y",
+            identifier_hash="ab" * 32,
+            identifier_type="phone",
         )
     )
     db_session.commit()
 
     with patch("app.routers.reportes.generate_report_hash", side_effect=always_collide):
-        response = client.post("/api/reportes", json=payload)
+        response = client.post(REPORT_ENDPOINT, json=payload)
 
     assert response.status_code == status.HTTP_500_INTERNAL_SERVER_ERROR
 
@@ -163,12 +223,14 @@ def test_rate_limit_blocks_after_five_requests(client):
         "description": "Reporte de prueba",
     }
     for _ in range(5):
-        response = client.post("/api/reportes", json=payload)
+        response = client.post(REPORT_ENDPOINT, json=payload)
         assert response.status_code == status.HTTP_201_CREATED
 
-    response = client.post("/api/reportes", json=payload)
+    response = client.post(REPORT_ENDPOINT, json=payload)
     assert response.status_code == status.HTTP_429_TOO_MANY_REQUESTS
-    assert "límite" in response.json()["detail"].lower()
+    detail = response.json()["detail"]
+    error_text = detail["error"] if isinstance(detail, dict) else detail
+    assert "límite" in error_text.lower()
 
 
 def test_rate_limit_does_not_persist_ip_after_reset(client):
@@ -178,19 +240,39 @@ def test_rate_limit_does_not_persist_ip_after_reset(client):
         "description": "Reporte de prueba",
     }
     for _ in range(5):
-        response = client.post("/api/reportes", json=payload)
+        response = client.post(REPORT_ENDPOINT, json=payload)
         assert response.status_code == status.HTTP_201_CREATED
 
-    response = client.post("/api/reportes", json=payload)
+    response = client.post(REPORT_ENDPOINT, json=payload)
     assert response.status_code == status.HTTP_429_TOO_MANY_REQUESTS
 
-    # Simular expiración de la ventana
-    from app.services.rate_limit import rate_limiter
+    from app.services.rate_limit import reset_fallback_limiters
 
-    rate_limiter.reset()
+    reset_fallback_limiters()
 
-    response = client.post("/api/reportes", json=payload)
+    response = client.post(REPORT_ENDPOINT, json=payload)
     assert response.status_code == status.HTTP_201_CREATED
+
+
+def test_rate_limit_hashes_ip_in_fallback_storage(client):
+    """El rate limiter en memoria nunca almacena la IP en texto plano."""
+    import hashlib
+    from unittest.mock import MagicMock
+
+    from app.services.rate_limit import _fallback_limiters, check_rate_limit
+
+    _fallback_limiters["report"].reset()
+    raw_ip = "203.0.113.42"
+    request = MagicMock()
+    request.headers = {}
+    request.client.host = raw_ip
+
+    check_rate_limit(request, scope="report", identifier=raw_ip)
+
+    store = _fallback_limiters["report"]._store
+    hashed_ip = hashlib.sha256(raw_ip.encode("utf-8")).hexdigest()
+    assert raw_ip not in store
+    assert hashed_ip in store
 
 
 def test_no_metadata_columns_in_report_model():
@@ -199,3 +281,30 @@ def test_no_metadata_columns_in_report_model():
     forbidden = {"ip_address", "user_agent", "cookies", "device_metadata"}
     columns = {c.name for c in Report.__table__.columns}
     assert forbidden.isdisjoint(columns)
+
+
+def test_honeypot_rejects_request(client, db_session):
+    payload = {
+        "reported_identifier": "+573001234567",
+        "description": "Recibí mensajes inapropiados",
+        "honeypot": "spam bot value",
+    }
+    response = client.post(REPORT_ENDPOINT, json=payload)
+    assert response.status_code == status.HTTP_400_BAD_REQUEST
+    assert db_session.query(Report).count() == 0
+
+
+def test_reported_at_bucket_truncated_to_6h(client, db_session):
+    payload = {
+        "reported_identifier": "+573001234567",
+        "description": "Recibí mensajes inapropiados",
+    }
+    response = client.post(REPORT_ENDPOINT, json=payload)
+    assert response.status_code == status.HTTP_201_CREATED
+
+    report = db_session.query(Report).first()
+    assert report.reported_at_bucket is not None
+    assert report.reported_at_bucket.minute == 0
+    assert report.reported_at_bucket.second == 0
+    assert report.reported_at_bucket.microsecond == 0
+    assert report.reported_at_bucket.hour % 6 == 0

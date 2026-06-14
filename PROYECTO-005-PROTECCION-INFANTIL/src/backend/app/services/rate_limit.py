@@ -1,13 +1,60 @@
+import hashlib
+import logging
+import os
 import time
 from collections import defaultdict
 from threading import Lock
-from fastapi import Request, HTTPException
+
+from fastapi import HTTPException, Request
+from limits import RateLimitItemPerHour
+from limits.storage import MemoryStorage, RedisStorage
+from limits.strategies import MovingWindowRateLimiter
+
+from app.config import settings
+
+logger = logging.getLogger(__name__)
+
+MAX_MEMORY_KEYS = 1000
+
+DEFAULT_LIMITS = {
+    "report": int(os.getenv("RATE_LIMIT_REPORT", "5")),
+    "validate": int(os.getenv("RATE_LIMIT_VALIDATE", "10")),
+    "health": int(os.getenv("RATE_LIMIT_HEALTH", "100")),
+    "login": int(os.getenv("RATE_LIMIT_LOGIN", "5")),
+    "decrypt": int(os.getenv("RATE_LIMIT_DECRYPT", "10")),
+    "gateway": int(os.getenv("RATE_LIMIT_GATEWAY", "100")),
+    "admin": int(os.getenv("RATE_LIMIT_ADMIN", "1000")),
+}
+
+
+def _build_limiter():
+    if settings.redis_url:
+        try:
+            storage = RedisStorage(settings.redis_url)
+            logger.info("Rate limiting usando Redis: %s", settings.redis_url)
+            return MovingWindowRateLimiter(storage)
+        except Exception as exc:
+            logger.warning(
+                "No se pudo conectar a Redis para rate limiting: %s. Fallback a memoria.",
+                exc,
+            )
+
+    if settings.environment.lower() == "production":
+        logger.warning(
+            "Rate limiting en memoria activo en producción. "
+            "No escala entre workers/replicas. Configure REDIS_URL."
+        )
+    return MovingWindowRateLimiter(MemoryStorage())
+
+
+_limiter = _build_limiter()
 
 
 class InMemoryRateLimiter:
     """
-    Rate limiter en memoria. No persiste IPs: las entradas expiran
-    cuando pasa la ventana de tiempo.
+    Rate limiter en memoria de respaldo. No persiste IPs: las entradas expiran
+    cuando pasa la ventana de tiempo. Capado a MAX_MEMORY_KEYS para evitar
+    crecimiento ilimitado.
     """
 
     def __init__(self, max_requests: int = 5, window_seconds: int = 3600):
@@ -21,6 +68,7 @@ class InMemoryRateLimiter:
     def is_allowed(self, key: str) -> bool:
         now = time.time()
         with self._lock:
+            self._cleanup_if_needed(now)
             count, window_start = self._store[key]
             if now - window_start >= self.window_seconds:
                 self._store[key] = (1, now)
@@ -34,8 +82,25 @@ class InMemoryRateLimiter:
         with self._lock:
             self._store.clear()
 
+    def _cleanup_if_needed(self, now: float):
+        if len(self._store) < MAX_MEMORY_KEYS:
+            return
+        cutoff = now - self.window_seconds
+        expired = [k for k, (_, start) in self._store.items() if start < cutoff]
+        for k in expired:
+            del self._store[k]
 
-rate_limiter = InMemoryRateLimiter()
+
+# Respaldos para tests y desarrollo sin Redis
+_fallback_limiters = {
+    name: InMemoryRateLimiter(max_requests=limit, window_seconds=3600)
+    for name, limit in DEFAULT_LIMITS.items()
+}
+_fallback_limiters["login"] = InMemoryRateLimiter(max_requests=5, window_seconds=900)
+
+
+def _using_memory_storage() -> bool:
+    return isinstance(getattr(_limiter, "storage", None), MemoryStorage)
 
 
 def get_client_ip(request: Request) -> str:
@@ -45,10 +110,53 @@ def get_client_ip(request: Request) -> str:
     return request.client.host if request.client else "unknown"
 
 
-def check_rate_limit(request: Request):
-    ip = get_client_ip(request)
-    if not rate_limiter.is_allowed(ip):
+def _hash_identifier(identifier: str) -> str:
+    # Normalizamos y hasheamos el identificador (IP) para no almacenar PII.
+    normalized = identifier.strip().lower().encode("utf-8")
+    return hashlib.sha256(normalized).hexdigest()
+
+
+def _make_key(scope: str, hashed_identifier: str) -> str:
+    return f"{scope}:{hashed_identifier}"
+
+
+def _window_seconds(scope: str) -> int:
+    if scope == "login":
+        return 900
+    return 3600
+
+
+def check_rate_limit(
+    request: Request, scope: str = "report", identifier: str | None = None
+):
+    key = identifier or get_client_ip(request)
+    hashed_key = _hash_identifier(key)
+    limit = DEFAULT_LIMITS.get(scope, 5)
+    retry_after = _window_seconds(scope)
+    detail = {
+        "error": "Has alcanzado el límite de solicitudes. Intenta más tarde.",
+        "retry_after": retry_after,
+    }
+
+    if _using_memory_storage():
+        limiter = _fallback_limiters.get(scope, _fallback_limiters["report"])
+        if not limiter.is_allowed(hashed_key):
+            raise HTTPException(
+                status_code=429,
+                detail=detail,
+                headers={"Retry-After": str(retry_after)},
+            )
+        return
+
+    item = RateLimitItemPerHour(limit)
+    if not _limiter.hit(item, _make_key(scope, hashed_key)):
         raise HTTPException(
             status_code=429,
-            detail="Has alcanzado el límite de reportes. Intenta más tarde.",
+            detail=detail,
+            headers={"Retry-After": str(retry_after)},
         )
+
+
+def reset_fallback_limiters():
+    for limiter in _fallback_limiters.values():
+        limiter.reset()

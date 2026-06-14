@@ -1,0 +1,47 @@
+# TASKS-002 — Consulta Semáforo (Módulo 002)
+
+**Proyecto:** Semáforo de Confianza (005)  
+**Fecha:** 13 de junio 2026  
+**Versión:** 1.0  
+**Estado:** ⬜ NUEVO — Pendientes
+
+---
+
+## 1. FRONTEND — PWA
+
+- [x] `TF-002.1` Crear página principal como buscador (no como reporte)
+- [x] `TF-002.2` Implementar input universal con placeholder dinámico
+- [x] `TF-002.3` Detectar tipo de identificador (teléfono, email, @, URL)
+- [x] `TF-002.4` Diseñar cards de semáforo (4 colores, animación suave)
+- [x] `TF-002.5` Implementar detalle de resultado (conteos, categorías, timeline)
+- [x] `TF-002.6` Implementar botón "Reportar este identificador" → pre-llena Módulo 001
+- [x] `TF-002.7` Implementar botón "Compartir resultado" (URL sin identificador)
+- [x] `TF-002.8` Implementar "Alertarme si cambia" (email, Premium)
+- [x] `TF-002.9` PWA: página principal como consulta (cambio de routing)
+- [x] `TF-002.10` Tests E2E con Playwright (flujo consulta + reporte)
+
+---
+
+## 2. BACKEND — API
+
+- [x] `TB-002.1` Implementar endpoint GET /api/validate/{identifier}
+- [x] `TB-002.2` Implementar normalización de identificadores (E.164, email, @, URL)
+- [x] `TB-002.3` Implementar hash SHA-256 para búsqueda
+- [x] `TB-002.4` Implementar query agregada por identifier_hash
+- [x] `TB-002.5` Implementar algoritmo de semáforo (verde/amarillo/rojo/negro)
+- [x] `TB-002.6` Implementar rate limiting 10/hr para consulta
+- [x] `TB-002.7` Implementar respuesta que NO expone datos del reportante
+- [x] `TB-002.8` Tests unitarios (pytest, cobertura ≥ 80%)
+- [x] `TB-002.9` Tests de integración (TestClient, fixtures con datos)
+
+---
+
+## 3. INFRAESTRUCTURA
+
+- [x] `TI-002.1` Índice en `identifier_hash` (PostgreSQL)
+- [x] `TI-002.2` Cache de consultas frecuentes (Redis, TTL 1h)
+- [x] `TI-002.3` Nginx: cache de respuestas 200 para consultas repetidas (5 min)
+
+---
+
+> *Tasks generados por ZEUS — Innovadataco*

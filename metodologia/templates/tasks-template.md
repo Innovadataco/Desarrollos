@@ -7,7 +7,7 @@
 
 ---
 
-## 1. DEFINICIÓN DE DONE (DoD)
+## 1. DEFINICIÓN DE DONE (DoD) — 12 items
 
 Una tarea está "Done" cuando:
 - [ ] Código implementado y commiteado
@@ -18,6 +18,12 @@ Una tarea está "Done" cuando:
 - [ ] Code review aprobado por ZEUS
 - [ ] PR mergeado a `main`
 - [ ] Artefactos PM2 actualizados (ZEUS)
+- [ ] Código vs spec.md validado (cada función del spec existe en código)
+- [ ] Security checklist completado (0 críticos)
+- [ ] Sin deuda técnica nueva
+- [ ] Estado real vs declarado: ZEUS valida que el % real = % declarado
+
+**Regla:** ZEUS es el único que puede marcar el item #12. ODIN marca los items 1-11 como "LISTO PARA REVISIÓN", ZEUS confirma.
 
 ---
 

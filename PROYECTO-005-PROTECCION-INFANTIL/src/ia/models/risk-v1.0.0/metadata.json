@@ -1,0 +1,18 @@
+{
+  "version": "risk-v1.0.0",
+  "model": "ensemble_lr_rf",
+  "dataset": "synthetic_train_v1.csv",
+  "n_examples": 1890,
+  "auc_roc": 0.9087333676394913,
+  "f1": 0.8793969849246231,
+  "threshold_high": 0.5,
+  "threshold_severe": 0.85,
+  "categories": [
+    "cita_persona",
+    "contacto_inapropiado",
+    "desconocido",
+    "extorsion",
+    "grooming",
+    "solicitud_material"
+  ]
+}

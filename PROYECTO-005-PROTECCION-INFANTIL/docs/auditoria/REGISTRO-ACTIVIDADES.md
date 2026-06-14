@@ -1,0 +1,197 @@
+# REGISTRO-ACTIVIDADES.md — PROYECTO-005: Semáforo de Confianza
+**Repositorio:** Innovadataco/Desarrollos  
+**Ubicación:** `PROYECTO-005-PROTECCION-INFANTIL/docs/auditoria/`  
+**Versión:** 1.0.0  
+**Fecha:** 14 de junio de 2026  
+**Autor:** ZEUS (CEO PMO)  
+**Formato:** Cada actividad registra fecha/hora de inicio, fin, y auditoría
+
+---
+
+## ⚠️ REGLA DE REGISTRO
+
+> **"Sin fecha y hora, la actividad no existió."**
+
+**Quién registra qué:**
+
+| Actor | Registra | Dónde | Formato |
+|-------|----------|-------|---------|
+| **ODIN** | Fecha/hora de INICIO de actividad | `INSTRUCCION-XXX.md` | `Inicio: 2026-06-14 03:30 CST (Shanghai) / 02:30 (Bogotá)` |
+| **ODIN** | Fecha/hora de FIN de actividad | `INSTRUCCION-XXX.md` | `Fin: 2026-06-14 05:45 CST (Shanghai) / 04:45 (Bogotá)` |
+| **ODIN** | Estado final | `INSTRUCCION-XXX.md` | `Estado: LISTO PARA VALIDACIÓN` |
+| **ZEUS** | Fecha/hora de INICIO de auditoría | `ACTA-VALIDACION-XXX.md` o `ACTA-CORRECCION-XXX.md` | `Auditoría iniciada: 2026-06-14 06:00 CST` |
+| **ZEUS** | Fecha/hora de FIN de auditoría | `ACTA-VALIDACION-XXX.md` o `ACTA-CORRECCION-XXX.md` | `Auditoría finalizada: 2026-06-14 07:15 CST` |
+| **ZEUS** | Resultado de auditoría | `ACTA-XXX.md` | `Resultado: VALIDADO / RECHAZADO / CAMBIOS SOLICITADOS` |
+| **ZEUS** | Actualización SINCRONIZACION-MAESTRA.md | `SINCRONIZACION-MAESTRA.md` | `UPDATE — 2026-06-14 07:30 CST` |
+
+**Zona horaria:**
+- **Shanghai (CST):** GMT+8 — Hora del sistema (ZEUS)
+- **Bogotá (GMT-5):** Hora de Jelkin
+- Siempre registrar AMBAS horas para evitar confusiones.
+
+---
+
+## FORMATO DE REGISTRO POR ACTIVIDAD
+
+```markdown
+### ACT-XXX: {Nombre de la actividad}
+**Módulo:** {Módulo}  
+**Instrucción:** {INSTRUCCION-XXX.md}  
+**Asignado:** ODIN
+
+#### INICIO (Registrado por ODIN)
+- **Fecha/hora inicio:** 2026-06-14 03:30 CST (Shanghai) / 02:30 (Bogotá)
+- **Registrado por:** ODIN
+- **Contexto:** {Breve descripción de qué se va a hacer}
+
+#### FIN (Registrado por ODIN)
+- **Fecha/hora fin:** 2026-06-14 05:45 CST (Shanghai) / 04:45 (Bogotá)
+- **Registrado por:** ODIN
+- **Estado declarado:** LISTO PARA VALIDACIÓN / EN CORRECCIÓN / BLOQUEADO
+- **Entregables:** {Lista de archivos, PRs, commits}
+- **Notas:** {Observaciones de ODIN}
+
+#### AUDITORÍA (Registrado por ZEUS)
+- **Fecha/hora inicio auditoría:** 2026-06-14 06:00 CST (Shanghai) / 05:00 (Bogotá)
+- **Fecha/hora fin auditoría:** 2026-06-14 07:15 CST (Shanghai) / 06:15 (Bogotá)
+- **Duración auditoría:** 1h 15min
+- **Registrado por:** ZEUS
+- **Resultado:** VALIDADO / RECHAZADO / CAMBIOS SOLICITADOS
+- **Acta generada:** {ACTA-VALIDACION-XXX.md o ACTA-CORRECCION-XXX.md}
+- **Hallazgos:** {Resumen de lo que ZEUS encontró}
+- **Acciones:** {Si aplica, qué debe hacer ODIN}
+
+#### SINCRONIZACIÓN (Registrado por ZEUS)
+- **Fecha/hora actualización maestra:** 2026-06-14 07:30 CST
+- **Estado en maestra:** {VALIDADO / EN CORRECCIÓN / BLOQUEADO}
+- **Próxima actividad:** {Qué sigue}
+```
+
+---
+
+## HISTORIAL DE ACTIVIDADES (Ejemplo)
+
+### ACT-001: Corrección de bugs Módulo 001 (Registro Anónimo)
+**Módulo:** 001 — Registro Anónimo  
+**Instrucción:** INSTRUCCION-ODIN-001.md  
+**Asignado:** ODIN
+
+#### INICIO (Registrado por ODIN)
+- **Fecha/hora inicio:** 2026-06-14 02:40 CST (Shanghai) / 01:40 (Bogotá)
+- **Registrado por:** ODIN
+- **Contexto:** Corrección de bugs encontrados en ACTA-CORRECCION-ODIN-001.md. Bugs: rate limiting, CSS mobile, logo desaparece, otros.
+
+#### FIN (Registrado por ODIN)
+- **Fecha/hora fin:** 2026-06-14 04:40 CST (Shanghai) / 15:40 (Bogotá)
+- **Registrado por:** ODIN
+- **Estado declarado:** LISTO PARA VALIDACIÓN
+- **Entregables:**
+  1. [fa03d23](https://github.com/Innovadataco/Desarrollos/commit/fa03d23) — docs: corrige estado del Módulo 001 a 'en corrección'
+  2. [0f53748](https://github.com/Innovadataco/Desarrollos/commit/0f53748) — fix: hashea IP en rate limiting fallback
+  3. [a947d56](https://github.com/Innovadataco/Desarrollos/commit/a947d56) — feat: alinea modelo Report con SPEC-001
+  4. [331df10](https://github.com/Innovadataco/Desarrollos/commit/331df10) — feat: selector de categorías CAT-01..CAT-06
+  5. [edd4cb8](https://github.com/Innovadataco/Desarrollos/commit/edd4cb8) — feat: zona drag & drop para evidencia multimedia
+  6. [e5e140b](https://github.com/Innovadataco/Desarrollos/commit/e5e140b) — feat: infraestructura con TLS 1.3 staging
+  7. [f257ab2](https://github.com/Innovadataco/Desarrollos/commit/f257ab2) — docs: METODOLOGIA-ODIN.md
+- **Notas:** Todas las correcciones referencian `ACTA-CORRECCION-ODIN-001-v2.md`. Tests backend (110) y frontend (6) pasan.
+
+#### AUDITORÍA (Registrado por ZEUS)
+- **Fecha/hora inicio auditoría:** 2026-06-14 04:07 CST (Shanghai) / 03:07 (Bogotá)
+- **Fecha/hora fin auditoría:** 2026-06-14 04:20 CST (Shanghai) / 03:20 (Bogotá)
+- **Duración auditoría:** 13 minutos
+- **Registrado por:** ZEUS
+- **Resultado:** ❌ **RECHAZADO v2** — 7 correcciones NO implementadas en código real
+- **Acta generada:** ACTA-CORRECCION-ODIN-001-v2.md (IDC_PROYECTOS/docs/auditoria/)
+- **Hallazgos:** ODIN reportó correcciones pero código en repo no las tiene. Fake completado detectado.
+- **Acciones:** ODIN debe re-implementar cada corrección individualmente con commits específicos. ZEUS validará cada una.
+
+#### VALIDACIÓN v2 (Registrado por ZEUS)
+- **Fecha/hora inicio validación:** 2026-06-14 04:50 CST (Shanghai) / 03:50 (Bogotá)
+- **Fecha/hora fin validación:** 2026-06-14 05:15 CST (Shanghai) / 04:15 (Bogotá)
+- **Duración validación:** 25 minutos
+- **Registrado por:** ZEUS
+- **Resultado:** ✅ **VALIDADO v2** — 7 correcciones implementadas correctamente
+- **Acta generada:** ACTA-VALIDACION-ODIN-001-v2.md (IDC_PROYECTOS/docs/auditoria/)
+- **Hallazgos:** ODIN re-implementó las 7 correcciones con commits individuales. ZEUS verificó código real línea por línea. Todos los hallazgos del ACTA-CORRECCION-ODIN-001-v2.md fueron resueltos.
+- **Observaciones:** Tests de cobertura menores (AAD, EXIF strip, thumbnail) — no bloquean validación, se recomienda agregar como deuda técnica.
+- **Acciones:** Merge de feature/v2-fullstack a main. Preparar INSTRUCCION-ODIN-002.md para Módulo 002.
+
+#### SINCRONIZACIÓN (Registrado por ZEUS)
+- **Fecha/hora actualización maestra:** 2026-06-14 05:30 CST (Shanghai) / 04:30 (Bogotá)
+- **Estado en maestra:** ✅ VALIDADO v2
+- **Próxima actividad:** ACT-002: Iniciar Módulo 002 (Consulta Semaforo)
+
+---
+
+### ACT-002: Implementación Módulo 002 (Consulta Semaforo)
+**Módulo:** 002 — Consulta Semaforo  
+**Instrucción:** INSTRUCCION-ODIN-002.md  
+**Asignado:** ODIN
+
+#### INICIO (Registrado por ODIN)
+- **Fecha/hora inicio:** 2026-06-14 05:23 CST (Shanghai) / 16:23 (Bogotá)
+- **Registrado por:** ODIN
+- **Contexto:** Implementación del buscador universal y Semáforo de Confianza según SPEC-002. 22 tasks: 10 frontend, 9 backend, 3 infraestructura.
+
+#### FIN (Registrado por ODIN)
+- **Fecha/hora fin:** 2026-06-14 05:57 CST (Shanghai) / 16:57 (Bogotá)
+- **Registrado por:** ODIN
+- **Estado declarado:** LISTO PARA VALIDACIÓN
+- **Entregables:**
+  1. Frontend: cards de semáforo, detalle, botón Reportar, Compartir, Alertarme, tests unitarios y E2E.
+  2. Backend: TTL de cache 1h, endpoints de consulta funcionando.
+  3. Infraestructura: índices PostgreSQL y configuración de cache en nginx.
+- **Notas:** Todas las tasks de TASKS-002 implementadas. Tests backend 123 passed (90% cobertura), frontend 10 passed, E2E 10 passed.
+
+#### CORRECCIÓN (Registrado por ODIN)
+- **Fecha/hora corrección:** 2026-06-14 12:04 CST (Shanghai) / 23:04 (Bogotá)
+- **Registrado por:** ODIN
+- **Hallazgos corregidos:**
+  1. **TI-002.3 (nginx cache):** se refactorizó `nginx/nginx.conf` para cachear tanto `GET /api/v1/validate/` como `POST /api/v1/consultas` durante 5 minutos, con clave de cache que incluye el cuerpo en POST, bypass por `Cache-Control` y protección de cookies.
+  2. **Tests (confirmación de ejecución):** se creó `scripts/run-tests.sh` y se generó `docs/auditoria/CONFIRMACION-PRUEBAS-002.md` con la ejecución completa de backend, frontend, build y E2E.
+- **Estado tras corrección:** LISTO PARA VALIDACIÓN
+
+#### AUDITORÍA (Registrado por ZEUS)
+- **Fecha/hora inicio auditoría:** PENDIENTE
+- **Fecha/hora fin auditoría:** PENDIENTE
+- **Duración auditoría:** PENDIENTE
+- **Registrado por:** ZEUS
+- **Resultado:** PENDIENTE
+- **Acta generada:** PENDIENTE
+- **Hallazgos:** PENDIENTE
+- **Acciones:** PENDIENTE
+
+#### SINCRONIZACIÓN (Registrado por ZEUS)
+- **Fecha/hora actualización maestra:** PENDIENTE
+- **Estado en maestra:** NO INICIADO
+- **Próxima actividad:** PENDIENTE
+
+---
+
+## REGISTRO DE ACTIVIDADES POR MÓDULO (Tabla resumen)
+
+| ACT | Módulo | Descripción | Inicio ODIN | Fin ODIN | Estado ODIN | Inicio ZEUS | Fin ZEUS | Resultado ZEUS | Acta |
+|-----|--------|-------------|-------------|----------|-------------|-------------|----------|----------------|------|
+| 001 | 001 | Corrección bugs | 2026-06-14 02:40 | 2026-06-14 04:40 | LISTO PARA VALIDACIÓN | 2026-06-14 04:50 | 2026-06-14 05:15 | VALIDADO v2 | ACTA-VALIDACION-ODIN-001-v2.md |
+| 002 | 002 | Implementación | 2026-06-14 05:23 | 2026-06-14 12:04 | LISTO PARA VALIDACIÓN | PENDIENTE | PENDIENTE | PENDIENTE | PENDIENTE |
+| 003 | 003 | IA Triage | PENDIENTE | PENDIENTE | PENDIENTE | PENDIENTE | PENDIENTE | PENDIENTE | PENDIENTE |
+| 004 | 004 | Clustering | PENDIENTE | PENDIENTE | PENDIENTE | PENDIENTE | PENDIENTE | PENDIENTE | PENDIENTE |
+| 005 | 005 | Panel Admin | PENDIENTE | PENDIENTE | PENDIENTE | PENDIENTE | PENDIENTE | PENDIENTE | PENDIENTE |
+| 006 | 006 | Pasarela | PENDIENTE | PENDIENTE | PENDIENTE | PENDIENTE | PENDIENTE | PENDIENTE | PENDIENTE |
+
+---
+
+## REGLAS DE REGISTRO
+
+1. **ODIN registra INICIO inmediatamente** cuando empieza una actividad (máximo 5 min después)
+2. **ODIN registra FIN inmediatamente** cuando termina (máximo 5 min después)
+3. **ZEUS registra AUDITORÍA inmediatamente** cuando empieza a revisar (máximo 30 min después de que ODIN declare fin)
+4. **ZEUS registra FIN de auditoría** cuando termina de revisar
+5. **ZEUS actualiza SINCRONIZACION-MAESTRA.md** dentro de 30 min de terminar auditoría
+6. **Formato de hora:** `YYYY-MM-DD HH:MM CST (Shanghai) / HH:MM (Bogotá)`
+7. **Sin fecha/hora, la actividad no cuenta.** Si ODIN olvida registrar, ZEUS lo solicita antes de auditar.
+
+---
+
+> **"Cada actividad tiene 3 timestamps: inicio ODIN, fin ODIN, auditoría ZEUS. Sin ellos, no hay visibilidad."**
+> **ZEUS — CEO PMO**

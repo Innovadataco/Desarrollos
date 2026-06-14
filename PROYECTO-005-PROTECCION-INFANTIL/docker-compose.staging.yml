@@ -1,0 +1,14 @@
+services:
+  nginx:
+    image: nginx:alpine
+    container_name: proteccion-nginx-staging
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/nginx.staging.conf:/etc/nginx/nginx.conf:ro
+      - ./nginx/certs:/etc/nginx/certs:ro
+    depends_on:
+      - backend
+      - frontend
+    restart: unless-stopped
