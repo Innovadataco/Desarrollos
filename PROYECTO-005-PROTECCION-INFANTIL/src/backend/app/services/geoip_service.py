@@ -47,10 +47,24 @@ def _location_from_geolite2(ip: str) -> tuple[str | None, str | None]:
         return None, None
 
 
+def _decode_header(value: str | None) -> str | None:
+    """Decodifica cabeceras no ASCII enviadas como UTF-8.
+
+    Starlette/FastAPI decodifican las cabeceras como latin-1. Si el cliente
+    envió UTF-8 (caso común), reconstruimos el texto original.
+    """
+    if not value:
+        return value
+    try:
+        return value.encode("latin-1").decode("utf-8")
+    except UnicodeError:
+        return value
+
+
 def _location_from_headers(request: Request) -> tuple[str | None, str | None]:
     """Fallback a cabeceras enviadas por el cliente/proxy."""
-    city = request.headers.get("x-client-city")
-    country = request.headers.get("x-client-country")
+    city = _decode_header(request.headers.get("x-client-city"))
+    country = _decode_header(request.headers.get("x-client-country"))
     return city, country
 
 
