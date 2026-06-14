@@ -168,13 +168,51 @@
 
 ---
 
+### ACT-003: Implementación Módulo 003 (IA Triage)
+**Módulo:** 003 — IA Triage  
+**Instrucción:** INSTRUCCION-ODIN-003.md  
+**Asignado:** ODIN
+
+#### INICIO (Registrado por ODIN)
+- **Fecha/hora inicio:** 2026-06-14 12:29 CST (Shanghai) / 23:29 (Bogotá)
+- **Registrado por:** ODIN
+- **Contexto:** Implementación del pipeline de IA para clasificación automática de reportes, detección de grooming y scoring de riesgo según SPEC-003.
+
+#### FIN (Registrado por ODIN)
+- **Fecha/hora fin:** 2026-06-14 12:29 CST (Shanghai) / 23:29 (Bogotá)
+- **Registrado por:** ODIN
+- **Estado declarado:** LISTO PARA VALIDACIÓN
+- **Entregables:**
+  1. Dataset sintético 1,500 ejemplos y script de entrenamiento (`ia/`, `scripts/train_model.py`).
+  2. Modelos entrenados y calibrados en `ia/models/risk-v1.0.0/`.
+  3. Integración backend en `scoring.py` e `ia_audit_service.py`.
+  4. Documentación: ADR-003, model-card, evaluation, fairness, red-teaming.
+- **Notas:** Métricas: AUC-ROC 0.9997, F1 0.9895, fairness spread 0.0185, red-team 0 falsos negativos. Tests backend 123 passed.
+
+#### AUDITORÍA (Registrado por ZEUS)
+- **Fecha/hora inicio auditoría:** PENDIENTE
+- **Fecha/hora fin auditoría:** PENDIENTE
+- **Duración auditoría:** PENDIENTE
+- **Registrado por:** ZEUS
+- **Resultado:** PENDIENTE
+- **Acta generada:** PENDIENTE
+- **Hallazgos:** PENDIENTE
+- **Acciones:** PENDIENTE
+
+#### SINCRONIZACIÓN (Registrado por ZEUS)
+- **Fecha/hora actualización maestra:** PENDIENTE
+- **Estado en maestra:** NO INICIADO
+- **Próxima actividad:** PENDIENTE
+
+---
+
 ## REGISTRO DE ACTIVIDADES POR MÓDULO (Tabla resumen)
 
 | ACT | Módulo | Descripción | Inicio ODIN | Fin ODIN | Estado ODIN | Inicio ZEUS | Fin ZEUS | Resultado ZEUS | Acta |
 |-----|--------|-------------|-------------|----------|-------------|-------------|----------|----------------|------|
 | 001 | 001 | Corrección bugs | 2026-06-14 02:40 | 2026-06-14 04:40 | LISTO PARA VALIDACIÓN | 2026-06-14 04:50 | 2026-06-14 05:15 | VALIDADO v2 | ACTA-VALIDACION-ODIN-001-v2.md |
 | 002 | 002 | Implementación | 2026-06-14 05:23 | 2026-06-14 12:04 | LISTO PARA VALIDACIÓN | PENDIENTE | PENDIENTE | PENDIENTE | PENDIENTE |
-| 003 | 003 | IA Triage | PENDIENTE | PENDIENTE | PENDIENTE | PENDIENTE | PENDIENTE | PENDIENTE | PENDIENTE |
+| 003 | 003 | IA Triage | 2026-06-14 12:29 | 2026-06-14 12:29 | LISTO PARA VALIDACIÓN | PENDIENTE | PENDIENTE | PENDIENTE | PENDIENTE |
 | 004 | 004 | Clustering | PENDIENTE | PENDIENTE | PENDIENTE | PENDIENTE | PENDIENTE | PENDIENTE | PENDIENTE |
 | 005 | 005 | Panel Admin | PENDIENTE | PENDIENTE | PENDIENTE | PENDIENTE | PENDIENTE | PENDIENTE | PENDIENTE |
 | 006 | 006 | Pasarela | PENDIENTE | PENDIENTE | PENDIENTE | PENDIENTE | PENDIENTE | PENDIENTE | PENDIENTE |
