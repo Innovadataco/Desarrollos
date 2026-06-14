@@ -3,6 +3,10 @@ import BottomNav from "./components/BottomNav";
 import ReportForm from "./components/ReportForm";
 import ResourcesView from "./components/ResourcesView";
 import SearchView from "./components/SearchView";
+import AdminLogin from "./components/admin/AdminLogin";
+import ProfileDetail from "./components/admin/ProfileDetail";
+import ProfilesView from "./components/admin/ProfilesView";
+import NetworksView from "./components/admin/NetworksView";
 
 function ReportRoute() {
   const [searchParams] = useSearchParams();
@@ -25,6 +29,10 @@ function App() {
           <Route path="/" element={<SearchView />} />
           <Route path="/report" element={<ReportRoute />} />
           <Route path="/resources" element={<ResourcesView />} />
+          <Route path="/admin/login" element={<AdminLogin />} />
+          <Route path="/admin/profiles" element={<ProfilesView />} />
+          <Route path="/admin/profiles/:hash" element={<ProfileDetail />} />
+          <Route path="/admin/networks" element={<NetworksView />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </main>
